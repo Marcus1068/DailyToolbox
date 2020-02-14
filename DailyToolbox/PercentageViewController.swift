@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class PercentageViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
@@ -20,6 +20,8 @@ class DetailViewController: UIViewController {
                 label.text = detail.description
             }
         }
+        
+        self.title = "Percentage Calculation"
     }
 
     override func viewDidLoad() {

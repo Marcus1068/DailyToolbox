@@ -3,18 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
 		2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866D23F6AA480011D886 /* MasterViewController.swift */; };
-		2CBD867023F6AA480011D886 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866F23F6AA480011D886 /* DetailViewController.swift */; };
+		2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866F23F6AA480011D886 /* PercentageViewController.swift */; };
 		2CBD867323F6AA480011D886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867123F6AA480011D886 /* Main.storyboard */; };
 		2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867423F6AA480011D886 /* Assets.xcassets */; };
 		2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */; };
 		2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */; };
+		2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */; };
+		2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */; };
+		2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperatur.swift */; };
+		2CBD869723F6BE990011D886 /* Zahlen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* Zahlen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,7 @@
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBD866B23F6AA480011D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CBD866D23F6AA480011D886 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		2CBD866F23F6AA480011D886 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2CBD866F23F6AA480011D886 /* PercentageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageViewController.swift; sourceTree = "<group>"; };
 		2CBD867223F6AA480011D886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CBD867423F6AA480011D886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CBD867723F6AA480011D886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,11 @@
 		2CBD867E23F6AA490011D886 /* DailyToolboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyToolboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToolboxTests.swift; sourceTree = "<group>"; };
 		2CBD868423F6AA490011D886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolbox.entitlements; sourceTree = "<group>"; };
+		2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersViewController.swift; sourceTree = "<group>"; };
+		2CBD869423F6BE7E0011D886 /* Temperatur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatur.swift; sourceTree = "<group>"; };
+		2CBD869623F6BE990011D886 /* Zahlen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zahlen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +90,11 @@
 		2CBD866823F6AA480011D886 /* DailyToolbox */ = {
 			isa = PBXGroup;
 			children = (
+				2CBD869323F6BE4E0011D886 /* Model */,
+				2CBD869023F6B3CE0011D886 /* ViewControllers */,
+				2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */,
 				2CBD866923F6AA480011D886 /* AppDelegate.swift */,
 				2CBD866B23F6AA480011D886 /* SceneDelegate.swift */,
-				2CBD866D23F6AA480011D886 /* MasterViewController.swift */,
-				2CBD866F23F6AA480011D886 /* DetailViewController.swift */,
 				2CBD867123F6AA480011D886 /* Main.storyboard */,
 				2CBD867423F6AA480011D886 /* Assets.xcassets */,
 				2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */,
@@ -100,6 +110,26 @@
 				2CBD868423F6AA490011D886 /* Info.plist */,
 			);
 			path = DailyToolboxTests;
+			sourceTree = "<group>";
+		};
+		2CBD869023F6B3CE0011D886 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CBD866D23F6AA480011D886 /* MasterViewController.swift */,
+				2CBD866F23F6AA480011D886 /* PercentageViewController.swift */,
+				2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */,
+				2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2CBD869323F6BE4E0011D886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CBD869623F6BE990011D886 /* Zahlen.swift */,
+				2CBD869423F6BE7E0011D886 /* Temperatur.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +190,7 @@
 				};
 			};
 			buildConfigurationList = 2CBD866123F6AA480011D886 /* Build configuration list for PBXProject "DailyToolbox" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -204,9 +234,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
+				2CBD869723F6BE990011D886 /* Zahlen.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
-				2CBD867023F6AA480011D886 /* DetailViewController.swift in Sources */,
+				2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */,
+				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
+				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
+				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +400,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -375,6 +411,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -384,7 +421,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -393,6 +432,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
