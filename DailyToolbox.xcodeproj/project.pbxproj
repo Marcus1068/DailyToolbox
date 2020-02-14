@@ -18,7 +18,7 @@
 		2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */; };
 		2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */; };
 		2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperatur.swift */; };
-		2CBD869723F6BE990011D886 /* Zahlen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* Zahlen.swift */; };
+		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersViewController.swift; sourceTree = "<group>"; };
 		2CBD869423F6BE7E0011D886 /* Temperatur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatur.swift; sourceTree = "<group>"; };
-		2CBD869623F6BE990011D886 /* Zahlen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zahlen.swift; sourceTree = "<group>"; };
+		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 		2CBD869323F6BE4E0011D886 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2CBD869623F6BE990011D886 /* Zahlen.swift */,
+				2CBD869623F6BE990011D886 /* ConvertNumbers.swift */,
 				2CBD869423F6BE7E0011D886 /* Temperatur.swift */,
 			);
 			name = Model;
@@ -234,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
-				2CBD869723F6BE990011D886 /* Zahlen.swift in Sources */,
+				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */,

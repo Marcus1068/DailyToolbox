@@ -14,6 +14,13 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var hexaTextField: UITextField!
     @IBOutlet weak var binaryTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        configureView()
+    }
+    
     func configureView() {
         // Update the user interface for the detail item.
         
@@ -31,9 +38,9 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     @objc func decimalTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
             let input : Int = Int(textField.text!)!
-            let num = Zahlen(dezimal: input)
-            hexaTextField.text = num.hexadezimal.uppercased()
-            binaryTextField.text = num.binär
+            let num = ConvertNumbers(decimal: input)
+            hexaTextField.text = num.hexadecimal.uppercased()
+            binaryTextField.text = num.binary
         }
         else{
             hexaTextField.text = ""
@@ -42,20 +49,29 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func hexaTextFieldDidChange(_ textField: UITextField) {
-        decimalTextField.text = textField.text
-        binaryTextField.text = textField.text
+        if textField.text!.count > 0{
+            let input : String = textField.text!
+            let num = ConvertNumbers(hexadecimal: input)
+            decimalTextField.text = String(num.decimal)
+            binaryTextField.text = num.binary
+        }
+        else{
+            decimalTextField.text = ""
+            binaryTextField.text = ""
+        }
     }
     
     @objc func binaryTextFieldDidChange(_ textField: UITextField) {
-        decimalTextField.text = textField.text
-        hexaTextField.text = textField.text
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        configureView()
+        if textField.text!.count > 0{
+            let input : String = textField.text!
+            let num = ConvertNumbers(binary: input)
+            decimalTextField.text = String(num.decimal)
+            hexaTextField.text = num.hexadecimal
+        }
+        else{
+            decimalTextField.text = ""
+            hexaTextField.text = ""
+        }
     }
     
 
