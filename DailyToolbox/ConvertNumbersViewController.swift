@@ -78,64 +78,47 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // check in price textfield for comma or dot characters - somehow people change keyboard input type from decimal to text
+    // check for valid keyboard input characters
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         if textField == decimalTextField{
-            if let char = string.cString(using: String.Encoding.utf8) {
-                let isDot = strcmp(char, ".")
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                return true
+            
+            case "":
+                return true
                 
-                if isDot == 0{
+            default:
                     return false
-                }
-                
-                let isComma = strcmp(char, ",")
-                
-                if isComma == 0{
-                    return false
-                }
             }
         }
         
         if textField == hexaTextField{
-            if let char = string.cString(using: String.Encoding.utf8) {
-               /* let isBackspace = strcmp(char, "\\b")
-                print(string)
-                if isBackspace == 0{
-                    return false
-                }
-                */
-                switch(string){
-                case "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F":
-                    return true
-                    
-                case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-                    return true
+            switch(string){
+            case "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F":
+                return true
                 
-                case "":
-                    return true
-                    
-                default:
-                        return false
-                }
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
             }
         }
         
         if textField == binaryTextField{
-            if let char = string.cString(using: String.Encoding.utf8) {
-                let isZero = strcmp(char, "0")
+            switch(string){
+            case "0", "1":
+                return true
+            
+            case "":
+                return true
                 
-                if isZero == 0{
-                    return true
-                }
-                
-                let isOne = strcmp(char, "1")
-                
-                if isOne == 0{
-                    return true
-                }
-                
-                return false
+            default:
+                    return false
             }
         }
         
