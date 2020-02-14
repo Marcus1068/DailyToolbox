@@ -8,16 +8,47 @@
 
 import UIKit
 
-class ConvertNumbersViewController: UIViewController {
+class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var decimalTextField: UITextField!
-    
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var hexaTextField: UITextField!
+    @IBOutlet weak var binaryTextField: UITextField!
     
     func configureView() {
         // Update the user interface for the detail item.
         
         self.title = "Convert Numbers"
+        
+        self.decimalTextField.becomeFirstResponder()
+        
+        decimalTextField.addTarget(self, action: #selector(ConvertNumbersViewController.decimalTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        hexaTextField.addTarget(self, action: #selector(ConvertNumbersViewController.hexaTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        binaryTextField.addTarget(self, action: #selector(ConvertNumbersViewController.binaryTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func decimalTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            let input : Int = Int(textField.text!)!
+            let num = Zahlen(dezimal: input)
+            hexaTextField.text = num.hexadezimal.uppercased()
+            binaryTextField.text = num.binär
+        }
+        else{
+            hexaTextField.text = ""
+            binaryTextField.text = ""
+        }
+    }
+    
+    @objc func hexaTextFieldDidChange(_ textField: UITextField) {
+        decimalTextField.text = textField.text
+        binaryTextField.text = textField.text
+    }
+    
+    @objc func binaryTextFieldDidChange(_ textField: UITextField) {
+        decimalTextField.text = textField.text
+        hexaTextField.text = textField.text
     }
     
     override func viewDidLoad() {
@@ -38,11 +69,5 @@ class ConvertNumbersViewController: UIViewController {
     }
     */
     
-    @IBAction func convertButton(_ sender: UIButton) {
-        let inp = self.decimalTextField.text
-        let input : Int = Int(inp!)!
-        let num = Zahlen(dezimal: input)
-        self.resultLabel.text = num.hexadezimal
-    }
     
 }
