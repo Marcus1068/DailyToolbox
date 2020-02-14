@@ -17,7 +17,7 @@
 		2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */; };
 		2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */; };
 		2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */; };
-		2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperatur.swift */; };
+		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolbox.entitlements; sourceTree = "<group>"; };
 		2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersViewController.swift; sourceTree = "<group>"; };
-		2CBD869423F6BE7E0011D886 /* Temperatur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatur.swift; sourceTree = "<group>"; };
+		2CBD869423F6BE7E0011D886 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				2CBD869623F6BE990011D886 /* ConvertNumbers.swift */,
-				2CBD869423F6BE7E0011D886 /* Temperatur.swift */,
+				2CBD869423F6BE7E0011D886 /* Temperature.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
-				2CBD869523F6BE7E0011D886 /* Temperatur.swift in Sources */,
+				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
 				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
