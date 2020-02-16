@@ -8,20 +8,29 @@
 
 import UIKit
 
-class PercentageViewController: UIViewController {
+class PercentageViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-
+    @IBOutlet weak var percentTextField: UITextField!
+    @IBOutlet weak var percentValueTextField: UITextField!
+    @IBOutlet weak var baseValueTextField: UITextField!
+    
     func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
         
         self.title = "Percentage Calculation"
+        
+        percentTextField.becomeFirstResponder()
+        
+        percentTextField.delegate = self
+        percentValueTextField.delegate = self
+        baseValueTextField.delegate = self
+        
+        percentTextField.addTarget(self, action: #selector(PercentageViewController.percentTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        percentValueTextField.addTarget(self, action: #selector(PercentageViewController.percentValueTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        baseValueTextField.addTarget(self, action: #selector(PercentageViewController.baseValueTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
 
     override func viewDidLoad() {
@@ -29,14 +38,108 @@ class PercentageViewController: UIViewController {
         // Do any additional setup after loading the view.
         configureView()
     }
-
-    var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            configureView()
+    
+    @objc func percentTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            /*let input : Int = Int(textField.text!)!
+            let num = ConvertNumbers(decimal: input)
+            percentValueTextField.text = num.hexadecimal.uppercased()
+            baseValueTextField.text = num.binary */
+        }
+        else{
+            percentValueTextField.text = ""
+            baseValueTextField.text = ""
+        }
+    }
+    
+    @objc func percentValueTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            /*let input : Int = Int(textField.text!)!
+            let num = ConvertNumbers(decimal: input)
+            percentValueTextField.text = num.hexadecimal.uppercased()
+            baseValueTextField.text = num.binary */
+        }
+        else{
+            percentValueTextField.text = ""
+            baseValueTextField.text = ""
         }
     }
 
+    @objc func baseValueTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            /*let input : Int = Int(textField.text!)!
+            let num = ConvertNumbers(decimal: input)
+            percentValueTextField.text = num.hexadecimal.uppercased()
+            baseValueTextField.text = num.binary */
+        }
+        else{
+            percentValueTextField.text = ""
+            baseValueTextField.text = ""
+        }
+    }
+    
+    // check for valid keyboard input characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == percentTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        if textField == percentValueTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        if textField == baseValueTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        return true
+    }
 
+    @IBAction func calculateButton(_ sender: UIButton) {
+        
+        if percentTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {
+            let p : Double = Double(percentValueTextField.text!)!
+            let v : Double = Double(percentTextField.text!)!
+            let str = Percent(prozentwert: p, prozentsatz: v)
+            let s = String(str.grundwert)
+            baseValueTextField.text = s
+        }
+        
+        if baseValueTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {
+            let p : Double = Double(percentValueTextField.text!)!
+            let g : Double = Double(baseValueTextField.text!)!
+            let str = Percent(prozentwert: p, grundwert: g)
+            let s = String(str.prozentsatz)
+            percentTextField.text = s
+        }
+    }
+    
 }
 
