@@ -95,7 +95,7 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
         
         if textField == percentValueTextField{
             switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
                 return true
             
             case "":
@@ -138,6 +138,14 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
             let str = Percent(prozentwert: p, grundwert: g)
             let s = String(str.prozentsatz)
             percentTextField.text = s
+        }
+        
+        if baseValueTextField.text!.count > 0 && percentTextField.text!.count > 0 {
+            let p : Double = Double(percentTextField.text!)!
+            let g : Double = Double(baseValueTextField.text!)!
+            let str = Percent(prozentsatz: p, grundwert: g)
+            let s = String(str.prozentwert)
+            percentValueTextField.text = s
         }
     }
     
