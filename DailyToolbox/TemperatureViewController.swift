@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import WebKit
 
 class TemperatureViewController: UIViewController, UITextFieldDelegate{
   
@@ -20,11 +19,6 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
         // Update the user interface for the detail item.
         
         self.title = "Temperature Calculation"
-        
-    /*    let url = URL(string: "https://dict.leo.org/dict/mobile.php")!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-        */
         
         celsiusTextField.becomeFirstResponder()
         

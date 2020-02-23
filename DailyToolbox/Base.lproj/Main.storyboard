@@ -241,47 +241,46 @@
             </objects>
             <point key="canvasLocation" x="3063.768115942029" y="-417.1875"/>
         </scene>
-        <!--View Controller-->
+        <!--Translation View Controller-->
         <scene sceneID="lSQ-wS-HWx">
             <objects>
-                <viewController id="2Cr-Y3-8Tx" sceneMemberID="viewController">
+                <viewController id="2Cr-Y3-8Tx" customClass="TranslationViewController" customModule="DailyToolbox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x5z-xC-4cw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIO-4g-7z2">
-                                <rect key="frame" x="104" y="168" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fNa-a9-zo1"/>
-                                    <constraint firstAttribute="width" constant="46" id="mOw-2X-0FB"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nj-Gc-XAB">
-                                <rect key="frame" x="29" y="229" width="374" height="466"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nj-Gc-XAB">
+                                <rect key="frame" x="20" y="158" width="374" height="606"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIO-4g-7z2">
+                                <rect key="frame" x="20" y="784" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="oIO-4g-7z2" firstAttribute="leading" secondItem="xER-nZ-27W" secondAttribute="leading" constant="104" id="PSf-oE-g3s"/>
-                            <constraint firstItem="oIO-4g-7z2" firstAttribute="top" secondItem="xER-nZ-27W" secondAttribute="top" constant="80" id="U2u-sd-JXq"/>
+                            <constraint firstItem="5nj-Gc-XAB" firstAttribute="trailing" secondItem="x5z-xC-4cw" secondAttribute="trailingMargin" id="HFm-FR-ifo"/>
+                            <constraint firstItem="oIO-4g-7z2" firstAttribute="leading" secondItem="5nj-Gc-XAB" secondAttribute="leading" id="Mxn-jq-eN5"/>
+                            <constraint firstItem="oIO-4g-7z2" firstAttribute="leading" secondItem="x5z-xC-4cw" secondAttribute="leadingMargin" id="ajh-3k-wGs"/>
+                            <constraint firstItem="5nj-Gc-XAB" firstAttribute="top" secondItem="xER-nZ-27W" secondAttribute="top" constant="70" id="ihc-Ko-Q87"/>
+                            <constraint firstItem="xER-nZ-27W" firstAttribute="bottom" secondItem="oIO-4g-7z2" secondAttribute="bottom" constant="48" id="qqP-WZ-Vcb"/>
+                            <constraint firstItem="oIO-4g-7z2" firstAttribute="top" secondItem="5nj-Gc-XAB" secondAttribute="bottom" constant="20" id="xyE-I3-nxb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xER-nZ-27W"/>
                     </view>
                     <navigationItem key="navigationItem" id="0G2-3Q-GqV"/>
                     <connections>
-                        <outlet property="webView" destination="5nj-Gc-XAB" id="hqN-iK-oRH"/>
+                        <outlet property="webView" destination="5nj-Gc-XAB" id="3Ug-qx-llW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEH-PA-giY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2212" y="321"/>
+            <point key="canvasLocation" x="2211.594202898551" y="320.75892857142856"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -365,7 +364,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="nKN-tz-FZp" kind="showDetail" id="1r5-Y9-r6D"/>
+                                            <segue destination="nKN-tz-FZp" kind="showDetail" identifier="showDecimal" id="1r5-Y9-r6D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="XZ9-fr-uno" style="IBUITableViewCellStyleDefault" id="Gz2-jg-Ie4">
@@ -404,7 +403,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="4IP-LG-KtE" kind="showDetail" identifier="temperature" id="rAV-Zp-tni"/>
+                                            <segue destination="4IP-LG-KtE" kind="showDetail" identifier="showTemp" id="rAV-Zp-tni"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="9Xh-e8-moh" style="IBUITableViewCellStyleDefault" id="ghs-t4-FHL">
@@ -461,7 +460,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="5AH-9n-BY7" kind="showDetail" identifier="showTemp" id="LxP-82-5Ut"/>
+                                            <segue destination="5AH-9n-BY7" kind="showDetail" identifier="showTranslation" id="LxP-82-5Ut"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

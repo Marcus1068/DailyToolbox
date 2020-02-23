@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
+		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
 		2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866D23F6AA480011D886 /* MasterViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
+		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBD866B23F6AA480011D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				2CBD866F23F6AA480011D886 /* PercentageViewController.swift */,
 				2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */,
 				2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */,
+				2C9BE1692402BB79006A27AD /* TranslationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
+				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
