@@ -128,24 +128,21 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
             let p : Double = Double(percentValueTextField.text!)!
             let v : Double = Double(percentTextField.text!)!
             let str = Percent(prozentwert: p, prozentsatz: v)
-            let s = String(str.grundwert)
-            baseValueTextField.text = s
+            baseValueTextField.text = str.grundWertToString
         }
         
         if baseValueTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {
             let p : Double = Double(percentValueTextField.text!)!
             let g : Double = Double(baseValueTextField.text!)!
             let str = Percent(prozentwert: p, grundwert: g)
-            let s = String(str.prozentsatz)
-            percentTextField.text = s
+            percentTextField.text = str.prozentSatzToString
         }
         
         if baseValueTextField.text!.count > 0 && percentTextField.text!.count > 0 {
             let p : Double = Double(percentTextField.text!)!
             let g : Double = Double(baseValueTextField.text!)!
             let str = Percent(prozentsatz: p, grundwert: g)
-            let s = String(str.prozentwert)
-            percentValueTextField.text = s
+            percentValueTextField.text = str.prozentWertToString
         }
     }
     
