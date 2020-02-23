@@ -26,6 +26,13 @@ class ConvertNumbers: CustomStringConvertible{
         set { decimal = Int(newValue, radix: 16)!}
     }
 
+    // computed properties
+    var decimalToString: String{
+        return String(decimal)
+    }
+    
+    // init functions
+    
     init(decimal: Int){
         self.decimal = decimal
     }

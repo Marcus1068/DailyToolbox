@@ -42,9 +42,9 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     @objc func decimalTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
             let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            hexaTextField.text = num.hexadecimal.uppercased()
-            binaryTextField.text = num.binary
+            let value = ConvertNumbers(decimal: input)
+            hexaTextField.text = value.hexadecimal.uppercased()
+            binaryTextField.text = value.binary
         }
         else{
             hexaTextField.text = ""
@@ -53,11 +53,13 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func hexaTextFieldDidChange(_ textField: UITextField) {
+        // allow only uppercase hex letters
+        textField.text = textField.text?.uppercased()
         if textField.text!.count > 0{
             let input : String = textField.text!
-            let num = ConvertNumbers(hexadecimal: input)
-            decimalTextField.text = String(num.decimal)
-            binaryTextField.text = num.binary
+            let value = ConvertNumbers(hexadecimal: input)
+            decimalTextField.text = value.decimalToString
+            binaryTextField.text = value.binary
         }
         else{
             decimalTextField.text = ""
@@ -68,9 +70,9 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     @objc func binaryTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
             let input : String = textField.text!
-            let num = ConvertNumbers(binary: input)
-            decimalTextField.text = String(num.decimal)
-            hexaTextField.text = num.hexadecimal.uppercased()
+            let value = ConvertNumbers(binary: input)
+            decimalTextField.text = value.decimalToString
+            hexaTextField.text = value.hexadecimal.uppercased()
         }
         else{
             decimalTextField.text = ""
