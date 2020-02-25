@@ -170,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJu-3M-3gQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3973.913043478261" y="-1092.8571428571429"/>
+            <point key="canvasLocation" x="4884.057971014493" y="-1092.8571428571429"/>
         </scene>
         <!--Convert Numbers View Controller-->
         <scene sceneID="eTF-Qp-8bk">
@@ -469,6 +469,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <connections>
+                                            <segue destination="VlB-u8-5oD" kind="showDetail" identifier="showHorizon" id="b6X-3l-INP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="GDq-Tx-oz2" imageView="ZIU-FL-IeY" style="IBUITableViewCellStyleDefault" id="CBe-Hf-IhT">
                                         <rect key="frame" x="0.0" y="332.5" width="414" height="43.5"/>
@@ -508,6 +511,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
+        </scene>
+        <!--Horizon View Controller-->
+        <scene sceneID="J8Z-ie-1Fk">
+            <objects>
+                <viewController id="Xrz-tT-vue" customClass="HorizonViewController" customModule="DailyToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tyd-BH-5ze">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Altitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96k-F4-DSf">
+                                <rect key="frame" x="36" y="128" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-Ti-et0">
+                                <rect key="frame" x="122" y="128" width="261" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="caq-nU-8fa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uWz-ro-G1S"/>
+                    <connections>
+                        <outlet property="altitudeLabel" destination="gXY-Ti-et0" id="Wyi-ON-6y3"/>
+                        <outlet property="altitudeStringLabel" destination="96k-F4-DSf" id="cNn-BJ-zWL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEb-4N-ixG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2253.6231884057975" y="-1378.7946428571429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -577,7 +616,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiY-sj-RLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="-1115"/>
+            <point key="canvasLocation" x="3539.130434782609" y="-1115.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GaI-2g-1Uu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlB-u8-5oD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jqy-vp-xwP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xrz-tT-vue" kind="relationship" relationship="rootViewController" id="4Yr-Ad-Y3U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPl-mB-6Au" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342.0289855072465" y="-1379.4642857142856"/>
         </scene>
     </scenes>
     <resources>

@@ -21,6 +21,8 @@
 		2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */; };
 		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
+		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
+		2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E424044261008825E6 /* HorizonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersViewController.swift; sourceTree = "<group>"; };
 		2CBD869423F6BE7E0011D886 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
+		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
+		2CD4C2E424044261008825E6 /* HorizonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */,
 				2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */,
 				2C9BE1692402BB79006A27AD /* TranslationViewController.swift */,
+				2CD4C2E424044261008825E6 /* HorizonViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				2C94C9A523F994D6002D7C28 /* Percent.swift */,
 				2CBD869623F6BE990011D886 /* ConvertNumbers.swift */,
 				2CBD869423F6BE7E0011D886 /* Temperature.swift */,
+				2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -245,6 +251,8 @@
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
+				2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */,
+				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
