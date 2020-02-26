@@ -12,8 +12,8 @@ class ComputeHorizon: CustomStringConvertible{
     
     // properties
     
-    var eyeLevel: Double   // in meter
-    var altitude: Double   // altitude of user in meter
+    private var eyeLevel: Double   // in meter
+    private var altitude: Double   // altitude of user in meter
     
     // computed properties
     

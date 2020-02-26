@@ -9,16 +9,32 @@
 import UIKit
 import CoreLocation
 
-class HorizonViewController: UIViewController {
+class HorizonViewController: UIViewController, UITextFieldDelegate {
 
     private let locationManager = CLLocationManager()
     @IBOutlet weak var altitudeStringLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
+    @IBOutlet weak var eyeLevelTextField: UITextField!
+    @IBOutlet weak var distanceResultLabel: UILabel!
+    
     
     // computed properties
+    
+    var horizonDistance: String = "0.0 km"{
+        didSet{
+            self.distanceResultLabel.text = horizonDistance
+        }
+    }
+    
+    var eyeLevel: Double = 0.0
+    
     var altitude: Double = 0.0{
         didSet{
             self.altitudeLabel.text = String(format: "My altitude is %.2f m", altitude)
+            /*let el = self.eyeLevelTextField.text ?? "0.0"
+            eyeLevel = Double(el)!
+            let dist = ComputeHorizon(eyeLevel: eyeLevel, altitude: altitude)
+            horizonDistance = dist.altitude */
         }
         
     }
@@ -39,6 +55,18 @@ class HorizonViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        
+        eyeLevelTextField.becomeFirstResponder()
+        
+        eyeLevelTextField.delegate = self
+        
+        eyeLevelTextField.addTarget(self, action: #selector(HorizonViewController.eyeLevelTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        if eyeLevelTextField.text!.count > 0{
+            let input : Double = Double(eyeLevelTextField.text!)!
+            let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
+            horizonDistance = dist.viewDistanceToString
+        }
     }
     
     override func viewDidLoad() {
@@ -58,6 +86,32 @@ class HorizonViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func eyeLevelTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            let input : Double = Double(textField.text!)!
+            let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
+            horizonDistance = dist.viewDistanceToString
+        }
+    }
+    
+    // check for valid keyboard input characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == eyeLevelTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        return true
+    }
 
 }
 
