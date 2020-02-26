@@ -15,6 +15,15 @@ class HorizonViewController: UIViewController {
     @IBOutlet weak var altitudeStringLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
+    // computed properties
+    var altitude: Double = 0.0{
+        didSet{
+            self.altitudeLabel.text = String(format: "My altitude is %.2f m", altitude)
+        }
+        
+    }
+    
+    
     func configureView() {
         // Update the user interface for the detail item.
         
@@ -54,10 +63,11 @@ class HorizonViewController: UIViewController {
 
 extension HorizonViewController: CLLocationManagerDelegate {
     
+    // update location when changes occur
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            let altitude = lastLocation.altitude
-            altitudeLabel.text = String(format: "My altitude is\n%.2f m", altitude)
+            altitude = lastLocation.altitude
+            //altitudeLabel.text = String(format: "My altitude is %.2f m", altitude)
         }
     }
 }
