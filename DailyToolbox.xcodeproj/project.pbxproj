@@ -24,6 +24,8 @@
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E424044261008825E6 /* HorizonViewController.swift */; };
+		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
+		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E424044261008825E6 /* HorizonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonViewController.swift; sourceTree = "<group>"; };
+		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
+		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +143,12 @@
 		2CBD869323F6BE4E0011D886 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */,
 				2C94C9A523F994D6002D7C28 /* Percent.swift */,
 				2CBD869623F6BE990011D886 /* ConvertNumbers.swift */,
 				2CBD869423F6BE7E0011D886 /* Temperature.swift */,
 				2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */,
+				2CD4C2E624082F31008825E6 /* Benchmark.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -249,8 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
+				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
+				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
