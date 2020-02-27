@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
+		2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB592A824082BD70020F152 /* BenchmarkViewController.swift */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
 		2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866D23F6AA480011D886 /* MasterViewController.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		2CB592A824082BD70020F152 /* BenchmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkViewController.swift; sourceTree = "<group>"; };
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBD866B23F6AA480011D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */,
 				2C9BE1692402BB79006A27AD /* TranslationViewController.swift */,
 				2CD4C2E424044261008825E6 /* HorizonViewController.swift */,
+				2CB592A824082BD70020F152 /* BenchmarkViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
+				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
 				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
 			);

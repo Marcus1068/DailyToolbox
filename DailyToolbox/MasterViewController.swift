@@ -97,6 +97,17 @@ class MasterViewController: UITableViewController {
                 //detailViewController = controller
             }
         }
+        
+        if segue.identifier == "showBenchmark" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! BenchmarkViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
     }
 
     // MARK: - Table View
@@ -106,7 +117,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8 //objects.count
+        return 9 //objects.count
     }
 
  /*   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
