@@ -91,6 +91,10 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
             let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
             horizonDistance = dist.viewDistanceToString
         }
+        else{
+            let dist = ComputeHorizon(eyeLevel: 0.0, altitude: altitude)
+            horizonDistance = dist.viewDistanceToString
+        }
     }
     
     // check for valid keyboard input characters

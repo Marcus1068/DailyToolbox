@@ -52,5 +52,24 @@ class Benchmark{
         
         return Float(seconds)
     }
+    
+    static func benchmarkString() -> Float{
+        let start = Date()
+        
+        var s: String = "Benchmark test with Swift 5"
+        
+        // more than 20 times will kill ios simulator
+        for _ in 1...20{
+            s += s
+        }
+        
+        let end = Date()
+        
+        let seconds = end.timeIntervalSince(start)
+        //print ("Fertig nach \(seconds) Sekunden")
+        //print ("Referenzwert Macbook Pro 15 Model i7 von 2015 = ca. 1.8 Sekunden im Release Mode")
+        
+        return Float(seconds)
+    }
 
 }

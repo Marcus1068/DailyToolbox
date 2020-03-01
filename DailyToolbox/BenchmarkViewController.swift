@@ -16,9 +16,9 @@ class BenchmarkViewController: UIViewController {
     @IBOutlet weak var deviceLabel: UILabel!
     @IBOutlet weak var osVersionLabel: UILabel!
     
-    var arcNumber: Int = 1000
+    var arcNumber: Int = 10000
     
-    var swiftNumber: Int = 1000
+    var swiftNumber: Int = 10000
     
     func configureView() {
         self.title = "Benchmark device"
@@ -45,6 +45,12 @@ class BenchmarkViewController: UIViewController {
     
     @IBAction func swiftSegmentControl(_ sender: UISegmentedControl) {
         swiftNumber = Int(swiftSegment.titleForSegment(at: swiftSegment.selectedSegmentIndex)!)!
+    }
+    
+    @IBAction func stringConcatButton(_ sender: UIButton) {
+        let test = Benchmark.benchmarkString()
+        
+        resultLabel.text = String(format: "%.4f", test) + " seconds"
     }
     
     @IBAction func randomArcButton(_ sender: UIButton) {
