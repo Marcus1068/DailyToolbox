@@ -23,6 +23,7 @@ class MasterViewController: UITableViewController {
         //navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
+            // set default view controller to appear on screen
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? PercentageViewController
         }
         
@@ -102,6 +103,17 @@ class MasterViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! BenchmarkViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
+        
+        if segue.identifier == "showCurrency" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! CurrencyConverterViewController
                 //controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
