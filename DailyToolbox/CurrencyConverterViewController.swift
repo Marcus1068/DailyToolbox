@@ -66,16 +66,29 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return currencyList[row][component]
+        if component == 0{
+            fromLabel.text = currencyList[row][0]
+            return currencyList[row][0]
+        }
+        else{
+            toLabel.text = currencyList[row][1]
+            return currencyList[row][1]
+        }
     }
     
     // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        fromLabel.text = currencyList[row][0]
-        toLabel.text = currencyList[row][1]
+        if component == 0{
+            let conv = cvt.getRate(currency: currencyList[row][0])
+        }
+        else{
+            let conv = cvt.getRate(currency: currencyList[row][1])
+            
+            let result = Double(fromTextField!.text!)! * conv
+            toTextField.text = String(result)
+        }
         
     }
     

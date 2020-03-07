@@ -130,14 +130,14 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     }
     
     // get rate based on currency
-    func getRate(currency: String) -> Double?{
+    func getRate(currency: String) -> Double{
         for v in cubes{
             if v.currency == currency{
                 return Double(v.rate)!
             }
         }
         
-        return nil
+        return 0.0
     }
     
     // get USD currency or fail
