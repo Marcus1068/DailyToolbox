@@ -12,14 +12,14 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     
     let cvt = CurrencyConverter()
     var numberOfCurrencies : Int = 0
-    var fromCurrencyList: [String] = []
-    var toCurrencyList: [String] = []
+    var currencyList: [[String]] = [[String]]()
     
     
     @IBOutlet weak var fromTextField: UITextField!
-    @IBOutlet weak var fromCurrencyPicker: UIPickerView!
-    @IBOutlet weak var toCurrencyPicker: UIPickerView!
+    @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var toTextField: UITextField!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
     
     
     func configureView() {
@@ -27,18 +27,15 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         self.title = "Currency Converter"
         
         fromTextField.becomeFirstResponder()
-        fromTextField.text = "1"
+        fromTextField.text = "1.0"
 
-        numberOfCurrencies = cvt.getCurrencyStrings().count
+        numberOfCurrencies = cvt.getCurrencyArray().count
         
-        fromCurrencyList = cvt.getCurrencyStrings()
-        toCurrencyList = cvt.getCurrencyStrings()
+        currencyList = cvt.getCurrencyArray()
         
         // Connect data:
-        self.fromCurrencyPicker.delegate = self
-        self.fromCurrencyPicker.dataSource = self
-        self.toCurrencyPicker.delegate = self
-        self.toCurrencyPicker.dataSource = self
+        self.currencyPicker.delegate = self
+        self.currencyPicker.dataSource = self
         
         if let dollar = cvt.getUSDCurrency(){
             print(dollar)
@@ -61,31 +58,25 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        
         return numberOfCurrencies
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        switch(pickerView){
-        case fromCurrencyPicker:
-            return fromCurrencyList[row]
-        case toCurrencyPicker:
-            return toCurrencyList[row]
-        default:
-            return fromCurrencyList[row]
-        }
+        return currencyList[row][component]
     }
     
     // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
+        fromLabel.text = currencyList[row][0]
+        toLabel.text = currencyList[row][1]
+        
     }
     
     /*

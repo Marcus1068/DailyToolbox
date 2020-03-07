@@ -39,10 +39,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29q-4C-Siy">
-                                <rect key="frame" x="0.0" y="428" width="375" height="172"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-aS-JSY">
                                 <rect key="frame" x="132" y="379" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,9 +58,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="bIv-jS-vOT"/>
                     <connections>
-                        <outlet property="fromCurrencyPicker" destination="7LG-g2-JRs" id="PtT-6c-ZeN"/>
+                        <outlet property="currencyPicker" destination="7LG-g2-JRs" id="PtT-6c-ZeN"/>
+                        <outlet property="fromLabel" destination="PMs-P7-5si" id="2X0-bn-DbR"/>
                         <outlet property="fromTextField" destination="WpH-uQ-WOs" id="d8D-kI-vey"/>
-                        <outlet property="toCurrencyPicker" destination="29q-4C-Siy" id="UR6-SL-fqL"/>
+                        <outlet property="toLabel" destination="0am-rx-g7W" id="Amh-sc-yt6"/>
                         <outlet property="toTextField" destination="p7g-aS-JSY" id="rOh-gU-cIi"/>
                     </connections>
                 </viewController>

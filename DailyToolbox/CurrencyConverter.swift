@@ -104,12 +104,26 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     
     // list of all currencies and according rates
     func getCurrencyStrings() -> [String]{
-        var str: [String] = []
+        var str: [String] = [String]()
         
         str.append("EUR")
         
         for i in cubes{
             str.append(i.currency)
+        }
+        
+        return str
+    }
+    
+    // list of all currencies and according rates
+    func getCurrencyArray() -> [[String]]{
+        var str: [[String]] = [[String]]()
+        
+        str.append(["EUR", "EUR"])
+        //str.append("EUR")
+        
+        for i in cubes{
+            str.append([i.currency, i.currency])
         }
         
         return str
