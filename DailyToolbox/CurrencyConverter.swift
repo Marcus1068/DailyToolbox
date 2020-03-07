@@ -112,7 +112,7 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
             str.append(i.currency)
         }
         
-        return str
+        return str.removingDuplicates()
     }
     
     // list of all currencies and according rates
@@ -126,7 +126,7 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
             str.append([i.currency, i.currency])
         }
         
-        return str
+        return str.removingDuplicates()
     }
     
     // get rate based on currency
@@ -198,3 +198,13 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
   
 }
 
+// remove dulicates from an array
+extension Array where Element: Equatable {
+    func removingDuplicates() -> Array {
+        return reduce(into: []) { result, element in
+            if !result.contains(element) {
+                result.append(element)
+            }
+        }
+    }
+}
