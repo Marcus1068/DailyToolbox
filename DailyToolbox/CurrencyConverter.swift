@@ -77,6 +77,10 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     override init(){
         super.init()
         
+        // add EUR to list
+        let euro = Cube(currency: "EUR", rate: "1.0")
+        cubes.append(euro)
+        
         let xmlFileURL = URL(string: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
         
         let parser = XMLParser(contentsOf: xmlFileURL!)
@@ -85,6 +89,8 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
         if parser!.parse()
         {
             print("XML Parsing OK")
+            
+            
             print(cubes)
             print(cubes.count)
         }
@@ -106,8 +112,6 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     func getCurrencyStrings() -> [String]{
         var str: [String] = [String]()
         
-        str.append("EUR")
-        
         for i in cubes{
             str.append(i.currency)
         }
@@ -119,9 +123,6 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     func getCurrencyArray() -> [[String]]{
         var str: [[String]] = [[String]]()
         
-        str.append(["EUR", "EUR"])
-        //str.append("EUR")
-        
         for i in cubes{
             str.append([i.currency, i.currency])
         }
@@ -131,24 +132,26 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     
     // get rate based on currency
     func getRate(currency: String) -> Double{
+        var rate: Double = 1.0
+        
         for v in cubes{
             if v.currency == currency{
-                return Double(v.rate)!
+                rate = Double(v.rate)!
             }
         }
         
-        return 0.0
+        return rate
     }
     
-    // get USD currency or fail
-    func getUSDCurrency() -> Double?{
-        for v in cubes{
-            if v.currency == "USD"{
-                return Double(v.rate)!
-            }
-        }
+    // convert from currency A to currency B
+    // 1. convert base currency to EUR
+    // 2. compute EUR * dest
+    func convertFromTo(baseCurrency: String, destCurrency: String) -> Double{
+        let base = getRate(currency: baseCurrency)
+        let dest = getRate(currency: destCurrency)
         
-        return nil
+        let conv = 1.0 / base * dest
+        return conv
     }
     
     // delegates

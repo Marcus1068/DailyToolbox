@@ -17,9 +17,9 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var currencyPicker: UIPickerView!
-    @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     
     
     func configureView() {
@@ -37,15 +37,14 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         self.currencyPicker.delegate = self
         self.currencyPicker.dataSource = self
         
-        if let dollar = cvt.getUSDCurrency(){
-            print(dollar)
-        }
-        
         let cur = cvt.getCurrencyList()
         
         for i in cur{
             print("Währung: \(i.currency), Kurs: \(i.rate)")
         }
+        
+        // preselect USD as destination
+        currencyPicker.selectRow(1, inComponent: 1, animated: true)
     }
     
     override func viewDidLoad() {
@@ -80,15 +79,10 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        if component == 0{
-            let conv = cvt.getRate(currency: currencyList[row][0])
-        }
-        else{
-            let conv = cvt.getRate(currency: currencyList[row][1])
-            
-            let result = Double(fromTextField!.text!)! * conv
-            toTextField.text = String(result)
-        }
+        
+        var result = cvt.convertFromTo(baseCurrency: fromLabel.text!, destCurrency: toLabel.text!)
+        result = result * Double(fromTextField.text!)!
+        resultLabel.text = String(format: "%.2f", result)
         
     }
     
