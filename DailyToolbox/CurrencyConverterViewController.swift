@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     let cvt = CurrencyConverter()
     var numberOfCurrencies : Int = 0
     var currencyList: [[String]] = [[String]]()
     
     
-    @IBOutlet weak var fromTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
     @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
@@ -26,8 +26,10 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         
         self.title = "Currency Converter"
         
-        fromTextField.becomeFirstResponder()
-        fromTextField.text = "1.0"
+        currencyTextField.becomeFirstResponder()
+        currencyTextField.delegate = self
+        currencyTextField.text = "1.00"
+        resultLabel.text = "1.00"
 
         numberOfCurrencies = cvt.getCurrencyArray().count
         
@@ -45,6 +47,8 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         
         // preselect USD as destination
         currencyPicker.selectRow(1, inComponent: 1, animated: true)
+        
+        currencyTextField.addTarget(self, action: #selector(CurrencyConverterViewController.currencyTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
     
     override func viewDidLoad() {
@@ -54,6 +58,35 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         
         configureView()
         
+    }
+    
+    @objc func currencyTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            var result = cvt.convertFromTo(baseCurrency: fromLabel.text!, destCurrency: toLabel.text!)
+            result = result * Double(currencyTextField.text!)!
+            resultLabel.text = String(format: "%.2f", result)
+        }
+        else{
+            resultLabel.text = ""
+        }
+    }
+    
+    // check for valid keyboard input characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == currencyTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        return true
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -81,7 +114,7 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         // The parameter named row and component represents what was selected.
         
         var result = cvt.convertFromTo(baseCurrency: fromLabel.text!, destCurrency: toLabel.text!)
-        result = result * Double(fromTextField.text!)!
+        result = result * Double(currencyTextField.text!)!
         resultLabel.text = String(format: "%.2f", result)
         
     }
