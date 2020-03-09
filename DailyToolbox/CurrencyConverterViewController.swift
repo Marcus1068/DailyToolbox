@@ -39,11 +39,11 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         self.currencyPicker.delegate = self
         self.currencyPicker.dataSource = self
         
-        let cur = cvt.getCurrencyList()
+        /* let cur = cvt.getCurrencyList()
         
         for i in cur{
             print("Währung: \(i.currency), Kurs: \(i.rate)")
-        }
+        } */
         
         // preselect USD as destination
         currencyPicker.selectRow(1, inComponent: 1, animated: true)

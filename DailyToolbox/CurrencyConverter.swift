@@ -55,7 +55,8 @@
 
 import Foundation
 
-struct Cube {
+// store struct in JSON as file in case of network problems
+struct Cube: Codable {
     var currency: String
     var rate: String
 }
@@ -63,6 +64,9 @@ struct Cube {
 
 // need to be declared outside of class otherwise loses values after xml parser runs
 private var cubes: [Cube] = []
+
+private let fileName: String = "currencyData.json"
+private let xmlFile: String = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
 
 // works based on EUR reference currency
 
@@ -77,11 +81,11 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     override init(){
         super.init()
         
-        // add EUR to list
+        // add EUR to list since we only get values from EUR to xxx and EUR is not included
         let euro = Cube(currency: "EUR", rate: "1.0")
         cubes.append(euro)
         
-        let xmlFileURL = URL(string: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
+        let xmlFileURL = URL(string: xmlFile)
         
         let parser = XMLParser(contentsOf: xmlFileURL!)
         let xmlDic = self
@@ -90,16 +94,60 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
         {
             print("XML Parsing OK")
             
+            //print(cubes)
+            //print(cubes.count)
             
-            print(cubes)
-            print(cubes.count)
+            // store currency data into file for offline use
+            let encoder = JSONEncoder()
+            if let jsondata = try? encoder.encode(cubes),
+                let jsonstr = String(data: jsondata, encoding: .utf8){
+                //print(jsonstr)
+                
+                let filePath = getDocumentsDirectory().appendingPathComponent(fileName)
+
+                do {
+                    try jsonstr.write(to: filePath, atomically: true, encoding: String.Encoding.utf8)
+                } catch {
+                    // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+                    print("Writing JSON file failed!")
+                }
+            }
         }
         else
         {
-            print("XML Parser error: ", parser!.parserError!, ", line: ", parser!.lineNumber, ", column: ", parser!.columnNumber);
+            // something went wrong, XML format or network problems might occur
+            //print("XML Parser error: ", parser!.parserError!, ", line: ", parser!.lineNumber, ", column: ", parser!.columnNumber);
+            
+            if let contents = readData(fileName: fileName){
+                // decode from JSON
+                let decoder = JSONDecoder()
+                cubes.removeAll()
+                let jsonData = contents.data(using: .utf8)!
+                if let cubeCopy = try? decoder.decode([Cube].self, from: jsonData){
+                    print(cubeCopy)
+                    cubes = cubeCopy
+                }
+            }
         }
     }
     
+    // read file as string
+    internal func readData(fileName: String) -> String?{
+        
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let pathURL = docPath.appendingPathComponent(fileName)
+        
+        do {
+            let contents = try String(contentsOfFile: pathURL.path, encoding: .utf8)
+            //contents = cleanRows(file: contents)
+            return contents
+            
+        } catch {
+            print("File Read Error for file \(pathURL.absoluteString)", error)
+            
+            return nil
+        }
+    }
     
     // functions
     
@@ -199,6 +247,10 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
         print("XML Parser failure error: ", parseError)
     }
   
+    internal func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
 }
 
 // remove dulicates from an array
