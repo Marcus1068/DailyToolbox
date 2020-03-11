@@ -12,7 +12,6 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
 
     var detailViewController: PercentageViewController? = nil
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,6 +25,9 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             //split.preferredDisplayMode = .primaryOverlay;
 
         }
+        
+        // removes extra separator lines after last table entry
+        self.tableView.tableFooterView = UIView()
         
     }
 

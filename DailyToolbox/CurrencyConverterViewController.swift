@@ -97,6 +97,7 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         return numberOfCurrencies
     }
     
+    /*
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0{
             fromLabel.text = currencyList[row][0]
@@ -106,7 +107,7 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
             toLabel.text = currencyList[row][1]
             return currencyList[row][1]
         }
-    }
+    } */
     
     // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -119,6 +120,47 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+
+        if component == 0{
+            fromLabel.text = currencyList[row][0]
+            var title = UILabel()
+             if let view = view {
+                    title = view as! UILabel
+              }
+            
+            title.font = UIFont(name: "HelveticaNeue", size: 35)
+            title.textColor = UIColor.blue
+            title.text =  currencyList[row][0]
+            title.textAlignment = .center
+
+            return title
+        }
+        else{
+            toLabel.text = currencyList[row][1]
+            var title = UILabel()
+             if let view = view {
+                    title = view as! UILabel
+              }
+            
+            title.font = UIFont(name: "HelveticaNeue", size: 35)
+            title.textColor = UIColor.blue
+            title.text =  currencyList[row][1]
+            title.textAlignment = .center
+
+            return title
+        }
+
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 36.0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 300
+    }
+
     /*
     // MARK: - Navigation
 
