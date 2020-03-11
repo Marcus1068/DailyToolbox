@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -23,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
         navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
+        
+        splitViewController.preferredDisplayMode = .allVisible
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -56,13 +57,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
     // MARK: - Split view
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? PercentageViewController else { return false }
+ //       guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+ //       guard let topAsDetailController = secondaryAsNavController.topViewController as? PercentageViewController else { return false }
         /*if topAsDetailController.detailItem == nil {
             // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
         } */
-        return false
+        return true // true = show static table as default
     }
 
 }

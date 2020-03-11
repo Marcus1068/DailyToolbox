@@ -18,6 +18,7 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
     
     func configureView() {
         
+        //detailItem = true
         self.title = "Percentage Calculation"
         
         percentTextField.becomeFirstResponder()
