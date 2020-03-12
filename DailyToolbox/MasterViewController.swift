@@ -39,6 +39,42 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //let controller = (segue.destination as! UINavigationController).topViewController
+        
+        /*
+        switch(segue.identifier){
+        case "showPercentage":
+            let controller = (segue.destination as! UINavigationController).topViewController as! PercentageViewController
+            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            detailViewController = controller
+        case "showTemp":
+            let controller = (segue.destination as! UINavigationController).topViewController as! TemperatureViewController
+            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            detailViewController = controller
+        case "showTranslation":
+            controller = (segue.destination as! UINavigationController).topViewController as! TranslationViewController
+        case "showDecimal":
+            controller = (segue.destination as! UINavigationController).topViewController as! ConvertNumbersViewController
+        case "showHorizon":
+            controller = (segue.destination as! UINavigationController).topViewController as! HorizonViewController
+        case "showBenchmark":
+            controller = (segue.destination as! UINavigationController).topViewController as! BenchmarkViewController
+        case "showCurrency":
+            controller = (segue.destination as! UINavigationController).topViewController as! CurrencyConverterViewController
+        case "showInterestRate":
+            controller = (segue.destination as! UINavigationController).topViewController as! InterestRateViewController
+        default:
+            print("not allowed")
+        }
+        
+        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
+        detailViewController = controller */
+        
+
         if segue.identifier == "showPercentage" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
@@ -115,6 +151,30 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
                 //detailViewController = controller
             }
         }
+        
+        if segue.identifier == "showInterestRate" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! InterestRateViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
+        
+        if segue.identifier == "showCalendar" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! CalendarCalculationViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
+        
+        
     }
 
     // MARK: - Table View

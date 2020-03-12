@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */; };
+		2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D209241A920900BA4363 /* InterestRate.swift */; };
+		2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */; };
+		2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */; };
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateViewController.swift; sourceTree = "<group>"; };
+		2C87D209241A920900BA4363 /* InterestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRate.swift; sourceTree = "<group>"; };
+		2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculation.swift; sourceTree = "<group>"; };
+		2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationViewController.swift; sourceTree = "<group>"; };
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
@@ -141,6 +149,8 @@
 				2CD4C2E424044261008825E6 /* HorizonViewController.swift */,
 				2CB592A824082BD70020F152 /* BenchmarkViewController.swift */,
 				2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */,
+				2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */,
+				2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -155,6 +165,8 @@
 				2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */,
 				2CD4C2E624082F31008825E6 /* Benchmark.swift */,
 				2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */,
+				2C87D209241A920900BA4363 /* InterestRate.swift */,
+				2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */,
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
+				2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
 				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
@@ -272,6 +286,8 @@
 				2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
+				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
+				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
 				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
 				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
