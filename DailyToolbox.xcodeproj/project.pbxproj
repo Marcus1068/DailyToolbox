@@ -11,7 +11,6 @@
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
 		2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */; };
-		2CAAE4F124100FA400D13315 /* Books.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAE4F024100FA400D13315 /* Books.xml */; };
 		2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB592A824082BD70020F152 /* BenchmarkViewController.swift */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
@@ -46,7 +45,6 @@
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
-		2CAAE4F024100FA400D13315 /* Books.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Books.xml; sourceTree = "<group>"; };
 		2CB592A824082BD70020F152 /* BenchmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkViewController.swift; sourceTree = "<group>"; };
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		2CBD865D23F6AA480011D886 = {
 			isa = PBXGroup;
 			children = (
-				2CAAE4F024100FA400D13315 /* Books.xml */,
 				2CBD866823F6AA480011D886 /* DailyToolbox */,
 				2CBD868123F6AA490011D886 /* DailyToolboxTests */,
 				2CBD866723F6AA480011D886 /* Products */,
@@ -245,7 +242,6 @@
 			files = (
 				2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
-				2CAAE4F124100FA400D13315 /* Books.xml in Resources */,
 				2CBD867323F6AA480011D886 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
