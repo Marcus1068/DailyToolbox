@@ -11,6 +11,7 @@ import UIKit
 class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     let cvt = CurrencyConverter()
+    let baseCurrency = "1.00"
     var numberOfCurrencies : Int = 0
     var currencyList: [[String]] = [[String]]()
     
@@ -28,8 +29,8 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         
         currencyTextField.becomeFirstResponder()
         currencyTextField.delegate = self
-        currencyTextField.text = "1.00"
-        resultLabel.text = "1.00"
+        currencyTextField.text = baseCurrency
+        resultLabel.text = baseCurrency
 
         numberOfCurrencies = cvt.getCurrencyArray().count
         

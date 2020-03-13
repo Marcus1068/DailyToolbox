@@ -9,9 +9,18 @@
 import UIKit
 
 class CalendarCalculationViewController: UIViewController {
-
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var daysLabel: UILabel!
+    
+    // get selected date
+    var date: Date = Date()
+    
     func configureView(){
         self.title = "Calendar Calculation"
+        datePicker.date = Date()
+        datePicker.datePickerMode = .date
+        
+        daysLabel.text = ""
     }
     
     override func viewDidLoad() {
@@ -22,7 +31,18 @@ class CalendarCalculationViewController: UIViewController {
         configureView()
     }
     
-
+    @IBAction func makeCalenderButton(_ sender: UIButton) {
+        let calendar = CalendarCalculation()
+    }
+    
+    @IBAction func datePickerAction(_ sender: UIDatePicker) {
+        date = datePicker.date
+        
+        let calendar = CalendarCalculation()
+        let result = calendar.calculateDaysBetweenTwoDates(start: Date(), end: date)
+        daysLabel.text = "\(result) days until event"
+    }
+    
     /*
     // MARK: - Navigation
 
