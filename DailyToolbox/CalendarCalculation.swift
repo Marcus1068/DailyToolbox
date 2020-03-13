@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import EventKit
 
 class CalendarCalculation{
     
@@ -26,5 +27,47 @@ class CalendarCalculation{
             return 0
         }
         return end - start
+    }
+    
+    func addTimeToDate(date: Date, minutes: Int) -> Date{
+        let modifiedDate = Calendar.current.date(byAdding: .minute, value: minutes, to: date)
+        
+        return modifiedDate!
+    }
+    
+    func addTimeToDate(date: Date, hours: Int) -> Date{
+        let modifiedDate = Calendar.current.date(byAdding: .hour, value: hours, to: date)
+        
+        return modifiedDate!
+    }
+    
+    // add an event to device default calendar
+    func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        DispatchQueue.global(qos: .background).async { () -> Void in
+            let eventStore = EKEventStore()
+
+            eventStore.requestAccess(to: .event, completion: { (granted, error) in
+                if (granted) && (error == nil) {
+                    let event = EKEvent(eventStore: eventStore)
+                    // add alarm in seconds, -3600 = 1 Hour
+                    let alarm = EKAlarm(relativeOffset: -3600.0)
+                    event.title = title
+                    event.startDate = startDate
+                    event.endDate = endDate
+                    event.notes = description
+                    event.alarms = [alarm]
+                    event.calendar = eventStore.defaultCalendarForNewEvents
+                    do {
+                        try eventStore.save(event, span: .thisEvent)
+                    } catch let e as NSError {
+                        completion?(false, e)
+                        return
+                    }
+                    completion?(true, nil)
+                } else {
+                    completion?(false, error as NSError?)
+                }
+            })
+        }
     }
 }

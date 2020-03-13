@@ -33,6 +33,10 @@ class CalendarCalculationViewController: UIViewController {
     
     @IBAction func makeCalenderButton(_ sender: UIButton) {
         let calendar = CalendarCalculation()
+        
+        let endDate = calendar.addTimeToDate(date: date, minutes: 30)
+        
+        calendar.addEventToCalendar(title: "Testeintrag", description: "Beschreibung", startDate: date, endDate: endDate)
     }
     
     @IBAction func datePickerAction(_ sender: UIDatePicker) {

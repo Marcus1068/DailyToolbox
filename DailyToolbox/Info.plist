@@ -80,5 +80,7 @@
 	</array>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Need access to Calendar</string>
 </dict>
 </plist>

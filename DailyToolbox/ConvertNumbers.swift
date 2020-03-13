@@ -8,8 +8,8 @@
 
 import Foundation
 
-// umrechnen von Dezimal nach Hexadezimal und Binär
-// gespeichert wird nur die Dezimalzahl, die anderen Zahlen werden berechnet
+// compute decimal to hexadecimal and binary and back
+// compute decimal to roman numbers and vice versa
 
 class ConvertNumbers: CustomStringConvertible{
 
@@ -47,5 +47,29 @@ class ConvertNumbers: CustomStringConvertible{
     
     var description: String{
         return "decimal: \(self.decimal), hexadecimal: \(self.hexadecimal), binary: \(self.binary)"
+    }
+    
+    // from decimal to roman numbers
+    var decimalToRoman: String{
+        
+        // first step: deconstruct integer to single digits
+        let arr = decimal.digits
+        
+        for i in arr{
+            print(i)
+        }
+        
+        return ""
+    }
+    
+    var romanToDecimal: Int{
+        return 0
+    }
+}
+
+// deconstruct decimal number as array of digits
+extension BinaryInteger {
+    var digits: [Int] {
+        return String(describing: self).compactMap { Int(String($0)) }
     }
 }

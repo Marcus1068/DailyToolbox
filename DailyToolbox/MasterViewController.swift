@@ -29,6 +29,10 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         // removes extra separator lines after last table entry
         self.tableView.tableFooterView = UIView()
         
+        // tests
+        let conv = ConvertNumbers(decimal: 0)
+        let a = conv.decimalToRoman
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
