@@ -147,31 +147,104 @@ class ConvertNumbers: CustomStringConvertible{
         var result: Int = 0
         
         // first step: deconstruct string to single digits
-        let arr = Array(roman)
+        var arr = Array(roman)
         
-        // loop through all single characters
-        for i in 1...arr.count{
-            switch(arr[i - 1]){
+        while arr.count > 0{
+        
+            if arr.count >= 2{
+                let a = arr[0]
+                let b = arr[1]
+                
+                if a == "I" && b == "V"{
+                    result += 4
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+                
+                if a == "I" && b == "X"{
+                    result += 9
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+                
+                if a == "X" && b == "L"{
+                    result += 40
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+                
+                if a == "X" && b == "C"{
+                    result += 90
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+                
+                if a == "C" && b == "D"{
+                    result += 400
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+                
+                if a == "C" && b == "M"{
+                    result += 900
+                    
+                    arr.remove(at: 0)
+                    arr.remove(at: 0)
+                    continue
+                }
+            }
+            
+            
+            switch(arr[0]){
             case "M":
                 result += 1000
+                arr.remove(at: 0)
             case "D":
                 result += 500
+                arr.remove(at: 0)
             case "C":
                 result += 100
+                arr.remove(at: 0)
             case "L":
                 result += 50
+                arr.remove(at: 0)
             case "X":
                 result += 10
+                arr.remove(at: 0)
             case "V":
                 result += 5
+                arr.remove(at: 0)
             case "I":
                 result += 1
+                arr.remove(at: 0)
             default:
+                // error
                 result = 0
             }
+            
         }
         
         return result
+    }
+    
+    func checkRomanRules(roman: String) -> Bool{
+        
+        // check the following rules:
+        // order of letters
+        // M first
+        // max three repeating letters
+        //
+        return false
     }
 }
 

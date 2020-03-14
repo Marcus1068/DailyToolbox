@@ -50,14 +50,19 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
     @objc func romanTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
             textField.text = textField.text?.uppercased()
+            
+            // check that not more than three identical characters entered
+            let check = textField.text!
+            let chars = Array(check)
+            if check.count > 3{
+                if chars[0] == chars[1] && chars[1] == chars[2] && chars[2] == chars[3]{
+                    textField.text = String(repeating: chars[0], count: 3)
+                }
+            }
+            
             let conv = ConvertNumbers(roman: textField.text!)
             
             decimalTextField.text = String(conv.romanToDecimal)
-            //print(conv.decimalToRoman)
-            
-            let str = Array("LDXIII")
-            print(str)
-            
         }
         else{
             decimalTextField.text = ""
