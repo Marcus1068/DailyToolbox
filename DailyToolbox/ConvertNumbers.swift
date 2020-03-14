@@ -14,7 +14,9 @@ import Foundation
 class ConvertNumbers: CustomStringConvertible{
 
     // properties
-    var decimal: Int
+    private var decimal: Int = 0
+    
+    private var roman: String = String()
     
     var hexadecimal: String{
         get { return String(decimal, radix: 16)}
@@ -45,6 +47,10 @@ class ConvertNumbers: CustomStringConvertible{
         self.decimal = Int(binary, radix: 2)!
     }
     
+    init(roman: String){
+        self.roman = roman
+    }
+    
     var description: String{
         return "decimal: \(self.decimal), hexadecimal: \(self.hexadecimal), binary: \(self.binary)"
     }
@@ -65,7 +71,6 @@ class ConvertNumbers: CustomStringConvertible{
             }
         }
         
-        // loop
         for i in 1...4{
             switch(i){
                 
@@ -131,12 +136,42 @@ class ConvertNumbers: CustomStringConvertible{
                 result = "not implemented yet"
             }
         }
+        
         //print(result)
+        
         return result
     }
     
     var romanToDecimal: Int{
-        return 0
+        
+        var result: Int = 0
+        
+        // first step: deconstruct string to single digits
+        let arr = Array(roman)
+        
+        // loop through all single characters
+        for i in 1...arr.count{
+            switch(arr[i - 1]){
+            case "M":
+                result += 1000
+            case "D":
+                result += 500
+            case "C":
+                result += 100
+            case "L":
+                result += 50
+            case "X":
+                result += 10
+            case "V":
+                result += 5
+            case "I":
+                result += 1
+            default:
+                result = 0
+            }
+        }
+        
+        return result
     }
 }
 

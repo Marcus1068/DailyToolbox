@@ -22,6 +22,9 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
         
         decimalTextField.addTarget(self, action: #selector(DecimalRomanNumbersViewController.decimalTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
+        romanTextField.delegate = self
+        
+        romanTextField.addTarget(self, action: #selector(DecimalRomanNumbersViewController.romanTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
     }
     
@@ -37,16 +40,64 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
     @objc func decimalTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
             let conv = ConvertNumbers(decimal: Int(textField.text!)!)
-            
             romanTextField.text = conv.decimalToRoman
-            //print(conv.decimalToRoman)
-            
-            
         }
         else{
             romanTextField.text = ""
         }
     }
+    
+    @objc func romanTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            textField.text = textField.text?.uppercased()
+            let conv = ConvertNumbers(roman: textField.text!)
+            
+            decimalTextField.text = String(conv.romanToDecimal)
+            //print(conv.decimalToRoman)
+            
+            let str = Array("LDXIII")
+            print(str)
+            
+        }
+        else{
+            decimalTextField.text = ""
+        }
+    }
+    
+    // check for valid keyboard input characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == decimalTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        if textField == romanTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                return true
+                
+            case "i", "I", "v", "V", "x", "X", "l", "L", "d", "D", "c", "C", "m", "M":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        return true
+    }
+    
     
     /*
     // MARK: - Navigation
