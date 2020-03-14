@@ -53,10 +53,42 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             
             // check that not more than three identical characters entered
             let check = textField.text!
-            let chars = Array(check)
-            if check.count > 3{
-                if chars[0] == chars[1] && chars[1] == chars[2] && chars[2] == chars[3]{
-                    textField.text = String(repeating: chars[0], count: 3)
+            var chars = Array(check)
+            var count = chars.count
+            
+            // check for repeating chars
+            if check.count > 3{         // I I I I = 0 1 2 3 count = 4
+                if chars[count - 4] == chars[count - 3] && chars[count - 3] == chars[count - 2] && chars[count - 2] == chars[count - 1]{
+                   
+                    chars.removeLast()
+                    textField.text = String(chars)
+                    count -= 1
+                }
+            }
+        
+            // check for correct order
+            // M = 1000, D = 500, C = 100, L = 50, X = 10, I = 1
+            // IM, ID, IC, IL not allowed, remove last char
+            // XD, XM not allowed, remove last char
+            // DM not allowed
+            // CMM not allowed
+            //
+            
+            if check.count > 1{
+                var lastChars : String = ""
+                lastChars.append(chars[count - 2])
+                lastChars.append(chars[count - 1])
+                switch lastChars{
+                case "IM", "ID", "IC", "IL":
+                    chars.removeLast()
+                    textField.text = String(chars)
+                    count -= 1
+                case "XD", "XM", "DM":
+                    chars.removeLast()
+                    textField.text = String(chars)
+                    count -= 1
+                default:
+                    break
                 }
             }
             
