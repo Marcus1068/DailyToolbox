@@ -12,6 +12,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var decimalTextField: UITextField!
     @IBOutlet weak var romanTextField: UITextField!
+    @IBOutlet weak var statusLabel: UILabel!
     
     func configureView(){
         self.title = "Roman number conversion"
@@ -25,6 +26,8 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
         romanTextField.delegate = self
         
         romanTextField.addTarget(self, action: #selector(DecimalRomanNumbersViewController.romanTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        statusLabel.text = ""
 
     }
     
@@ -49,6 +52,8 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
     
     @objc func romanTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
+            statusLabel.text = ""
+            
             textField.text = textField.text?.uppercased()
             
             // check that not more than three identical characters entered
@@ -59,7 +64,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             // check for repeating chars
             if check.count > 3{         // I I I I = 0 1 2 3 count = 4
                 if chars[count - 4] == chars[count - 3] && chars[count - 3] == chars[count - 2] && chars[count - 2] == chars[count - 1]{
-                   
+                    statusLabel.text = "More than three \(chars[count - 4]) not allowed"
                     chars.removeLast()
                     textField.text = String(chars)
                     count -= 1
@@ -79,10 +84,12 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
                 lastChars.append(chars[count - 2])
                 lastChars.append(chars[count - 1])
                 switch lastChars{
-                case "IM", "ID", "IC", "IL", "XD", "XM", "DM", "VV", "DD", "LL", "LD", "LM", "VC", "VM", "VD", "VL", "LC":
+                case "IM", "ID", "IC", "IL", "XD", "XM", "DM", "VV", "DD", "LL", "LD", "LM", "VC", "VM", "VD", "VL", "LC", "VX":
+                    statusLabel.text = "\(lastChars) not allowed"
                     chars.removeLast()
                     textField.text = String(chars)
                     count -= 1
+                    
                 default:
                     break
                 }
@@ -91,9 +98,11 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             let conv = ConvertNumbers(roman: textField.text!)
             
             decimalTextField.text = String(conv.romanToDecimal)
+            //statusLabel.text = ""
         }
         else{
             decimalTextField.text = ""
+            statusLabel.text = ""
         }
     }
     
