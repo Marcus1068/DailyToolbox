@@ -96,9 +96,15 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             }
             
             let conv = ConvertNumbers(roman: textField.text!)
-            
             decimalTextField.text = String(conv.romanToDecimal)
-            //statusLabel.text = ""
+            
+            // validate with opposite conversion
+            let validate = ConvertNumbers(decimal: Int(decimalTextField.text!)!)
+            if validate.decimalToRoman != textField.text!{
+                statusLabel.text = "Error: \(validate.decimalToRoman) != \(textField.text!), correct: \(validate.decimalToRoman)"
+                textField.text = validate.decimalToRoman
+            }
+            
         }
         else{
             decimalTextField.text = ""

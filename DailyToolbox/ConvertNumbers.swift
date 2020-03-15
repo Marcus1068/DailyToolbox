@@ -237,15 +237,6 @@ class ConvertNumbers: CustomStringConvertible{
         return result
     }
     
-    func checkRomanRules(roman: String) -> Bool{
-        
-        // check the following rules:
-        // order of letters
-        // M first
-        // max three repeating letters
-        //
-        return false
-    }
 }
 
 // deconstruct decimal number as array of digits
