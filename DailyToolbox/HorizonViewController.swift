@@ -30,7 +30,7 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     
     var altitude: Double = 0.0{
         didSet{
-            self.altitudeLabel.text = String(format: "My altitude is %.2f m", altitude)
+            self.altitudeLabel.text = String(format: "%.2f m", altitude)
             let dist = ComputeHorizon(eyeLevel: eyeLevel, altitude: altitude)
             horizonDistance = dist.viewDistanceToString
         }

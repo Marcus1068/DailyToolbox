@@ -67,7 +67,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             }
         
             // check for correct order
-            // M = 1000, D = 500, C = 100, L = 50, X = 10, I = 1
+            // M = 1000, D = 500, C = 100, L = 50, X = 10, V = 5, I = 1
             // IM, ID, IC, IL not allowed, remove last char
             // XD, XM not allowed, remove last char
             // DM not allowed
@@ -79,11 +79,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
                 lastChars.append(chars[count - 2])
                 lastChars.append(chars[count - 1])
                 switch lastChars{
-                case "IM", "ID", "IC", "IL":
-                    chars.removeLast()
-                    textField.text = String(chars)
-                    count -= 1
-                case "XD", "XM", "DM":
+                case "IM", "ID", "IC", "IL", "XD", "XM", "DM", "VV", "DD", "LL", "LD", "LM", "VC", "VM", "VD", "VL", "LC":
                     chars.removeLast()
                     textField.text = String(chars)
                     count -= 1
