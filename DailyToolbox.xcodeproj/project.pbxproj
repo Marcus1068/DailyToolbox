@@ -12,6 +12,7 @@
 		2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D209241A920900BA4363 /* InterestRate.swift */; };
 		2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */; };
 		2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */; };
+		2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B2343242663D6007A20DF /* MyExtensions.swift */; };
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
@@ -51,6 +52,7 @@
 		2C87D209241A920900BA4363 /* InterestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRate.swift; sourceTree = "<group>"; };
 		2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculation.swift; sourceTree = "<group>"; };
 		2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationViewController.swift; sourceTree = "<group>"; };
+		2C8B2343242663D6007A20DF /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */,
 				2C87D209241A920900BA4363 /* InterestRate.swift */,
 				2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */,
+				2C8B2343242663D6007A20DF /* MyExtensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
 				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
 				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
+				2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
 				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
