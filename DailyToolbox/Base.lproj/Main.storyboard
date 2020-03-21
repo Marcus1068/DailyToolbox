@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="840.79999999999995" y="-1320.0899550224888"/>
         </scene>
-        <!--Master-->
+        <!--DailyToolbox-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
+                <navigationController title="DailyToolbox" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -837,7 +837,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Daily Toolbox" id="Zdf-7t-Un8">
+                    <navigationItem key="navigationItem" title="DailyToolbox" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" title="about" image="info.circle" catalog="system" id="msz-3x-zqW">
                             <connections>
                                 <action selector="aboutInfoAction:" destination="7bK-jq-Zjz" id="cC1-06-8T2"/>
@@ -1187,6 +1187,6 @@
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>

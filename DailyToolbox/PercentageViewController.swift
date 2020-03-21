@@ -50,6 +50,8 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
         percentValueTextField.addTarget(self, action: #selector(PercentageViewController.percentValueTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         baseValueTextField.addTarget(self, action: #selector(PercentageViewController.baseValueTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        //self.navigationItem.leftBarButtonItem?.title = "blb"
     }
 
     override func viewDidLoad() {
