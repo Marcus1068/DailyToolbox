@@ -837,7 +837,13 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Daily Toolbox" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Daily Toolbox" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" title="about" image="info.circle" catalog="system" id="msz-3x-zqW">
+                            <connections>
+                                <action selector="aboutInfoAction:" destination="7bK-jq-Zjz" id="cC1-06-8T2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -1172,6 +1178,7 @@
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="coloncurrencysign.circle" catalog="system" width="64" height="60"/>
         <image name="equal" catalog="system" width="64" height="36"/>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="number" catalog="system" width="64" height="62"/>
         <image name="percent" catalog="system" width="64" height="58"/>
@@ -1180,6 +1187,6 @@
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
+        <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>
 </document>

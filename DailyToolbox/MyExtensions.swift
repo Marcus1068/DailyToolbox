@@ -25,9 +25,49 @@ limitations under the License.
 //
 
 import Foundation
+import UIKit
 
 // MARK: extensions
 // all generel extensions that migth be usefull in apps
+
+// get app version number from Xcode version number
+extension UIApplication {
+    // xcode version string
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+    
+    // xcode build number
+    static var appBuild: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    }
+    
+    // xcode app name
+    static var appName: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+    }
+}
+
+extension UIViewController {
+    
+    // general alert extension with just one button to be pressed
+    func displayAlert(title: String, message: String, buttonText: String) {
+        
+        // Create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        // Add an action
+        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { action in
+            
+            // Dismiss when the button is pressed
+            self.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        // Add it to viewController
+        self.present(alert, animated: true, completion: nil)
+    }
+}
 
 // deconstruct decimal number as array of digits
 extension BinaryInteger {

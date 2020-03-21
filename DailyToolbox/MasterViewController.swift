@@ -228,5 +228,12 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         return false
     }
 
+    @IBAction func aboutInfoAction(_ sender: UIBarButtonItem) {
+        let version = UIApplication.appVersion!
+        let build = UIApplication.appBuild!
+        let appName = UIApplication.appName!
+        
+        displayAlert(title: "\(appName) - ver. \(version) (\(build))", message: "(c) 2020 by Marcus Deuß", buttonText: "Dismiss")
+    }
 }
 
