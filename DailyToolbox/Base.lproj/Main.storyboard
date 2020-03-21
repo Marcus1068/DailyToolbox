@@ -16,39 +16,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7LG-g2-JRs">
-                                <rect key="frame" x="60" y="199" width="254" height="172"/>
+                                <rect key="frame" x="60" y="243" width="254" height="172"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0am-rx-g7W">
-                                <rect key="frame" x="16" y="376" width="89" height="41"/>
+                                <rect key="frame" x="16" y="420" width="89" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Base" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMs-P7-5si">
-                                <rect key="frame" x="16" y="145" width="89" height="45"/>
+                                <rect key="frame" x="16" y="189" width="89" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBU-jM-fHZ">
-                                <rect key="frame" x="132" y="378" width="136" height="36"/>
+                                <rect key="frame" x="132" y="422" width="136" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="base currency" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-uQ-WOs">
-                                <rect key="frame" x="132" y="150" width="120" height="34"/>
+                                <rect key="frame" x="132" y="194" width="120" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose both currencies to get a current conversion based on European Central Bank" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stx-Lf-t50">
+                                <rect key="frame" x="16" y="86" width="343" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="see-xd-2Da"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21/03/2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2h-Ak-3sZ">
+                                <rect key="frame" x="16" y="626" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Eux-du-Dy5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Update:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGx-Kj-rK9">
+                                <rect key="frame" x="16" y="584" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bLL-lA-0ih"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s2h-Ak-3sZ" firstAttribute="leading" secondItem="aKM-bE-lxU" secondAttribute="leading" constant="16" id="1Gg-k3-9bs"/>
+                            <constraint firstItem="s2h-Ak-3sZ" firstAttribute="top" secondItem="GGx-Kj-rK9" secondAttribute="bottom" constant="21" id="3nL-kB-61g"/>
+                            <constraint firstItem="aKM-bE-lxU" firstAttribute="trailing" secondItem="stx-Lf-t50" secondAttribute="trailing" constant="16" id="4UM-Fk-HZO"/>
+                            <constraint firstItem="stx-Lf-t50" firstAttribute="top" secondItem="aKM-bE-lxU" secondAttribute="top" constant="42" id="DQ4-VM-69N"/>
+                            <constraint firstItem="stx-Lf-t50" firstAttribute="leading" secondItem="aKM-bE-lxU" secondAttribute="leading" constant="16" id="Jx2-bv-ygk"/>
+                            <constraint firstItem="GGx-Kj-rK9" firstAttribute="leading" secondItem="aKM-bE-lxU" secondAttribute="leading" constant="16" id="QcZ-Pe-8vC"/>
+                            <constraint firstItem="aKM-bE-lxU" firstAttribute="trailing" secondItem="GGx-Kj-rK9" secondAttribute="trailing" constant="16" id="XB9-S0-xYD"/>
+                            <constraint firstItem="aKM-bE-lxU" firstAttribute="bottom" secondItem="s2h-Ak-3sZ" secondAttribute="bottom" constant="20" id="bKA-VL-kww"/>
+                            <constraint firstItem="aKM-bE-lxU" firstAttribute="trailing" secondItem="s2h-Ak-3sZ" secondAttribute="trailing" constant="16" id="wrK-e2-O1G"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aKM-bE-lxU"/>
                     </view>
                     <navigationItem key="navigationItem" id="bIv-jS-vOT"/>
@@ -56,6 +94,8 @@
                         <outlet property="currencyPicker" destination="7LG-g2-JRs" id="PtT-6c-ZeN"/>
                         <outlet property="currencyTextField" destination="WpH-uQ-WOs" id="d8D-kI-vey"/>
                         <outlet property="fromLabel" destination="PMs-P7-5si" id="2X0-bn-DbR"/>
+                        <outlet property="infoTextLabel" destination="stx-Lf-t50" id="nFu-j4-FcX"/>
+                        <outlet property="lastUpdateLabel" destination="s2h-Ak-3sZ" id="k5p-KA-9Aw"/>
                         <outlet property="resultLabel" destination="LBU-jM-fHZ" id="7Ly-wq-5di"/>
                         <outlet property="toLabel" destination="0am-rx-g7W" id="Amh-sc-yt6"/>
                     </connections>

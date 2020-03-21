@@ -76,6 +76,7 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     private var elementName: String = String()
     private var currency = String()
     private var rate = String()
+    private var lastUpdate = String()
 
     // init functions
     override init(){
@@ -93,6 +94,8 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
         if parser!.parse()
         {
             print("XML Parsing OK")
+            
+            lastUpdate = Date().toString(withFormat: "dd-MMM-yyyy")
             
             //print(cubes)
             //print(cubes.count)
@@ -126,6 +129,7 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
                 if let cubeCopy = try? decoder.decode([Cube].self, from: jsonData){
                     print(cubeCopy)
                     cubes = cubeCopy
+                    lastUpdate = "offline usage, no network"
                 }
             }
         }
@@ -150,6 +154,10 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     }
     
     // functions
+    
+    func getLastUpdate() -> String{
+        return lastUpdate
+    }
     
     // list of all currencies and according rates
     func getCurrencyList() -> [Cube]{
@@ -261,5 +269,22 @@ extension Array where Element: Equatable {
                 result.append(element)
             }
         }
+    }
+}
+
+// MARK: extensions
+// to get string from a date
+// usage: yourString = yourDate.toString(withFormat: "yyyy")
+extension Date {
+    func toString(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.dateStyle = DateFormatter.Style.medium
+        formatter.timeStyle = DateFormatter.Style.none
+        let myString = formatter.string(from: self)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = format
+        
+        return formatter.string(from: yourDate!)
     }
 }

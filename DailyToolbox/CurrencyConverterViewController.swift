@@ -16,11 +16,13 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     var currencyList: [[String]] = [[String]]()
     
     
+    @IBOutlet weak var infoTextLabel: UILabel!
     @IBOutlet weak var currencyTextField: UITextField!
     @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var lastUpdateLabel: UILabel!
     
     
     func configureView() {
@@ -40,16 +42,12 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         self.currencyPicker.delegate = self
         self.currencyPicker.dataSource = self
         
-        /* let cur = cvt.getCurrencyList()
-        
-        for i in cur{
-            print("Währung: \(i.currency), Kurs: \(i.rate)")
-        } */
-        
         // preselect USD as destination
         currencyPicker.selectRow(1, inComponent: 1, animated: true)
         
         currencyTextField.addTarget(self, action: #selector(CurrencyConverterViewController.currencyTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        lastUpdateLabel.text = cvt.getLastUpdate()
     }
     
     override func viewDidLoad() {
