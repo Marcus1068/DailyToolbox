@@ -34,6 +34,9 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var altitudeLabel: UILabel!
     @IBOutlet weak var eyeLevelTextField: UITextField!
     @IBOutlet weak var distanceResultLabel: UILabel!
+    @IBOutlet weak var eyeLevelLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var formulaTextView: UITextView!
     
     
     // computed properties
@@ -44,8 +47,6 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    var eyeLevel: Double = 0.0
-    
     var altitude: Double = 0.0{
         didSet{
             self.altitudeLabel.text = String(format: "%.2f m", altitude)
@@ -55,11 +56,19 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // properties
+    var eyeLevel: Double = 0.0
     
+    
+    // initial configuration works
     func configureView() {
         // Update the user interface for the detail item.
         
-        self.title = "Horizon calculation"
+        self.title = NSLocalizedString("Horizon calculation", comment: "Horizon calculation")
+        altitudeStringLabel.text = NSLocalizedString("Altitude", comment: "Altitude")
+        eyeLevelLabel.text = NSLocalizedString("Eye Level", comment: "Eye Level")
+        distanceResultLabel.text = NSLocalizedString("Horizon distance", comment: "Horizon distance")
+        infoLabel.text = NSLocalizedString("Calculates distance of horizon by meassuring height with GPS sensor", comment: "Calculates Info")
         
         /*  Request a user’s authorization to use his location.
             Ask our manager to report every movement of the user.
