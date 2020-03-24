@@ -31,28 +31,18 @@ class InterestRate{
     
     // https://www.gut-erklaert.de/mathematik/zinsrechnung-formeln-beispiele.html
     
-    // Der Prozentwert gibt Antwort auf Fragen wie:
-    // „Wie viele Schüler sind 25% von 24 Schülern?“ - Gesucht: Prozentwert, gegeben: Prozenzsatz (25%) und Grundwert (24 Schüler)
-    // „Wie viel sind 3% von 100 Euro?“ - Gesucht: Prozentwert, gegeben: Prozentsatz (3%) und Grundwert (100 Euro)
     var zinsen: Double
     
     var zinsenToString: String{
         return String(format: "%.2f", zinsen)
     }
     
-    // Der Grundwert gibt Antwort auf Fragen wie:
-    // „Wenn 6 Schüler 25% der Klasse sind, wie viele Schüler hat dann die ganze Klasse?“
-    // „Wenn Sie beim Kauf eines Autos 500€ Rabatt bekommen haben und dies 15% Rabatt auf den Kaufpreis entspricht, wie hoch war dann der Kaufpreis für das Auto?“
     var kapital: Double
     
     var kapitalToString: String{
         return String(format: "%.2f", kapital)
     }
     
-    // Der Prozentsatz gibt Antwort auf Fragen wie:
-    // „Wie viel Prozent machen 6 Schüler von 24 Schülern aus?“
-    // „Wenn der Gewinn eines Unternehmens im Vorjahr 10000€ betrug und der Gewinn dieses Jahr bei 12000€ liegt, wie viel Prozent Gewinn hat das Unternehmen erwirtschaftet?“
-    // prozentsatz = prozentwert/grundwert * 100%
     var zinssatz: Double
     
     var zinssatzToString: String{

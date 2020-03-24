@@ -31,6 +31,11 @@ class DailyToolboxTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        // interest rate stuff
+        let comp = InterestRate(zinsen: 5, kapital: 1000)
+
+        XCTAssert(comp.zinssatz == 0.5)
     }
 
     override func tearDown() {
