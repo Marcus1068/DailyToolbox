@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -957,16 +957,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How many days until:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-gS-xrZ">
-                                <rect key="frame" x="16" y="169" width="271" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days until:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-gS-xrZ">
+                                <rect key="frame" x="16" y="94" width="343" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="AHI-aA-SVk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="faj-Aa-JuR">
-                                <rect key="frame" x="16" y="221" width="343" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days until" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUH-EN-kwK">
+                                <rect key="frame" x="16" y="391" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="dOE-qh-TxL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-YE-Lpn">
+                                <rect key="frame" x="16" y="484" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="j9I-5E-X9q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Make calender entry"/>
+                                <connections>
+                                    <action selector="makeCalenderButton:" destination="6jy-FH-TDM" eventType="touchUpInside" id="jeX-5v-gV8"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="faj-Aa-JuR">
+                                <rect key="frame" x="16" y="179" width="343" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="vDM-yI-vRz"/>
+                                </constraints>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="599569200">
                                     <!--2020-01-01 11:00:00 +0000-->
                                 </date>
@@ -974,24 +998,22 @@
                                     <action selector="datePickerAction:" destination="6jy-FH-TDM" eventType="valueChanged" id="gY6-qB-RvY"/>
                                 </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="days until" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUH-EN-kwK">
-                                <rect key="frame" x="26" y="404" width="333" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-YE-Lpn">
-                                <rect key="frame" x="16" y="484" width="262" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Make calender entry"/>
-                                <connections>
-                                    <action selector="makeCalenderButton:" destination="6jy-FH-TDM" eventType="touchUpInside" id="jeX-5v-gV8"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="faj-Aa-JuR" firstAttribute="top" secondItem="gMd-gS-xrZ" secondAttribute="bottom" constant="51" id="AQm-9S-EG6"/>
+                            <constraint firstItem="iUH-EN-kwK" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="Aqj-DQ-XJ4"/>
+                            <constraint firstItem="gMd-gS-xrZ" firstAttribute="top" secondItem="qVw-hp-lIM" secondAttribute="top" constant="50" id="Hev-7g-7zs"/>
+                            <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="gMd-gS-xrZ" secondAttribute="trailing" constant="16" id="JI3-3Z-BUx"/>
+                            <constraint firstItem="gMd-gS-xrZ" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="M23-MI-gdV"/>
+                            <constraint firstItem="faj-Aa-JuR" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="Nve-EA-tlM"/>
+                            <constraint firstItem="tt7-YE-Lpn" firstAttribute="top" secondItem="iUH-EN-kwK" secondAttribute="bottom" constant="45" id="ThN-2e-RuJ"/>
+                            <constraint firstItem="tt7-YE-Lpn" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="VoT-RV-pk4"/>
+                            <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="faj-Aa-JuR" secondAttribute="trailing" constant="16" id="cHM-Fc-cVh"/>
+                            <constraint firstItem="iUH-EN-kwK" firstAttribute="top" secondItem="faj-Aa-JuR" secondAttribute="bottom" constant="50" id="iDK-9A-bAe"/>
+                            <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="tt7-YE-Lpn" secondAttribute="trailing" constant="16" id="mKy-cY-Pj7"/>
+                            <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="iUH-EN-kwK" secondAttribute="trailing" constant="16" id="zig-ef-c3m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qVw-hp-lIM"/>
                     </view>
                     <navigationItem key="navigationItem" id="p1o-I9-7Kp"/>
@@ -1208,20 +1230,20 @@
             <point key="canvasLocation" x="3197.5999999999999" y="933.28335832083962"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="airplane" catalog="system" width="64" height="56"/>
-        <image name="clock" catalog="system" width="64" height="60"/>
-        <image name="coloncurrencysign.circle" catalog="system" width="64" height="60"/>
-        <image name="equal" catalog="system" width="64" height="36"/>
-        <image name="info.circle" catalog="system" width="64" height="60"/>
-        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
-        <image name="number" catalog="system" width="64" height="62"/>
-        <image name="percent" catalog="system" width="64" height="58"/>
-        <image name="plus.slash.minus" catalog="system" width="64" height="56"/>
-        <image name="wind" catalog="system" width="64" height="50"/>
-        <image name="xmark" catalog="system" width="64" height="56"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="airplane" catalog="system" width="128" height="115"/>
+        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
+        <image name="equal" catalog="system" width="128" height="72"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="number" catalog="system" width="128" height="124"/>
+        <image name="percent" catalog="system" width="128" height="118"/>
+        <image name="plus.slash.minus" catalog="system" width="128" height="115"/>
+        <image name="wind" catalog="system" width="128" height="103"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

@@ -92,6 +92,8 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
             let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
             horizonDistance = dist.viewDistanceToString
         }
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

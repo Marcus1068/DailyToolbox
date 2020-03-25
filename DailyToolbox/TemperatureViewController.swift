@@ -49,6 +49,8 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
         fahrenheitTextField.addTarget(self, action: #selector(TemperatureViewController.fahrenheitTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         kelvinTextField.addTarget(self, action: #selector(TemperatureViewController.kelvinTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func viewDidLoad() {

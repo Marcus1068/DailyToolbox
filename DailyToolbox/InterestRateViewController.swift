@@ -30,6 +30,8 @@ class InterestRateViewController: UIViewController {
 
     func configureView() {
         self.title = "Interest Rate calculation"
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

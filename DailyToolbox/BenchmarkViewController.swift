@@ -45,6 +45,8 @@ class BenchmarkViewController: UIViewController {
         
         deviceLabel.text = DeviceInfo.getDeviceName()
         osVersionLabel.text = DeviceInfo.getOSVersion()
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

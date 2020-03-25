@@ -39,6 +39,8 @@ class TranslationViewController: UIViewController {
         let url = URL(string: "https://dict.leo.org/dict/mobile.php")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

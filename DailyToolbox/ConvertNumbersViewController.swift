@@ -55,6 +55,8 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
         hexaTextField.addTarget(self, action: #selector(ConvertNumbersViewController.hexaTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         binaryTextField.addTarget(self, action: #selector(ConvertNumbersViewController.binaryTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        hideKeyboardWhenTappedAround()
     }
     
     @objc func decimalTextFieldDidChange(_ textField: UITextField) {

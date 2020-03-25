@@ -40,6 +40,8 @@ class CalendarCalculationViewController: UIViewController {
         datePicker.datePickerMode = .date
         
         daysLabel.text = ""
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

@@ -52,6 +52,8 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
         baseValueTextField.addTarget(self, action: #selector(PercentageViewController.baseValueTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         //self.navigationItem.leftBarButtonItem?.title = "blb"
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func viewDidLoad() {

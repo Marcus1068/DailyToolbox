@@ -66,6 +66,8 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         currencyTextField.addTarget(self, action: #selector(CurrencyConverterViewController.currencyTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         lastUpdateLabel.text = cvt.getLastUpdate()
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {

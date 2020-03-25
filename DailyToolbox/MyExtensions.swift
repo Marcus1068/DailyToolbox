@@ -50,6 +50,17 @@ extension UIApplication {
 
 extension UIViewController {
     
+    // hide keyboard when tapping somewhere on the view
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     // general alert extension with just one button to be pressed
     func displayAlert(title: String, message: String, buttonText: String) {
         

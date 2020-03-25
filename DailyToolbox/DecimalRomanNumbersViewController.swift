@@ -46,6 +46,8 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
         romanTextField.addTarget(self, action: #selector(DecimalRomanNumbersViewController.romanTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         statusLabel.text = ""
+        
+        hideKeyboardWhenTappedAround()
 
     }
     
