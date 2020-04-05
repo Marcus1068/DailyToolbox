@@ -89,7 +89,9 @@ extension UIViewController{
     }
 
      
-    @objc(pointerInteraction:styleForRegion:) @available(iOS 13.4, *)
+  /*
+     // hover effect
+     @objc(pointerInteraction:styleForRegion:) @available(iOS 13.4, *)
     func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
         var pointerStyle: UIPointerStyle? = nil
 
@@ -98,7 +100,43 @@ extension UIViewController{
             pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
         }
         return pointerStyle
+    } */
+    
+    // lift effect
+    @objc(pointerInteraction:styleForRegion:) @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.lift(targetedPreview))
+        }
+        return pointerStyle
     }
+    
+/*
+    // crosshair custom cursor made with bezier curves
+    @objc(pointerInteraction:styleForRegion:) @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        let shape = UIBezierPath()
+        shape.move(to: CGPoint(x: 10, y: 6))
+        shape.addLine(to: CGPoint(x: 10, y: 0))
+        shape.addLine(to: CGPoint(x: 6, y: 0))
+        shape.addLine(to: CGPoint(x: 6, y: 6))
+        shape.addLine(to: CGPoint(x: 0, y: 6))
+        shape.addLine(to: CGPoint(x: 0, y: 10))
+        shape.addLine(to: CGPoint(x: 6, y: 10))
+        shape.addLine(to: CGPoint(x: 6, y: 16))
+        shape.addLine(to: CGPoint(x: 10, y: 16))
+        shape.addLine(to: CGPoint(x: 10, y: 10))
+        shape.addLine(to: CGPoint(x: 16, y: 10))
+        shape.addLine(to: CGPoint(x: 16, y: 6))
+        shape.addLine(to: CGPoint(x: 10, y: 6))
+        shape.close()
+        let pointerShape = UIPointerShape.path(shape)
+        
+        return UIPointerStyle(shape: pointerShape)
+    } */
 }
 
 // deconstruct decimal number as array of digits
