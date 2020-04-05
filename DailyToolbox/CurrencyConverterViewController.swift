@@ -26,7 +26,7 @@ limitations under the License.
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIPointerInteractionDelegate {
     
     let cvt = CurrencyConverter()
     let baseCurrency = "1.00"
@@ -68,6 +68,14 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
         lastUpdateLabel.text = cvt.getLastUpdate()
         
         hideKeyboardWhenTappedAround()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: currencyPicker, pointerInteractionDelegate: self)
+            
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewDidLoad() {

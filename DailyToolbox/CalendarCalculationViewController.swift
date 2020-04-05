@@ -27,9 +27,10 @@ limitations under the License.
 import UIKit
 
 
-class CalendarCalculationViewController: UIViewController {
+class CalendarCalculationViewController: UIViewController, UIPointerInteractionDelegate {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var daysLabel: UILabel!
+    @IBOutlet weak var makeCalendarButton: UIButton!
     
     // get selected date
     var date: Date = Date()
@@ -42,6 +43,15 @@ class CalendarCalculationViewController: UIViewController {
         daysLabel.text = ""
         
         hideKeyboardWhenTappedAround()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: datePicker, pointerInteractionDelegate: self)
+            customPointerInteraction(on: makeCalendarButton, pointerInteractionDelegate: self)
+            
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewDidLoad() {
@@ -52,7 +62,7 @@ class CalendarCalculationViewController: UIViewController {
         configureView()
     }
     
-    @IBAction func makeCalenderButton(_ sender: UIButton) {
+    @IBAction func makeCalenderAction(_ sender: UIButton) {
         let calendar = CalendarCalculation()
         
         let endDate = calendar.addTimeToDate(date: date, minutes: 30)

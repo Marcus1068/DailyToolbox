@@ -26,13 +26,16 @@ limitations under the License.
 
 import UIKit
 
-class BenchmarkViewController: UIViewController {
+class BenchmarkViewController: UIViewController, UIPointerInteractionDelegate {
 
     @IBOutlet weak var arcSegment: UISegmentedControl!
     @IBOutlet weak var swiftSegment: UISegmentedControl!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var deviceLabel: UILabel!
     @IBOutlet weak var osVersionLabel: UILabel!
+    @IBOutlet weak var randomArcButton: UIButton!
+    @IBOutlet weak var randomSwiftButton: UIButton!
+    @IBOutlet weak var stringsButton: UIButton!
     
     var arcNumber: Int = 10000
     
@@ -47,6 +50,16 @@ class BenchmarkViewController: UIViewController {
         osVersionLabel.text = DeviceInfo.getOSVersion()
         
         hideKeyboardWhenTappedAround()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: randomArcButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: randomSwiftButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: stringsButton, pointerInteractionDelegate: self)
+            
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewDidLoad() {
@@ -67,19 +80,19 @@ class BenchmarkViewController: UIViewController {
         swiftNumber = Int(swiftSegment.titleForSegment(at: swiftSegment.selectedSegmentIndex)!)!
     }
     
-    @IBAction func stringConcatButton(_ sender: UIButton) {
+    @IBAction func stringConcatAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkString()
         
         resultLabel.text = String(format: "%.4f", test) + " seconds"
     }
     
-    @IBAction func randomArcButton(_ sender: UIButton) {
+    @IBAction func randomArcAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkRandomNumbersArc4(range: arcNumber)
         
         resultLabel.text = String(format: "%.4f", test) + " seconds"
     }
     
-    @IBAction func randomSwiftButton(_ sender: UIButton) {
+    @IBAction func randomSwiftAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkRandomNumbersSwift(range: swiftNumber)
         
         resultLabel.text = String(format: "%.4f", test) + " seconds"

@@ -25,6 +25,7 @@ limitations under the License.
 //
 
 import UIKit
+import WebKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -361,7 +361,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Random (arc)"/>
                                 <connections>
-                                    <action selector="randomArcButton:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="2Nx-YR-ngh"/>
+                                    <action selector="randomArcAction:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="2Nx-YR-ngh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgF-Lm-5Ua">
@@ -370,7 +370,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Random (Swift)"/>
                                 <connections>
-                                    <action selector="randomSwiftButton:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="hir-by-Nij"/>
+                                    <action selector="randomSwiftAction:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="hir-by-Nij"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uKI-zB-kkB">
@@ -438,7 +438,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Strings"/>
                                 <connections>
-                                    <action selector="stringConcatButton:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="Z04-yW-ELs"/>
+                                    <action selector="stringConcatAction:" destination="7aF-Jw-HbW" eventType="touchUpInside" id="Z04-yW-ELs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -450,7 +450,10 @@
                         <outlet property="arcSegment" destination="uKI-zB-kkB" id="Gje-eX-1eF"/>
                         <outlet property="deviceLabel" destination="WnM-6d-Rci" id="rS4-hJ-2HN"/>
                         <outlet property="osVersionLabel" destination="WSy-nT-GxG" id="Usd-1e-R9h"/>
+                        <outlet property="randomArcButton" destination="jsO-8D-ZZc" id="b9a-1A-Cbj"/>
+                        <outlet property="randomSwiftButton" destination="HgF-Lm-5Ua" id="Gu8-4Z-s63"/>
                         <outlet property="resultLabel" destination="v4F-xJ-qhS" id="ivP-hx-pdv"/>
+                        <outlet property="stringsButton" destination="L46-Gk-eWs" id="fLB-Wf-xEF"/>
                         <outlet property="swiftSegment" destination="sut-lg-bOy" id="zhB-RJ-X3U"/>
                     </connections>
                 </viewController>
@@ -996,7 +999,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Make calender entry"/>
                                 <connections>
-                                    <action selector="makeCalenderButton:" destination="6jy-FH-TDM" eventType="touchUpInside" id="jeX-5v-gV8"/>
+                                    <action selector="makeCalenderAction:" destination="6jy-FH-TDM" eventType="touchUpInside" id="jeX-5v-gV8"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="faj-Aa-JuR">
@@ -1033,6 +1036,7 @@
                     <connections>
                         <outlet property="datePicker" destination="faj-Aa-JuR" id="826-4D-vOF"/>
                         <outlet property="daysLabel" destination="iUH-EN-kwK" id="unT-VZ-1B3"/>
+                        <outlet property="makeCalendarButton" destination="tt7-YE-Lpn" id="IyX-ws-Cg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQJ-UA-bhL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
