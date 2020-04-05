@@ -166,7 +166,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
-                                    <action selector="calculateButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="XVz-2V-uBF"/>
+                                    <action selector="calculateAction:" destination="JEX-9P-axG" eventType="touchUpInside" id="XVz-2V-uBF"/>
                                 </connections>
                             </button>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Compute percentage based on two known parameters:" lineBreakMode="tailTruncation" numberOfLines="3" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
@@ -192,6 +192,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="baseValueTextField" destination="LMP-WF-RKk" id="j4t-e9-xYg"/>
+                        <outlet property="calculateButton" destination="6qe-Tb-R68" id="reB-DN-Lfu"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="percentTextField" destination="sze-S5-XGr" id="jXU-4L-wpz"/>
                         <outlet property="percentValueTextField" destination="735-zD-XWd" id="eT4-dC-u5G"/>
@@ -844,6 +845,18 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="staticCellBenchmark" destination="cYS-N6-zaU" id="iPQ-K7-fS3"/>
+                        <outlet property="staticCellCalendar" destination="ghs-t4-FHL" id="UTW-BD-QVd"/>
+                        <outlet property="staticCellConvertNumbers" destination="3oP-5w-DX4" id="UyI-dT-jH4"/>
+                        <outlet property="staticCellCurrency" destination="kzs-J7-yp5" id="OtI-ME-R1r"/>
+                        <outlet property="staticCellHorizon" destination="DoP-44-Xpf" id="bpG-bV-ZdM"/>
+                        <outlet property="staticCellInterestRate" destination="Gz2-jg-Ie4" id="XkZ-pD-iLL"/>
+                        <outlet property="staticCellPercentage" destination="WCw-Qf-5nD" id="gTG-Pk-aOI"/>
+                        <outlet property="staticCellRomanNumbers" destination="iEu-OW-i8Q" id="37g-y6-yWi"/>
+                        <outlet property="staticCellTemperature" destination="PlJ-MI-kC5" id="1iu-js-kgo"/>
+                        <outlet property="staticCellTranslation" destination="CBe-Hf-IhT" id="0yJ-e9-O2D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

@@ -26,10 +26,22 @@ limitations under the License.
 
 import UIKit
 
-class MasterViewController: UITableViewController, UISplitViewControllerDelegate {
-
+class MasterViewController: UITableViewController, UISplitViewControllerDelegate, UIPointerInteractionDelegate {
+    
+    @IBOutlet weak var staticCellPercentage: UITableViewCell!
+    @IBOutlet weak var staticCellCurrency: UITableViewCell!
+    @IBOutlet weak var staticCellConvertNumbers: UITableViewCell!
+    @IBOutlet weak var staticCellInterestRate: UITableViewCell!
+    @IBOutlet weak var staticCellTemperature: UITableViewCell!
+    @IBOutlet weak var staticCellCalendar: UITableViewCell!
+    @IBOutlet weak var staticCellHorizon: UITableViewCell!
+    @IBOutlet weak var staticCellTranslation: UITableViewCell!
+    @IBOutlet weak var staticCellBenchmark: UITableViewCell!
+    @IBOutlet weak var staticCellRomanNumbers: UITableViewCell!
+    
     var detailViewController: PercentageViewController? = nil
 
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -46,6 +58,22 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         
         // removes extra separator lines after last table entry
         self.tableView.tableFooterView = UIView()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: staticCellPercentage, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellCurrency, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellConvertNumbers, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellInterestRate, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellTemperature, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellCalendar, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellHorizon, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellTranslation, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellBenchmark, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellRomanNumbers, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
 

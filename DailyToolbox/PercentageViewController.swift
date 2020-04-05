@@ -26,13 +26,15 @@ limitations under the License.
 
 import UIKit
 
-class PercentageViewController: UIViewController, UITextFieldDelegate {
+class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointerInteractionDelegate {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
     @IBOutlet weak var percentTextField: UITextField!
     @IBOutlet weak var percentValueTextField: UITextField!
     @IBOutlet weak var baseValueTextField: UITextField!
+    
+    @IBOutlet weak var calculateButton: UIButton!
     
     func configureView() {
         
@@ -54,6 +56,13 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
         //self.navigationItem.leftBarButtonItem?.title = "blb"
         
         hideKeyboardWhenTappedAround()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: calculateButton, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func viewDidLoad() {
@@ -145,7 +154,7 @@ class PercentageViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    @IBAction func calculateButton(_ sender: UIButton) {
+    @IBAction func calculateAction(_ sender: UIButton) {
         
         if percentTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {
             let p : Double = Double(percentValueTextField.text!)!
