@@ -231,6 +231,16 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             }
         }
         
+        if segue.identifier == "showPower" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! PowerConsumptionViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
         
     }
 
@@ -241,7 +251,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //objects.count
+        return 11 //objects.count
     }
 
  /*   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

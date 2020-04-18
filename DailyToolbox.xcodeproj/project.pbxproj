@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
+		2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */; };
 		2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */; };
 		2C8040C72439F1590057909D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8040C62439F1590057909D /* WebKit.framework */; };
 		2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
+		2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumptionViewController.swift; sourceTree = "<group>"; };
 		2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C8040C62439F1590057909D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */,
 				2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */,
 				2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */,
+				2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				2C87D209241A920900BA4363 /* InterestRate.swift */,
 				2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */,
 				2C8B2343242663D6007A20DF /* MyExtensions.swift */,
+				2C034904244B13F700AEE556 /* PowerConsumption.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
 				2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
+				2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
 				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
 				2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */,
@@ -310,6 +317,7 @@
 				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
 				2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
+				2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */,
 				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
 				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
