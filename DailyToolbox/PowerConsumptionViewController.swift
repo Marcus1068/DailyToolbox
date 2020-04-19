@@ -32,6 +32,11 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
         hoursOnTextField.delegate = self
         wattDeviceTextField.delegate = self
         
+        dailyCostLabel.text = "0.0 €"
+        monthlyCostLabel.text = "0.0 €"
+        yearlyCostLabel.text = "0.0 €"
+        
+        
         costPerKwhTextField.addTarget(self, action: #selector(PowerConsumptionViewController.costPerKwhTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         hoursOnTextField.addTarget(self, action: #selector(PowerConsumptionViewController.hoursOnTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         wattDeviceTextField.addTarget(self, action: #selector(PowerConsumptionViewController.wattDeviceTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -172,8 +177,8 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
         let compute = PowerConsumption(watt: w, hours: h, cost: c)
         
         dailyCostLabel.text = String(format: "%.3f", compute.computeDailyCost) + " €"
-        monthlyCostLabel.text = String(format: "%.3f", compute.computeMonthlyCost) + " €"
-        yearlyCostLabel.text = String(format: "%.3f", compute.computeYearlyCost) + " €"
+        monthlyCostLabel.text = String(format: "%.2f", compute.computeMonthlyCost) + " €"
+        yearlyCostLabel.text = String(format: "%.2f", compute.computeYearlyCost) + " €"
     
     }
     
