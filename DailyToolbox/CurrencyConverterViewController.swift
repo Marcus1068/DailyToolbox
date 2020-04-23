@@ -45,7 +45,7 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     
     func configureView() {
         
-        self.title = "Currency Converter"
+        self.title = NSLocalizedString("Currency Converter", comment: "Currency Converter")
         
         currencyTextField.becomeFirstResponder()
         currencyTextField.delegate = self

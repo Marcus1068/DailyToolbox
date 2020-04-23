@@ -38,6 +38,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     @IBOutlet weak var staticCellTranslation: UITableViewCell!
     @IBOutlet weak var staticCellBenchmark: UITableViewCell!
     @IBOutlet weak var staticCellRomanNumbers: UITableViewCell!
+    @IBOutlet weak var staticCellPower: UITableViewCell!
     
     var detailViewController: PercentageViewController? = nil
 
@@ -71,6 +72,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             customPointerInteraction(on: staticCellTranslation, pointerInteractionDelegate: self)
             customPointerInteraction(on: staticCellBenchmark, pointerInteractionDelegate: self)
             customPointerInteraction(on: staticCellRomanNumbers, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellPower, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }

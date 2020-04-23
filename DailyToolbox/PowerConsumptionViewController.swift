@@ -24,7 +24,7 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
     func configureView() {
     
         //detailItem = true
-        self.title = "Power Consumption Calculation"
+        self.title = NSLocalizedString("Power Consumption Calculation", comment: "Power Consumption Calculation")
         
         costPerKwhTextField.becomeFirstResponder()
         
@@ -152,18 +152,26 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
     }
     */
     @IBAction func calculateAction(_ sender: Any) {
+        let ok = NSLocalizedString("OK", comment: "OK")
         
         guard costPerKwhTextField.text!.count > 0 else {
-            displayAlert(title: "Kosten Angabe fehlt", message: "Bitte kwH Kosten eingeben", buttonText: "OK")
+            let title = NSLocalizedString("Cost value missing", comment: "Cost value missing")
+            let message = NSLocalizedString("Enter kwH cost", comment: "Enter kwH cost")
+            
+            displayAlert(title: title, message: message, buttonText: ok)
             return
         }
         
         guard hoursOnTextField.text!.count > 0 else {
-            displayAlert(title: "Stunden Angabe fehlt", message: "Bitte Anzahl Stunden eingeben", buttonText: "OK")
+            let title = NSLocalizedString("Hours missing", comment: "Hours missing")
+            let message = NSLocalizedString("Enter number of hours", comment: "Enter number of hours")
+            displayAlert(title: title, message: message, buttonText: ok)
             return
         }
         guard wattDeviceTextField.text!.count > 0 else {
-            displayAlert(title: "Watt Angabe fehlt", message: "Bitte Watt eingeben", buttonText: "OK")
+            let title = NSLocalizedString("Watt value missing", comment: "Watt value missing")
+            let message = NSLocalizedString("Enter Watt", comment: "Enter Watt")
+            displayAlert(title: title, message: message, buttonText: ok)
             return
         }
         

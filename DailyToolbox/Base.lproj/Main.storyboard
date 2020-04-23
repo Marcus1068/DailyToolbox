@@ -907,6 +907,7 @@
                         <outlet property="staticCellHorizon" destination="DoP-44-Xpf" id="bpG-bV-ZdM"/>
                         <outlet property="staticCellInterestRate" destination="Gz2-jg-Ie4" id="XkZ-pD-iLL"/>
                         <outlet property="staticCellPercentage" destination="WCw-Qf-5nD" id="gTG-Pk-aOI"/>
+                        <outlet property="staticCellPower" destination="5fb-fI-ycq" id="NoT-Pv-7ys"/>
                         <outlet property="staticCellRomanNumbers" destination="iEu-OW-i8Q" id="37g-y6-yWi"/>
                         <outlet property="staticCellTemperature" destination="PlJ-MI-kC5" id="1iu-js-kgo"/>
                         <outlet property="staticCellTranslation" destination="CBe-Hf-IhT" id="0yJ-e9-O2D"/>

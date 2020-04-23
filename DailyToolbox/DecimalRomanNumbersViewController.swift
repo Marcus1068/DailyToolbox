@@ -33,7 +33,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     
     func configureView(){
-        self.title = "Roman number conversion"
+        self.title = NSLocalizedString("Roman number conversion", comment: "Roman number conversion")
         
         decimalTextField.becomeFirstResponder()
         
@@ -84,7 +84,9 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             // check for repeating chars
             if check.count > 3{         // I I I I = 0 1 2 3 count = 4
                 if chars[count - 4] == chars[count - 3] && chars[count - 3] == chars[count - 2] && chars[count - 2] == chars[count - 1]{
-                    statusLabel.text = "More than three \(chars[count - 4]) not allowed"
+                    let more = NSLocalizedString("More than three", comment: "More than three")
+                    let allowed = NSLocalizedString("not allowed", comment: "not allowed")
+                    statusLabel.text = more + " \(chars[count - 4]) " + allowed
                     chars.removeLast()
                     textField.text = String(chars)
                     count -= 1
@@ -105,7 +107,7 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
                 lastChars.append(chars[count - 1])
                 switch lastChars{
                 case "IM", "ID", "IC", "IL", "XD", "XM", "DM", "VV", "DD", "LL", "LD", "LM", "VC", "VM", "VD", "VL", "LC", "VX":
-                    statusLabel.text = "\(lastChars) not allowed"
+                    statusLabel.text = "\(lastChars) " + NSLocalizedString("not allowed", comment: "not allowed")
                     chars.removeLast()
                     textField.text = String(chars)
                     count -= 1
@@ -121,7 +123,9 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
             // validate with opposite conversion
             let validate = ConvertNumbers(decimal: Int(decimalTextField.text!)!)
             if validate.decimalToRoman != textField.text!{
-                statusLabel.text = "Error: \(validate.decimalToRoman) != \(textField.text!), correct: \(validate.decimalToRoman)"
+                let err = NSLocalizedString("Error", comment: "Error")
+                let correct = NSLocalizedString("correct", comment: "correct")
+                statusLabel.text = err + " :\(validate.decimalToRoman) != \(textField.text!), " + correct + ":\(validate.decimalToRoman)"
                 textField.text = validate.decimalToRoman
             }
             

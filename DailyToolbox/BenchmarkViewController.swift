@@ -44,7 +44,7 @@ class BenchmarkViewController: UIViewController, UIPointerInteractionDelegate {
     func configureView() {
         self.title = NSLocalizedString("Benchmark tool", comment: "Benchmark tool")
         
-        resultLabel.text = NSLocalizedString("0.0 seconds", comment: "0.0 seconds")
+        resultLabel.text = "0.0 " + NSLocalizedString("seconds", comment: "seconds")
         
         deviceLabel.text = DeviceInfo.getDeviceName()
         osVersionLabel.text = DeviceInfo.getOSVersion()
