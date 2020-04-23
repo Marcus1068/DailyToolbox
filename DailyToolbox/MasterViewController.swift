@@ -79,6 +79,14 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             // Fallback on earlier versions
         }
         
+        // macCatalyst: hover action
+        #if targetEnvironment(macCatalyst)
+        let hoverPercentage = UIHoverGestureRecognizer(target: self, action: #selector(hoveringPercentage(_:)))
+        staticCellPercentage.addGestureRecognizer(hoverPercentage)
+        
+        let hoverCurrency = UIHoverGestureRecognizer(target: self, action: #selector(hoveringCurrency(_:)))
+        staticCellCurrency.addGestureRecognizer(hoverCurrency)
+        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +94,31 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         super.viewWillAppear(animated)
     }
 
+    // macCatalyst: hover action
+    #if targetEnvironment(macCatalyst)
+    @objc func hoveringPercentage(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellPercentage.backgroundColor = .systemBlue
+        case .ended:
+            staticCellPercentage.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringCurrency(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellCurrency.backgroundColor = .systemBlue
+        case .ended:
+            staticCellCurrency.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    #endif
+    
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
