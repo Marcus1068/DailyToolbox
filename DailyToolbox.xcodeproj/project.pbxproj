@@ -18,6 +18,8 @@
 		2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B2343242663D6007A20DF /* MyExtensions.swift */; };
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
+		2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA494A6245227F700E61CC5 /* AboutViewController.swift */; };
+		2CA494A924522AB300E61CC5 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA494A824522AB300E61CC5 /* Global.swift */; };
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
 		2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */; };
 		2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB592A824082BD70020F152 /* BenchmarkViewController.swift */; };
@@ -61,6 +63,8 @@
 		2C8B2343242663D6007A20DF /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		2CA494A6245227F700E61CC5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		2CA494A824522AB300E61CC5 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		2CB592A824082BD70020F152 /* BenchmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */,
 				2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */,
 				2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */,
+				2CA494A6245227F700E61CC5 /* AboutViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */,
 				2C8B2343242663D6007A20DF /* MyExtensions.swift */,
 				2C034904244B13F700AEE556 /* PowerConsumption.swift */,
+				2CA494A824522AB300E61CC5 /* Global.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -320,7 +326,9 @@
 				2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */,
 				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
+				2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */,
 				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
+				2CA494A924522AB300E61CC5 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

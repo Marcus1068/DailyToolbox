@@ -34,12 +34,22 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     @IBOutlet weak var percentValueTextField: UITextField!
     @IBOutlet weak var baseValueTextField: UITextField!
     
+    @IBOutlet weak var percentageLabel: UILabel!
+    
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var baseValueLabel: UILabel!
+    
     @IBOutlet weak var calculateButton: UIButton!
     
     func configureView() {
         
         //detailItem = true
         self.title = NSLocalizedString("Percentage Calculation", comment: "Percentage Calculation")
+        
+        percentageLabel.text = NSLocalizedString("Percentage", comment: "Percentage")
+        valueLabel.text = NSLocalizedString("Value", comment: "Value")
+        baseValueLabel.text = NSLocalizedString("Base value", comment: "Base value")
+        
         
         percentTextField.becomeFirstResponder()
         

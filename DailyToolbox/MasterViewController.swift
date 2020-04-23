@@ -39,6 +39,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     @IBOutlet weak var staticCellBenchmark: UITableViewCell!
     @IBOutlet weak var staticCellRomanNumbers: UITableViewCell!
     @IBOutlet weak var staticCellPower: UITableViewCell!
+    @IBOutlet weak var staticCellAbout: UITableViewCell!
     
     var detailViewController: PercentageViewController? = nil
 
@@ -73,6 +74,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             customPointerInteraction(on: staticCellBenchmark, pointerInteractionDelegate: self)
             customPointerInteraction(on: staticCellRomanNumbers, pointerInteractionDelegate: self)
             customPointerInteraction(on: staticCellPower, pointerInteractionDelegate: self)
+            customPointerInteraction(on: staticCellAbout, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }
@@ -244,6 +246,17 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             }
         }
         
+        if segue.identifier == "showAbout" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! AboutViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
+        
     }
 
     // MARK: - Table View
@@ -253,7 +266,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11 //objects.count
+        return 12 //objects.count
     }
 
  /*   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
