@@ -39,7 +39,7 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     func configureView() {
         
         //detailItem = true
-        self.title = "Percentage Calculation"
+        self.title = NSLocalizedString("Percentage Calculation", comment: "Percentage Calculation")
         
         percentTextField.becomeFirstResponder()
         

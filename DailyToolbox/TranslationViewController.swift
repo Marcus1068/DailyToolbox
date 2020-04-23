@@ -34,7 +34,7 @@ class TranslationViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         
-        self.title = "Translation"
+        self.title = NSLocalizedString("Translation module", comment: "Translation")
         
         let url = URL(string: "https://dict.leo.org/dict/mobile.php")!
         webView.load(URLRequest(url: url))

@@ -29,7 +29,7 @@ import UIKit
 class InterestRateViewController: UIViewController {
 
     func configureView() {
-        self.title = "Interest Rate calculation"
+        self.title = NSLocalizedString("Interest Rate calculation", comment: "Interest Rate calculation")
         
         hideKeyboardWhenTappedAround()
     }

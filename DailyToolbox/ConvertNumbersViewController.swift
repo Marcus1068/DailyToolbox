@@ -42,7 +42,7 @@ class ConvertNumbersViewController: UIViewController, UITextFieldDelegate {
     func configureView() {
         // Update the user interface for the detail item.
         
-        self.title = "Convert Numbers"
+        self.title = NSLocalizedString("Convert Numbers", comment: "Convert Numbers")
         
         decimalTextField.becomeFirstResponder()
         

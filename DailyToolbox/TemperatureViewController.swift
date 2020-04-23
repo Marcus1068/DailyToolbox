@@ -36,7 +36,7 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     func configureView() {
         // Update the user interface for the detail item.
         
-        self.title = "Temperature Calculation"
+        self.title = NSLocalizedString("Temperature Calculation", comment: "Temperature Calculation")
         
         celsiusTextField.becomeFirstResponder()
         

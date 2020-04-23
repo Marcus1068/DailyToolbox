@@ -271,7 +271,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         let build = UIApplication.appBuild!
         let appName = UIApplication.appName!
         
-        displayAlert(title: "\(appName) - ver. \(version) (\(build))", message: "(c) 2020 by Marcus Deuß", buttonText: "Dismiss")
+        displayAlert(title: "\(appName) - ver. \(version) (\(build))", message: "(c) 2020 by Marcus Deuß", buttonText: NSLocalizedString("Dismiss", comment: "Dismiss"))
     }
 }
 

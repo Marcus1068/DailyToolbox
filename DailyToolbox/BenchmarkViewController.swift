@@ -42,9 +42,9 @@ class BenchmarkViewController: UIViewController, UIPointerInteractionDelegate {
     var swiftNumber: Int = 10000
     
     func configureView() {
-        self.title = "Benchmark device"
+        self.title = NSLocalizedString("Benchmark tool", comment: "Benchmark tool")
         
-        resultLabel.text = "0.0 seconds"
+        resultLabel.text = NSLocalizedString("0.0 seconds", comment: "0.0 seconds")
         
         deviceLabel.text = DeviceInfo.getDeviceName()
         osVersionLabel.text = DeviceInfo.getOSVersion()
@@ -83,19 +83,19 @@ class BenchmarkViewController: UIViewController, UIPointerInteractionDelegate {
     @IBAction func stringConcatAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkString()
         
-        resultLabel.text = String(format: "%.4f", test) + " seconds"
+        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
     }
     
     @IBAction func randomArcAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkRandomNumbersArc4(range: arcNumber)
         
-        resultLabel.text = String(format: "%.4f", test) + " seconds"
+        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
     }
     
     @IBAction func randomSwiftAction(_ sender: UIButton) {
         let test = Benchmark.benchmarkRandomNumbersSwift(range: swiftNumber)
         
-        resultLabel.text = String(format: "%.4f", test) + " seconds"
+        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
     }
     
     
