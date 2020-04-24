@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
 		2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */; };
+		2C04CDB2245309E4009944AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C04CDB4245309E4009944AD /* Localizable.strings */; };
 		2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */; };
 		2C8040C72439F1590057909D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8040C62439F1590057909D /* WebKit.framework */; };
 		2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */; };
@@ -54,6 +55,10 @@
 /* Begin PBXFileReference section */
 		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
 		2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumptionViewController.swift; sourceTree = "<group>"; };
+		2C04CDAE245308CE009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2C04CDAF245308CE009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2C04CDB3245309E4009944AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C04CDB5245309E7009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C8040C62439F1590057909D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		2CBD865D23F6AA480011D886 = {
 			isa = PBXGroup;
 			children = (
+				2C04CDB4245309E4009944AD /* Localizable.strings */,
 				2CBD866823F6AA480011D886 /* DailyToolbox */,
 				2CBD868123F6AA490011D886 /* DailyToolboxTests */,
 				2CBD866723F6AA480011D886 /* Products */,
@@ -265,6 +271,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 2CBD865D23F6AA480011D886;
 			productRefGroup = 2CBD866723F6AA480011D886 /* Products */;
@@ -283,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */,
+				2C04CDB2245309E4009944AD /* Localizable.strings in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
 				2CBD867323F6AA480011D886 /* Main.storyboard in Resources */,
 			);
@@ -351,10 +359,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2C04CDB4245309E4009944AD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C04CDB3245309E4009944AD /* en */,
+				2C04CDB5245309E7009944AD /* de */,
+			);
+			name = Localizable.strings;
+			path = DailyToolbox;
+			sourceTree = "<group>";
+		};
 		2CBD867123F6AA480011D886 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2CBD867223F6AA480011D886 /* Base */,
+				2C04CDAE245308CE009944AD /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -363,6 +382,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2CBD867723F6AA480011D886 /* Base */,
+				2C04CDAF245308CE009944AD /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -374,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -436,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
