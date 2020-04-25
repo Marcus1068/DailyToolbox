@@ -82,6 +82,12 @@
 /* Class = "UILabel"; text = "Hexadecimal"; ObjectID = "ce2-Dc-iJl"; */
 "ce2-Dc-iJl.text" = "Hexadezimal";
 
+/* Class = "UILabel"; text = "Enter any word (using dict.leo.org)"; ObjectID = "CmZ-bN-JcD"; */
+"CmZ-bN-JcD.text" = "Gibt etwas ein (dict.leo.org)";
+
+/* Class = "UILabel"; text = "(c) 2020 Marcus Deuß"; ObjectID = "dog-mq-Tdk"; */
+"dog-mq-Tdk.text" = "(c) 2020 Marcus Deuß";
+
 /* Class = "UILabel"; text = "Percentage"; ObjectID = "dRW-Jl-4UG"; */
 "dRW-Jl-4UG.text" = "Prozenzsatz";
 
@@ -94,7 +100,7 @@
 /* Class = "UILabel"; text = "Benchmark tools"; ObjectID = "fZ8-jz-cfn"; */
 "fZ8-jz-cfn.text" = "Benchmark Werkzeuge";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "FZy-sP-ZrQ"; */
+/* Class = "UILabel"; text = "About DailyToolbox"; ObjectID = "FZy-sP-ZrQ"; */
 "FZy-sP-ZrQ.text" = "Über";
 
 /* Class = "UILabel"; text = "xxx"; ObjectID = "g2A-Xf-N2f"; */
@@ -126,6 +132,9 @@
 
 /* Class = "UIButton"; normalTitle = "Random (Swift)"; ObjectID = "HgF-Lm-5Ua"; */
 "HgF-Lm-5Ua.normalTitle" = "Zufallszahlen (Swift)";
+
+/* Class = "UILabel"; text = "Please enter any kind of temperature"; ObjectID = "ibu-W7-YXj"; */
+"ibu-W7-YXj.text" = "Bitte einen Temperaturwert eingeben";
 
 /* Class = "UITextField"; placeholder = "Roman number"; ObjectID = "iT6-nk-oa0"; */
 "iT6-nk-oa0.placeholder" = "Römische Zahl";
@@ -172,11 +181,14 @@
 /* Class = "UIBarButtonItem"; title = "about"; ObjectID = "msz-3x-zqW"; */
 "msz-3x-zqW.title" = "Über";
 
+/* Class = "UILabel"; text = "Meassure your device performance"; ObjectID = "MWW-2D-6q7"; */
+"MWW-2D-6q7.text" = "Miss die Geschwindigkeit deines Gerätes";
+
 /* Class = "UITextField"; placeholder = "cent"; ObjectID = "nW8-EJ-y9w"; */
 "nW8-EJ-y9w.placeholder" = "cent";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oIO-4g-7z2"; */
-"oIO-4g-7z2.normalTitle" = "Button";
+/* Class = "UILabel"; text = "Please enter any decimal or roman number"; ObjectID = "nxd-6U-FVN"; */
+"nxd-6U-FVN.text" = "Bitte eine Dezimal oder Römische Zahl eingeben";
 
 /* Class = "UILabel"; text = "xxx"; ObjectID = "oXp-gD-3Lu"; */
 "oXp-gD-3Lu.text" = "xxx";
@@ -199,6 +211,9 @@
 /* Class = "UILabel"; text = "Base value"; ObjectID = "QnU-0r-EHD"; */
 "QnU-0r-EHD.text" = "Basiswert";
 
+/* Class = "UILabel"; text = "Determine cost of power consumption of devices"; ObjectID = "qPG-EE-5Ru"; */
+"qPG-EE-5Ru.text" = "Bestimme die Stromkosten deiner Geräte";
+
 /* Class = "UILabel"; text = "Roman:"; ObjectID = "R2j-yi-lX0"; */
 "R2j-yi-lX0.text" = "Römische Zahl:";
 
@@ -212,7 +227,7 @@
 "s2h-Ak-3sZ.text" = "21/03/2020";
 
 /* Class = "UILabel"; text = "Please choose both currencies to get a current conversion based on European Central Bank"; ObjectID = "stx-Lf-t50"; */
-"stx-Lf-t50.text" = "Please choose both currencies to get a current conversion based on European Central Bank";
+"stx-Lf-t50.text" = "Bitte beide Währungen auswählen, die Umrechnung basiert auf der Europäischen Zentralbank";
 
 /* Class = "UISegmentedControl"; sut-lg-bOy.segmentTitles[0] = "10000"; ObjectID = "sut-lg-bOy"; */
 "sut-lg-bOy.segmentTitles[0]" = "10000";
@@ -259,6 +274,9 @@
 /* Class = "UILabel"; text = "Conversion of decimal to hexadecimal and binary numbers"; ObjectID = "vTs-ZK-YhG"; */
 "vTs-ZK-YhG.text" = "Dezimal, Hex und Binarärzahlen";
 
+/* Class = "UIButton"; normalTitle = "Information"; ObjectID = "wl8-Gl-l2e"; */
+"wl8-Gl-l2e.normalTitle" = "Information";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "WnM-6d-Rci"; */
 "WnM-6d-Rci.text" = "Label";
 
@@ -270,6 +288,9 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "WSy-nT-GxG"; */
 "WSy-nT-GxG.text" = "Label";
+
+/* Class = "UILabel"; text = "version"; ObjectID = "xAI-6I-pLb"; */
+"xAI-6I-pLb.text" = "Version";
 
 /* Class = "UILabel"; text = "daily hours:"; ObjectID = "XBL-Q2-jqD"; */
 "XBL-Q2-jqD.text" = "Tägliche Stunden:";

@@ -1,0 +1,12 @@
+/* Bundle name */
+"CFBundleName" = "DailyToolbox";
+
+/* Privacy - Calendars Usage Description */
+"NSCalendarsUsageDescription" = "Benötige Zugriff auf den Kalender";
+
+/* Privacy - Location Usage Description */
+"NSLocationUsageDescription" = "Ortsbestimmung wird für die Horizontberechnung benötigt";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Ortsbestimmung wird für die Horizontberechnung benötigt";
+
