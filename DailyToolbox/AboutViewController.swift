@@ -12,8 +12,12 @@ import MessageUI
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPointerInteractionDelegate {
     @IBOutlet weak var feedbackOutlet: UIButton!
     @IBOutlet weak var informationOutlet: UIButton!
+    @IBOutlet weak var versionLabel: UILabel!
     
     func configureView(){
+        
+        versionLabel.text = NSLocalizedString("Version", comment: "Version") + ": " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
+        
         // pointer interaction
         if #available(iOS 13.4, *) {
             customPointerInteraction(on: feedbackOutlet, pointerInteractionDelegate: self)
