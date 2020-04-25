@@ -70,6 +70,8 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
         distanceResultLabel.text = NSLocalizedString("Horizon distance", comment: "Horizon distance")
         infoLabel.text = NSLocalizedString("Calculates distance of horizon by meassuring height with GPS sensor", comment: "Calculates Info")
         
+        formulaTextView.text = NSLocalizedString("Formula for computing the horizon distance: 3.57 * sqrt(Altitude + Eye Level) = distance", comment: "Formula")
+        
         /*  Request a user’s authorization to use his location.
             Ask our manager to report every movement of the user.
             Ask our manager for the best accuracy.

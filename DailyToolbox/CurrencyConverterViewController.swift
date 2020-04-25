@@ -156,10 +156,10 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
                     title = view as! UILabel
               }
             
-            title.font = UIFont(name: "HelveticaNeue", size: 35)
+            title.font = UIFont(name: "HelveticaNeue", size: 30)
             title.textColor = UIColor.blue
             title.text =  currencyList[row][0]
-            title.textAlignment = .center
+            title.textAlignment = .left
 
             return title
         }
@@ -170,10 +170,10 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
                     title = view as! UILabel
               }
             
-            title.font = UIFont(name: "HelveticaNeue", size: 35)
+            title.font = UIFont(name: "HelveticaNeue", size: 30)
             title.textColor = UIColor.blue
             title.text =  currencyList[row][1]
-            title.textAlignment = .center
+            title.textAlignment = .right
 
             return title
         }
@@ -181,11 +181,11 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 36.0
+        return 30.0
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 300
+        return 150
     }
 
     /*
