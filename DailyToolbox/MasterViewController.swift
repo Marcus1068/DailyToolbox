@@ -159,7 +159,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         
 
         if segue.identifier == "showPercentage" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! PercentageViewController
                 //controller.detailItem = object
@@ -170,7 +170,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showTemp" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! TemperatureViewController
                 //controller.detailItem = object
@@ -181,7 +181,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showTranslation" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! TranslationViewController
                 //controller.detailItem = object
@@ -192,7 +192,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showDecimal" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! ConvertNumbersViewController
                 //controller.detailItem = object
@@ -203,7 +203,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showHorizon" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! HorizonViewController
                 //controller.detailItem = object
@@ -214,7 +214,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showBenchmark" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! BenchmarkViewController
                 //controller.detailItem = object
@@ -225,7 +225,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showCurrency" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! CurrencyConverterViewController
                 //controller.detailItem = object
@@ -236,7 +236,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showInterestRate" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! InterestRateViewController
                 //controller.detailItem = object
@@ -247,7 +247,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showCalendar" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! CalendarCalculationViewController
                 //controller.detailItem = object
@@ -258,7 +258,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showRoman" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! DecimalRomanNumbersViewController
                 //controller.detailItem = object
@@ -269,7 +269,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showPower" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! PowerConsumptionViewController
                 //controller.detailItem = object
@@ -280,7 +280,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         }
         
         if segue.identifier == "showAbout" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let _ = tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! AboutViewController
                 //controller.detailItem = object
