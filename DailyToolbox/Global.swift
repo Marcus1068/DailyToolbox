@@ -14,7 +14,8 @@ class Global{
     
     // name of the app in about view
     static let emailAdr = "mdeuss+dailytoolbox@gmail.com"
-    static let website = "https://marcus-deuss.de/?page_id=13"
+    static let website = "https://marcus-deuss.de/?page_id=201"
+    static let privacy = "https://marcus-deuss.de/?page_id=203"
     
     // localization strings
     static let all = NSLocalizedString("All", comment: "All")

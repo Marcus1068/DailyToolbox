@@ -1587,6 +1587,18 @@
                                     <action selector="feedbackAction:" destination="Ddd-oM-4Ky" eventType="touchUpInside" id="acf-G4-iET"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS2-y3-WE4">
+                                <rect key="frame" x="16" y="467" width="155" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="6Ao-Ij-nWV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="155" id="k0s-vA-9m1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Privacy"/>
+                                <connections>
+                                    <action selector="privacyAction:" destination="Ddd-oM-4Ky" eventType="touchUpInside" id="Okv-9H-qfX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1596,6 +1608,7 @@
                             <constraint firstItem="dog-mq-Tdk" firstAttribute="top" secondItem="2bv-XT-kYT" secondAttribute="bottom" constant="15" id="7jE-Qk-7WW"/>
                             <constraint firstItem="2bv-XT-kYT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FZy-sP-ZrQ" secondAttribute="trailing" constant="8" symbolic="YES" id="NZg-WJ-y0i"/>
                             <constraint firstItem="wl8-Gl-l2e" firstAttribute="leading" secondItem="N2J-y4-qew" secondAttribute="leading" constant="16" id="P31-jW-hbN"/>
+                            <constraint firstItem="oS2-y3-WE4" firstAttribute="top" secondItem="tCV-W3-UzO" secondAttribute="bottom" constant="28" id="Q2u-2k-hQu"/>
                             <constraint firstItem="2bv-XT-kYT" firstAttribute="top" secondItem="N2J-y4-qew" secondAttribute="top" constant="20" id="VUu-d0-09O"/>
                             <constraint firstItem="tCV-W3-UzO" firstAttribute="leading" secondItem="N2J-y4-qew" secondAttribute="leading" constant="16" id="WA0-sr-uiM"/>
                             <constraint firstItem="FZy-sP-ZrQ" firstAttribute="leading" secondItem="N2J-y4-qew" secondAttribute="leading" constant="16" id="YWl-YH-DCN"/>
@@ -1605,6 +1618,8 @@
                             <constraint firstItem="xAI-6I-pLb" firstAttribute="top" secondItem="FZy-sP-ZrQ" secondAttribute="bottom" constant="73" id="gzk-JI-CL7"/>
                             <constraint firstItem="N2J-y4-qew" firstAttribute="trailing" secondItem="2bv-XT-kYT" secondAttribute="trailing" constant="16" id="lNE-xd-3g9"/>
                             <constraint firstItem="N2J-y4-qew" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dog-mq-Tdk" secondAttribute="trailing" symbolic="YES" id="lrW-Pc-bOL"/>
+                            <constraint firstItem="oS2-y3-WE4" firstAttribute="leading" secondItem="N2J-y4-qew" secondAttribute="leading" constant="16" id="mkk-Te-ETm"/>
+                            <constraint firstItem="N2J-y4-qew" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oS2-y3-WE4" secondAttribute="trailing" symbolic="YES" id="nmD-Eu-bZk"/>
                             <constraint firstItem="N2J-y4-qew" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tCV-W3-UzO" secondAttribute="trailing" symbolic="YES" id="rVh-NU-D0P"/>
                             <constraint firstItem="xAI-6I-pLb" firstAttribute="leading" secondItem="N2J-y4-qew" secondAttribute="leading" constant="16" id="rvB-sE-DM7"/>
                         </constraints>
@@ -1614,6 +1629,7 @@
                     <connections>
                         <outlet property="feedbackOutlet" destination="tCV-W3-UzO" id="eKN-rX-CSN"/>
                         <outlet property="informationOutlet" destination="wl8-Gl-l2e" id="kuK-36-VgG"/>
+                        <outlet property="privacyOutlet" destination="oS2-y3-WE4" id="30Y-Qm-lLW"/>
                         <outlet property="versionLabel" destination="xAI-6I-pLb" id="S7K-kG-At0"/>
                     </connections>
                 </viewController>

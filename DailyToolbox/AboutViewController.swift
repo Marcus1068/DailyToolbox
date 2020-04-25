@@ -13,6 +13,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var feedbackOutlet: UIButton!
     @IBOutlet weak var informationOutlet: UIButton!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var privacyOutlet: UIButton!
     
     func configureView(){
         
@@ -22,6 +23,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         if #available(iOS 13.4, *) {
             customPointerInteraction(on: feedbackOutlet, pointerInteractionDelegate: self)
             customPointerInteraction(on: informationOutlet, pointerInteractionDelegate: self)
+            customPointerInteraction(on: privacyOutlet, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }
@@ -74,6 +76,17 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: actions
     
+    
+    @IBAction func privacyAction(_ sender: UIButton) {
+        // hide keyboard
+        self.view.endEditing(true)
+        
+        // open safari browser for more information, source code etc.
+        if let url = URL(string: Global.privacy) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     @IBAction func informationButton(_ sender: UIButton) {
         // hide keyboard
         self.view.endEditing(true)
@@ -83,7 +96,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             UIApplication.shared.open(url, options: [:])
         }
     }
-    
     
     @IBAction func feedbackAction(_ sender: UIButton) {
        
