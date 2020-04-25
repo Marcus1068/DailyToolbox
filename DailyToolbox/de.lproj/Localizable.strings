@@ -14,7 +14,7 @@
 "Base value" = "Basiswert";
 
 /* Benchmark tool */
-"Benchmark tool" = "Benchmark Werkzeug";
+"Benchmark tool" = "Benchmark Werkzeuge";
 
 /* Calculates Info */
 "Calculates distance of horizon by meassuring height with GPS sensor" = "Berechnet die Entfernung zum Horizont mittels GPS Sensor";
@@ -140,7 +140,7 @@
 "Please check your email configuration" = "Bitte prüfen Sie Ihre Email Konfiguration";
 
 /* Power Consumption Calculation */
-"Power Consumption Calculation" = "Berechnung des Stromverbrauchs";
+"Power Consumption Calculation" = "Stromverbrauch berechnen";
 
 /* Privacy */
 "Privacy" = "Datenschutz";
@@ -174,7 +174,7 @@
 "Temperature Calculation" = "Temperaturumrechnung";
 
 /* Translation */
-"Translation module" = "Übersetzungsmodul";
+"Translation module" = "Übersetzungsdienst";
 
 /* Value */
 "Value" = "Wert";

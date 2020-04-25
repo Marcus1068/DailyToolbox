@@ -9,12 +9,26 @@
 import UIKit
 import MessageUI
 
-class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
-
+class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPointerInteractionDelegate {
+    @IBOutlet weak var feedbackOutlet: UIButton!
+    @IBOutlet weak var informationOutlet: UIButton!
+    
+    func configureView(){
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: feedbackOutlet, pointerInteractionDelegate: self)
+            customPointerInteraction(on: informationOutlet, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        configureView()
     }
     
 
@@ -55,6 +69,17 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     // MARK: actions
+    
+    @IBAction func informationButton(_ sender: UIButton) {
+        // hide keyboard
+        self.view.endEditing(true)
+        
+        // open safari browser for more information, source code etc.
+        if let url = URL(string: Global.website) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     
     @IBAction func feedbackAction(_ sender: UIButton) {
        

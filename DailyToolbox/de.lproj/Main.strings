@@ -38,13 +38,13 @@
 "7bK-jq-Zjz.title" = "Master";
 
 /* Class = "UILabel"; text = "Convert Decimal, Hex and Binary"; ObjectID = "7E8-21-7FT"; */
-"7E8-21-7FT.text" = "Wandle Decimal, Hex und Binarärwerte um";
+"7E8-21-7FT.text" = "Dezimal, Hex und Binarärzahlen";
 
 /* Class = "UITextField"; placeholder = "decimal number"; ObjectID = "8pD-Dr-KIP"; */
 "8pD-Dr-KIP.placeholder" = "Dezimalzahl";
 
 /* Class = "UILabel"; text = "Number of days until..."; ObjectID = "9Xh-e8-moh"; */
-"9Xh-e8-moh.text" = "Anzahl Tage bis...";
+"9Xh-e8-moh.text" = "Kalenderberechnung";
 
 /* Class = "UILabel"; text = "Altitude:"; ObjectID = "96k-F4-DSf"; */
 "96k-F4-DSf.text" = "Höhe:";
@@ -146,7 +146,7 @@
 "Jxe-Xr-dTb.text" = "Kelvin";
 
 /* Class = "UITextView"; text = "Formula for computing the horizon distance: 3.57 * sqrt(Altitude + Eye Level) = distance"; ObjectID = "KRV-Rd-9EE"; */
-"KRV-Rd-9EE.text" = "Formula for computing the horizon distance: 3.57 * sqrt(Altitude + Eye Level) = distance";
+"KRV-Rd-9EE.text" = "Formel zur Berechnung der Distanz zum Horizont: 3.57 * sqrt(Höhe + Augenhöhe) = Entfernung";
 
 /* Class = "UIButton"; normalTitle = "Strings"; ObjectID = "L46-Gk-eWs"; */
 "L46-Gk-eWs.normalTitle" = "Strings";
@@ -161,7 +161,7 @@
 "lT3-D1-LZ5.text" = "xxx";
 
 /* Class = "UILabel"; text = "Roman Number Conversion"; ObjectID = "lXV-5A-x0R"; */
-"lXV-5A-x0R.text" = "Umwandlung Römische Zahlen";
+"lXV-5A-x0R.text" = "Römische Zahlen Umrechnung";
 
 /* Class = "UILabel"; text = "month:"; ObjectID = "ma7-7u-SZt"; */
 "ma7-7u-SZt.text" = "Monat:";
@@ -185,7 +185,7 @@
 "oy2-dn-GDe.text" = "Zinssatz";
 
 /* Class = "UILabel"; text = "Power Consumption"; ObjectID = "p9k-2w-E0s"; */
-"p9k-2w-E0s.text" = "Stromverbrauch";
+"p9k-2w-E0s.text" = "Stromverbrauch berechnen";
 
 /* Class = "UILabel"; text = "Base"; ObjectID = "PMs-P7-5si"; */
 "PMs-P7-5si.text" = "Basis";
@@ -194,7 +194,7 @@
 "PNx-ac-qgX.placeholder" = "Binärzahl";
 
 /* Class = "UILabel"; text = "Percentage calculation"; ObjectID = "Pz7-Zc-0gD"; */
-"Pz7-Zc-0gD.text" = "Prozentsatz Berechung";
+"Pz7-Zc-0gD.text" = "Prozentsatzberechung";
 
 /* Class = "UILabel"; text = "Base value"; ObjectID = "QnU-0r-EHD"; */
 "QnU-0r-EHD.text" = "Basiswert";
@@ -251,13 +251,13 @@
 "uKI-zB-kkB.segmentTitles[2]" = "2000000";
 
 /* Class = "UILabel"; text = "Horizon calculation"; ObjectID = "uLA-73-flN"; */
-"uLA-73-flN.text" = "Berechnung der Horizontentfernung";
+"uLA-73-flN.text" = "Horizontberechnung";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "v4F-xJ-qhS"; */
 "v4F-xJ-qhS.text" = "0.0";
 
 /* Class = "UILabel"; text = "Conversion of decimal to hexadecimal and binary numbers"; ObjectID = "vTs-ZK-YhG"; */
-"vTs-ZK-YhG.text" = "Conversion of decimal to hexadecimal and binary numbers";
+"vTs-ZK-YhG.text" = "Dezimal, Hex und Binarärzahlen";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "WnM-6d-Rci"; */
 "WnM-6d-Rci.text" = "Label";
