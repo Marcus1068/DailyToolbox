@@ -92,6 +92,31 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         
         let hoverInterestRate = UIHoverGestureRecognizer(target: self, action: #selector(hoveringInterestRate(_:)))
         staticCellInterestRate.addGestureRecognizer(hoverInterestRate)
+        
+        let hoverTemperature = UIHoverGestureRecognizer(target: self, action: #selector(hoveringTemperature(_:)))
+        staticCellTemperature.addGestureRecognizer(hoverTemperature)
+        
+        let hoverCalendar = UIHoverGestureRecognizer(target: self, action: #selector(hoveringCalendar(_:)))
+        staticCellCalendar.addGestureRecognizer(hoverCalendar)
+        
+        let hoverHorizon = UIHoverGestureRecognizer(target: self, action: #selector(hoveringHorizon(_:)))
+        staticCellHorizon.addGestureRecognizer(hoverHorizon)
+        
+        let hoverTranslation = UIHoverGestureRecognizer(target: self, action: #selector(hoveringTranslation(_:)))
+        staticCellTranslation.addGestureRecognizer(hoverTranslation)
+        
+        let hoverBenchmark = UIHoverGestureRecognizer(target: self, action: #selector(hoveringBenchmark(_:)))
+        staticCellBenchmark.addGestureRecognizer(hoverBenchmark)
+        
+        let hoverRomanNumbers = UIHoverGestureRecognizer(target: self, action: #selector(hoveringRomanNumbers(_:)))
+        staticCellRomanNumbers.addGestureRecognizer(hoverRomanNumbers)
+        
+        let hoverPower = UIHoverGestureRecognizer(target: self, action: #selector(hoveringPower(_:)))
+        staticCellPower.addGestureRecognizer(hoverPower)
+        
+        let hoverAbout = UIHoverGestureRecognizer(target: self, action: #selector(hoveringAbout(_:)))
+        staticCellAbout.addGestureRecognizer(hoverAbout)
+        
         #endif
     }
 
@@ -141,6 +166,94 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             staticCellInterestRate.backgroundColor = .systemBlue
         case .ended:
             staticCellInterestRate.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringTemperature(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellTemperature.backgroundColor = .systemBlue
+        case .ended:
+            staticCellTemperature.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringCalendar(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellCalendar.backgroundColor = .systemBlue
+        case .ended:
+            staticCellCalendar.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringHorizon(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellHorizon.backgroundColor = .systemBlue
+        case .ended:
+            staticCellHorizon.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringTranslation(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellTranslation.backgroundColor = .systemBlue
+        case .ended:
+            staticCellTranslation.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringBenchmark(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellBenchmark.backgroundColor = .systemBlue
+        case .ended:
+            staticCellBenchmark.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringRomanNumbers(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellRomanNumbers.backgroundColor = .systemBlue
+        case .ended:
+            staticCellRomanNumbers.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringPower(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellPower.backgroundColor = .systemBlue
+        case .ended:
+            staticCellPower.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringAbout(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellAbout.backgroundColor = .systemBlue
+        case .ended:
+            staticCellAbout.backgroundColor = .systemBackground
         default:
             break
         }
