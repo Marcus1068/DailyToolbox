@@ -134,6 +134,8 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
         let cal = CalendarCalculation()
         var result = cal.calculateDaysBetweenTwoDates(start: today, end: easter)
         
+        var easterDate = easter
+        
         if result < 0 {
             // easter has already passed in current year, compute next year
             
@@ -148,11 +150,11 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
             
             let nextEaster = next.date(from: easterComp)
             
-            let easter = computeEasterSunday(date: nextEaster!)
+            easterDate = computeEasterSunday(date: nextEaster!)
             let cal = CalendarCalculation()
-            result = cal.calculateDaysBetweenTwoDates(start: today, end: easter)
+            result = cal.calculateDaysBetweenTwoDates(start: today, end: easterDate)
         }
-        daysLabel.text = "\(result) " + NSLocalizedString("days until easter", comment: "days until easter")
+        daysLabel.text = "\(result) " + NSLocalizedString("days until Easter", comment: "days until Easter") + ": " + easterDate.toString(withFormat: "dd-MM-yyyy")
     }
     
     @IBAction func christmasButton(_ sender: UIButton) {
@@ -185,7 +187,7 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
         
         let cal = CalendarCalculation()
         let result = cal.calculateDaysBetweenTwoDates(start: today, end: nextChristmas!)
-        daysLabel.text = "\(result) " + NSLocalizedString("days until christmas", comment: "days until christmas")
+        daysLabel.text = "\(result) " + NSLocalizedString("days until Christmas", comment: "days until Christmas") + ": " + nextChristmas!.toString(withFormat: "dd-MM-yyyy")
     }
     
     @IBAction func makeCalenderAction(_ sender: UIButton) {
