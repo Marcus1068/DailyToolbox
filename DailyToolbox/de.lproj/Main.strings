@@ -116,7 +116,7 @@
 "GGx-Kj-rK9.text" = "Letztes Update:";
 
 /* Class = "UILabel"; text = "How many days until:"; ObjectID = "gMd-gS-xrZ"; */
-"gMd-gS-xrZ.text" = "Wie viele Tage bis:";
+"gMd-gS-xrZ.text" = "Wie viele Tage vergehen bis:";
 
 /* Class = "UILabel"; text = "Temperature conversion"; ObjectID = "GMK-9w-KHx"; */
 "GMK-9w-KHx.text" = "Temperaturumrechnung";
@@ -254,7 +254,7 @@
 "TKd-hb-zDo.text" = "Tag:";
 
 /* Class = "UIButton"; normalTitle = "Make calender entry"; ObjectID = "tt7-YE-Lpn"; */
-"tt7-YE-Lpn.normalTitle" = "Erstelle Kalendereintrag";
+"tt7-YE-Lpn.normalTitle" = "Kalendereintrag erstellen";
 
 /* Class = "UISegmentedControl"; uKI-zB-kkB.segmentTitles[0] = "10000"; ObjectID = "uKI-zB-kkB"; */
 "uKI-zB-kkB.segmentTitles[0]" = "10000";
