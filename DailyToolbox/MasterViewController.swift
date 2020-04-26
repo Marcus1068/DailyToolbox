@@ -86,6 +86,12 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         
         let hoverCurrency = UIHoverGestureRecognizer(target: self, action: #selector(hoveringCurrency(_:)))
         staticCellCurrency.addGestureRecognizer(hoverCurrency)
+        
+        let hoverConvertNumbers = UIHoverGestureRecognizer(target: self, action: #selector(hoveringConvertNumbers(_:)))
+        staticCellConvertNumbers.addGestureRecognizer(hoverConvertNumbers)
+        
+        let hoverInterestRate = UIHoverGestureRecognizer(target: self, action: #selector(hoveringInterestRate(_:)))
+        staticCellInterestRate.addGestureRecognizer(hoverInterestRate)
         #endif
     }
 
@@ -117,6 +123,29 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             break
         }
     }
+    
+    @objc func hoveringConvertNumbers(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellConvertNumbers.backgroundColor = .systemBlue
+        case .ended:
+            staticCellConvertNumbers.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
+    @objc func hoveringInterestRate(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            staticCellInterestRate.backgroundColor = .systemBlue
+        case .ended:
+            staticCellInterestRate.backgroundColor = .systemBackground
+        default:
+            break
+        }
+    }
+    
     #endif
     
     // MARK: - Segues

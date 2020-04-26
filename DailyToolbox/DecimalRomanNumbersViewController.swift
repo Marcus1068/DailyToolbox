@@ -28,6 +28,7 @@ import UIKit
 
 class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var infoText: UITextView!
     @IBOutlet weak var decimalTextField: UITextField!
     @IBOutlet weak var romanTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
@@ -48,6 +49,21 @@ class DecimalRomanNumbersViewController: UIViewController, UITextFieldDelegate {
         statusLabel.text = ""
         
         hideKeyboardWhenTappedAround()
+        
+        // help text
+        var fileName : String
+        
+        switch Local.currentLocaleForDate(){
+        case "de_DE", "de_AT", "de_CH", "de":
+            fileName = "Roman german"
+            break
+            
+        default: // all other languages get english privacy statement
+            fileName = "Roman english"
+            break
+        }
+        
+        infoText.attributedText = Global.getRTFFileFromBundle(fileName: fileName)
 
     }
     
