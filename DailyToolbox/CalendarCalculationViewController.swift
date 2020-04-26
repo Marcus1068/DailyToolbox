@@ -35,7 +35,7 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
     @IBOutlet weak var easterOutlet: UIButton!
     
     // get selected date
-    var date: Date = Date()
+    var date = Date()
     
     func configureView(){
         self.title = NSLocalizedString("Calendar Calculation", comment: "Calendar Calculation")
@@ -194,7 +194,8 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
         let endDate = calendar.addTimeToDate(date: date, minutes: 30)
         
         let title = NSLocalizedString("Daily Toolbox", comment: "Daily Toolbox")
-        let message = NSLocalizedString("Enter Calendar Event", comment: "Enter Calendar Event")
+        var message = NSLocalizedString("Enter Calendar Event for", comment: "Enter Calendar Event for")
+        message += " " + self.date.toString(withFormat: "dd-MM-yyyy")
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addTextField()
         
@@ -218,7 +219,7 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
     }
     
     @IBAction func datePickerAction(_ sender: UIDatePicker){
-        date = datePicker.date
+        self.date = datePicker.date
         
         let calendar = CalendarCalculation()
         let result = calendar.calculateDaysBetweenTwoDates(start: Date(), end: date)
