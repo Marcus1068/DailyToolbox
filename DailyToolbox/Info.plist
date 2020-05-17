@@ -82,5 +82,9 @@
 	<string></string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Need access to Calendar</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>DailyHelpTexts.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>DailyHelpTexts</string>
 </dict>
 </plist>

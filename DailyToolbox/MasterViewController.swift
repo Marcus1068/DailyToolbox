@@ -43,6 +43,9 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     
     var detailViewController: PercentageViewController? = nil
 
+    // number of static table cells in each section, must be changed when new section or cell will be added
+    var sectionInfo  = [7, 3, 2]
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             //split.delegate = self
             //split.preferredDisplayMode = .allVisible
             //split.preferredDisplayMode = .primaryOverlay;
-
+            split.primaryBackgroundStyle = .sidebar
         }
         
         // removes extra separator lines after last table entry
@@ -437,11 +440,11 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sectionInfo.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12 //objects.count
+        return sectionInfo[section] //objects.count 12
     }
 
  /*   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
