@@ -19,7 +19,7 @@
 /* Class = "UILabel"; text = "distance"; ObjectID = "2i9-nY-9de"; */
 "2i9-nY-9de.text" = "Entfernung";
 
-/* Class = "UITableViewSection"; headerTitle = "Modules"; ObjectID = "3wi-CL-m85"; */
+/* Class = "UITableViewSection"; headerTitle = "Number stuff"; ObjectID = "3wi-CL-m85"; */
 "3wi-CL-m85.headerTitle" = "Module";
 
 /* Class = "UITextField"; placeholder = "Fahrenheit"; ObjectID = "4YF-Fa-hVf"; */
@@ -46,6 +46,9 @@
 /* Class = "UILabel"; text = "Number of days until..."; ObjectID = "9Xh-e8-moh"; */
 "9Xh-e8-moh.text" = "Kalenderberechnung";
 
+/* Class = "UITableViewSection"; headerTitle = "Misc"; ObjectID = "24z-nM-OeC"; */
+"24z-nM-OeC.headerTitle" = "Diverses";
+
 /* Class = "UILabel"; text = "Altitude:"; ObjectID = "96k-F4-DSf"; */
 "96k-F4-DSf.text" = "Höhe:";
 
@@ -66,6 +69,9 @@
 
 /* Class = "UITextField"; placeholder = "Kelvin"; ObjectID = "BCc-IB-tUl"; */
 "BCc-IB-tUl.placeholder" = "Kelvin";
+
+/* Class = "UIButton"; normalTitle = "Next Christmas"; ObjectID = "bd5-k7-4mX"; */
+"bd5-k7-4mX.normalTitle" = "Nächste Weihnachten";
 
 /* Class = "UILabel"; text = "Current device:"; ObjectID = "Beo-bE-Izs"; */
 "Beo-bE-Izs.text" = "Aktuelles Gerät:";
@@ -94,8 +100,11 @@
 /* Class = "UILabel"; text = "Overview:"; ObjectID = "dSy-23-A0N"; */
 "dSy-23-A0N.text" = "Überblick:";
 
+/* Class = "UIButton"; normalTitle = "Next Easter"; ObjectID = "DZP-KU-t2o"; */
+"DZP-KU-t2o.normalTitle" = "Nächste Ostern";
+
 /* Class = "UILabel"; text = "Cost per kWh:"; ObjectID = "fVI-mM-0gB"; */
-"fVI-mM-0gB.text" = "Kosten pro kWh:";
+"fVI-mM-0gB.text" = "Kosten pro kWh/Cent:";
 
 /* Class = "UILabel"; text = "Benchmark tools"; ObjectID = "fZ8-jz-cfn"; */
 "fZ8-jz-cfn.text" = "Benchmark Werkzeuge";
@@ -190,6 +199,9 @@
 /* Class = "UILabel"; text = "Please enter any decimal or roman number"; ObjectID = "nxd-6U-FVN"; */
 "nxd-6U-FVN.text" = "Bitte eine Dezimal oder Römische Zahl eingeben";
 
+/* Class = "UIButton"; normalTitle = "Privacy"; ObjectID = "oS2-y3-WE4"; */
+"oS2-y3-WE4.normalTitle" = "Datenschutz";
+
 /* Class = "UILabel"; text = "xxx"; ObjectID = "oXp-gD-3Lu"; */
 "oXp-gD-3Lu.text" = "xxx";
 
@@ -226,7 +238,7 @@
 /* Class = "UILabel"; text = "21/03/2020"; ObjectID = "s2h-Ak-3sZ"; */
 "s2h-Ak-3sZ.text" = "21/03/2020";
 
-/* Class = "UILabel"; text = "Please choose both currencies to get a current conversion based on European Central Bank"; ObjectID = "stx-Lf-t50"; */
+/* Class = "UILabel"; text = "Currency conversion based on European Central Bank"; ObjectID = "stx-Lf-t50"; */
 "stx-Lf-t50.text" = "Bitte beide Währungen auswählen, die Umrechnung basiert auf der Europäischen Zentralbank";
 
 /* Class = "UISegmentedControl"; sut-lg-bOy.segmentTitles[0] = "10000"; ObjectID = "sut-lg-bOy"; */
@@ -240,6 +252,9 @@
 
 /* Class = "UITextField"; placeholder = "%"; ObjectID = "sze-S5-XGr"; */
 "sze-S5-XGr.placeholder" = "%";
+
+/* Class = "UITableViewSection"; headerTitle = "Other"; ObjectID = "t86-gq-Lv9"; */
+"t86-gq-Lv9.headerTitle" = "Andere";
 
 /* Class = "UIButton"; normalTitle = "Feedback"; ObjectID = "tCV-W3-UzO"; */
 "tCV-W3-UzO.normalTitle" = "Feedback";
