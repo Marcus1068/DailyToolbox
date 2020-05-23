@@ -5,7 +5,7 @@
 "0p6-4f-yH1.text" = "Entfernung zum Horizont";
 
 /* Class = "UILabel"; text = "Compute percentage based on two known parameters:"; ObjectID = "0XM-y9-sOw"; */
-"0XM-y9-sOw.text" = "Berechne Prozentsatz basierend auf zwei bekannten Parametern:";
+"0XM-y9-sOw.text" = "Berechne Prozentsatz basierend auf zwei bekannten Parametern";
 
 /* Class = "UILabel"; text = "Value"; ObjectID = "1Hn-va-h0d"; */
 "1Hn-va-h0d.text" = "Wert";
@@ -119,7 +119,7 @@
 "fZ8-jz-cfn.text" = "Benchmark Werkzeuge";
 
 /* Class = "UILabel"; text = "About DailyToolbox"; ObjectID = "FZy-sP-ZrQ"; */
-"FZy-sP-ZrQ.text" = "Über";
+"FZy-sP-ZrQ.text" = "Über DailyToolbox";
 
 /* Class = "UILabel"; text = "xxx"; ObjectID = "g2A-Xf-N2f"; */
 "g2A-Xf-N2f.text" = "xxx";
