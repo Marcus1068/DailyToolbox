@@ -121,6 +121,9 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         staticCellAbout.addGestureRecognizer(hoverAbout)
         
         #endif
+        
+        // enable store reviews
+        appstoreReview()
     }
 
     override func viewWillAppear(_ animated: Bool) {

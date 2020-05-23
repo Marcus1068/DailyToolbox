@@ -10,6 +10,7 @@
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
 		2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */; };
 		2C04CDB2245309E4009944AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C04CDB4245309E4009944AD /* Localizable.strings */; };
+		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */; };
 		2C5A88F224548525006D0B4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F024548525006D0B4E /* InfoPlist.strings */; };
 		2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F42455913A006D0B4E /* Roman german.rtf */; };
@@ -62,6 +63,7 @@
 		2C04CDAF245308CE009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2C04CDB3245309E4009944AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C04CDB5245309E7009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C5A88F124548525006D0B4E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */,
 				2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */,
 				2CA494A6245227F700E61CC5 /* AboutViewController.swift */,
+				2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */,
 				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
+				2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */,
 				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
 				2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
