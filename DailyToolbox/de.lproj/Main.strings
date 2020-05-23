@@ -32,7 +32,7 @@
 "6N1-es-SGq.text" = "Über DailyToolbox";
 
 /* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "6qe-Tb-R68"; */
-"6qe-Tb-R68.normalTitle" = "Berechne";
+"6qe-Tb-R68.normalTitle" = "Berechnen";
 
 /* Class = "UITableViewController"; title = "Master"; ObjectID = "7bK-jq-Zjz"; */
 "7bK-jq-Zjz.title" = "Master";
@@ -88,6 +88,9 @@
 /* Class = "UILabel"; text = "Hexadecimal"; ObjectID = "ce2-Dc-iJl"; */
 "ce2-Dc-iJl.text" = "Hexadezimal";
 
+/* Class = "UILabel"; text = "Capital"; ObjectID = "cki-ut-cuI"; */
+"cki-ut-cuI.text" = "Kapital";
+
 /* Class = "UILabel"; text = "Enter any word (using dict.leo.org)"; ObjectID = "CmZ-bN-JcD"; */
 "CmZ-bN-JcD.text" = "Gibt etwas ein (dict.leo.org)";
 
@@ -103,7 +106,13 @@
 /* Class = "UIButton"; normalTitle = "Next Easter"; ObjectID = "DZP-KU-t2o"; */
 "DZP-KU-t2o.normalTitle" = "Nächste Ostern";
 
-/* Class = "UILabel"; text = "Cost per kWh:"; ObjectID = "fVI-mM-0gB"; */
+/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "FGp-p3-ffx"; */
+"FGp-p3-ffx.normalTitle" = "Berechnen";
+
+/* Class = "UITextField"; placeholder = "capital"; ObjectID = "fsJ-bf-Ncn"; */
+"fsJ-bf-Ncn.placeholder" = "Kapital";
+
+/* Class = "UILabel"; text = "Cost per kWh/cent:"; ObjectID = "fVI-mM-0gB"; */
 "fVI-mM-0gB.text" = "Kosten pro kWh/Cent:";
 
 /* Class = "UILabel"; text = "Benchmark tools"; ObjectID = "fZ8-jz-cfn"; */
@@ -163,6 +172,9 @@
 /* Class = "UILabel"; text = "Kelvin"; ObjectID = "Jxe-Xr-dTb"; */
 "Jxe-Xr-dTb.text" = "Kelvin";
 
+/* Class = "UITextField"; placeholder = "interest"; ObjectID = "kGR-OE-CTF"; */
+"kGR-OE-CTF.placeholder" = "Zinsen";
+
 /* Class = "UITextView"; text = "Formula for computing the horizon distance: 3.57 * sqrt(Altitude + Eye Level) = distance"; ObjectID = "KRV-Rd-9EE"; */
 "KRV-Rd-9EE.text" = "Formel zur Berechnung der Distanz zum Horizont: 3.57 * sqrt(Höhe + Augenhöhe) = Entfernung";
 
@@ -207,6 +219,9 @@
 
 /* Class = "UILabel"; text = "Interest Rate"; ObjectID = "oy2-dn-GDe"; */
 "oy2-dn-GDe.text" = "Zinssatz berechnen";
+
+/* Class = "UILabel"; text = "Interest rate"; ObjectID = "p0T-xP-Ut9"; */
+"p0T-xP-Ut9.text" = "Zinssatz";
 
 /* Class = "UILabel"; text = "Power Consumption"; ObjectID = "p9k-2w-E0s"; */
 "p9k-2w-E0s.text" = "Stromverbrauch berechnen";
@@ -289,6 +304,9 @@
 /* Class = "UILabel"; text = "Conversion of decimal to hexadecimal and binary numbers"; ObjectID = "vTs-ZK-YhG"; */
 "vTs-ZK-YhG.text" = "Dezimal, Hex und Binarärzahlen";
 
+/* Class = "UITextField"; placeholder = "interest rate"; ObjectID = "w8j-BI-D9r"; */
+"w8j-BI-D9r.placeholder" = "Zinssatz";
+
 /* Class = "UIButton"; normalTitle = "Information"; ObjectID = "wl8-Gl-l2e"; */
 "wl8-Gl-l2e.normalTitle" = "Information";
 
@@ -303,6 +321,9 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "WSy-nT-GxG"; */
 "WSy-nT-GxG.text" = "Label";
+
+/* Class = "UILabel"; text = "Interest"; ObjectID = "wVv-Xv-A7G"; */
+"wVv-Xv-A7G.text" = "Zinsen";
 
 /* Class = "UILabel"; text = "version"; ObjectID = "xAI-6I-pLb"; */
 "xAI-6I-pLb.text" = "Version";

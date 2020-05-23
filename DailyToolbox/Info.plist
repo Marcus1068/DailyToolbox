@@ -10,10 +10,6 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>DailyHelpTexts.help</string>
-	<key>CFBundleHelpBookName</key>
-	<string>DailyHelpTexts</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

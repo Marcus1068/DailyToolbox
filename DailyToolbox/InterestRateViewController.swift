@@ -38,6 +38,10 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
     func configureView() {
         self.title = NSLocalizedString("Interest Rate calculation", comment: "Interest Rate calculation")
         
+        //interestTextField.text = NSLocalizedString("Interest", comment: "Interest")
+        //capitalTextField.text = NSLocalizedString("Capital", comment: "Capital")
+        //interestRateTextField.text = NSLocalizedString("Interest rate", comment: "Interest rate")
+        
         hideKeyboardWhenTappedAround()
         
         interestTextField.becomeFirstResponder()
@@ -45,6 +49,12 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
         interestTextField.delegate = self
         capitalTextField.delegate = self
         interestRateTextField.delegate = self
+        
+        interestTextField.addTarget(self, action: #selector(InterestRateViewController.interestTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        capitalTextField.addTarget(self, action: #selector(InterestRateViewController.capitalTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        interestRateTextField.addTarget(self, action: #selector(InterestRateViewController.interestRateTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         // pointer interaction
         if #available(iOS 13.4, *) {
@@ -62,17 +72,102 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func interestTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            
+        }
+        else{
+            capitalTextField.text = ""
+            interestRateTextField.text = ""
+        }
     }
-    */
+
+    @objc func capitalTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            
+        }
+        else{
+            interestTextField.text = ""
+            interestRateTextField.text = ""
+        }
+    }
+    
+    @objc func interestRateTextFieldDidChange(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            
+        }
+        else{
+            capitalTextField.text = ""
+            interestTextField.text = ""
+        }
+    }
+    
+    // check for valid keyboard input characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == interestTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        if textField == capitalTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        if textField == interestRateTextField{
+            switch(string){
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
+                return true
+            
+            case "":
+                return true
+                
+            default:
+                    return false
+            }
+        }
+        
+        return true
+    }
+
+    // MARK: actions
     @IBAction func calculateAction(_ sender: UIButton) {
+        if interestTextField.text!.count > 0 && capitalTextField.text!.count > 0 {
+            let z : Double = Double(interestTextField.text!)!
+            let k : Double = Double(capitalTextField.text!)!
+            let str = InterestRate(zinsen: z, kapital: k)
+            interestRateTextField.text = str.zinssatzToString
+        }
+     
+        if interestTextField.text!.count > 0 && interestRateTextField.text!.count > 0 {
+            let z : Double = Double(interestTextField.text!)!
+            let r : Double = Double(interestRateTextField.text!)!
+            let str = InterestRate(zinsen: z, zinssatz: r)
+            capitalTextField.text = str.kapitalToString
+        }
+     
+        if interestRateTextField.text!.count > 0 && capitalTextField.text!.count > 0 {
+            let r : Double = Double(interestRateTextField.text!)!
+            let k : Double = Double(capitalTextField.text!)!
+            let str = InterestRate(zinssatz: r, kapital: k)
+            interestTextField.text = str.zinsenToString
+        }
     }
     
 }
