@@ -26,12 +26,32 @@ limitations under the License.
 
 import UIKit
 
-class InterestRateViewController: UIViewController {
+class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPointerInteractionDelegate {
 
+    @IBOutlet weak var interestTextField: UITextField!
+    @IBOutlet weak var capitalTextField: UITextField!
+    @IBOutlet weak var interestRateTextField: UITextField!
+    
+    @IBOutlet weak var calculateButton: UIButton!
+    
+    
     func configureView() {
         self.title = NSLocalizedString("Interest Rate calculation", comment: "Interest Rate calculation")
         
         hideKeyboardWhenTappedAround()
+        
+        interestTextField.becomeFirstResponder()
+        
+        interestTextField.delegate = self
+        capitalTextField.delegate = self
+        interestRateTextField.delegate = self
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: calculateButton, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewDidLoad() {
@@ -52,5 +72,7 @@ class InterestRateViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func calculateAction(_ sender: UIButton) {
+    }
+    
 }

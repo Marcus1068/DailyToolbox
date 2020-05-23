@@ -31,18 +31,21 @@ class InterestRate{
     
     // https://www.gut-erklaert.de/mathematik/zinsrechnung-formeln-beispiele.html
     
+    // interest
     var zinsen: Double
     
     var zinsenToString: String{
         return String(format: "%.2f", zinsen)
     }
     
+    // capital
     var kapital: Double
     
     var kapitalToString: String{
         return String(format: "%.2f", kapital)
     }
     
+    // interest rate
     var zinssatz: Double
     
     var zinssatzToString: String{

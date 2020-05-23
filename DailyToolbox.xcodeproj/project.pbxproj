@@ -27,7 +27,6 @@
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
 		2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */; };
 		2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB592A824082BD70020F152 /* BenchmarkViewController.swift */; };
-		2CBB791D24702D8300E201F4 /* DailyHelpTexts.help in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB791C24702D8300E201F4 /* DailyHelpTexts.help */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
 		2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866D23F6AA480011D886 /* MasterViewController.swift */; };
@@ -80,7 +79,6 @@
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		2CB592A824082BD70020F152 /* BenchmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkViewController.swift; sourceTree = "<group>"; };
-		2CBB791C24702D8300E201F4 /* DailyHelpTexts.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DailyHelpTexts.help; path = ../../Downloads/DailyHelpTexts.help; sourceTree = "<group>"; };
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBD866B23F6AA480011D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 		2CBD865D23F6AA480011D886 = {
 			isa = PBXGroup;
 			children = (
-				2CBB791C24702D8300E201F4 /* DailyHelpTexts.help */,
 				2C04CDB4245309E4009944AD /* Localizable.strings */,
 				2CBD866823F6AA480011D886 /* DailyToolbox */,
 				2CBD868123F6AA490011D886 /* DailyToolboxTests */,
@@ -315,7 +312,6 @@
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
 				2CBD867323F6AA480011D886 /* Main.storyboard in Resources */,
 				2C5A88F224548525006D0B4E /* InfoPlist.strings in Resources */,
-				2CBB791D24702D8300E201F4 /* DailyHelpTexts.help in Resources */,
 				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -206,7 +206,7 @@
 "oXp-gD-3Lu.text" = "xxx";
 
 /* Class = "UILabel"; text = "Interest Rate"; ObjectID = "oy2-dn-GDe"; */
-"oy2-dn-GDe.text" = "Zinssatz";
+"oy2-dn-GDe.text" = "Zinssatz berechnen";
 
 /* Class = "UILabel"; text = "Power Consumption"; ObjectID = "p9k-2w-E0s"; */
 "p9k-2w-E0s.text" = "Stromverbrauch berechnen";
