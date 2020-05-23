@@ -92,10 +92,10 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
     
     @objc func hoursOnTextFieldDidChange(_ textField: UITextField) {
         if textField.text!.count > 0{
-            /*let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            percentValueTextField.text = num.hexadecimal.uppercased()
-            baseValueTextField.text = num.binary */
+            let input : Int = Int(textField.text!)!
+            if input > 24{
+                textField.text = "24"
+            }
         }
         else{
             //percentValueTextField.text = ""

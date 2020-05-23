@@ -32,10 +32,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var informationOutlet: UIButton!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var privacyOutlet: UIButton!
+    @IBOutlet weak var osVersionLabel: UILabel!
     
     func configureView(){
         
         versionLabel.text = NSLocalizedString("Version", comment: "Version") + ": " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
+        
+        osVersionLabel.text = NSLocalizedString("Running on", comment: "Running on") + " " + DeviceInfo.getOSName() + " " + DeviceInfo.getOSVersion()
         
         // pointer interaction
         if #available(iOS 13.4, *) {
