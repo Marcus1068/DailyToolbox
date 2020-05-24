@@ -1378,9 +1378,9 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-YE-Lpn">
-                                <rect key="frame" x="16" y="572" width="232" height="30"/>
+                                <rect key="frame" x="16" y="572" width="269" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="232" id="UsO-mD-HqF"/>
+                                    <constraint firstAttribute="width" constant="269" id="UsO-mD-HqF"/>
                                     <constraint firstAttribute="height" constant="30" id="yoP-xw-A6g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
