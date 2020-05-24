@@ -91,8 +91,11 @@
 /* Class = "UILabel"; text = "Capital"; ObjectID = "cki-ut-cuI"; */
 "cki-ut-cuI.text" = "Kapital";
 
-/* Class = "UILabel"; text = "Enter any word (using dict.leo.org)"; ObjectID = "CmZ-bN-JcD"; */
-"CmZ-bN-JcD.text" = "Gibt etwas ein (dict.leo.org)";
+/* Class = "UILabel"; text = "Enter any word (via http://dict.leo.org)"; ObjectID = "CmZ-bN-JcD"; */
+"CmZ-bN-JcD.text" = "Übersetzung via (dict.leo.org)";
+
+/* Class = "UILabel"; text = "This software is available as Open Source on https://github.com/Marcus1068/DailyToolbox"; ObjectID = "DBE-a1-Xt1"; */
+"DBE-a1-Xt1.text" = "Diese Software ist als Open Source verfügbar bei https://github.com/Marcus1068/DailyToolbox";
 
 /* Class = "UILabel"; text = "(c) 2020 Marcus Deuß"; ObjectID = "dog-mq-Tdk"; */
 "dog-mq-Tdk.text" = "(c) 2020 Marcus Deuß";
@@ -206,7 +209,7 @@
 "MWW-2D-6q7.text" = "Miss die Geschwindigkeit deines Gerätes";
 
 /* Class = "UITextField"; placeholder = "cent"; ObjectID = "nW8-EJ-y9w"; */
-"nW8-EJ-y9w.placeholder" = "cent";
+"nW8-EJ-y9w.placeholder" = "Cent";
 
 /* Class = "UILabel"; text = "Please enter any decimal or roman number"; ObjectID = "nxd-6U-FVN"; */
 "nxd-6U-FVN.text" = "Bitte eine Dezimal oder Römische Zahl eingeben";
