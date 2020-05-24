@@ -5,7 +5,7 @@
 "0p6-4f-yH1.text" = "Entfernung zum Horizont";
 
 /* Class = "UILabel"; text = "Compute percentage based on two known parameters:"; ObjectID = "0XM-y9-sOw"; */
-"0XM-y9-sOw.text" = "Berechne Prozentsatz basierend auf zwei bekannten Parametern";
+"0XM-y9-sOw.text" = "Berechne den Prozentsatz basierend auf zwei bekannten Parametern";
 
 /* Class = "UILabel"; text = "Value"; ObjectID = "1Hn-va-h0d"; */
 "1Hn-va-h0d.text" = "Wert";
@@ -155,7 +155,7 @@
 "HgF-Lm-5Ua.normalTitle" = "Zufallszahlen (Swift)";
 
 /* Class = "UILabel"; text = "Please enter any kind of temperature"; ObjectID = "ibu-W7-YXj"; */
-"ibu-W7-YXj.text" = "Bitte einen Temperaturwert eingeben";
+"ibu-W7-YXj.text" = "Bitte einen Temperaturwert eingeben zur Umrechnung";
 
 /* Class = "UITextField"; placeholder = "Roman number"; ObjectID = "iT6-nk-oa0"; */
 "iT6-nk-oa0.placeholder" = "Römische Zahl";
@@ -212,7 +212,7 @@
 "nW8-EJ-y9w.placeholder" = "Cent";
 
 /* Class = "UILabel"; text = "Please enter any decimal or roman number"; ObjectID = "nxd-6U-FVN"; */
-"nxd-6U-FVN.text" = "Bitte eine Dezimal oder Römische Zahl eingeben";
+"nxd-6U-FVN.text" = "Bitte eine Dezimalzahl oder Römische Zahl eingeben";
 
 /* Class = "UIButton"; normalTitle = "Privacy"; ObjectID = "oS2-y3-WE4"; */
 "oS2-y3-WE4.normalTitle" = "Datenschutz";
@@ -305,7 +305,7 @@
 "v4F-xJ-qhS.text" = "0.0";
 
 /* Class = "UILabel"; text = "Conversion of decimal to hexadecimal and binary numbers"; ObjectID = "vTs-ZK-YhG"; */
-"vTs-ZK-YhG.text" = "Dezimal, Hex und Binarärzahlen";
+"vTs-ZK-YhG.text" = "Dezimal, Hex und Binarärzahlen eingeben zur Umrechnung";
 
 /* Class = "UITextField"; placeholder = "interest rate"; ObjectID = "w8j-BI-D9r"; */
 "w8j-BI-D9r.placeholder" = "Zinssatz";

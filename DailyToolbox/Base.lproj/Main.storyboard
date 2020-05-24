@@ -1363,10 +1363,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="faj-Aa-JuR">
-                                <rect key="frame" x="16" y="179" width="343" height="162"/>
+                                <rect key="frame" x="16" y="234" width="343" height="141"/>
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="Jav-Pj-2K4"/>
+                                    <constraint firstAttribute="height" constant="141" id="Jav-Pj-2K4"/>
                                 </constraints>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="599569200">
                                     <!--2020-01-01 11:00:00 +0000-->
@@ -1421,9 +1421,19 @@
                                     <action selector="easterButton:" destination="6jy-FH-TDM" eventType="touchUpInside" id="mP7-2F-Yk4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose any future date:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-AU-sLZ">
+                                <rect key="frame" x="16" y="180" width="343" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="gwy-5K-blD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="2MF-AU-sLZ" secondAttribute="trailing" constant="16" id="0DK-h7-vcG"/>
                             <constraint firstItem="iUH-EN-kwK" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="Aqj-DQ-XJ4"/>
                             <constraint firstItem="bd5-k7-4mX" firstAttribute="top" secondItem="iUH-EN-kwK" secondAttribute="bottom" constant="21" id="F68-Uh-iLE"/>
                             <constraint firstItem="gMd-gS-xrZ" firstAttribute="top" secondItem="qVw-hp-lIM" secondAttribute="top" constant="37" id="Hev-7g-7zs"/>
@@ -1432,14 +1442,16 @@
                             <constraint firstItem="gMd-gS-xrZ" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="M23-MI-gdV"/>
                             <constraint firstItem="tt7-YE-Lpn" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="P3R-gB-aPc"/>
                             <constraint firstItem="DZP-KU-t2o" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="d5X-kX-U5d"/>
+                            <constraint firstItem="2MF-AU-sLZ" firstAttribute="top" secondItem="gMd-gS-xrZ" secondAttribute="bottom" constant="31" id="dPh-VA-GIl"/>
                             <constraint firstItem="bd5-k7-4mX" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="duP-V4-sN4"/>
                             <constraint firstItem="DZP-KU-t2o" firstAttribute="top" secondItem="bd5-k7-4mX" secondAttribute="bottom" constant="8" id="glB-M3-gAF"/>
                             <constraint firstItem="faj-Aa-JuR" firstAttribute="trailing" secondItem="gMd-gS-xrZ" secondAttribute="trailing" id="kDf-Iq-1od"/>
-                            <constraint firstItem="iUH-EN-kwK" firstAttribute="top" secondItem="faj-Aa-JuR" secondAttribute="bottom" constant="50" id="leo-3V-yIh"/>
+                            <constraint firstItem="iUH-EN-kwK" firstAttribute="top" secondItem="faj-Aa-JuR" secondAttribute="bottom" constant="16" id="leo-3V-yIh"/>
                             <constraint firstItem="tt7-YE-Lpn" firstAttribute="top" secondItem="DZP-KU-t2o" secondAttribute="bottom" constant="26" id="qvU-z2-RCD"/>
+                            <constraint firstItem="2MF-AU-sLZ" firstAttribute="leading" secondItem="qVw-hp-lIM" secondAttribute="leading" constant="16" id="tAl-do-n4c"/>
                             <constraint firstItem="faj-Aa-JuR" firstAttribute="leading" secondItem="gMd-gS-xrZ" secondAttribute="leading" id="tuS-aK-VsY"/>
                             <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bd5-k7-4mX" secondAttribute="trailing" symbolic="YES" id="vlb-LV-1ic"/>
-                            <constraint firstItem="faj-Aa-JuR" firstAttribute="top" secondItem="gMd-gS-xrZ" secondAttribute="bottom" constant="30" id="zM3-2s-uLY"/>
+                            <constraint firstItem="faj-Aa-JuR" firstAttribute="top" secondItem="gMd-gS-xrZ" secondAttribute="bottom" constant="85" id="zM3-2s-uLY"/>
                             <constraint firstItem="qVw-hp-lIM" firstAttribute="trailing" secondItem="iUH-EN-kwK" secondAttribute="trailing" constant="16" id="zig-ef-c3m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qVw-hp-lIM"/>

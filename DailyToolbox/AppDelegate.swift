@@ -51,6 +51,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    // macCatalyst: Create menu
+    #if targetEnvironment(macCatalyst)
+    
+    var menuController: MenuController!
+    
+    /** Add the various menus to the menu bar.
+        The system only asks UIApplication and UIApplicationDelegate for the main menus.
+        Main menus appear regardless of who is in the responder chain.
+    */
+    
+    
+    override func buildMenu(with builder: UIMenuBuilder) {
+        //Swift.debugPrint(#function)
+        // Swift.debugPrint("City command = \(String(describing: value))")
+        
+        
+        /** First check if the builder object is using the main system menu, which is the main menu bar.
+            If you want to check if the builder is for a contextual menu, check for: UIMenuSystem.context
+         */
+        if builder.system == .main {
+            menuController = MenuController(with: builder)
+        }
+        
+    }
+    
+    
+    
+    #endif
 }
 

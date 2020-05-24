@@ -124,7 +124,6 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
         return nextEaster!
     }
     
-    
     // MARK: actions
     
     @IBAction func easterButton(_ sender: UIButton) {
@@ -227,16 +226,5 @@ class CalendarCalculationViewController: UIViewController, UIPointerInteractionD
         let result = calendar.calculateDaysBetweenTwoDates(start: Date(), end: date)
         daysLabel.text = "\(result) " + NSLocalizedString("days until event", comment: "days until event")
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
