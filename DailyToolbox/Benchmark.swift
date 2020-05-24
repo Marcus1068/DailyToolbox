@@ -70,8 +70,8 @@ class Benchmark{
         
         var s: String = "Benchmark test with Swift 5"
         
-        // more than 20 times will kill ios simulator
-        for _ in 1...20{
+        // more than 25 times will kill ios simulator
+        for _ in 1...25{
             s += s
         }
         

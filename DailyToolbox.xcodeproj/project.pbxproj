@@ -12,6 +12,7 @@
 		2C04CDB2245309E4009944AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C04CDB4245309E4009944AD /* Localizable.strings */; };
 		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
+		2C2A8376247AEF830076EEDE /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */; };
 		2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */; };
 		2C5A88F224548525006D0B4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F024548525006D0B4E /* InfoPlist.strings */; };
 		2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F42455913A006D0B4E /* Roman german.rtf */; };
@@ -66,6 +67,7 @@
 		2C04CDB5245309E7009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C5A88F124548525006D0B4E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				2CA494A6245227F700E61CC5 /* AboutViewController.swift */,
 				2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
 				2C2A8372247A960A0076EEDE /* MenuController.swift */,
+				2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
 				2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */,
+				2C2A8376247AEF830076EEDE /* SpinnerViewController.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */,
 				2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */,

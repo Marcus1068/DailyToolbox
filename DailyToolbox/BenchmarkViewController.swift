@@ -81,21 +81,68 @@ class BenchmarkViewController: UIViewController, UIPointerInteractionDelegate {
     }
     
     @IBAction func stringConcatAction(_ sender: UIButton) {
-        let test = Benchmark.benchmarkString()
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
         
-        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+        DispatchQueue.main.async() {
+            // here comes long running function
+            let test = Benchmark.benchmarkString()
+            
+            self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     @IBAction func randomArcAction(_ sender: UIButton) {
-        let test = Benchmark.benchmarkRandomNumbersArc4(range: arcNumber)
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
         
-        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+        DispatchQueue.main.async() {
+            // here comes long running function
+            let test = Benchmark.benchmarkRandomNumbersArc4(range: self.arcNumber)
+            
+            self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     @IBAction func randomSwiftAction(_ sender: UIButton) {
-        let test = Benchmark.benchmarkRandomNumbersSwift(range: swiftNumber)
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
         
-        resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+        DispatchQueue.main.async() {
+            // here comes long running function
+            let test = Benchmark.benchmarkRandomNumbersSwift(range: self.swiftNumber)
+            
+            self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
+        
     }
     
     
