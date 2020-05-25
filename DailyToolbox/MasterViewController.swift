@@ -44,7 +44,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     var detailViewController: PercentageViewController? = nil
 
     // number of static table cells in each section, must be changed when new section or cell will be added
-    var sectionInfo  = [7, 3, 2]
+    var sectionInfo  = [7, 4, 2]
     
         
     override func viewDidLoad() {
@@ -437,6 +437,18 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
                 //detailViewController = controller
             }
         }
+        
+        if segue.identifier == "showBenchmarkPageView" {
+            if let _ = tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let controller = (segue.destination as! UINavigationController).topViewController as! BenchmarkPageViewController
+                //controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                //detailViewController = controller
+            }
+        }
+        
         
     }
 

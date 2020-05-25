@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="842.42878560719646"/>
+            <point key="canvasLocation" x="1839.2" y="842.42878560719646"/>
         </scene>
         <!--Temperature View Controller-->
         <scene sceneID="F6y-gs-4Xh">
@@ -690,7 +690,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-G9-WzZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1647.2" y="887.40629685157433"/>
+            <point key="canvasLocation" x="2586.4000000000001" y="887.40629685157433"/>
         </scene>
         <!--Decimal Roman Numbers View Controller-->
         <scene sceneID="0iW-nM-1Az">
@@ -799,7 +799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGA-s0-DcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4136.8000000000002" y="933.28335832083962"/>
+            <point key="canvasLocation" x="5076" y="933.28335832083962"/>
         </scene>
         <!--Translation View Controller-->
         <scene sceneID="lSQ-wS-HWx">
@@ -850,7 +850,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEH-PA-giY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4999.1999999999998" y="320.68965517241384"/>
+            <point key="canvasLocation" x="5938.3999999999996" y="320.68965517241384"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -1131,12 +1131,37 @@
                                             <segue destination="FNj-3z-7JQ" kind="showDetail" identifier="showBenchmark" id="OWx-BD-oVz"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="vqG-fB-lwm" imageView="qIi-V5-tUG" style="IBUITableViewCellStyleDefault" id="YdH-o4-T5C">
+                                        <rect key="frame" x="0.0" y="519" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YdH-o4-T5C" id="wQ4-Sv-kEQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="New benchmark" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vqG-fB-lwm">
+                                                    <rect key="frame" x="55" y="0.0" width="304" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="clock" catalog="system" id="qIi-V5-tUG">
+                                                    <rect key="frame" x="18" y="12" width="20" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <connections>
+                                            <segue destination="XQ8-Si-pit" kind="showDetail" identifier="showBenchmarkPageView" id="LGN-Xv-JXp"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Other" id="t86-gq-Lv9">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="p9k-2w-E0s" imageView="FRu-Bn-MVU" style="IBUITableViewCellStyleDefault" id="5fb-fI-ycq">
-                                        <rect key="frame" x="0.0" y="575" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="618.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5fb-fI-ycq" id="n2e-na-Ogl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1161,21 +1186,21 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="6N1-es-SGq" imageView="m97-7K-MNW" style="IBUITableViewCellStyleDefault" id="TFQ-pY-bOc">
-                                        <rect key="frame" x="0.0" y="618.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="662" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TFQ-pY-bOc" id="xYS-5W-cLp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="About DailyToolbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6N1-es-SGq">
-                                                    <rect key="frame" x="75" y="0.0" width="284" height="43.5"/>
+                                                    <rect key="frame" x="67" y="0.0" width="300" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="about Icon" id="m97-7K-MNW">
-                                                    <rect key="frame" x="16" y="0.0" width="44" height="43.5"/>
+                                                    <rect key="frame" x="8" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -1467,7 +1492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQJ-UA-bhL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="397.15142428785612"/>
+            <point key="canvasLocation" x="724" y="397.15142428785612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -1483,7 +1508,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893.60000000000002" y="128.18590704647679"/>
+            <point key="canvasLocation" x="1799" y="215"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3tn-Hc-BDI">
@@ -1501,7 +1526,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3n-8n-3C9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415.1999999999998" y="86.806596701649184"/>
+            <point key="canvasLocation" x="3354.4000000000001" y="86.806596701649184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eau-ix-nzc">
@@ -1836,7 +1861,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaM-cV-hPH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1647.2" y="128.18590704647679"/>
+            <point key="canvasLocation" x="2586.4000000000001" y="128.18590704647679"/>
         </scene>
         <!--Power Consumption View Controller-->
         <scene sceneID="gwA-ob-TUm">
@@ -2083,6 +2108,71 @@
             </objects>
             <point key="canvasLocation" x="1560.8" y="-2068.5157421289355"/>
         </scene>
+        <!--Benchmark Page1 View Controller-->
+        <scene sceneID="N8b-uq-h5s">
+            <objects>
+                <viewController restorationIdentifier="Page1" storyboardIdentifier="Page1" id="Yai-Da-34Y" customClass="BenchmarkPage1ViewController" customModule="DailyToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UmD-ii-kOe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benchmark Integer numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUd-mM-ivG">
+                                <rect key="frame" x="16" y="20" width="217" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="HTR-yb-nO3"/>
+                                    <constraint firstAttribute="width" constant="217" id="TdY-7E-P4c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oUd-mM-ivG" firstAttribute="leading" secondItem="zPP-kZ-fF8" secondAttribute="leading" constant="16" id="MMA-pn-3gK"/>
+                            <constraint firstItem="oUd-mM-ivG" firstAttribute="top" secondItem="zPP-kZ-fF8" secondAttribute="top" constant="20" id="WYY-L5-yvr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zPP-kZ-fF8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ObM-tW-bQj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2658.4000000000001" y="-446.62668665667172"/>
+        </scene>
+        <!--Benchmark Page2 View Controller-->
+        <scene sceneID="7G6-14-5Fi">
+            <objects>
+                <viewController restorationIdentifier="Page2" storyboardIdentifier="Page2" id="rIe-vS-Nc8" customClass="BenchmarkPage2ViewController" customModule="DailyToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OP3-B8-nTT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="zwei" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34m-Zd-fuN">
+                                <rect key="frame" x="138" y="255" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="BDx-7h-wpy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKm-iB-IlK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1957" y="-445"/>
+        </scene>
+        <!--Benchmark Page View Controller-->
+        <scene sceneID="0e2-oE-bVK">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="6mP-hF-7Ph" customClass="BenchmarkPageViewController" customModule="DailyToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UU6-Ev-XMk"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDt-Qm-hT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1476" y="334.18290854572717"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="0XO-Vv-lvG">
             <objects>
@@ -2099,7 +2189,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydv-kZ-ec4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1154.4000000000001" y="397.15142428785612"/>
+            <point key="canvasLocation" x="-215.19999999999999" y="397.15142428785612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u3k-FD-Umh">
@@ -2117,7 +2207,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="my0-ew-4Fb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3197.5999999999999" y="933.28335832083962"/>
+            <point key="canvasLocation" x="4136.8000000000002" y="933.28335832083962"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bZl-V3-HB7">
@@ -2155,9 +2245,28 @@
             </objects>
             <point key="canvasLocation" x="3553" y="-2305"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KwC-zj-BXE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XQ8-Si-pit" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k4a-dJ-IPO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Rw-UJ-kLF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6mP-hF-7Ph" kind="relationship" relationship="rootViewController" id="vRD-r1-gRi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nwJ-M0-hDP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2415.1999999999998" y="334.18290854572717"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
+        <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="about Icon" width="512" height="512"/>
