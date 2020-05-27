@@ -26,6 +26,7 @@
 		2C9312B3247BDE3000CC0192 /* BenchmarkPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */; };
 		2C9312B5247BDF9400CC0192 /* BenchmarkPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */; };
 		2C9312B7247BDFA600CC0192 /* BenchmarkPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */; };
+		2C9312B9247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */; };
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
 		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
 		2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA494A6245227F700E61CC5 /* AboutViewController.swift */; };
@@ -84,6 +85,7 @@
 		2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPageViewController.swift; sourceTree = "<group>"; };
 		2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage1ViewController.swift; sourceTree = "<group>"; };
 		2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage2ViewController.swift; sourceTree = "<group>"; };
+		2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage3ViewController.swift; sourceTree = "<group>"; };
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2CA494A6245227F700E61CC5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */,
 				2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */,
 				2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */,
+				2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
 				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
+				2C9312B9247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift in Sources */,
 				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
 				2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */,
 				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,

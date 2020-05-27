@@ -81,4 +81,73 @@ class Benchmark{
         
         return Float(seconds)
     }
+    
+    // add random double numbers
+    static func benchmarkAddition(range: Int) -> Float{
+        let start = Date()
+        
+        var sum = 0.0
+        for _ in 1...range{
+            sum += Double.random(in: 0..<1)
+        }
+        
+        let end = Date()
+        
+        let seconds = end.timeIntervalSince(start)
+        
+        return Float(seconds)
+    }
+    
+    // bubblesort algorithm
+    // usage: var array = [4,2,1,3]
+
+    //print("before:",array)
+    //print("after:", bubbleSort(array))
+    //print("after:", bubbleSort(array, <))
+    //print("after:", bubbleSort(array, >))
+    static func bubbleSort<T> (_ elements: [T]) -> [T] where T: Comparable {
+      return bubbleSort(elements, <)
+    }
+
+    static func bubbleSort<T> (_ elements: [T], _ comparison: (T,T) -> Bool) -> [T]  {
+        var array = elements
+        for i in 0..<array.count {
+            for j in 1..<array.count - i{
+                if comparison(array[j], array[j - 1]) {
+                    let tmp = array[j - 1]
+                    array[j - 1] = array[j]
+                    array[j] = tmp
+                }
+            }
+        }
+      
+        return array
+    }
+    
+    // racecar as example
+    static func isPalindrome(_ str: String) -> Bool {
+      let strippedString = str.replacingOccurrences(of: "\\W", with: "", options: .regularExpression, range: nil)
+      let length = strippedString.count
+
+      if length > 1 {
+        return palindrome(strippedString.lowercased(), left: 0, right: length - 1)
+      }
+
+      return false
+    }
+
+    static private func palindrome(_ str: String, left: Int, right: Int) -> Bool {
+      if left >= right {
+        return true
+      }
+
+      let lhs = str[str.index(str.startIndex, offsetBy: left)]
+      let rhs = str[str.index(str.startIndex, offsetBy: right)]
+
+      if lhs != rhs {
+        return false
+      }
+
+      return palindrome(str, left: left + 1, right: right - 1)
+    }
 }

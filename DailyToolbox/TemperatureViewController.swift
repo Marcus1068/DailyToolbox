@@ -60,7 +60,10 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     }
     
     @objc func celsiusTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
+        
         if textField.text!.count > 0{
+            
             let input : Double = Double(textField.text!)!
             let value = Temperature(celsius: input)
             fahrenheitTextField.text = value.fahrenheitToString
@@ -73,6 +76,8 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     }
     
     @objc func fahrenheitTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
+        
         if textField.text!.count > 0{
             let input : Double = Double(textField.text!)!
             let value = Temperature(fahrenheit: input)
@@ -86,6 +91,8 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     }
     
     @objc func kelvinTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
+        
         if textField.text!.count > 0{
             let input : Double = Double(textField.text!)!
             let value = Temperature(kelvin: input)
@@ -100,46 +107,32 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     
     // check for valid keyboard input characters
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == celsiusTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
-            
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
         
-        if textField == fahrenheitTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
+        let allowedCharacters = CharacterSet(charactersIn:"0123456789.,").inverted
             
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
+        let components = string.components(separatedBy: allowedCharacters)
+        let filtered = components.joined(separator: "")
         
-        if textField == kelvinTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
-            
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
+        if string == filtered {
+            return true
+        } else {
+            return false
         }
-        
-        return true
     }
 
+}
+
+extension NumberFormatter {
+    convenience init(style: Style) {
+        self.init()
+        self.numberStyle = style
+    }
+}
+extension Formatter {
+    static let currency = NumberFormatter(style: .currency)
+}
+extension FloatingPoint {
+    var currency: String {
+        return Formatter.currency.string(for: self) ?? ""
+    }
 }
