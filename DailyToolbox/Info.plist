@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Need access to Calendar</string>
+	<string>Please allow access to your Calendar for calendar module 'how many days until...'</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Your location is required for horizon calculation</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

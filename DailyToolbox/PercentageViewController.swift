@@ -82,11 +82,9 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     }
     
     @objc func percentTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         if textField.text!.count > 0{
-            /*let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            percentValueTextField.text = num.hexadecimal.uppercased()
-            baseValueTextField.text = num.binary */
+            
         }
         else{
             percentValueTextField.text = ""
@@ -95,11 +93,9 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     }
     
     @objc func percentValueTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         if textField.text!.count > 0{
-            /*let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            percentValueTextField.text = num.hexadecimal.uppercased()
-            baseValueTextField.text = num.binary */
+            
         }
         else{
             percentValueTextField.text = ""
@@ -108,11 +104,9 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     }
 
     @objc func baseValueTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         if textField.text!.count > 0{
-            /*let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            percentValueTextField.text = num.hexadecimal.uppercased()
-            baseValueTextField.text = num.binary */
+            
         }
         else{
             percentValueTextField.text = ""
@@ -122,46 +116,16 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     
     // check for valid keyboard input characters
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == percentTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
+        let allowedCharacters = CharacterSet(charactersIn:"0123456789.,").inverted
             
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
+        let components = string.components(separatedBy: allowedCharacters)
+        let filtered = components.joined(separator: "")
         
-        if textField == percentValueTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
-            
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
+        if string == filtered {
+            return true
+        } else {
+            return false
         }
-        
-        if textField == baseValueTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
-            
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
-        
-        return true
     }
 
     @IBAction func calculateAction(_ sender: UIButton) {

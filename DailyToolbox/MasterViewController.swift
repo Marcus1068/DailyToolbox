@@ -44,7 +44,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     var detailViewController: PercentageViewController? = nil
 
     // number of static table cells in each section, must be changed when new section or cell will be added
-    var sectionInfo  = [7, 4, 2]
+    var sectionInfo  = [7, 3, 2]
     
         
     override func viewDidLoad() {

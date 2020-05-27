@@ -117,6 +117,8 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     */
     
     @objc func eyeLevelTextFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
+        
         if textField.text!.count > 0{
             let input : Double = Double(textField.text!)!
             let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
@@ -130,20 +132,16 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     
     // check for valid keyboard input characters
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == eyeLevelTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
+        let allowedCharacters = CharacterSet(charactersIn:"0123456789.,").inverted
             
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
+        let components = string.components(separatedBy: allowedCharacters)
+        let filtered = components.joined(separator: "")
         
-        return true
+        if string == filtered {
+            return true
+        } else {
+            return false
+        }
     }
 
 }

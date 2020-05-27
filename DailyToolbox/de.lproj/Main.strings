@@ -16,8 +16,14 @@
 /* Class = "UILabel"; text = "year:"; ObjectID = "1tS-Qh-4WB"; */
 "1tS-Qh-4WB.text" = "Jahr:";
 
+/* Class = "UILabel"; text = "value"; ObjectID = "1wa-hG-mga"; */
+"1wa-hG-mga.text" = "Wert";
+
 /* Class = "UILabel"; text = "distance"; ObjectID = "2i9-nY-9de"; */
 "2i9-nY-9de.text" = "Entfernung";
+
+/* Class = "UILabel"; text = "Please choose any future date:"; ObjectID = "2MF-AU-sLZ"; */
+"2MF-AU-sLZ.text" = "Bitte ein zukünftiges Datum wählen:";
 
 /* Class = "UITableViewSection"; headerTitle = "Number stuff"; ObjectID = "3wi-CL-m85"; */
 "3wi-CL-m85.headerTitle" = "Module";
@@ -27,6 +33,9 @@
 
 /* Class = "UITextField"; placeholder = "Watt"; ObjectID = "6be-wO-fWW"; */
 "6be-wO-fWW.placeholder" = "Watt";
+
+/* Class = "UIButton"; normalTitle = "Random (Swift)"; ObjectID = "6Ha-kN-qQa"; */
+"6Ha-kN-qQa.normalTitle" = "Zufall(Swift)";
 
 /* Class = "UILabel"; text = "About DailyToolbox"; ObjectID = "6N1-es-SGq"; */
 "6N1-es-SGq.text" = "Über DailyToolbox";
@@ -48,6 +57,9 @@
 
 /* Class = "UITableViewSection"; headerTitle = "Misc"; ObjectID = "24z-nM-OeC"; */
 "24z-nM-OeC.headerTitle" = "Diverses";
+
+/* Class = "UIButton"; normalTitle = "Random (arc)"; ObjectID = "26Y-Q1-Hd5"; */
+"26Y-Q1-Hd5.normalTitle" = "Zufallszahlen (Arc)";
 
 /* Class = "UILabel"; text = "Altitude:"; ObjectID = "96k-F4-DSf"; */
 "96k-F4-DSf.text" = "Höhe:";
@@ -85,6 +97,9 @@
 /* Class = "UITextField"; placeholder = "Decimal"; ObjectID = "bXg-DQ-X48"; */
 "bXg-DQ-X48.placeholder" = "Dezimal";
 
+/* Class = "UIButton"; normalTitle = "Random (Swift)"; ObjectID = "C7F-tO-gYW"; */
+"C7F-tO-gYW.normalTitle" = "Zufallszahlen (Swift)";
+
 /* Class = "UILabel"; text = "Hexadecimal"; ObjectID = "ce2-Dc-iJl"; */
 "ce2-Dc-iJl.text" = "Hexadezimal";
 
@@ -103,7 +118,7 @@
 /* Class = "UILabel"; text = "Percentage"; ObjectID = "dRW-Jl-4UG"; */
 "dRW-Jl-4UG.text" = "Prozenzsatz";
 
-/* Class = "UILabel"; text = "Overview:"; ObjectID = "dSy-23-A0N"; */
+/* Class = "UILabel"; text = "Overview cost per:"; ObjectID = "dSy-23-A0N"; */
 "dSy-23-A0N.text" = "Überblick:";
 
 /* Class = "UIButton"; normalTitle = "Next Easter"; ObjectID = "DZP-KU-t2o"; */
@@ -137,7 +152,7 @@
 "GGx-Kj-rK9.text" = "Letztes Update:";
 
 /* Class = "UILabel"; text = "How many days until:"; ObjectID = "gMd-gS-xrZ"; */
-"gMd-gS-xrZ.text" = "Wie viele Tage vergehen bis:";
+"gMd-gS-xrZ.text" = "Wie viele Tage verbleiben bis:";
 
 /* Class = "UILabel"; text = "Temperature conversion"; ObjectID = "GMK-9w-KHx"; */
 "GMK-9w-KHx.text" = "Temperaturumrechnung";
@@ -170,7 +185,7 @@
 "Jg6-4o-FCi.text" = "Augenhöhe:";
 
 /* Class = "UIButton"; normalTitle = "Random (arc)"; ObjectID = "jsO-8D-ZZc"; */
-"jsO-8D-ZZc.normalTitle" = "Zufallszahl (arc)";
+"jsO-8D-ZZc.normalTitle" = "Zufallszahlen (Arc)";
 
 /* Class = "UILabel"; text = "Kelvin"; ObjectID = "Jxe-Xr-dTb"; */
 "Jxe-Xr-dTb.text" = "Kelvin";
@@ -184,6 +199,9 @@
 /* Class = "UIButton"; normalTitle = "Strings"; ObjectID = "L46-Gk-eWs"; */
 "L46-Gk-eWs.normalTitle" = "Strings";
 
+/* Class = "UIButton"; normalTitle = "Random (arc)"; ObjectID = "l96-0R-OrF"; */
+"l96-0R-OrF.normalTitle" = "Zufallszahlen (Arc)";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "LBU-jM-fHZ"; */
 "LBU-jM-fHZ.text" = "Label";
 
@@ -192,6 +210,9 @@
 
 /* Class = "UILabel"; text = "xxx"; ObjectID = "lT3-D1-LZ5"; */
 "lT3-D1-LZ5.text" = "xxx";
+
+/* Class = "UILabel"; text = "Result:"; ObjectID = "Lxb-cl-MZa"; */
+"Lxb-cl-MZa.text" = "Ergebnis:";
 
 /* Class = "UILabel"; text = "Roman Number Conversion"; ObjectID = "lXV-5A-x0R"; */
 "lXV-5A-x0R.text" = "Römische Zahlen Umrechnung";
