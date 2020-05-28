@@ -110,8 +110,8 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        // store latest icloud user data when app starts
-        //UserInfo.eyeLevel = eyeLevelTextField.text!
+        
+        // store data to iCloud
         NSUbiquitousKeyValueStore().synchronize()
     }
 

@@ -61,6 +61,8 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
         
         hideKeyboardWhenTappedAround()
         
+        costPerKwhTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyCostWatt)
+        
         // pointer interaction
         if #available(iOS 13.4, *) {
             customPointerInteraction(on: calculateButton, pointerInteractionDelegate: self)
@@ -76,18 +78,17 @@ class PowerConsumptionViewController: UIViewController, UITextFieldDelegate, UIP
         configureView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // store data to iCloud
+        NSUbiquitousKeyValueStore().synchronize()
+    }
+    
 
     @objc func costPerKwhTextFieldDidChange(_ textField: UITextField) {
-        if textField.text!.count > 0{
-            /*let input : Int = Int(textField.text!)!
-            let num = ConvertNumbers(decimal: input)
-            percentValueTextField.text = num.hexadecimal.uppercased()
-            baseValueTextField.text = num.binary */
-        }
-        else{
-            //percentValueTextField.text = ""
-            //baseValueTextField.text = ""
-        }
+        // write to iCloud
+        NSUbiquitousKeyValueStore.default.set(textField.text!, forKey: Global.keyCostWatt)
     }
     
     @objc func hoursOnTextFieldDidChange(_ textField: UITextField) {
