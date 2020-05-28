@@ -89,6 +89,9 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
         
         eyeLevelTextField.addTarget(self, action: #selector(HorizonViewController.eyeLevelTextFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
+        // read from iCloud
+        eyeLevelTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyEyeLevel)
+        
         if eyeLevelTextField.text!.count > 0{
             let input : Double = Double(eyeLevelTextField.text!)!
             let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)
@@ -105,6 +108,12 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
         configureView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // store latest icloud user data when app starts
+        //UserInfo.eyeLevel = eyeLevelTextField.text!
+        NSUbiquitousKeyValueStore().synchronize()
+    }
 
     /*
     // MARK: - Navigation
@@ -135,6 +144,9 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
             let dist = ComputeHorizon(eyeLevel: 0.0, altitude: altitude)
             horizonDistance = dist.viewDistanceToString
         }
+        
+        // write to iCloud
+        NSUbiquitousKeyValueStore.default.set(textField.text!, forKey: Global.keyEyeLevel)
     }
     
     // check for valid keyboard input characters

@@ -70,6 +70,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        // store latest icloud user data when app starts
+        NSUbiquitousKeyValueStore().synchronize()
     }
 
     // MARK: - Split view

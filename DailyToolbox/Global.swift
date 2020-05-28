@@ -68,6 +68,10 @@ class Global{
     static let numberWrongMessage = NSLocalizedString("Please enter correct number", comment: "Please enter correct number")
     static let numberWrongTitle = NSLocalizedString("Number invalid", comment: "Number invalid")
     
+    static let keyEyeLevel = "eyeLevel"
+    static let keyCostWatt = "costWatt"
+    
+    
     /// read a rtf file from main bundle and return as attributed string for putting into UITextfield
     ///
     /// - Parameter fileName: the rtf filename used in main bundle
