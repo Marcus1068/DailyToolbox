@@ -142,6 +142,9 @@
 /* not implemented yet */
 "not implemented yet" = "noch nicht implementiert";
 
+/* Number invalid */
+"Number invalid" = "Zahl ungültig";
+
 /* number to big, max 3999 */
 "number to big, max 3999" = "Zahl zu groß, maximal 3999";
 
@@ -157,8 +160,17 @@
 /* Please check your email configuration */
 "Please check your email configuration" = "Bitte prüfe Deine Email Konfiguration";
 
+/* Please enter correct number */
+"Please enter correct number" = "Bitte eine korrekte Zahl eingeben";
+
+/* Please wait */
+"Please wait..." = "Bitte warten...";
+
 /* Power Consumption Calculation */
 "Power Consumption Calculation" = "Stromverbrauch berechnen";
+
+/* Preferences */
+"Preferences" = "Einstellungen";
 
 /* Privacy */
 "Privacy" = "Datenschutz";

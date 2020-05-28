@@ -62,7 +62,14 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     @objc func celsiusTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
-        if textField.text!.count > 0 && Double(textField.text!) != nil{
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
+        if textField.text!.count > 0 {
             
             let input : Double = Double(textField.text!)!
             let value = Temperature(celsius: input)
@@ -78,7 +85,14 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     @objc func fahrenheitTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
-        if textField.text!.count > 0 && Double(textField.text!) != nil{
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
+        if textField.text!.count > 0 {
             let input : Double = Double(textField.text!)!
             let value = Temperature(fahrenheit: input)
             celsiusTextField.text = value.celsiusToString
@@ -93,7 +107,14 @@ class TemperatureViewController: UIViewController, UITextFieldDelegate{
     @objc func kelvinTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
-        if textField.text!.count > 0 && Double(textField.text!) != nil{
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
+        if textField.text!.count > 0 {
             let input : Double = Double(textField.text!)!
             let value = Temperature(kelvin: input)
             celsiusTextField.text = value.celsiusToString

@@ -129,17 +129,24 @@ class PercentageViewController: UIViewController, UITextFieldDelegate, UIPointer
     }
 
     @IBAction func calculateAction(_ sender: UIButton) {
+        guard Double(percentTextField.text!) != nil else {
+            displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            return
+        }
+        guard Double(percentValueTextField.text!) != nil else {
+            displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            return
+        }
+        guard Double(baseValueTextField.text!) != nil else {
+            displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            return
+        }
         
         if percentTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {
-            if Double(percentTextField.text!) != nil && Double(percentValueTextField.text!) != nil{
-                let p : Double = Double(percentValueTextField.text!)!
-                let v : Double = Double(percentTextField.text!)!
-                let str = Percent(prozentwert: p, prozentsatz: v)
-                baseValueTextField.text = str.grundWertToString
-            }
-            else{
-                displayAlert(title: "ungültige Zahl", message: "Zahl falsch", buttonText: "OK")
-            }
+            let p : Double = Double(percentValueTextField.text!)!
+            let v : Double = Double(percentTextField.text!)!
+            let str = Percent(prozentwert: p, prozentsatz: v)
+            baseValueTextField.text = str.grundWertToString
         }
         
         if baseValueTextField.text!.count > 0 && percentValueTextField.text!.count > 0 {

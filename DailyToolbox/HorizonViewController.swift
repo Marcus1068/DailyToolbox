@@ -119,6 +119,13 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
     @objc func eyeLevelTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
         if textField.text!.count > 0{
             let input : Double = Double(textField.text!)!
             let dist = ComputeHorizon(eyeLevel: input, altitude: altitude)

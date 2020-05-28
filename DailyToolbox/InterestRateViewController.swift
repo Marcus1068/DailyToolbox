@@ -75,6 +75,13 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
     @objc func interestTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
         if textField.text!.count > 0{
             
         }
@@ -87,6 +94,13 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
     @objc func capitalTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
         if textField.text!.count > 0{
             
         }
@@ -98,6 +112,14 @@ class InterestRateViewController: UIViewController, UITextFieldDelegate, UIPoint
     
     @objc func interestRateTextFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
+        
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
         if textField.text!.count > 0{
             
         }

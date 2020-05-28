@@ -88,6 +88,13 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     @objc func currencyTextFieldDidChange(_ textField: UITextField) {
+        guard Double(textField.text!) != nil else {
+            if textField.text!.count > 0 {
+                displayAlert(title: Global.numberWrongTitle, message: Global.numberWrongMessage, buttonText: Global.ok)
+            }
+            return
+        }
+        
         if textField.text!.count > 0{
             var result = cvt.convertFromTo(baseCurrency: fromLabel.text!, destCurrency: toLabel.text!)
             result = result * Double(currencyTextField.text!)!

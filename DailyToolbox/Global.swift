@@ -65,6 +65,9 @@ class Global{
     static let emailConfig = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
     static let support = NSLocalizedString("Support", comment: "Support")
     
+    static let numberWrongMessage = NSLocalizedString("Please enter correct number", comment: "Please enter correct number")
+    static let numberWrongTitle = NSLocalizedString("Number invalid", comment: "Number invalid")
+    
     /// read a rtf file from main bundle and return as attributed string for putting into UITextfield
     ///
     /// - Parameter fileName: the rtf filename used in main bundle
