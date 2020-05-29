@@ -107,20 +107,18 @@ class CurrencyConverterViewController: UIViewController, UIPickerViewDelegate, U
     
     // check for valid keyboard input characters
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == currencyTextField{
-            switch(string){
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
-                return true
-            
-            case "":
-                return true
-                
-            default:
-                    return false
-            }
-        }
+        textField.text = textField.text!.replacingOccurrences(of: ",", with: ".")
         
-        return true
+        let allowedCharacters = CharacterSet(charactersIn:"0123456789.,").inverted
+            
+        let components = string.components(separatedBy: allowedCharacters)
+        let filtered = components.joined(separator: "")
+        
+        if string == filtered {
+            return true
+        } else {
+            return false
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
