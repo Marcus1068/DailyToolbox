@@ -17,11 +17,11 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
     @IBOutlet weak var arcSegment: UISegmentedControl!
     @IBOutlet weak var swiftSegment: UISegmentedControl!
     @IBOutlet weak var additionSegment: UISegmentedControl!
+    @IBOutlet weak var repeatStepper: UIStepper!
+    @IBOutlet weak var repeatLabel: UILabel!
     
     var arcNumber: Int = 50000
-    
     var swiftNumber: Int = 50000
-    
     var additionNumber: Int = 50000
     
     func configureView() {
@@ -60,6 +60,9 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
     }
     */
     
+    @IBAction func repeatStepperAction(_ sender: UIStepper) {
+        repeatLabel.text = Int(sender.value).description
+    }
     @IBAction func arcSegmentControl(_ sender: UISegmentedControl) {
         arcNumber = Int(arcSegment.titleForSegment(at: arcSegment.selectedSegmentIndex)!)!
     }

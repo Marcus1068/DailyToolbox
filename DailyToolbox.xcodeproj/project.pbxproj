@@ -82,6 +82,7 @@
 		2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculation.swift; sourceTree = "<group>"; };
 		2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationViewController.swift; sourceTree = "<group>"; };
 		2C8B2343242663D6007A20DF /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		2C8F24FA248161B0002F10D7 /* DailyToolboxRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolboxRelease.entitlements; sourceTree = "<group>"; };
 		2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPageViewController.swift; sourceTree = "<group>"; };
 		2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage1ViewController.swift; sourceTree = "<group>"; };
 		2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage2ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 		2CBD866823F6AA480011D886 /* DailyToolbox */ = {
 			isa = PBXGroup;
 			children = (
+				2C8F24FA248161B0002F10D7 /* DailyToolboxRelease.entitlements */,
 				2C5A88F3245590F1006D0B4E /* HelpTexts */,
 				2CBD869323F6BE4E0011D886 /* Model */,
 				2CBD869023F6B3CE0011D886 /* ViewControllers */,
@@ -572,7 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
@@ -580,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.32;
+				MARKETING_VERSION = 1.33;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -593,9 +595,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolboxRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
@@ -603,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.32;
+				MARKETING_VERSION = 1.33;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
