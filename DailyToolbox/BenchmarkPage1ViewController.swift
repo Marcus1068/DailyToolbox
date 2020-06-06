@@ -24,6 +24,12 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
     var swiftNumber: Int = 50000
     var additionNumber: Int = 50000
     
+    var repeatCount: Int = 1{
+        didSet{
+            self.repeatLabel.text = String(repeatCount)
+        }
+    }
+    
     func configureView() {
         self.title = NSLocalizedString("Benchmark tool", comment: "Benchmark tool")
         
@@ -61,7 +67,8 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
     */
     
     @IBAction func repeatStepperAction(_ sender: UIStepper) {
-        repeatLabel.text = Int(sender.value).description
+        //repeatLabel.text = Int(sender.value).description
+        repeatCount = Int(sender.value)
     }
     @IBAction func arcSegmentControl(_ sender: UISegmentedControl) {
         arcNumber = Int(arcSegment.titleForSegment(at: arcSegment.selectedSegmentIndex)!)!
@@ -86,8 +93,10 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
         
         DispatchQueue.main.async() {
             // here comes long running function
-            let test = Benchmark.benchmarkRandomNumbersArc4(range: self.arcNumber)
-            
+            var test: Float = 0.0
+            for _ in 1...self.repeatCount{
+                test = Benchmark.benchmarkRandomNumbersArc4(range: self.arcNumber)
+            }
             self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
             
             // then remove the spinner view controller
@@ -107,8 +116,10 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
         
         DispatchQueue.main.async() {
             // here comes long running function
-            let test = Benchmark.benchmarkRandomNumbersSwift(range: self.swiftNumber)
-            
+            var test: Float = 0.0
+            for _ in 1...self.repeatCount{
+                test = Benchmark.benchmarkRandomNumbersSwift(range: self.swiftNumber)
+            }
             self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
             
             // then remove the spinner view controller
@@ -128,9 +139,10 @@ class BenchmarkPage1ViewController: UIViewController, UIPointerInteractionDelega
         
         DispatchQueue.main.async() {
             // here comes long running function
-            
-            let test = Benchmark.benchmarkAddition(range: self.additionNumber)
-            
+            var test: Float = 0.0
+            for _ in 1...self.repeatCount{
+                test = Benchmark.benchmarkAddition(range: self.additionNumber)
+            }
             self.resultLabel.text = String(format: "%.4f", test) + " " + NSLocalizedString("seconds", comment: "Seconds")
             
             // then remove the spinner view controller
