@@ -115,7 +115,7 @@ extension UIViewController{
             let twoSecondsFromNow = DispatchTime.now() + 2.0
             DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) { [navigationController] in
                 if navigationController?.topViewController is MasterViewController {
-                    SKStoreReviewController.requestReview()
+                    //SKStoreReviewController.requestReview()
                     UserDefaults.standard.set(currentVersion, forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
                 }
             }
