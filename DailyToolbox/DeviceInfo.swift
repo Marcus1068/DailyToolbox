@@ -37,10 +37,15 @@ class DeviceInfo: NSObject {
     
     static func getOSVersion() -> String
     {
+        #if targetEnvironment(macCatalyst)
+        return UIDevice.current.systemVersion // + " Catalyst"
+        #else
         return UIDevice.current.systemVersion
+        #endif
     }
     
-    static func getOSName() -> String{
+    static func getOSName() -> String
+    {
         return UIDevice.current.systemName
     }
     

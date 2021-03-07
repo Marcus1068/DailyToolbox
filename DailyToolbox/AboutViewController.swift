@@ -38,7 +38,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         versionLabel.text = NSLocalizedString("Version", comment: "Version") + ": " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         
-        osVersionLabel.text = NSLocalizedString("Running on", comment: "Running on") + " " + DeviceInfo.getOSName() + " " + DeviceInfo.getOSVersion()
+        osVersionLabel.text = NSLocalizedString("Running on", comment: "Running on") + " " + DeviceInfo.getDeviceName() + " " + DeviceInfo.getOSVersion()
         
         // pointer interaction
         if #available(iOS 13.4, *) {
