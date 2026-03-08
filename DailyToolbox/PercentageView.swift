@@ -221,11 +221,36 @@ struct PercentageView: View {
 
     // MARK: - Input Section
 
+    private var hasAnyInput: Bool {
+        !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty
+    }
+
     private var inputSection: some View {
         VStack(spacing: 12) {
-            inputCard(field: .rate,  text: $rateText)
-            inputCard(field: .value, text: $valueText)
-            inputCard(field: .base,  text: $baseText)
+            cardRow(field: .rate,  text: $rateText)
+            cardRow(field: .value, text: $valueText)
+            cardRow(field: .base,  text: $baseText)
+        }
+    }
+
+    // ZStack places the clear button ABOVE the glass card in the render tree,
+    // outside the GlassEffectContainer compositing context.
+    @ViewBuilder
+    private func cardRow(field: PercentField, text: Binding<String>) -> some View {
+        ZStack(alignment: .trailing) {
+            inputCard(field: field, text: text)
+            if hasAnyInput {
+                Button(action: clearAll) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.system(size: 22, weight: .medium))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 2)
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .padding(.trailing, 8)
+            }
         }
     }
 
@@ -271,10 +296,8 @@ struct PercentageView: View {
                     }
             }
 
-            // Reserve space so the glass card stays consistent width
-            if !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty {
-                Color.clear.frame(width: 32, height: 32)
-            }
+            // Reserve trailing space so text doesn't run under the xmark
+            if hasAnyInput { Color.clear.frame(width: 36, height: 1) }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
@@ -283,21 +306,6 @@ struct PercentageView: View {
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
-        // Xmark sits as an overlay ON TOP of the glass surface so touches
-        // are never blocked by the glass effect hit-test area.
-        .overlay(alignment: .trailing) {
-            if !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty {
-                Button(action: clearAll) {
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: 22))
-                        .foregroundStyle(.white.opacity(0.85))
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .padding(.trailing, 4)
-            }
-        }
     }
 
     // MARK: - Clear Button
