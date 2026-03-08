@@ -6,21 +6,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     var body: some View {
-        NavigationSplitView {
-            MasterView()
-                .navigationTitle("DailyToolbox")
-        } detail: {
+        if sizeClass == .compact {
+            // iPhone: plain NavigationStack — navigationDestination is in the
+            // same navigation context as the NavigationLink, so it always works.
             NavigationStack {
-                // Default placeholder — navigationDestination here routes
-                // NavigationLink(value: ToolItem) from the sidebar to detail
-                ToolPlaceholder()
+                MasterView()
+                    .navigationTitle("DailyToolbox")
                     .navigationDestination(for: ToolItem.self) { item in
                         toolDetailView(for: item)
                     }
             }
+        } else {
+            // iPad / Mac Catalyst: split view — navigationDestination lives in the
+            // detail NavigationStack, which is the correct side for split views.
+            NavigationSplitView {
+                MasterView()
+                    .navigationTitle("DailyToolbox")
+            } detail: {
+                NavigationStack {
+                    ToolPlaceholder()
+                        .navigationDestination(for: ToolItem.self) { item in
+                            toolDetailView(for: item)
+                        }
+                }
+            }
         }
-        .task { appstoreReview() }
     }
 
     @ViewBuilder
@@ -39,24 +52,6 @@ struct ContentView: View {
         case "showBenchmark":    BenchmarkView()
         case "showAbout":        AboutView()
         default:                 ToolPlaceholder()
-        }
-    }
-}
-
-// MARK: - Placeholder
-
-struct ToolPlaceholder: View {
-    var body: some View {
-        ZStack {
-            Color(.systemBackground).ignoresSafeArea()
-            VStack(spacing: 16) {
-                Image(systemName: "square.grid.2x2")
-                    .font(.system(size: 52, weight: .thin))
-                    .foregroundStyle(.secondary)
-                Text("Select a tool")
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
-            }
         }
     }
 }

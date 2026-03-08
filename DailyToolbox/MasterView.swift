@@ -2,12 +2,10 @@
  MasterView.swift
  DailyToolbox
 
- SwiftUI home screen shown as the primary panel in NavigationSplitView.
- Each ToolCard uses NavigationLink(value:) so that:
-   • on iPad (regular width)  → selection appears in the detail column
-   • on iPhone (compact width) → the destination is pushed onto the stack
- The navigationDestination(for: ToolItem.self) lives in ContentView's detail
- NavigationStack, which is where Apple recommends placing it for split views.
+ SwiftUI home screen — primary panel in NavigationSplitView (iPad) and root
+ of NavigationStack (iPhone). Each ToolCard is a NavigationLink(value: item)
+ so SwiftUI routes to the registered navigationDestination automatically in
+ both regular (split) and compact (stack) environments.
 */
 
 import SwiftUI
@@ -37,24 +35,42 @@ struct ToolSection: Identifiable {
 extension ToolSection {
     static let catalogue: [ToolSection] = [
         ToolSection(title: "Numbers", items: [
-            ToolItem(id: "showPercentage",   name: "Percentage",     subtitle: "Base & rate",                   icon: "percent",                        color: Color(red: 0.00, green: 0.80, blue: 0.85), segueId: "showPercentage"),
-            ToolItem(id: "showCurrency",     name: "Currency",       subtitle: "Exchange rates",                icon: "coloncurrencysign.circle.fill",  color: Color(red: 0.45, green: 0.20, blue: 0.90), segueId: "showCurrency"),
-            ToolItem(id: "showDecimal",      name: "Number Bases",   subtitle: "Hex \u{00B7} Dec \u{00B7} Bin", icon: "number.circle.fill",             color: Color(red: 0.20, green: 0.45, blue: 1.00), segueId: "showDecimal"),
-            ToolItem(id: "showInterestRate", name: "Interest Rate",  subtitle: "Compound & simple",             icon: "chart.line.uptrend.xyaxis",      color: Color(red: 0.00, green: 0.78, blue: 0.42), segueId: "showInterestRate"),
-            ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",                icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
+            ToolItem(id: "showPercentage",   name: "Percentage",     subtitle: "Base & rate",                    icon: "percent",                        color: Color(red: 0.00, green: 0.80, blue: 0.85), segueId: "showPercentage"),
+            ToolItem(id: "showCurrency",     name: "Currency",       subtitle: "Exchange rates",                 icon: "coloncurrencysign.circle.fill",  color: Color(red: 0.45, green: 0.20, blue: 0.90), segueId: "showCurrency"),
+            ToolItem(id: "showDecimal",      name: "Number Bases",   subtitle: "Hex \u{00B7} Dec \u{00B7} Bin",  icon: "number.circle.fill",             color: Color(red: 0.20, green: 0.45, blue: 1.00), segueId: "showDecimal"),
+            ToolItem(id: "showInterestRate", name: "Interest Rate",  subtitle: "Compound & simple",              icon: "chart.line.uptrend.xyaxis",      color: Color(red: 0.00, green: 0.78, blue: 0.42), segueId: "showInterestRate"),
+            ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",                 icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
         ]),
         ToolSection(title: "Conversions", items: [
             ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium",  color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),
-            ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",                  icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
-            ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",                  icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
+            ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",                   icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
+            ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",                   icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
         ]),
         ToolSection(title: "Tools", items: [
-            ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",             icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
-            ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",              icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
-            ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                  icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
-            ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",                  icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
+            ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",              icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
+            ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",               icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
+            ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                   icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
+            ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",                   icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
         ]),
     ]
+}
+
+// MARK: - ToolPlaceholder (shared between ContentView and preview)
+
+struct ToolPlaceholder: View {
+    var body: some View {
+        ZStack {
+            Color(.systemBackground).ignoresSafeArea()
+            VStack(spacing: 16) {
+                Image(systemName: "square.grid.2x2")
+                    .font(.system(size: 52, weight: .thin))
+                    .foregroundStyle(.secondary)
+                Text("Select a tool")
+                    .font(.title3)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
 }
 
 // MARK: - MasterView
@@ -100,8 +116,6 @@ struct MasterView: View {
         }
     }
 
-    // MARK: - Section block
-
     private func sectionBlock(_ section: ToolSection) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(section.title.uppercased())
@@ -128,62 +142,63 @@ private struct ToolCard: View {
 
     var body: some View {
         NavigationLink(value: item) {
-            VStack(spacing: 10) {
-                ZStack {
-                    Circle()
-                        .fill(item.color.opacity(0.18))
-                        .frame(width: 60, height: 60)
-                    Image(systemName: item.icon)
-                        .font(.system(size: 26, weight: .semibold))
-                        .foregroundStyle(item.color)
-                }
-
-                VStack(spacing: 2) {
-                    Text(item.name)
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-
-                    Text(item.subtitle)
-                        .font(.system(size: 11))
-                        .foregroundStyle(.white.opacity(0.50))
-                        .multilineTextAlignment(.center)
-                        .lineLimit(1)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 20)
-            .padding(.horizontal, 10)
-            .glassEffect(
-                .regular.tint(item.color.opacity(0.08)),
-                in: RoundedRectangle(cornerRadius: 24, style: .continuous)
-            )
+            cardContent
         }
-        .buttonStyle(.plain)
-        .scaleEffect(pressed ? 0.94 : 1.0)
-        .animation(.spring(duration: 0.18, bounce: 0.3), value: pressed)
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 0)
-                .onChanged { _ in pressed = true  }
-                .onEnded   { _ in pressed = false }
+        .buttonStyle(PressableCardStyle())
+    }
+
+    private var cardContent: some View {
+        VStack(spacing: 10) {
+            ZStack {
+                Circle()
+                    .fill(item.color.opacity(0.18))
+                    .frame(width: 60, height: 60)
+                Image(systemName: item.icon)
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundStyle(item.color)
+            }
+
+            VStack(spacing: 2) {
+                Text(item.name)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+
+                Text(item.subtitle)
+                    .font(.system(size: 11))
+                    .foregroundStyle(.white.opacity(0.50))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(1)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 20)
+        .padding(.horizontal, 10)
+        .glassEffect(
+            .regular.tint(item.color.opacity(0.08)),
+            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
         )
+    }
+}
+
+// A ButtonStyle that gives the spring-scale press feel without fighting
+// NavigationLink's own gesture recogniser.
+private struct PressableCardStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+            .animation(.spring(duration: 0.18, bounce: 0.3), value: configuration.isPressed)
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationSplitView {
+    NavigationStack {
         MasterView()
             .navigationTitle("DailyToolbox")
-    } detail: {
-        NavigationStack {
-            ToolPlaceholder()
-                .navigationDestination(for: ToolItem.self) { _ in
-                    ToolPlaceholder()
-                }
-        }
+            .navigationDestination(for: ToolItem.self) { _ in ToolPlaceholder() }
     }
 }
