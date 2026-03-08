@@ -60,13 +60,19 @@ private enum PercentField: CaseIterable {
 
 struct PercentageView: View {
 
-    @State private var rateText:  String = ""
-    @State private var valueText: String = ""
-    @State private var baseText:  String = ""
+    @State private var rateText:  String
+    @State private var valueText: String
+    @State private var baseText:  String
 
     @State private var solvedField: PercentField? = nil
     @State private var resultScale: CGFloat = 1.0
     @FocusState private var focusedField: PercentField?
+
+    init(previewRate: String = "", previewValue: String = "", previewBase: String = "") {
+        _rateText  = State(initialValue: previewRate)
+        _valueText = State(initialValue: previewValue)
+        _baseText  = State(initialValue: previewBase)
+    }
 
     // MARK: Helpers
 
@@ -146,19 +152,20 @@ struct PercentageView: View {
     var body: some View {
         ZStack {
             background
-            GlassEffectContainer {
-                ScrollView {
-                    VStack(spacing: 24) {
-                        headerCard
-                        inputSection
-                        clearButton
-                        if solvedField != nil {
-                            resultBadge
-                        }
+            // ScrollView sits outside any GlassEffectContainer so that each
+            // card row can manage its own glass scope — this ensures the xmark
+            // buttons in ZStack are genuinely above the glass rendering layer.
+            ScrollView {
+                VStack(spacing: 24) {
+                    GlassEffectContainer { headerCard }
+                    inputSection
+                    GlassEffectContainer { clearButton }
+                    if solvedField != nil {
+                        GlassEffectContainer { resultBadge }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 28)
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 28)
             }
         }
         .navigationTitle("Percentage Calculation")
@@ -233,18 +240,20 @@ struct PercentageView: View {
         }
     }
 
-    // ZStack places the clear button ABOVE the glass card in the render tree,
-    // outside the GlassEffectContainer compositing context.
+    // ZStack places the button ABOVE the GlassEffectContainer — the glass
+    // compositing scope is limited to just the card, so z-ordering is correct.
     @ViewBuilder
     private func cardRow(field: PercentField, text: Binding<String>) -> some View {
         ZStack(alignment: .trailing) {
-            inputCard(field: field, text: text)
+            GlassEffectContainer {
+                inputCard(field: field, text: text)
+            }
             if hasAnyInput {
                 Button(action: clearAll) {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 22, weight: .medium))
                         .foregroundStyle(.white)
-                        .shadow(color: .black.opacity(0.3), radius: 2)
+                        .shadow(color: .black.opacity(0.4), radius: 3)
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
                 }
