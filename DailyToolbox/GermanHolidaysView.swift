@@ -191,8 +191,13 @@ struct GermanHolidaysView: View {
 
     @StateObject private var vm = HolidaysViewModel()
 
-    @State private var selectedState: GermanState = germanStates[1] // Bayern default
-    @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    @AppStorage("germanHolidays.stateCode") private var savedStateCode: String = "BY"
+    @AppStorage("germanHolidays.year") private var savedYear: Int = Calendar.current.component(.year, from: Date())
+
+    private var selectedState: GermanState {
+        germanStates.first { $0.code == savedStateCode } ?? germanStates[1]
+    }
+
     @State private var tab: HolidayTab = .publicHolidays
     @State private var showStatePicker = false
 
@@ -240,7 +245,7 @@ struct GermanHolidaysView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .sheet(isPresented: $showStatePicker) { statePickerSheet }
-        .task { await vm.load(stateCode: selectedState.code, year: selectedYear) }
+        .task { await vm.load(stateCode: selectedState.code, year: savedYear) }
     }
 
     // MARK: - Background
@@ -318,9 +323,9 @@ struct GermanHolidaysView: View {
             // Year picker
             HStack(spacing: 8) {
                 ForEach(years, id: \.self) { y in
-                    let sel = selectedYear == y
+                    let sel = savedYear == y
                     Button {
-                        withAnimation(.spring(response: 0.25)) { selectedYear = y }
+                        withAnimation(.spring(response: 0.25)) { savedYear = y }
                         Task { await vm.load(stateCode: selectedState.code, year: y) }
                     } label: {
                         Text(String(y))
@@ -549,7 +554,7 @@ struct GermanHolidaysView: View {
                 .foregroundStyle(.white.opacity(0.35))
                 .multilineTextAlignment(.center)
             Button {
-                Task { await vm.load(stateCode: selectedState.code, year: selectedYear) }
+                Task { await vm.load(stateCode: selectedState.code, year: savedYear) }
             } label: {
                 Label("Retry", systemImage: "arrow.clockwise")
                     .font(.subheadline.weight(.semibold))
@@ -574,9 +579,9 @@ struct GermanHolidaysView: View {
                 List {
                     ForEach(germanStates) { state in
                         Button {
-                            selectedState = state
+                            savedStateCode = state.code
                             showStatePicker = false
-                            Task { await vm.load(stateCode: state.code, year: selectedYear) }
+                            Task { await vm.load(stateCode: state.code, year: savedYear) }
                         } label: {
                             HStack {
                                 Text(state.name)
