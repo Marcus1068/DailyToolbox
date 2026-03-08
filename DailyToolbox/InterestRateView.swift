@@ -82,17 +82,17 @@ private enum InterestField: CaseIterable {
 
     var label: String {
         switch self {
-        case .interest: return NSLocalizedString("Interest",      comment: "Interest")
-        case .capital:  return NSLocalizedString("Capital",       comment: "Capital")
-        case .rate:     return NSLocalizedString("Interest Rate", comment: "Interest Rate")
+        case .interest: return "Interest"
+        case .capital:  return "Capital"
+        case .rate:     return "Interest Rate"
         }
     }
 
     var subtitle: String {
         switch self {
-        case .interest: return NSLocalizedString("Amount earned / paid", comment: "Amount earned / paid")
-        case .capital:  return NSLocalizedString("Principal amount",     comment: "Principal amount")
-        case .rate:     return NSLocalizedString("Rate in %",            comment: "Rate in %")
+        case .interest: return "Amount earned / paid"
+        case .capital:  return "Principal amount"
+        case .rate:     return "Rate in %"
         }
     }
 
@@ -207,7 +207,7 @@ struct InterestRateView: View {
             }
             .onTapGesture { focused = nil }
         }
-        .navigationTitle(NSLocalizedString("Interest Rate", comment: "Interest Rate"))
+        .navigationTitle("Interest Rate")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -257,10 +257,10 @@ struct InterestRateView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Interest Rate Calculation", comment: "Interest Rate Calculation"))
+                Text("Interest Rate Calculation")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Fill in two values — the third is solved automatically.", comment: "Fill in two values — the third is solved automatically."))
+                Text("Fill in two values — the third is solved automatically.")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.62))
                     .fixedSize(horizontal: false, vertical: true)
@@ -280,21 +280,21 @@ struct InterestRateView: View {
             VStack(alignment: .leading, spacing: 10) {
                 summaryRow(
                     icon: "banknote",
-                    label: NSLocalizedString("Interest", comment: "Interest"),
+                    label: "Interest",
                     value: interestText,
                     color: InterestField.interest.accentColor
                 )
                 Divider().overlay(.white.opacity(0.12))
                 summaryRow(
                     icon: "building.columns",
-                    label: NSLocalizedString("Capital", comment: "Capital"),
+                    label: "Capital",
                     value: capitalText,
                     color: InterestField.capital.accentColor
                 )
                 Divider().overlay(.white.opacity(0.12))
                 summaryRow(
                     icon: "percent",
-                    label: NSLocalizedString("Rate", comment: "Rate"),
+                    label: "Rate",
                     value: rateText.isEmpty ? "—" : rateText + " %",
                     color: InterestField.rate.accentColor
                 )
@@ -351,7 +351,7 @@ struct InterestRateView: View {
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(field.accentColor.opacity(0.88))
                     if isSolved {
-                        Text(NSLocalizedString("calculated", comment: "calculated"))
+                        Text("calculated")
                             .font(.caption2.weight(.medium))
                             .foregroundStyle(field.accentColor.opacity(0.60))
                             .padding(.horizontal, 6)
@@ -406,7 +406,7 @@ struct InterestRateView: View {
         HStack(spacing: 12) {
             Button(action: calculate) {
                 Label(
-                    NSLocalizedString("Calculate", comment: "Calculate"),
+                    "Calculate",
                     systemImage: "equal.circle.fill"
                 )
                 .font(.body.weight(.semibold))
@@ -418,7 +418,7 @@ struct InterestRateView: View {
 
             Button(action: clearAll) {
                 Label(
-                    NSLocalizedString("Clear", comment: "Clear"),
+                    "Clear",
                     systemImage: "trash"
                 )
                 .font(.body.weight(.semibold))
@@ -442,7 +442,7 @@ struct InterestRateView: View {
                     .font(.subheadline.weight(.semibold).monospacedDigit())
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(NSLocalizedString("Interest = Rate × Capital ÷ 100", comment: "formula hint"))
+                Text("Interest = Rate × Capital ÷ 100")
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.45))
             }

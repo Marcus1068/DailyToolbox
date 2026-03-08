@@ -33,9 +33,9 @@ private enum NumberBase: CaseIterable {
 
     var label: String {
         switch self {
-        case .decimal:     return NSLocalizedString("Decimal",     comment: "Decimal")
-        case .hexadecimal: return NSLocalizedString("Hexadecimal", comment: "Hexadecimal")
-        case .binary:      return NSLocalizedString("Binary",      comment: "Binary")
+        case .decimal:     return "Decimal"
+        case .hexadecimal: return "Hexadecimal"
+        case .binary:      return "Binary"
         }
     }
 
@@ -104,7 +104,7 @@ private struct BitGridView: View {
                 Image(systemName: "square.grid.3x1.below.line.grid.1x2")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.80))
-                Text(NSLocalizedString("Bit Pattern", comment: "Bit Pattern"))
+                Text("Bit Pattern")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.white.opacity(0.65))
                 Spacer()
@@ -261,7 +261,7 @@ struct ConvertNumbersView: View {
             }
             .onTapGesture { focused = nil }
         }
-        .navigationTitle(NSLocalizedString("Convert Numbers", comment: "Convert Numbers"))
+        .navigationTitle("Convert Numbers")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -313,10 +313,10 @@ struct ConvertNumbersView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Number Converter", comment: "Number Converter"))
+                Text("Number Converter")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Enter any base — Decimal, Hex, or Binary.", comment: "Enter any base — Decimal, Hex, or Binary."))
+                Text("Enter any base — Decimal, Hex, or Binary.")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.60))
             }

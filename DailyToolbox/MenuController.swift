@@ -58,7 +58,7 @@ class MenuController{
     class func preferencesMenu() -> UIMenu {
         // Create the preferences/about menu entries with command-p
         
-        let prefCommand = UIKeyCommand(title: NSLocalizedString("Preferences", comment: "Preferences"),
+        let prefCommand = UIKeyCommand(title: "Preferences",
                                         image: nil,
                                         action: #selector(AppDelegate.preferencesMenu),
                                         input: "T",

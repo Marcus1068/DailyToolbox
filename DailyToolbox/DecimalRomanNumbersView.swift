@@ -104,7 +104,7 @@ struct DecimalRomanNumbersView: View {
             }
             .onTapGesture { focused = nil }
         }
-        .navigationTitle(NSLocalizedString("Roman Numbers", comment: "Roman Numbers"))
+        .navigationTitle("Roman Numbers")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -153,10 +153,10 @@ struct DecimalRomanNumbersView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Roman Number Converter", comment: ""))
+                Text("Roman Number Converter")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Bidirectional conversion — range I (1) to MMMCMXCIX (3999)", comment: ""))
+                Text("Bidirectional conversion — range I (1) to MMMCMXCIX (3999)")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
@@ -177,7 +177,7 @@ struct DecimalRomanNumbersView: View {
                     Image(systemName: "number")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(gold.opacity(0.80))
-                    Text(NSLocalizedString("Decimal", comment: "Decimal"))
+                    Text("Decimal")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(gold.opacity(0.80))
                 }
@@ -220,7 +220,7 @@ struct DecimalRomanNumbersView: View {
                     Text("Ⅻ")
                         .font(.system(size: 11, weight: .black, design: .serif))
                         .foregroundStyle(crimson.opacity(0.88))
-                    Text(NSLocalizedString("Roman", comment: "Roman"))
+                    Text("Roman")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(crimson.opacity(0.88))
                 }
@@ -282,7 +282,7 @@ struct DecimalRomanNumbersView: View {
             HStack(spacing: 6) {
                 Image(systemName: "list.bullet.rectangle")
                     .font(.caption.weight(.semibold))
-                Text(NSLocalizedString("Symbol Reference", comment: "Symbol Reference"))
+                Text("Symbol Reference")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.50))
@@ -310,7 +310,7 @@ struct DecimalRomanNumbersView: View {
             HStack(spacing: 5) {
                 Image(systemName: "minus.circle")
                     .font(.caption2.weight(.semibold))
-                Text(NSLocalizedString("Subtractive pairs:", comment: ""))
+                Text("Subtractive pairs:")
                     .font(.caption2.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.42))
@@ -347,19 +347,19 @@ struct DecimalRomanNumbersView: View {
             HStack(spacing: 6) {
                 Image(systemName: "shield.lefthalf.filled")
                     .font(.caption.weight(.semibold))
-                Text(NSLocalizedString("Rules", comment: "Rules"))
+                Text("Rules")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.50))
 
             let rules: [String] = [
-                NSLocalizedString("Symbols are written largest to smallest, left to right", comment: ""),
-                NSLocalizedString("Max. 3 identical consecutive symbols (M, C, X, I)", comment: ""),
-                NSLocalizedString("D, L, V never repeat — only one per numeral", comment: ""),
-                NSLocalizedString("I before V or X subtracts (IV=4, IX=9)", comment: ""),
-                NSLocalizedString("X before L or C subtracts (XL=40, XC=90)", comment: ""),
-                NSLocalizedString("C before D or M subtracts (CD=400, CM=900)", comment: ""),
-                NSLocalizedString("Valid range: 1 (I) to 3999 (MMMCMXCIX)", comment: ""),
+                "Symbols are written largest to smallest, left to right",
+                "Max. 3 identical consecutive symbols (M, C, X, I)",
+                "D, L, V never repeat — only one per numeral",
+                "I before V or X subtracts (IV=4, IX=9)",
+                "X before L or C subtracts (XL=40, XC=90)",
+                "C before D or M subtracts (CD=400, CM=900)",
+                "Valid range: 1 (I) to 3999 (MMMCMXCIX)",
             ]
 
             VStack(alignment: .leading, spacing: 7) {
@@ -390,10 +390,10 @@ struct DecimalRomanNumbersView: View {
             romanText = ""; decimalError = ""; return
         }
         guard let n = Int(filtered) else {
-            decimalError = NSLocalizedString("Invalid number", comment: ""); return
+            decimalError = "Invalid number"; return
         }
         guard n >= 1 && n <= 3999 else {
-            decimalError = NSLocalizedString("Value must be between 1 and 3999", comment: "")
+            decimalError = "Value must be between 1 and 3999"
             romanText = ""; return
         }
         decimalError = ""
@@ -417,7 +417,7 @@ struct DecimalRomanNumbersView: View {
                chars[count-3] == chars[count-2] &&
                chars[count-2] == chars[count-1] {
                 let ch = String(chars[count-4])
-                errorMsg = String(format: NSLocalizedString("More than three %@ not allowed", comment: ""), ch)
+                errorMsg = String(format: "More than three %@ not allowed", ch)
                 chars.removeLast()
                 romanText = String(chars); return
             }
@@ -427,7 +427,7 @@ struct DecimalRomanNumbersView: View {
         if count >= 2 {
             let pair = String([chars[count-2], chars[count-1]])
             if invalidPairs.contains(pair) {
-                errorMsg = String(format: NSLocalizedString("%@ is not allowed", comment: ""), pair)
+                errorMsg = String(format: "%@ is not allowed", pair)
                 chars.removeLast()
                 romanText = String(chars); return
             }

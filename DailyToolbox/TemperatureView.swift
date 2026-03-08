@@ -230,14 +230,14 @@ struct TemperatureView: View {
     private var classification: TempClass? {
         guard let c = celsiusValue else { return nil }
         switch c {
-        case ..<(-20):  return (NSLocalizedString("Extreme Cold", comment: ""), "🧊", Color(red: 0.15, green: 0.35, blue: 0.95))
-        case (-20)..<0: return (NSLocalizedString("Freezing",     comment: ""), "❄️", Color(red: 0.25, green: 0.60, blue: 0.95))
-        case 0..<10:    return (NSLocalizedString("Cold",         comment: ""), "🌨", Color(red: 0.15, green: 0.70, blue: 0.85))
-        case 10..<18:   return (NSLocalizedString("Cool",         comment: ""), "🌤", Color(red: 0.15, green: 0.80, blue: 0.55))
-        case 18..<26:   return (NSLocalizedString("Comfortable",  comment: ""), "☀️", Color(red: 0.90, green: 0.78, blue: 0.15))
-        case 26..<37:   return (NSLocalizedString("Warm",         comment: ""), "🌡️", Color(red: 1.00, green: 0.55, blue: 0.10))
-        case 37..<60:   return (NSLocalizedString("Hot",          comment: ""), "🔥", Color(red: 0.95, green: 0.28, blue: 0.08))
-        default:        return (NSLocalizedString("Extreme Heat", comment: ""), "♨️", Color(red: 0.85, green: 0.08, blue: 0.05))
+        case ..<(-20):  return ("Extreme Cold", "🧊", Color(red: 0.15, green: 0.35, blue: 0.95))
+        case (-20)..<0: return ("Freezing", "❄️", Color(red: 0.25, green: 0.60, blue: 0.95))
+        case 0..<10:    return ("Cold", "🌨", Color(red: 0.15, green: 0.70, blue: 0.85))
+        case 10..<18:   return ("Cool", "🌤", Color(red: 0.15, green: 0.80, blue: 0.55))
+        case 18..<26:   return ("Comfortable", "☀️", Color(red: 0.90, green: 0.78, blue: 0.15))
+        case 26..<37:   return ("Warm", "🌡️", Color(red: 1.00, green: 0.55, blue: 0.10))
+        case 37..<60:   return ("Hot", "🔥", Color(red: 0.95, green: 0.28, blue: 0.08))
+        default:        return ("Extreme Heat", "♨️", Color(red: 0.85, green: 0.08, blue: 0.05))
         }
     }
 
@@ -262,7 +262,7 @@ struct TemperatureView: View {
             }
             .onTapGesture { focused = nil }
         }
-        .navigationTitle(NSLocalizedString("Temperature", comment: "Temperature"))
+        .navigationTitle("Temperature")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -311,10 +311,10 @@ struct TemperatureView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Temperature Conversion", comment: "Temperature Conversion"))
+                Text("Temperature Conversion")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Enter any value — the others update live.", comment: "Enter any value — the others update live."))
+                Text("Enter any value — the others update live.")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.65))
             }
@@ -336,7 +336,7 @@ struct TemperatureView: View {
     private var gaugeCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Label(NSLocalizedString("Temperature Scale", comment: "Temperature Scale"),
+                Label("Temperature Scale",
                       systemImage: "gauge.open.with.lines.needle.33percent")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.white.opacity(0.70))

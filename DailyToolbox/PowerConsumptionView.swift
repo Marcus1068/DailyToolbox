@@ -149,7 +149,7 @@ struct PowerConsumptionView: View {
             }
             .onTapGesture { focused = nil }
         }
-        .navigationTitle(NSLocalizedString("Power Consumption", comment: "Power Consumption"))
+        .navigationTitle("Power Consumption")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onAppear {
@@ -207,10 +207,10 @@ struct PowerConsumptionView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Power Cost Calculator", comment: ""))
+                Text("Power Cost Calculator")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Enter wattage, hours/day and price per kWh", comment: ""))
+                Text("Enter wattage, hours/day and price per kWh")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
@@ -228,8 +228,8 @@ struct PowerConsumptionView: View {
             inputCard(
                 field: .cost,
                 icon: "eurosign.circle.fill",
-                label: NSLocalizedString("Cost per kWh", comment: "Cost per kWh"),
-                hint:  NSLocalizedString("e.g. 0.30 for 30 ct/kWh", comment: ""),
+                label: "Cost per kWh",
+                hint:  "e.g. 0.30 for 30 ct/kWh",
                 placeholder: "0.30",
                 text: $costText,
                 accent: Color(red: 1.00, green: 0.88, blue: 0.20),
@@ -242,8 +242,8 @@ struct PowerConsumptionView: View {
             inputCard(
                 field: .hours,
                 icon: "clock.fill",
-                label: NSLocalizedString("Daily Usage", comment: "Daily Usage"),
-                hint:  NSLocalizedString("Hours per day (0 – 24)", comment: ""),
+                label: "Daily Usage",
+                hint:  "Hours per day (0 – 24)",
                 placeholder: "8",
                 text: $hoursText,
                 accent: Color(red: 1.00, green: 0.60, blue: 0.15),
@@ -255,8 +255,8 @@ struct PowerConsumptionView: View {
             inputCard(
                 field: .watt,
                 icon: "bolt.circle.fill",
-                label: NSLocalizedString("Device Power", comment: "Device Power"),
-                hint:  NSLocalizedString("Watt consumption of the device", comment: ""),
+                label: "Device Power",
+                hint:  "Watt consumption of the device",
                 placeholder: "100",
                 text: $wattText,
                 accent: Color(red: 1.00, green: 0.45, blue: 0.10),
@@ -365,7 +365,7 @@ struct PowerConsumptionView: View {
             HStack(spacing: 5) {
                 Image(systemName: "square.grid.2x2")
                     .font(.caption2.weight(.semibold))
-                Text(NSLocalizedString("Quick Presets", comment: "Quick Presets"))
+                Text("Quick Presets")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.48))
@@ -414,7 +414,7 @@ struct PowerConsumptionView: View {
             HStack(spacing: 5) {
                 Image(systemName: "chart.bar.fill")
                     .font(.caption.weight(.semibold))
-                Text(NSLocalizedString("Cost Overview", comment: "Cost Overview"))
+                Text("Cost Overview")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.50))
@@ -424,7 +424,7 @@ struct PowerConsumptionView: View {
             VStack(spacing: 10) {
                 CostResultRow(
                     icon:   "sunrise",
-                    period: NSLocalizedString("Per Day", comment: "Per Day"),
+                    period: "Per Day",
                     kwh:    r.dailyKwh,
                     cost:   r.daily,
                     accent: Color(red: 0.85, green: 0.78, blue: 0.25),
@@ -435,7 +435,7 @@ struct PowerConsumptionView: View {
 
                 CostResultRow(
                     icon:   "calendar",
-                    period: NSLocalizedString("Per Month", comment: "Per Month"),
+                    period: "Per Month",
                     kwh:    r.monthlyKwh,
                     cost:   r.monthly,
                     accent: Color(red: 1.00, green: 0.70, blue: 0.18),
@@ -446,7 +446,7 @@ struct PowerConsumptionView: View {
 
                 CostResultRow(
                     icon:   "calendar.badge.clock",
-                    period: NSLocalizedString("Per Year", comment: "Per Year"),
+                    period: "Per Year",
                     kwh:    r.yearlyKwh,
                     cost:   r.yearly,
                     accent: Color(red: 1.00, green: 0.88, blue: 0.20),
@@ -479,11 +479,11 @@ struct PowerConsumptionView: View {
             let w      = geo.size.width
 
             VStack(spacing: 5) {
-                barRow(label: NSLocalizedString("Day", comment: ""), frac: dFrac, w: w,
+                barRow(label: "Day", frac: dFrac, w: w,
                        color: Color(red: 0.85, green: 0.78, blue: 0.25))
-                barRow(label: NSLocalizedString("Month", comment: ""), frac: mFrac, w: w,
+                barRow(label: "Month", frac: mFrac, w: w,
                        color: Color(red: 1.00, green: 0.70, blue: 0.18))
-                barRow(label: NSLocalizedString("Year", comment: ""), frac: 1.0, w: w,
+                barRow(label: "Year", frac: 1.0, w: w,
                        color: Color(red: 1.00, green: 0.88, blue: 0.20))
             }
         }
@@ -516,7 +516,7 @@ struct PowerConsumptionView: View {
             Image(systemName: "bolt.slash")
                 .font(.system(size: 22, weight: .medium))
                 .foregroundStyle(.white.opacity(0.22))
-            Text(NSLocalizedString("Fill in all three fields to see your power costs", comment: ""))
+            Text("Fill in all three fields to see your power costs")
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.35))
                 .fixedSize(horizontal: false, vertical: true)

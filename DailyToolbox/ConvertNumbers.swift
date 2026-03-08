@@ -110,7 +110,7 @@ class ConvertNumbers: CustomStringConvertible{
                 case 0:
                     result += ""
                 default:
-                    result = NSLocalizedString("something went wrong with 100", comment: "something went wrong with 100")
+                    result = "something went wrong with 100"
                 }
                 
             case 3: // X = 10
@@ -126,7 +126,7 @@ class ConvertNumbers: CustomStringConvertible{
                 case 0:
                     result += ""
                 default:
-                    result = NSLocalizedString("something went wrong with 10", comment: "something went wrong with 10")
+                    result = "something went wrong with 10"
                 }
                 
             case 4: // I = 1
@@ -144,14 +144,14 @@ class ConvertNumbers: CustomStringConvertible{
                 case 0:
                     result += ""
                 default:
-                    result = NSLocalizedString("something went wrong with 1", comment: "something went wrong with 1")
+                    result = "something went wrong with 1"
                 }
                 
             case 5:
-                result = NSLocalizedString("number to big, max 3999", comment: "number to big, max 3999")
+                result = "number to big, max 3999"
                 
             default:
-                result = NSLocalizedString("not implemented yet", comment: "not implemented yet")
+                result = "not implemented yet"
             }
         }
         

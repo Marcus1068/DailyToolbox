@@ -124,9 +124,9 @@ struct CalendarCalculationView: View {
     }
 
     private var countdownLabel: String {
-        if daysUntil == 0 { return NSLocalizedString("Today!", comment: "Today!") }
-        if daysUntil > 0  { return NSLocalizedString("days until event", comment: "") }
-        return NSLocalizedString("days ago", comment: "")
+        if daysUntil == 0 { return "Today!" }
+        if daysUntil > 0  { return "days until event" }
+        return "days ago"
     }
 
     // MARK: Body
@@ -148,19 +148,19 @@ struct CalendarCalculationView: View {
                 }
             }
         }
-        .navigationTitle(NSLocalizedString("Calendar", comment: "Calendar"))
+        .navigationTitle("Calendar")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .alert(NSLocalizedString("New Calendar Event", comment: ""), isPresented: $showEventAlert) {
-            TextField(NSLocalizedString("Event title", comment: ""), text: $eventTitle)
-            Button(NSLocalizedString("Add", comment: "")) { addCalendarEvent() }
-            Button(NSLocalizedString("Cancel", comment: ""), role: .cancel) { eventTitle = "" }
+        .alert("New Calendar Event", isPresented: $showEventAlert) {
+            TextField("Event title", text: $eventTitle)
+            Button("Add") { addCalendarEvent() }
+            Button("Cancel", role: .cancel) { eventTitle = "" }
         } message: {
             let dateStr = selectedDate.formatted(date: .long, time: .omitted)
-            Text(String(format: NSLocalizedString("Add event on %@", comment: ""), dateStr))
+            Text(String(format: "Add event on %@", dateStr))
         }
-        .alert(NSLocalizedString("Calendar Error", comment: ""), isPresented: $showCalendarError) {
-            Button(NSLocalizedString("OK", comment: ""), role: .cancel) {}
+        .alert("Calendar Error", isPresented: $showCalendarError) {
+            Button("OK", role: .cancel) {}
         } message: {
             Text(calendarErrorMsg)
         }
@@ -211,10 +211,10 @@ struct CalendarCalculationView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Calendar Calculator", comment: ""))
+                Text("Calendar Calculator")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Count days to any date, Christmas or Easter", comment: ""))
+                Text("Count days to any date, Christmas or Easter")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
@@ -266,7 +266,7 @@ struct CalendarCalculationView: View {
         HStack(spacing: 12) {
             quickCard(
                 emoji: "🎄",
-                label: NSLocalizedString("Christmas", comment: ""),
+                label: "Christmas",
                 date: nextChristmas(),
                 days: daysUntilChristmas,
                 accent: Color(red: 1.0, green: 0.32, blue: 0.32)
@@ -276,7 +276,7 @@ struct CalendarCalculationView: View {
 
             quickCard(
                 emoji: "🐣",
-                label: NSLocalizedString("Easter", comment: ""),
+                label: "Easter",
                 date: nextEaster(),
                 days: daysUntilEaster,
                 accent: Color(red: 0.40, green: 0.92, blue: 0.55)
@@ -311,7 +311,7 @@ struct CalendarCalculationView: View {
                     .font(.system(size: 30, weight: .black, design: .rounded).monospacedDigit())
                     .foregroundStyle(accent)
                     .contentTransition(.numericText())
-                Text(NSLocalizedString("days", comment: "days"))
+                Text("days")
                     .font(.caption2.weight(.medium))
                     .foregroundStyle(accent.opacity(0.65))
             }
@@ -329,7 +329,7 @@ struct CalendarCalculationView: View {
             HStack(spacing: 6) {
                 Image(systemName: "calendar.badge.clock")
                     .font(.caption.weight(.semibold))
-                Text(NSLocalizedString("Pick a date", comment: "Pick a date"))
+                Text("Pick a date")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.50))
@@ -352,7 +352,7 @@ struct CalendarCalculationView: View {
             showEventAlert = true
         } label: {
             Label(
-                NSLocalizedString("Add to Calendar", comment: "Add to Calendar"),
+                "Add to Calendar",
                 systemImage: "calendar.badge.plus"
             )
             .font(.body.weight(.semibold))
@@ -367,10 +367,10 @@ struct CalendarCalculationView: View {
 
     private func addCalendarEvent() {
         let title = eventTitle.isEmpty
-            ? NSLocalizedString("Event", comment: "") : eventTitle
+            ? "Event" : eventTitle
         let start = selectedDate
         let end   = CalendarCalculation().addTimeToDate(date: start, hours: 1)
-        let desc  = NSLocalizedString("Generated by DailyToolbox App", comment: "")
+        let desc  = "Generated by DailyToolbox App"
         Task {
             let cal = CalendarCalculation()
             do {

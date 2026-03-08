@@ -71,13 +71,13 @@ struct AboutView: View {
     private var appVersion: String {
         let v = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
         let b = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?"
-        return "\(NSLocalizedString("Version", comment: "Version")): \(v) (\(b))"
+        return "\("Version"): \(v) (\(b))"
     }
 
     private var deviceInfo: String {
         let name = UIDevice.current.name
         let os   = UIDevice.current.systemVersion
-        return "\(NSLocalizedString("Running on", comment: "Running on")) \(name) \(os)"
+        return "\("Running on") \(name) \(os)"
     }
 
     private var mailSubject: String {
@@ -103,14 +103,14 @@ struct AboutView: View {
                 }
             }
         }
-        .navigationTitle(NSLocalizedString("About", comment: "About"))
+        .navigationTitle("About")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .sheet(isPresented: $showMail) {
             MailComposeView(
                 subject: mailSubject,
                 recipients: [Global.emailAdr],
-                body: NSLocalizedString("I have some suggestions: ", comment: "I have some suggestions: "),
+                body: "I have some suggestions: ",
                 isPresented: $showMail
             )
         }
@@ -220,7 +220,7 @@ struct AboutView: View {
                 icon: "envelope.fill",
                 iconColor: Color(red: 0.25, green: 0.65, blue: 1.0),
                 title: Global.appFeedback,
-                subtitle: NSLocalizedString("Send us your thoughts", comment: "Send us your thoughts")
+                subtitle: "Send us your thoughts"
             ) {
                 if MFMailComposeViewController.canSendMail() {
                     showMail = true
@@ -233,7 +233,7 @@ struct AboutView: View {
                 icon: "info.circle.fill",
                 iconColor: Color(red: 0.28, green: 0.82, blue: 0.50),
                 title: Global.appInformation,
-                subtitle: NSLocalizedString("Website & documentation", comment: "Website & documentation")
+                subtitle: "Website & documentation"
             ) {
                 openURL(Global.website)
             }
@@ -242,7 +242,7 @@ struct AboutView: View {
                 icon: "lock.shield.fill",
                 iconColor: Color(red: 0.95, green: 0.55, blue: 0.20),
                 title: Global.appPrivacy,
-                subtitle: NSLocalizedString("Privacy policy", comment: "Privacy policy")
+                subtitle: "Privacy policy"
             ) {
                 openURL(Global.privacy)
             }

@@ -33,17 +33,17 @@ private enum PercentField: CaseIterable {
 
     var label: String {
         switch self {
-        case .rate:  return NSLocalizedString("Percentage %", comment: "Percentage %")
-        case .value: return NSLocalizedString("Value", comment: "Value")
-        case .base:  return NSLocalizedString("Base Value", comment: "Base Value")
+        case .rate:  return "Percentage %"
+        case .value: return "Value"
+        case .base:  return "Base Value"
         }
     }
 
     var placeholder: String {
         switch self {
         case .rate:  return "%"
-        case .value: return NSLocalizedString("value", comment: "value")
-        case .base:  return NSLocalizedString("base value", comment: "base value")
+        case .value: return "value"
+        case .base:  return "base value"
         }
     }
 
@@ -143,7 +143,7 @@ struct PercentageView: View {
                 }
             }
         }
-        .navigationTitle(NSLocalizedString("Percentage Calculation", comment: "Percentage Calculation"))
+        .navigationTitle("Percentage Calculation")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onTapGesture { focusedField = nil }
@@ -187,10 +187,10 @@ struct PercentageView: View {
                     .foregroundStyle(Color(red: 0.20, green: 0.95, blue: 0.75))
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Percentage Calculation", comment: "Percentage Calculation"))
+                Text("Percentage Calculation")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("Fill in any two fields — the third is solved automatically.", comment: "Fill in any two fields — the third is solved automatically."))
+                Text("Fill in any two fields — the third is solved automatically.")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.65))
                     .fixedSize(horizontal: false, vertical: true)
@@ -276,7 +276,7 @@ struct PercentageView: View {
         HStack(spacing: 12) {
             Button(action: calculate) {
                 Label(
-                    NSLocalizedString("Calculate", comment: "Calculate"),
+                    "Calculate",
                     systemImage: "equal.circle.fill"
                 )
                 .font(.body.weight(.semibold))
@@ -288,7 +288,7 @@ struct PercentageView: View {
 
             Button(action: clearAll) {
                 Label(
-                    NSLocalizedString("Clear", comment: "Clear"),
+                    "Clear",
                     systemImage: "trash"
                 )
                 .font(.body.weight(.semibold))

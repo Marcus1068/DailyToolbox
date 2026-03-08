@@ -37,35 +37,35 @@ class Global{
     static let privacy = "https://marcus-deuss.de/?page_id=203"
     
     // localization strings
-    static let all = NSLocalizedString("All", comment: "All")
+    static let all = "All"
     
-    static let ok = NSLocalizedString("OK", comment: "OK")
-    static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-    static let delete = NSLocalizedString("Delete", comment: "Delete")
-    static let confirm = NSLocalizedString("Confirm", comment: "Confirm")
-    static let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
-    static let error = NSLocalizedString("Error", comment: "Error")
-    static let done = NSLocalizedString("Done", comment: "Done")
-    static let none = NSLocalizedString("None", comment: "None")
-    static let duplicate = NSLocalizedString("Duplicate", comment: "Duplicate")
-    static let edit = NSLocalizedString("Edit", comment: "Edit")
-    static let copy = NSLocalizedString("Copy", comment: "Copy")
-    static let save = NSLocalizedString("Save", comment: "Save")
-    static let back = NSLocalizedString("Back", comment: "Back")
+    static let ok = "OK"
+    static let cancel = "Cancel"
+    static let delete = "Delete"
+    static let confirm = "Confirm"
+    static let dismiss = "Dismiss"
+    static let error = "Error"
+    static let done = "Done"
+    static let none = "None"
+    static let duplicate = "Duplicate"
+    static let edit = "Edit"
+    static let copy = "Copy"
+    static let save = "Save"
+    static let back = "Back"
     
-    static let appSettings = NSLocalizedString("App Settings", comment: "App Settings")
-    static let appInformation = NSLocalizedString("Information", comment: "Information")
-    static let appFeedback = NSLocalizedString("Feedback", comment: "Feedback")
-    static let appManual = NSLocalizedString("Manual", comment: "Manual")
-    static let appPrivacy = NSLocalizedString("Privacy", comment: "Privacy")
+    static let appSettings = "App Settings"
+    static let appInformation = "Information"
+    static let appFeedback = "Feedback"
+    static let appManual = "Manual"
+    static let appPrivacy = "Privacy"
     
-    static let emailNotSent = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
-    static let emailDevice = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
-    static let emailConfig = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
-    static let support = NSLocalizedString("Support", comment: "Support")
+    static let emailNotSent = "Email could not be sent"
+    static let emailDevice = "Your device could not send email"
+    static let emailConfig = "Please check your email configuration"
+    static let support = "Support"
     
-    static let numberWrongMessage = NSLocalizedString("Please enter correct number", comment: "Please enter correct number")
-    static let numberWrongTitle = NSLocalizedString("Number invalid", comment: "Number invalid")
+    static let numberWrongMessage = "Please enter correct number"
+    static let numberWrongTitle = "Number invalid"
     
     static let keyEyeLevel = "eyeLevel"
     static let keyCostWatt = "costWatt"

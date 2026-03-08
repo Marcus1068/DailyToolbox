@@ -39,9 +39,9 @@ final class HorizonLocationManager: NSObject {
     }
 
     var accuracyLabel: String {
-        if !isAuthorized    { return NSLocalizedString("No Permission", comment: "") }
-        if isSearching       { return NSLocalizedString("Searching…",   comment: "") }
-        if verticalAccuracy < 0 { return NSLocalizedString("Unavailable", comment: "") }
+        if !isAuthorized    { return "No Permission" }
+        if isSearching       { return "Searching…" }
+        if verticalAccuracy < 0 { return "Unavailable" }
         return String(format: "±%.0f m", verticalAccuracy)
     }
 
@@ -245,7 +245,7 @@ struct HorizonView: View {
             }
             .onTapGesture { focused = false }
         }
-        .navigationTitle(NSLocalizedString("Horizon", comment: "Horizon"))
+        .navigationTitle("Horizon")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onAppear {
@@ -306,10 +306,10 @@ struct HorizonView: View {
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
-                Text(NSLocalizedString("Horizon Calculator", comment: "Horizon Calculator"))
+                Text("Horizon Calculator")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                Text(NSLocalizedString("GPS altitude + eye level → distance to horizon", comment: "subtitle"))
+                Text("GPS altitude + eye level → distance to horizon")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
@@ -335,7 +335,7 @@ struct HorizonView: View {
             }
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(NSLocalizedString("GPS Altitude", comment: "GPS Altitude"))
+                Text("GPS Altitude")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color(red: 0.45, green: 0.74, blue: 1.0).opacity(0.85))
 
@@ -360,7 +360,7 @@ struct HorizonView: View {
 
             // Altitude bar gauge (0–500 m → 0–50 px)
             VStack(spacing: 4) {
-                Text(NSLocalizedString("ASL", comment: "Above Sea Level abbrev"))
+                Text("ASL")
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.30))
                 ZStack(alignment: .bottom) {
@@ -402,10 +402,10 @@ struct HorizonView: View {
                         .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65))
                 }
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(NSLocalizedString("Eye Level", comment: "Eye Level"))
+                    Text("Eye Level")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.88))
-                    Text(NSLocalizedString("Your eyes above ground", comment: ""))
+                    Text("Your eyes above ground")
                         .font(.caption2)
                         .foregroundStyle(.white.opacity(0.35))
                 }
@@ -465,7 +465,7 @@ struct HorizonView: View {
     private var resultCard: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(NSLocalizedString("Horizon Distance", comment: "Horizon Distance"))
+                Text("Horizon Distance")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color(red: 1.00, green: 0.82, blue: 0.22).opacity(0.85))
                 Spacer()
@@ -512,7 +512,7 @@ struct HorizonView: View {
             HStack(spacing: 6) {
                 Image(systemName: "function")
                     .font(.caption.weight(.semibold))
-                Text(NSLocalizedString("Formula", comment: "Formula"))
+                Text("Formula")
                     .font(.caption.weight(.semibold))
             }
             .foregroundStyle(.white.opacity(0.52))

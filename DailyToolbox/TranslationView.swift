@@ -170,7 +170,7 @@ struct TranslationView: View {
                 }
             }
         }
-        .navigationTitle(NSLocalizedString("Translation", comment: "Translation"))
+        .navigationTitle("Translation")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -187,7 +187,7 @@ struct TranslationView: View {
                         .foregroundStyle(accentTeal.opacity(0.80))
 
                     TextField(
-                        NSLocalizedString("Search word…", comment: ""),
+                        "Search word…",
                         text: $searchText
                     )
                     .focused($searchFocused)

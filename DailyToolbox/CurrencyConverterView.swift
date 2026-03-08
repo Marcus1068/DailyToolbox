@@ -63,9 +63,9 @@ private struct CurrencyPickerSheet: View {
             .searchable(
                 text: $search,
                 placement: .navigationBarDrawer(displayMode: .always),
-                prompt: NSLocalizedString("Search currencies", comment: "Search currencies")
+                prompt: "Search currencies"
             )
-            .navigationTitle(NSLocalizedString("Select Currency", comment: "Select Currency"))
+            .navigationTitle("Select Currency")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -146,7 +146,7 @@ struct CurrencyConverterView: View {
                 .onTapGesture { amountFocused = false }
             }
         }
-        .navigationTitle(NSLocalizedString("Currency Converter", comment: "Currency Converter"))
+        .navigationTitle("Currency Converter")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .task { await loadConverter() }
@@ -191,7 +191,7 @@ struct CurrencyConverterView: View {
                 .progressViewStyle(.circular)
                 .tint(.white)
                 .scaleEffect(1.4)
-            Text(NSLocalizedString("Fetching rates…", comment: "Fetching rates…"))
+            Text("Fetching rates…")
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.white.opacity(0.75))
         }
@@ -202,7 +202,7 @@ struct CurrencyConverterView: View {
     private var amountCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Label(
-                NSLocalizedString("Amount", comment: "Amount"),
+                "Amount",
                 systemImage: "banknote"
             )
             .font(.caption.weight(.semibold))
@@ -239,7 +239,7 @@ struct CurrencyConverterView: View {
         HStack(spacing: 12) {
             currencyButton(
                 code: fromCurrency,
-                label: NSLocalizedString("From", comment: "From"),
+                label: "From",
                 accentColor: Color(red: 0.68, green: 0.56, blue: 1.0)
             ) { showFromPicker = true }
 
@@ -247,7 +247,7 @@ struct CurrencyConverterView: View {
 
             currencyButton(
                 code: toCurrency,
-                label: NSLocalizedString("To", comment: "To"),
+                label: "To",
                 accentColor: Color(red: 0.90, green: 0.70, blue: 1.0)
             ) { showToPicker = true }
         }
@@ -299,7 +299,7 @@ struct CurrencyConverterView: View {
     private var resultCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Label(
-                NSLocalizedString("Result", comment: "Result"),
+                "Result",
                 systemImage: "equal.circle"
             )
             .font(.caption.weight(.semibold))
@@ -359,7 +359,7 @@ struct CurrencyConverterView: View {
                 Image(systemName: "clock")
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.45))
-                Text(NSLocalizedString("Last update:", comment: "Last update:"))
+                Text("Last update:")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.45))
                 Text(cvt?.getLastUpdate() ?? "—")
@@ -371,7 +371,7 @@ struct CurrencyConverterView: View {
                 Image(systemName: "building.columns")
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.35))
-                Text(NSLocalizedString("Source: European Central Bank", comment: "Source: European Central Bank"))
+                Text("Source: European Central Bank")
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.40))
             }
