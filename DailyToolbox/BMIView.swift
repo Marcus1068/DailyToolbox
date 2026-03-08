@@ -42,13 +42,13 @@ private struct BMICategory {
     let range: ClosedRange<Double>
     let color: Color
 
-    static let categories: [BMICategory] = [
+    @MainActor static let categories: [BMICategory] = [
         BMICategory(name: "Underweight",   range: 0...18.49,  color: Color(red: 0.35, green: 0.75, blue: 1.00)),
         BMICategory(name: "Normal weight", range: 18.5...24.99, color: Color(red: 0.35, green: 0.90, blue: 0.55)),
         BMICategory(name: "Overweight",    range: 25...29.99, color: Color(red: 1.00, green: 0.78, blue: 0.25)),
         BMICategory(name: "Obese",         range: 30...100,   color: Color(red: 1.00, green: 0.40, blue: 0.35)),
     ]
-    static func classify(_ bmi: Double) -> BMICategory {
+    @MainActor static func classify(_ bmi: Double) -> BMICategory {
         categories.first { $0.range.contains(bmi) } ?? categories.last!
     }
 }

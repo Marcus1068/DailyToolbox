@@ -49,8 +49,7 @@
 		2CBF5EE12F5E1281009575C2 /* OhmsLawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */; };
 		2CBF5EE32F5E1562009575C2 /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */; };
 		DA89F60DBDBB571877892DDA /* FuelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */; };
-		2CBF5EE52F5E15A8009575C2 /* BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCostView.swift; sourceTree = "<group>"; };
-		2CBF5EE42F5E15A8009575C2 /* BMIView.swift */; };
+		2CBF5EE52F5E15A8009575C2 /* BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE42F5E15A8009575C2 /* BMIView.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
@@ -116,6 +115,7 @@
 		2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhmsLawView.swift; sourceTree = "<group>"; };
 		2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCalculatorView.swift; sourceTree = "<group>"; };
 		2CBF5EE42F5E15A8009575C2 /* BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIView.swift; sourceTree = "<group>"; };
+		98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCostView.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
