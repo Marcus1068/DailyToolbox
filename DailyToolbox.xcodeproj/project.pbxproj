@@ -176,7 +176,6 @@
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */,
-				2CBF5ED92F5E0AD2009575C2 /* QRCodeView.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -210,6 +209,7 @@
 				2C5F83892F5DA0B5009898E9 /* TranslationView.swift */,
 				2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */,
 				2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */,
+				2CBF5ED92F5E0AD2009575C2 /* QRCodeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
