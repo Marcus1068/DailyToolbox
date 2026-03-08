@@ -76,26 +76,26 @@ private enum WiFiSecurity: String, CaseIterable, Identifiable {
 
 struct QRCodeView: View {
 
-    @State private var qrType: QRType = .url
+    @AppStorage("qr.type")          private var qrType: QRType = .url
 
     // URL
-    @State private var urlText = ""
+    @AppStorage("qr.urlText")       private var urlText = ""
     // Text
-    @State private var plainText = ""
+    @AppStorage("qr.plainText")     private var plainText = ""
     // WiFi
-    @State private var wifiSSID = ""
-    @State private var wifiPassword = ""
-    @State private var wifiSecurity: WiFiSecurity = .wpa
-    @State private var wifiHidden = false
+    @AppStorage("qr.wifiSSID")      private var wifiSSID = ""
+    @AppStorage("qr.wifiPassword")  private var wifiPassword = ""
+    @AppStorage("qr.wifiSecurity")  private var wifiSecurity: WiFiSecurity = .wpa
+    @AppStorage("qr.wifiHidden")    private var wifiHidden = false
     // Contact
-    @State private var contactName = ""
-    @State private var contactPhone = ""
-    @State private var contactEmail = ""
-    @State private var contactOrg = ""
+    @AppStorage("qr.contactName")   private var contactName = ""
+    @AppStorage("qr.contactPhone")  private var contactPhone = ""
+    @AppStorage("qr.contactEmail")  private var contactEmail = ""
+    @AppStorage("qr.contactOrg")    private var contactOrg = ""
     // Email
-    @State private var emailTo = ""
-    @State private var emailSubject = ""
-    @State private var emailBody = ""
+    @AppStorage("qr.emailTo")       private var emailTo = ""
+    @AppStorage("qr.emailSubject")  private var emailSubject = ""
+    @AppStorage("qr.emailBody")     private var emailBody = ""
 
     @State private var copied = false
     @FocusState private var focusedField: String?
