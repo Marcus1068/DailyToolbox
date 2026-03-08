@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,11 @@
 		2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836D2F5D8C02009898E9 /* AboutView.swift */; };
 		2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */; };
 		2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */; };
+		2C5F83742F5D922F009898E9 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83732F5D922F009898E9 /* TemperatureView.swift */; };
+		2C5F83762F5D9586009898E9 /* ConvertNumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83752F5D9586009898E9 /* ConvertNumbersView.swift */; };
+		2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83772F5D96B5009898E9 /* InterestRateView.swift */; };
+		2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83792F5D98C3009898E9 /* HorizonView.swift */; };
+		2C5F837C2F5D98D3009898E9 /* HorizonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */; };
 		2C8040C72439F1590057909D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8040C62439F1590057909D /* WebKit.framework */; };
 		2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */; };
 		2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D209241A920900BA4363 /* InterestRate.swift */; };
@@ -82,6 +87,11 @@
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageView.swift; sourceTree = "<group>"; };
 		2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
+		2C5F83732F5D922F009898E9 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		2C5F83752F5D9586009898E9 /* ConvertNumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersView.swift; sourceTree = "<group>"; };
+		2C5F83772F5D96B5009898E9 /* InterestRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateView.swift; sourceTree = "<group>"; };
+		2C5F83792F5D98C3009898E9 /* HorizonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonView.swift; sourceTree = "<group>"; };
+		2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonViewController.swift; sourceTree = "<group>"; };
 		2C8040C62439F1590057909D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateViewController.swift; sourceTree = "<group>"; };
 		2C87D209241A920900BA4363 /* InterestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRate.swift; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 				2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */,
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5A88F024548525006D0B4E /* InfoPlist.strings */,
+				2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -233,6 +244,10 @@
 				2C5F836D2F5D8C02009898E9 /* AboutView.swift */,
 				2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */,
 				2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */,
+				2C5F83732F5D922F009898E9 /* TemperatureView.swift */,
+				2C5F83752F5D9586009898E9 /* ConvertNumbersView.swift */,
+				2C5F83772F5D96B5009898E9 /* InterestRateView.swift */,
+				2C5F83792F5D98C3009898E9 /* HorizonView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -300,8 +315,9 @@
 		2CBD865E23F6AA480011D886 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = "Marcus Deuß";
 				TargetAttributes = {
 					2CBD866523F6AA480011D886 = {
@@ -364,6 +380,7 @@
 			files = (
 				2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */,
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
+				2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */,
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
 				2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */,
 				2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */,
@@ -377,6 +394,7 @@
 				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
 				2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */,
 				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
+				2C5F83742F5D922F009898E9 /* TemperatureView.swift in Sources */,
 				2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */,
 				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
 				2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */,
@@ -384,8 +402,10 @@
 				2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2C9312B3247BDE3000CC0192 /* BenchmarkPageViewController.swift in Sources */,
+				2C5F837C2F5D98D3009898E9 /* HorizonViewController.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
+				2C5F83762F5D9586009898E9 /* ConvertNumbersView.swift in Sources */,
 				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
 				2C9312B9247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift in Sources */,
 				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
@@ -398,6 +418,7 @@
 				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
 				2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */,
 				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
+				2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */,
 				2CA494A924522AB300E61CC5 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,8 +517,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WS7XMU4939;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -517,6 +540,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -560,8 +584,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WS7XMU4939;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -574,6 +600,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -590,7 +617,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 28;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DEVELOPMENT_TEAM = WS7XMU4939;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
+				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -615,7 +645,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 28;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DEVELOPMENT_TEAM = WS7XMU4939;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
+				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
 				INFOPLIST_FILE = DailyToolbox/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -635,10 +668,8 @@
 		2CBD868B23F6AA490011D886 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolboxTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,10 +688,8 @@
 		2CBD868C23F6AA490011D886 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = DailyToolboxTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (

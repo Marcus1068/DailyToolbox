@@ -1,0 +1,542 @@
+/*
+
+Copyright 2020 Marcus Deuß
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
+
+//
+//  HorizonView.swift
+//  DailyToolbox
+//
+
+import SwiftUI
+import CoreLocation
+
+// MARK: - Location Manager
+
+@Observable
+@MainActor
+final class HorizonLocationManager: NSObject {
+    var altitude: Double        = 0.0
+    var verticalAccuracy: Double = -1.0
+    var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    var isSearching: Bool       = true
+
+    var isAuthorized: Bool {
+        authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways
+    }
+
+    var accuracyLabel: String {
+        if !isAuthorized    { return NSLocalizedString("No Permission", comment: "") }
+        if isSearching       { return NSLocalizedString("Searching…",   comment: "") }
+        if verticalAccuracy < 0 { return NSLocalizedString("Unavailable", comment: "") }
+        return String(format: "±%.0f m", verticalAccuracy)
+    }
+
+    var accuracyColor: Color {
+        if !isAuthorized || verticalAccuracy < 0 { return .red }
+        if isSearching       { return .orange }
+        if verticalAccuracy < 10 { return Color(red: 0.28, green: 0.95, blue: 0.58) }
+        if verticalAccuracy < 20 { return .yellow }
+        return .orange
+    }
+
+    private let manager = CLLocationManager()
+
+    override init() {
+        super.init()
+        manager.delegate          = self
+        manager.desiredAccuracy   = kCLLocationAccuracyBest
+        manager.distanceFilter    = kCLDistanceFilterNone
+        authorizationStatus       = manager.authorizationStatus
+    }
+
+    func start() {
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+
+    func stop() {
+        manager.stopUpdatingLocation()
+    }
+}
+
+extension HorizonLocationManager: @preconcurrency CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let loc = locations.last else { return }
+        altitude         = loc.altitude
+        verticalAccuracy = loc.verticalAccuracy
+        isSearching      = false
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authorizationStatus = manager.authorizationStatus
+        if isAuthorized { manager.startUpdatingLocation() }
+    }
+}
+
+// MARK: - Horizon Scene Illustration
+
+private let horizonStars: [(x: Double, y: Double, op: Double, sz: Double)] = [
+    (0.06, 0.10, 0.60, 2.0), (0.17, 0.22, 0.40, 1.5), (0.31, 0.07, 0.70, 2.5),
+    (0.46, 0.17, 0.45, 2.0), (0.60, 0.09, 0.65, 1.5), (0.72, 0.26, 0.50, 2.0),
+    (0.83, 0.13, 0.55, 2.5), (0.93, 0.20, 0.40, 1.5)
+]
+
+private struct HorizonSceneView: View {
+    let distanceKm: Double
+
+    var body: some View {
+        GeometryReader { geo in
+            let w  = geo.size.width
+            let h  = geo.size.height
+            let hy = h * 0.53   // horizon Y
+
+            ZStack(alignment: .topLeading) {
+
+                // Sky gradient
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.04, green: 0.12, blue: 0.42),
+                        Color(red: 0.10, green: 0.28, blue: 0.65).opacity(0.55)
+                    ],
+                    startPoint: .top, endPoint: .center
+                )
+
+                // Ocean gradient
+                VStack(spacing: 0) {
+                    Spacer()
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.03, green: 0.18, blue: 0.48).opacity(0.85),
+                            Color(red: 0.01, green: 0.07, blue: 0.22)
+                        ],
+                        startPoint: .top, endPoint: .bottom
+                    )
+                    .frame(height: h - hy + 12)
+                }
+
+                // Stars
+                ForEach(horizonStars.indices, id: \.self) { i in
+                    let s = horizonStars[i]
+                    Circle()
+                        .fill(.white.opacity(s.op))
+                        .frame(width: s.sz, height: s.sz)
+                        .position(x: s.x * w, y: s.y * h * 0.95)
+                }
+
+                // Horizon curve
+                Path { p in
+                    p.move(to: CGPoint(x: 0, y: hy + 8))
+                    p.addCurve(
+                        to: CGPoint(x: w, y: hy - 8),
+                        control1: CGPoint(x: w * 0.30, y: hy - 14),
+                        control2: CGPoint(x: w * 0.70, y: hy + 14)
+                    )
+                }
+                .stroke(
+                    LinearGradient(
+                        colors: [.white.opacity(0.20), .white.opacity(0.82), .white.opacity(0.20)],
+                        startPoint: .leading, endPoint: .trailing
+                    ),
+                    lineWidth: 1.5
+                )
+
+                // Observer: vertical height line + eye icon
+                let eyeX: Double = 46
+                let eyeY: Double = h * 0.30
+
+                Path { p in
+                    p.move(to: CGPoint(x: eyeX, y: hy - 2))
+                    p.addLine(to: CGPoint(x: eyeX, y: eyeY + 13))
+                }
+                .stroke(.white.opacity(0.38), lineWidth: 1.0)
+
+                // Dashed sight line from eye to horizon
+                Path { p in
+                    p.move(to: CGPoint(x: eyeX, y: eyeY))
+                    p.addLine(to: CGPoint(x: w - 26, y: hy))
+                }
+                .stroke(.white.opacity(0.52),
+                        style: StrokeStyle(lineWidth: 1.3, dash: [7, 5]))
+
+                Image(systemName: "eye.fill")
+                    .font(.system(size: 11))
+                    .foregroundStyle(.white.opacity(0.85))
+                    .position(x: eyeX, y: eyeY)
+
+                // Glowing horizon dot
+                Circle()
+                    .fill(Color(red: 0.55, green: 0.88, blue: 1.00))
+                    .frame(width: 9, height: 9)
+                    .shadow(color: Color(red: 0.55, green: 0.88, blue: 1.00).opacity(0.80), radius: 7)
+                    .position(x: w - 26, y: hy)
+
+                // Distance badge
+                if distanceKm > 0 {
+                    Text(String(format: "%.2f km", distanceKm))
+                        .font(.caption.weight(.bold).monospacedDigit())
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(Color.white.opacity(0.12), in: Capsule())
+                        .position(x: w - 54, y: h - 16)
+                        .contentTransition(.numericText())
+                        .animation(.spring(response: 0.4), value: distanceKm)
+                }
+            }
+        }
+        .frame(height: 135)
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+}
+
+// MARK: - Main View
+
+struct HorizonView: View {
+
+    @State private var locationManager = HorizonLocationManager()
+    @State private var eyeLevelText:    String  = "1.70"
+    @FocusState private var focused:    Bool
+
+    // MARK: Computed
+
+    private func sanitize(_ s: String) -> String {
+        s.replacingOccurrences(of: ",", with: ".")
+    }
+
+    private var eyeLevel:   Double { Double(sanitize(eyeLevelText)) ?? 1.70 }
+    private var altitude:   Double { locationManager.altitude }
+
+    private var distanceKm: Double {
+        ComputeHorizon(eyeLevel: eyeLevel, altitude: altitude).viewDistance
+    }
+
+    // MARK: Body
+
+    var body: some View {
+        ZStack {
+            background
+            GlassEffectContainer {
+                ScrollView {
+                    VStack(spacing: 18) {
+                        headerCard
+                        gpsAltitudeCard
+                        HorizonSceneView(distanceKm: distanceKm)
+                        eyeLevelCard
+                        resultCard
+                        formulaCard
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 28)
+                }
+            }
+            .onTapGesture { focused = false }
+        }
+        .navigationTitle(NSLocalizedString("Horizon", comment: "Horizon"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .onAppear {
+            locationManager.start()
+            if let saved = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyEyeLevel),
+               !saved.isEmpty {
+                eyeLevelText = saved
+            }
+        }
+        .onDisappear {
+            locationManager.stop()
+            NSUbiquitousKeyValueStore.default.synchronize()
+        }
+    }
+
+    // MARK: Background
+
+    private var background: some View {
+        MeshGradient(
+            width: 3, height: 3,
+            points: [
+                [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
+                [0.0, 0.5], [0.5, 0.5], [1.0, 0.5],
+                [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
+            ],
+            colors: [
+                Color(red: 0.02, green: 0.06, blue: 0.22),
+                Color(red: 0.03, green: 0.10, blue: 0.32),
+                Color(red: 0.02, green: 0.08, blue: 0.24),
+                Color(red: 0.02, green: 0.09, blue: 0.28),
+                Color(red: 0.04, green: 0.14, blue: 0.40),
+                Color(red: 0.02, green: 0.10, blue: 0.28),
+                Color(red: 0.01, green: 0.05, blue: 0.18),
+                Color(red: 0.02, green: 0.10, blue: 0.26),
+                Color(red: 0.01, green: 0.06, blue: 0.20)
+            ]
+        )
+        .ignoresSafeArea()
+    }
+
+    // MARK: Header Card
+
+    private var headerCard: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(Color(red: 0.40, green: 0.70, blue: 1.0).opacity(0.14))
+                    .frame(width: 50, height: 50)
+                Image(systemName: "binoculars.fill")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [Color(red: 0.50, green: 0.78, blue: 1.0),
+                                     Color(red: 0.22, green: 0.52, blue: 0.95)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            }
+            VStack(alignment: .leading, spacing: 4) {
+                Text(NSLocalizedString("Horizon Calculator", comment: "Horizon Calculator"))
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(.white)
+                Text(NSLocalizedString("GPS altitude + eye level → distance to horizon", comment: "subtitle"))
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.55))
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+        }
+        .padding(16)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+
+    // MARK: GPS Altitude Card
+
+    private var gpsAltitudeCard: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(locationManager.accuracyColor.opacity(0.14))
+                    .frame(width: 46, height: 46)
+                Image(systemName: locationManager.isAuthorized ? "location.fill" : "location.slash.fill")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(locationManager.accuracyColor)
+                    .symbolEffect(.pulse, isActive: locationManager.isSearching)
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(NSLocalizedString("GPS Altitude", comment: "GPS Altitude"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color(red: 0.45, green: 0.74, blue: 1.0).opacity(0.85))
+
+                Group {
+                    if locationManager.isSearching {
+                        Text("—  m")
+                    } else {
+                        Text(String(format: "%.2f m", altitude))
+                    }
+                }
+                .font(.title2.weight(.bold).monospacedDigit())
+                .foregroundStyle(.white)
+                .contentTransition(.numericText())
+                .animation(.spring(response: 0.35), value: altitude)
+
+                Text(locationManager.accuracyLabel)
+                    .font(.caption2)
+                    .foregroundStyle(locationManager.accuracyColor.opacity(0.78))
+            }
+
+            Spacer()
+
+            // Altitude bar gauge (0–500 m → 0–50 px)
+            VStack(spacing: 4) {
+                Text(NSLocalizedString("ASL", comment: "Above Sea Level abbrev"))
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.30))
+                ZStack(alignment: .bottom) {
+                    RoundedRectangle(cornerRadius: 3)
+                        .fill(.white.opacity(0.07))
+                        .frame(width: 8, height: 50)
+                    RoundedRectangle(cornerRadius: 3)
+                        .fill(
+                            LinearGradient(
+                                colors: [Color(red: 0.30, green: 0.60, blue: 1.0),
+                                         Color(red: 0.55, green: 0.88, blue: 1.0)],
+                                startPoint: .bottom, endPoint: .top
+                            )
+                        )
+                        .frame(width: 8, height: max(2, min(50, altitude / 10)))
+                        .animation(.spring(response: 0.5), value: altitude)
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .glassEffect(
+            .regular.tint(Color(red: 0.03, green: 0.10, blue: 0.38)),
+            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+        )
+    }
+
+    // MARK: Eye Level Card
+
+    private var eyeLevelCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 10) {
+                ZStack {
+                    Circle()
+                        .fill(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.14))
+                        .frame(width: 38, height: 38)
+                    Image(systemName: "eye")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65))
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(NSLocalizedString("Eye Level", comment: "Eye Level"))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.88))
+                    Text(NSLocalizedString("Your eyes above ground", comment: ""))
+                        .font(.caption2)
+                        .foregroundStyle(.white.opacity(0.35))
+                }
+                Spacer()
+                // ± step buttons
+                HStack(spacing: 8) {
+                    Button { adjustEyeLevel(by: -0.05) } label: {
+                        Image(systemName: "minus")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.white)
+                            .frame(width: 30, height: 30)
+                    }
+                    .buttonStyle(.glass)
+
+                    Button { adjustEyeLevel(by: +0.05) } label: {
+                        Image(systemName: "plus")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.white)
+                            .frame(width: 30, height: 30)
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
+
+            HStack(alignment: .lastTextBaseline, spacing: 6) {
+                TextField("1.70", text: $eyeLevelText)
+                    .keyboardType(.decimalPad)
+                    .focused($focused)
+                    .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
+                    .foregroundStyle(.white)
+                    .tint(Color(red: 0.28, green: 0.88, blue: 0.65))
+                    .onChange(of: eyeLevelText) { _, new in
+                        let s = new.replacingOccurrences(of: ",", with: ".")
+                        if s != new { eyeLevelText = s }
+                        NSUbiquitousKeyValueStore.default.set(s, forKey: Global.keyEyeLevel)
+                    }
+                Text("m")
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(.white.opacity(0.40))
+            }
+            .padding(.leading, 2)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    private func adjustEyeLevel(by delta: Double) {
+        let current = Double(sanitize(eyeLevelText)) ?? 1.70
+        let newVal  = max(0.0, (current + delta * 10).rounded() / 10)
+        eyeLevelText = String(format: "%.2f", newVal)
+        NSUbiquitousKeyValueStore.default.set(eyeLevelText, forKey: Global.keyEyeLevel)
+    }
+
+    // MARK: Result Card
+
+    private var resultCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(NSLocalizedString("Horizon Distance", comment: "Horizon Distance"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color(red: 1.00, green: 0.82, blue: 0.22).opacity(0.85))
+                Spacer()
+                Image(systemName: "arrow.forward.to.line")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.28))
+            }
+            HStack(alignment: .lastTextBaseline, spacing: 6) {
+                Text(distanceKm.formatted(.number.precision(.fractionLength(2))))
+                    .font(.system(size: 54, weight: .black, design: .rounded).monospacedDigit())
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [Color(red: 1.00, green: 0.85, blue: 0.28),
+                                     Color(red: 1.00, green: 0.60, blue: 0.18)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .contentTransition(.numericText())
+                    .animation(.spring(response: 0.4), value: distanceKm)
+                Text("km")
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(.white.opacity(0.52))
+                    .padding(.bottom, 5)
+                Spacer()
+            }
+        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 16)
+        .glassEffect(
+            .regular.tint(Color(red: 0.10, green: 0.08, blue: 0.01)),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+    }
+
+    // MARK: Formula Card
+
+    private var formulaCard: some View {
+        let altStr  = String(format: "%.2f", altitude)
+        let eyeStr  = String(format: "%.2f", eyeLevel)
+        let distStr = String(format: "%.4f", distanceKm)
+
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "function")
+                    .font(.caption.weight(.semibold))
+                Text(NSLocalizedString("Formula", comment: "Formula"))
+                    .font(.caption.weight(.semibold))
+            }
+            .foregroundStyle(.white.opacity(0.52))
+
+            Text("d = 3.57 × √( altitude + eye level )")
+                .font(.system(.subheadline, design: .monospaced).weight(.medium))
+                .foregroundStyle(.white.opacity(0.88))
+
+            Divider().overlay(.white.opacity(0.10))
+
+            Text("d = 3.57 × √( \(altStr) + \(eyeStr) ) = \(distStr) km")
+                .font(.caption.monospacedDigit())
+                .foregroundStyle(Color(red: 0.55, green: 0.88, blue: 1.0).opacity(0.72))
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+}
+
+// MARK: - Preview
+
+#Preview {
+    NavigationView {
+        HorizonView()
+    }
+}
