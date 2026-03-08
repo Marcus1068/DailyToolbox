@@ -256,7 +256,7 @@ struct CurrencyConverterView: View {
     @ViewBuilder
     private func currencyButton(
         code: String,
-        label: String,
+        label: LocalizedStringKey,
         accentColor: Color,
         action: @escaping () -> Void
     ) -> some View {
