@@ -351,7 +351,7 @@ struct HorizonView: View {
                 .contentTransition(.numericText())
                 .animation(.spring(response: 0.35), value: altitude)
 
-                Text(locationManager.accuracyLabel)
+                Text(LocalizedStringKey(locationManager.accuracyLabel))
                     .font(.caption2)
                     .foregroundStyle(locationManager.accuracyColor.opacity(0.78))
             }

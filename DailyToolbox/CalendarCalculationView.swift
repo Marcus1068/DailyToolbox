@@ -123,7 +123,7 @@ struct CalendarCalculationView: View {
         return Color(red: 0.38, green: 0.95, blue: 0.60)
     }
 
-    private var countdownLabel: String {
+    private var countdownLabel: LocalizedStringKey {
         if daysUntil == 0 { return "Today!" }
         if daysUntil > 0  { return "days until event" }
         return "days ago"
@@ -157,7 +157,7 @@ struct CalendarCalculationView: View {
             Button("Cancel", role: .cancel) { eventTitle = "" }
         } message: {
             let dateStr = selectedDate.formatted(date: .long, time: .omitted)
-            Text(String(format: "Add event on %@", dateStr))
+            Text("Add event on \(dateStr)")
         }
         .alert("Calendar Error", isPresented: $showCalendarError) {
             Button("OK", role: .cancel) {}
@@ -289,7 +289,7 @@ struct CalendarCalculationView: View {
     @ViewBuilder
     private func quickCard(
         emoji: String,
-        label: String,
+        label: LocalizedStringKey,
         date: Date,
         days: Int,
         accent: Color,

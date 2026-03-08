@@ -40,6 +40,7 @@
 		2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */; };
 		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
+		2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
@@ -95,6 +96,7 @@
 		2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolbox.entitlements; sourceTree = "<group>"; };
 		2CBD869423F6BE7E0011D886 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
+		2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2C5F83952F5DA6D6009898E9 /* ContentView.swift */,
+				2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			files = (
 				2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
+				2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */,
 				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

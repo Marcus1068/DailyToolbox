@@ -31,7 +31,7 @@ import SwiftUI
 private enum PercentField: CaseIterable {
     case rate, value, base
 
-    var label: String {
+    var label: LocalizedStringKey {
         switch self {
         case .rate:  return "Percentage %"
         case .value: return "Value"
@@ -39,7 +39,7 @@ private enum PercentField: CaseIterable {
         }
     }
 
-    var placeholder: String {
+    var placeholder: LocalizedStringKey {
         switch self {
         case .rate:  return "%"
         case .value: return "value"

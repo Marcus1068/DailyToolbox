@@ -80,7 +80,7 @@ private struct RateGaugeView: View {
 private enum InterestField: CaseIterable {
     case interest, capital, rate
 
-    var label: String {
+    var label: LocalizedStringKey {
         switch self {
         case .interest: return "Interest"
         case .capital:  return "Capital"
@@ -88,7 +88,7 @@ private enum InterestField: CaseIterable {
         }
     }
 
-    var subtitle: String {
+    var subtitle: LocalizedStringKey {
         switch self {
         case .interest: return "Amount earned / paid"
         case .capital:  return "Principal amount"
@@ -311,7 +311,7 @@ struct InterestRateView: View {
         .animation(.spring(response: 0.4, dampingFraction: 0.75), value: rate)
     }
 
-    private func summaryRow(icon: String, label: String, value: String, color: Color) -> some View {
+    private func summaryRow(icon: String, label: LocalizedStringKey, value: String, color: Color) -> some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.caption.weight(.semibold))

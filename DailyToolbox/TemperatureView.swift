@@ -31,7 +31,7 @@ import SwiftUI
 private enum TempField: CaseIterable {
     case celsius, fahrenheit, kelvin
 
-    var label: String {
+    var label: LocalizedStringKey {
         switch self {
         case .celsius:    return "Celsius"
         case .fahrenheit: return "Fahrenheit"
@@ -237,7 +237,7 @@ struct TemperatureView: View {
 
     // MARK: Classification
 
-    private typealias TempClass = (label: String, emoji: String, color: Color)
+    private typealias TempClass = (label: LocalizedStringKey, emoji: String, color: Color)
 
     private var classification: TempClass? {
         guard let c = celsiusValue else { return nil }

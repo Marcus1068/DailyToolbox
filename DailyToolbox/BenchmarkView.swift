@@ -457,7 +457,7 @@ private struct BenchCard: View {
             }
 
             // Name
-            Text(type.rawValue)
+            Text(LocalizedStringKey(type.rawValue))
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(.white)
                 .lineLimit(1)

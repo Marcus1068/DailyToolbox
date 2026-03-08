@@ -49,7 +49,7 @@ private struct DevicePreset: Identifiable {
 
 private struct CostResultRow: View {
     let icon:    String
-    let period:  String
+    let period:  LocalizedStringKey
     let kwh:     Double
     let cost:    Double
     let accent:  Color
@@ -269,12 +269,12 @@ struct PowerConsumptionView: View {
     private func inputCard(
         field: Field,
         icon: String,
-        label: String,
-        hint: String,
+        label: LocalizedStringKey,
+        hint: LocalizedStringKey,
         placeholder: String,
         text: Binding<String>,
         accent: Color,
-        unit: String,
+        unit: LocalizedStringKey,
         stepDelta: Double? = nil,
         stepRange: ClosedRange<Double>? = nil,
         onChange: (() -> Void)? = nil
@@ -383,7 +383,7 @@ struct PowerConsumptionView: View {
                             HStack(spacing: 5) {
                                 Text(preset.emoji).font(.caption)
                                 VStack(alignment: .leading, spacing: 1) {
-                                    Text(preset.name)
+                                    Text(LocalizedStringKey(preset.name))
                                         .font(.caption2.weight(.semibold))
                                         .foregroundStyle(.white)
                                     Text("\(Int(preset.watts))W")
@@ -490,7 +490,7 @@ struct PowerConsumptionView: View {
         .frame(height: 60)
     }
 
-    private func barRow(label: String, frac: Double, w: CGFloat, color: Color) -> some View {
+    private func barRow(label: LocalizedStringKey, frac: Double, w: CGFloat, color: Color) -> some View {
         HStack(spacing: 8) {
             Text(label)
                 .font(.caption2.weight(.medium))

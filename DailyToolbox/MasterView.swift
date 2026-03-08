@@ -150,10 +150,11 @@ struct MasterView: View {
     private func sectionBlock(_ section: ToolSection) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
-                Text(section.title.uppercased())
+                Text(LocalizedStringKey(section.title))
                     .font(.system(size: 11, weight: .bold))
                     .tracking(1.8)
                     .foregroundStyle(.white.opacity(0.70))
+                    .textCase(.uppercase)
 
                 Rectangle()
                     .fill(.white.opacity(0.12))
@@ -198,14 +199,14 @@ private struct ToolCard: View {
             }
 
             VStack(spacing: 2) {
-                Text(item.name)
+                Text(LocalizedStringKey(item.name))
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
 
-                Text(item.subtitle)
+                Text(LocalizedStringKey(item.subtitle))
                     .font(.system(size: 11))
                     .foregroundStyle(.white.opacity(0.60))
                     .multilineTextAlignment(.center)

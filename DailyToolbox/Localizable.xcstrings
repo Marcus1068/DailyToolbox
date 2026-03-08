@@ -1,0 +1,1964 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "—" : {
+
+    },
+    "—  m" : {
+
+    },
+    "%" : {
+      "shouldTranslate" : false
+    },
+    "%@" : {
+
+    },
+    "%@ °C · %@ °F · %@ K" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ °C · %2$@ °F · %3$@ K"
+          }
+        }
+      }
+    },
+    "%@-bit" : {
+
+    },
+    "%@W" : {
+
+    },
+    "•" : {
+
+    },
+    "°C" : {
+      "shouldTranslate" : false
+    },
+    "°C · °F · K" : {
+      "shouldTranslate" : false
+    },
+    "°F" : {
+      "shouldTranslate" : false
+    },
+    "© 2020–2025 Marcus Deuß" : {
+      "shouldTranslate" : false
+    },
+    "±" : {
+
+    },
+    "=" : {
+
+    },
+    "€/kWh" : {
+      "shouldTranslate" : false
+    },
+    "1 – 3999" : {
+      "shouldTranslate" : false
+    },
+    "1 %@ = %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1 %1$@ = %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "12 built-in tools" : {
+      "comment" : "MasterView app header subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 integrierte Werkzeuge"
+          }
+        }
+      }
+    },
+    "A/C" : {
+      "shouldTranslate" : false
+    },
+    "About" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "comment" : "Button: add calendar event",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        }
+      }
+    },
+    "Add event on %@" : {
+      "comment" : "Alert message: add calendar event on a specific date (%@ = formatted date)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignis hinzufügen am %@"
+          }
+        }
+      }
+    },
+    "Add to Calendar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Kalender hinzufügen"
+          }
+        }
+      }
+    },
+    "Amount" : {
+      "comment" : "Currency converter: input amount label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betrag"
+          }
+        }
+      }
+    },
+    "Amount earned / paid" : {
+      "comment" : "Interest rate field subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verdient / Gezahlt"
+          }
+        }
+      }
+    },
+    "Apache License 2.0" : {
+      "shouldTranslate" : false
+    },
+    "Array Sort" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortierung"
+          }
+        }
+      }
+    },
+    "ASL" : {
+      "comment" : "Above sea level label in horizon view",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ü. NN"
+          }
+        }
+      }
+    },
+    "Base & rate" : {
+      "comment" : "Percentage tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert & Rate"
+          }
+        }
+      }
+    },
+    "Base 2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis 2"
+          }
+        }
+      }
+    },
+    "Base 10" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis 10"
+          }
+        }
+      }
+    },
+    "Base 16" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis 16"
+          }
+        }
+      }
+    },
+    "base value" : {
+      "comment" : "Percentage calculation: base value text field placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert"
+          }
+        }
+      }
+    },
+    "Base Value" : {
+      "comment" : "Percentage calculation: base value field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert"
+          }
+        }
+      }
+    },
+    "Benchmark" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benchmark"
+          }
+        }
+      }
+    },
+    "Bi-directional" : {
+      "comment" : "Roman numerals tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bidirektional"
+          }
+        }
+      }
+    },
+    "Bidirectional conversion — range I (1) to MMMCMXCIX (3999)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bidirektionale Umrechnung — Bereich I (1) bis MMMCMXCIX (3999)"
+          }
+        }
+      }
+    },
+    "Binary" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binär"
+          }
+        }
+      }
+    },
+    "Bit Pattern" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitmuster"
+          }
+        }
+      }
+    },
+    "Bulb" : {
+      "comment" : "Power consumption device preset name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glühbirne"
+          }
+        }
+      }
+    },
+    "C before D or M subtracts (CD=400, CM=900)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C vor D oder M subtrahiert (CD=400, CM=900)"
+          }
+        }
+      }
+    },
+    "calculated" : {
+      "comment" : "Interest rate: badge shown on the solved field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "berechnet"
+          }
+        }
+      }
+    },
+    "Calendar" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalender"
+          }
+        }
+      }
+    },
+    "Calendar Calculator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datumsrechner"
+          }
+        }
+      }
+    },
+    "Calendar Error" : {
+      "comment" : "Alert title when calendar access fails",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalenderfehler"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
+    },
+    "Capital" : {
+      "comment" : "Interest rate: capital field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapital"
+          }
+        }
+      }
+    },
+    "Celsius" : {
+      "comment" : "Temperature scale label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celsius"
+          }
+        }
+      }
+    },
+    "Charger" : {
+      "comment" : "Power consumption device preset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladegerät"
+          }
+        }
+      }
+    },
+    "Christmas" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weihnachten"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "comment" : "Button: clear all input fields",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
+    },
+    "Clear All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
+          }
+        }
+      }
+    },
+    "Cold" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalt"
+          }
+        }
+      }
+    },
+    "Comfortable" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angenehm"
+          }
+        }
+      }
+    },
+    "Compound & simple" : {
+      "comment" : "Interest rate tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinseszins & einfach"
+          }
+        }
+      }
+    },
+    "Compression" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komprimierung"
+          }
+        }
+      }
+    },
+    "Conversions" : {
+      "comment" : "MasterView section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umrechnungen"
+          }
+        }
+      }
+    },
+    "Convert Numbers" : {
+      "comment" : "Navigation title",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlen umrechnen"
+          }
+        }
+      }
+    },
+    "Cool" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kühl"
+          }
+        }
+      }
+    },
+    "Copy Address" : {
+      "comment" : "Button in mail unavailable alert",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse kopieren"
+          }
+        }
+      }
+    },
+    "Cost Overview" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenübersicht"
+          }
+        }
+      }
+    },
+    "Cost per kWh" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosten pro kWh"
+          }
+        }
+      }
+    },
+    "Count days to any date, Christmas or Easter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage bis zu einem Datum, Weihnachten oder Ostern zählen"
+          }
+        }
+      }
+    },
+    "Currency" : {
+      "comment" : "Tool name in MasterView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung"
+          }
+        }
+      }
+    },
+    "Currency Converter" : {
+      "comment" : "Navigation title",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währungsrechner"
+          }
+        }
+      }
+    },
+    "d = 3.57 × √( %@ + %@ ) = %@ km" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "d = 3.57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        }
+      }
+    },
+    "d = 3.57 × √( altitude + eye level )" : {
+
+    },
+    "D, L, V never repeat — only one per numeral" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D, L, V wiederholen sich nie — nur einmal pro Zahl"
+          }
+        }
+      }
+    },
+    "Daily Usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Nutzung"
+          }
+        }
+      }
+    },
+    "DailyToolbox" : {
+      "shouldTranslate" : false
+    },
+    "Date calculations" : {
+      "comment" : "Calendar tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datumsberechnungen"
+          }
+        }
+      }
+    },
+    "Day" : {
+      "comment" : "Power consumption bar chart label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        }
+      }
+    },
+    "days" : {
+      "comment" : "Calendar: days label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage"
+          }
+        }
+      }
+    },
+    "days ago" : {
+      "comment" : "Calendar countdown label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage vergangen"
+          }
+        }
+      }
+    },
+    "days until event" : {
+      "comment" : "Calendar countdown label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage bis zum Ereignis"
+          }
+        }
+      }
+    },
+    "Decimal" : {
+      "comment" : "Number base label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dezimal"
+          }
+        }
+      }
+    },
+    "Device Power" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geräteleistung"
+          }
+        }
+      }
+    },
+    "Device speed" : {
+      "comment" : "Benchmark tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerätgeschwindigkeit"
+          }
+        }
+      }
+    },
+    "dict.leo.org" : {
+      "shouldTranslate" : false
+    },
+    "e.g. 0.30 for 30 ct/kWh" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z.B. 0,30 für 30 Ct/kWh"
+          }
+        }
+      }
+    },
+    "Easter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostern"
+          }
+        }
+      }
+    },
+    "EN↔DE" : {
+      "shouldTranslate" : false
+    },
+    "Enter any base — Decimal, Hex, or Binary." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis eingeben — Dezimal, Hex oder Binär."
+          }
+        }
+      }
+    },
+    "Enter any value — the others update live." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einen Wert eingeben — die anderen werden live aktualisiert."
+          }
+        }
+      }
+    },
+    "Enter wattage, hours/day and price per kWh" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watt, Stunden/Tag und Preis pro kWh eingeben"
+          }
+        }
+      }
+    },
+    "ES↔DE" : {
+      "shouldTranslate" : false
+    },
+    "Event title" : {
+      "comment" : "Calendar event alert text field placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignistitel"
+          }
+        }
+      }
+    },
+    "Exchange rates" : {
+      "comment" : "Currency tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wechselkurse"
+          }
+        }
+      }
+    },
+    "Extreme Cold" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extremkälte"
+          }
+        }
+      }
+    },
+    "Extreme Heat" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extremhitze"
+          }
+        }
+      }
+    },
+    "Eye Level" : {
+      "comment" : "Horizon view: eye level field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augenhöhe"
+          }
+        }
+      }
+    },
+    "Fahrenheit" : {
+      "comment" : "Temperature scale label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fahrenheit"
+          }
+        }
+      }
+    },
+    "Fetching rates…" : {
+      "comment" : "Currency converter loading state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurse werden geladen…"
+          }
+        }
+      }
+    },
+    "Fill in all three fields to see your power costs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle drei Felder ausfüllen, um Stromkosten zu sehen"
+          }
+        }
+      }
+    },
+    "Fill in any two fields — the third is solved automatically." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei Felder ausfüllen — das dritte wird automatisch berechnet."
+          }
+        }
+      }
+    },
+    "Fill in two values — the third is solved automatically." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei Werte eingeben — der dritte wird automatisch berechnet."
+          }
+        }
+      }
+    },
+    "Float Math" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gleitpunktzahlen"
+          }
+        }
+      }
+    },
+    "Formula" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formel"
+          }
+        }
+      }
+    },
+    "FR↔DE" : {
+      "shouldTranslate" : false
+    },
+    "Freezing" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gefrierend"
+          }
+        }
+      }
+    },
+    "Fridge" : {
+      "comment" : "Power consumption device preset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kühlschrank"
+          }
+        }
+      }
+    },
+    "From" : {
+      "comment" : "Currency converter: source currency label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von"
+          }
+        }
+      }
+    },
+    "Generated by DailyToolbox App" : {
+      "comment" : "Calendar event description",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellt von der DailyToolbox-App"
+          }
+        }
+      }
+    },
+    "GPS Altitude" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-Höhe"
+          }
+        }
+      }
+    },
+    "GPS altitude + eye level → distance to horizon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-Höhe + Augenhöhe → Entfernung zum Horizont"
+          }
+        }
+      }
+    },
+    "h/day" : {
+      "comment" : "Power consumption unit: hours per day",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/Tag"
+          }
+        }
+      }
+    },
+    "Heater" : {
+      "comment" : "Power consumption device preset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heizung"
+          }
+        }
+      }
+    },
+    "Hex · Dec · Bin" : {
+      "comment" : "Number bases tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hex · Dez · Bin"
+          }
+        }
+      }
+    },
+    "Hexadecimal" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hexadezimal"
+          }
+        }
+      }
+    },
+    "Horizon" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizont"
+          }
+        }
+      }
+    },
+    "Horizon Calculator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizontrechner"
+          }
+        }
+      }
+    },
+    "Horizon Distance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizont-Entfernung"
+          }
+        }
+      }
+    },
+    "Hot" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heiß"
+          }
+        }
+      }
+    },
+    "Hours per day (0 – 24)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stunden pro Tag (0 – 24)"
+          }
+        }
+      }
+    },
+    "I before V or X subtracts (IV=4, IX=9)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I vor V oder X subtrahiert (IV=4, IX=9)"
+          }
+        }
+      }
+    },
+    "I V X L C D M" : {
+      "shouldTranslate" : false
+    },
+    "Integer Math" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganzzahlarithmetik"
+          }
+        }
+      }
+    },
+    "Interest" : {
+      "comment" : "Interest rate: interest amount field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinsen"
+          }
+        }
+      }
+    },
+    "Interest = Rate × Capital ÷ 100" : {
+      "comment" : "Interest rate formula text",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinsen = Zinssatz × Kapital ÷ 100"
+          }
+        }
+      }
+    },
+    "Interest Rate" : {
+      "comment" : "Navigation title, tool name, and field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinssatz"
+          }
+        }
+      }
+    },
+    "Interest Rate Calculation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinsberechnung"
+          }
+        }
+      }
+    },
+    "Invalid number" : {
+      "comment" : "Roman numerals validation error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige Zahl"
+          }
+        }
+      }
+    },
+    "iOS %@" : {
+
+    },
+    "IT↔DE" : {
+      "shouldTranslate" : false
+    },
+    "JSON Codec" : {
+      "shouldTranslate" : false
+    },
+    "K" : {
+      "shouldTranslate" : false
+    },
+    "Kelvin" : {
+      "comment" : "Temperature scale label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelvin"
+          }
+        }
+      }
+    },
+    "km" : {
+
+    },
+    "Last update:" : {
+      "comment" : "Currency converter: last update label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte Aktualisierung:"
+          }
+        }
+      }
+    },
+    "LED" : {
+      "shouldTranslate" : false
+    },
+    "m" : {
+
+    },
+    "Mail Not Available" : {
+      "comment" : "Alert title when mail app is not configured",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-Mail nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Max. 3 identical consecutive symbols (M, C, X, I)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max. 3 identische aufeinanderfolgende Symbole (M, C, X, I)"
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arbeitsspeicher"
+          }
+        }
+      }
+    },
+    "Month" : {
+      "comment" : "Power consumption bar chart label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monat"
+          }
+        }
+      }
+    },
+    "New Calendar Event" : {
+      "comment" : "Alert title for adding a calendar event",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Kalenderereignis"
+          }
+        }
+      }
+    },
+    "No mail app is configured on this device.\n\nYou can reach us at:\n%@" : {
+      "comment" : "Alert message when mail is unavailable (%@ = email address)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf diesem Gerät ist keine Mail-App eingerichtet.\n\nSie können uns erreichen unter:\n%@"
+          }
+        }
+      }
+    },
+    "No Permission" : {
+      "comment" : "Horizon view: location permission denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Berechtigung"
+          }
+        }
+      }
+    },
+    "Number Bases" : {
+      "comment" : "Tool name in MasterView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlensysteme"
+          }
+        }
+      }
+    },
+    "Number Converter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlenrechner"
+          }
+        }
+      }
+    },
+    "Numbers" : {
+      "comment" : "MasterView section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlen"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Open Source on GitHub" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Source auf GitHub"
+          }
+        }
+      }
+    },
+    "Oven" : {
+      "comment" : "Power consumption device preset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofen"
+          }
+        }
+      }
+    },
+    "PC" : {
+      "shouldTranslate" : false
+    },
+    "Per Day" : {
+      "comment" : "Power consumption result row period",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Tag"
+          }
+        }
+      }
+    },
+    "Per Month" : {
+      "comment" : "Power consumption result row period",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Monat"
+          }
+        }
+      }
+    },
+    "Per Year" : {
+      "comment" : "Power consumption result row period",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Jahr"
+          }
+        }
+      }
+    },
+    "Percentage" : {
+      "comment" : "Tool name in MasterView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozent"
+          }
+        }
+      }
+    },
+    "Percentage %" : {
+      "comment" : "Percentage calculation: rate field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozentsatz %"
+          }
+        }
+      }
+    },
+    "Percentage Calculation" : {
+      "comment" : "Navigation title and header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozentrechnung"
+          }
+        }
+      }
+    },
+    "Pick a date" : {
+      "comment" : "Calendar: date picker label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum auswählen"
+          }
+        }
+      }
+    },
+    "Power" : {
+      "comment" : "Tool name in MasterView (power consumption)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strom"
+          }
+        }
+      }
+    },
+    "Power Consumption" : {
+      "comment" : "Navigation title",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stromverbrauch"
+          }
+        }
+      }
+    },
+    "Power Cost Calculator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stromkostenrechner"
+          }
+        }
+      }
+    },
+    "Principal amount" : {
+      "comment" : "Interest rate: capital field subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitalbetrag"
+          }
+        }
+      }
+    },
+    "Questions, ideas or bug reports" : {
+      "comment" : "About view: send feedback subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen, Ideen oder Fehlerberichte"
+          }
+        }
+      }
+    },
+    "Quick Presets" : {
+      "comment" : "Power consumption section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellvorlagen"
+          }
+        }
+      }
+    },
+    "Rate" : {
+      "comment" : "Interest rate summary row: rate label (short form)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinssatz"
+          }
+        }
+      }
+    },
+    "Rate in %" : {
+      "comment" : "Interest rate field subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinssatz in %"
+          }
+        }
+      }
+    },
+    "Repeat" : {
+      "comment" : "Benchmark: repeat count label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederholen"
+          }
+        }
+      }
+    },
+    "Result" : {
+      "comment" : "Currency converter: result label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnis"
+          }
+        }
+      }
+    },
+    "Roman" : {
+      "comment" : "Roman numerals: roman field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römisch"
+          }
+        }
+      }
+    },
+    "Roman Number Converter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römische Zahlen Umrechner"
+          }
+        }
+      }
+    },
+    "Roman Numbers" : {
+      "comment" : "Navigation title",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römische Zahlen"
+          }
+        }
+      }
+    },
+    "Roman Numerals" : {
+      "comment" : "Tool name in MasterView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römische Zahlen"
+          }
+        }
+      }
+    },
+    "RU↔DE" : {
+      "shouldTranslate" : false
+    },
+    "Rules" : {
+      "comment" : "Roman numerals: rules section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln"
+          }
+        }
+      }
+    },
+    "Run" : {
+
+    },
+    "Run All Benchmarks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Benchmarks starten"
+          }
+        }
+      }
+    },
+    "Running…" : {
+      "comment" : "Benchmark: running state button label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft…"
+          }
+        }
+      }
+    },
+    "s" : {
+
+    },
+    "score" : {
+      "comment" : "Benchmark score label (lowercase)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte"
+          }
+        }
+      }
+    },
+    "Score" : {
+      "comment" : "Benchmark composite score label",
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte"
+          }
+        }
+      }
+    },
+    "Search currencies" : {
+      "comment" : "Currency converter search bar prompt",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währungen suchen"
+          }
+        }
+      }
+    },
+    "Search word…" : {
+      "comment" : "Translation view search field placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wort suchen…"
+          }
+        }
+      }
+    },
+    "Searching…" : {
+      "comment" : "Horizon view: GPS searching state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche…"
+          }
+        }
+      }
+    },
+    "Select a tool" : {
+      "comment" : "MasterView placeholder when no tool is selected (iPad)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werkzeug auswählen"
+          }
+        }
+      }
+    },
+    "Select Currency" : {
+      "comment" : "Navigation title for currency picker sheet",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung auswählen"
+          }
+        }
+      }
+    },
+    "Send Feedback" : {
+      "comment" : "About view: send feedback button",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback senden"
+          }
+        }
+      }
+    },
+    "SHA-256" : {
+      "shouldTranslate" : false
+    },
+    "Source: European Central Bank" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle: Europäische Zentralbank"
+          }
+        }
+      }
+    },
+    "Strings" : {
+      "comment" : "Benchmark type name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeichenketten"
+          }
+        }
+      }
+    },
+    "Subtractive pairs:" : {
+      "comment" : "Roman numerals reference section label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subtraktive Paare:"
+          }
+        }
+      }
+    },
+    "Symbol Reference" : {
+      "comment" : "Roman numerals reference section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbolreferenz"
+          }
+        }
+      }
+    },
+    "Symbols are written largest to smallest, left to right" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbole werden von groß nach klein, von links nach rechts geschrieben"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur"
+          }
+        }
+      }
+    },
+    "Temperature Conversion" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperaturumrechnung"
+          }
+        }
+      }
+    },
+    "Temperature Scale" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperaturskala"
+          }
+        }
+      }
+    },
+    "Timing Comparison" : {
+      "comment" : "Benchmark chart section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitvergleich"
+          }
+        }
+      }
+    },
+    "To" : {
+      "comment" : "Currency converter: target currency label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach"
+          }
+        }
+      }
+    },
+    "Today!" : {
+      "comment" : "Calendar countdown: event is today",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute!"
+          }
+        }
+      }
+    },
+    "Tools" : {
+      "comment" : "MasterView section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werkzeuge"
+          }
+        }
+      }
+    },
+    "Translation" : {
+      "comment" : "Navigation title and tool name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersetzung"
+          }
+        }
+      }
+    },
+    "TV" : {
+      "shouldTranslate" : false
+    },
+    "Unavailable" : {
+      "comment" : "Horizon view: GPS unavailable state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gültiger Bereich: 1 (I) bis 3999 (MMMCMXCIX)"
+          }
+        }
+      }
+    },
+    "value" : {
+      "comment" : "Percentage calculation: value text field placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        }
+      }
+    },
+    "Value" : {
+      "comment" : "Percentage calculation: value field label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        }
+      }
+    },
+    "Value must be between 1 and 3999" : {
+      "comment" : "Roman numerals range validation error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert muss zwischen 1 und 3999 liegen"
+          }
+        }
+      }
+    },
+    "Visibility range" : {
+      "comment" : "Horizon tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichtweite"
+          }
+        }
+      }
+    },
+    "W" : {
+      "shouldTranslate" : false
+    },
+    "Warm" : {
+      "comment" : "Temperature classification",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warm"
+          }
+        }
+      }
+    },
+    "Washer" : {
+      "comment" : "Power consumption device preset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waschmaschine"
+          }
+        }
+      }
+    },
+    "Watt consumption of the device" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wattverbrauch des Geräts"
+          }
+        }
+      }
+    },
+    "Watts & cost" : {
+      "comment" : "Power consumption tool subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watt & Kosten"
+          }
+        }
+      }
+    },
+    "X before L or C subtracts (XL=40, XC=90)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X vor L oder C subtrahiert (XL=40, XC=90)"
+          }
+        }
+      }
+    },
+    "Ⅻ" : {
+
+    },
+    "Year" : {
+      "comment" : "Power consumption bar chart label",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahr"
+          }
+        }
+      }
+    },
+    "Your daily tools, beautifully crafted" : {
+      "comment" : "Splash screen subtitle",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine täglichen Werkzeuge, wunderschön gestaltet"
+          }
+        }
+      }
+    },
+    "Your eyes above ground" : {
+      "comment" : "Horizon view: eye level field description",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augenhöhe über dem Boden"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

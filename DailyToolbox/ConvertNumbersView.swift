@@ -31,7 +31,7 @@ import SwiftUI
 private enum NumberBase: CaseIterable {
     case decimal, hexadecimal, binary
 
-    var label: String {
+    var label: LocalizedStringKey {
         switch self {
         case .decimal:     return "Decimal"
         case .hexadecimal: return "Hexadecimal"
@@ -39,7 +39,7 @@ private enum NumberBase: CaseIterable {
         }
     }
 
-    var shortLabel: String {
+    var shortLabel: LocalizedStringKey {
         switch self {
         case .decimal:     return "Base 10"
         case .hexadecimal: return "Base 16"
