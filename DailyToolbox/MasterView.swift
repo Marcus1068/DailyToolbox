@@ -141,7 +141,7 @@ struct MasterView: View {
                 )
                 .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
 
-            Text("12 built-in tools")
+            Text("14 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(.white.opacity(0.55))
         }
