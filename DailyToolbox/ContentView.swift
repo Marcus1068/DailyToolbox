@@ -53,6 +53,7 @@ struct ContentView: View {
         case "showTranslation":  TranslationView()
         case "showUnitConv":     UnitConverterView()
         case "showTipSplitter":  TipSplitterView()
+        case "showQRCode":       QRCodeView()
         case "showCalendar":     CalendarCalculationView()
         case "showHorizon":      HorizonView()
         case "showBenchmark":    BenchmarkView()

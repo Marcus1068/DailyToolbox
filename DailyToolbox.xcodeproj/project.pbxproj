@@ -43,6 +43,7 @@
 		2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */; };
 		2CBF5ED62F5E0755009575C2 /* UnitConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */; };
 		2CBF5ED82F5E0785009575C2 /* TipSplitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */; };
+		2CBF5EDA2F5E0AD2009575C2 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED92F5E0AD2009575C2 /* QRCodeView.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
@@ -101,6 +102,7 @@
 		2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverterView.swift; sourceTree = "<group>"; };
 		2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSplitterView.swift; sourceTree = "<group>"; };
+		2CBF5ED92F5E0AD2009575C2 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */,
+				2CBF5ED92F5E0AD2009575C2 /* QRCodeView.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */,
 				2CBF5ED82F5E0785009575C2 /* TipSplitterView.swift in Sources */,
 				2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */,
+				2CBF5EDA2F5E0AD2009575C2 /* QRCodeView.swift in Sources */,
 				2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
 				2C5F83862F5D9F94009898E9 /* DecimalRomanNumbersView.swift in Sources */,
