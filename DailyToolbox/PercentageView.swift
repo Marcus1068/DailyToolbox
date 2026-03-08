@@ -271,19 +271,9 @@ struct PercentageView: View {
                     }
             }
 
-            Spacer()
-
-            if !text.wrappedValue.isEmpty {
-                Button {
-                    text.wrappedValue = ""
-                    solvedField = nil
-                    calculate()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.white.opacity(0.35))
-                        .font(.system(size: 18))
-                }
-                .buttonStyle(.plain)
+            // Reserve space so the glass card stays consistent width
+            if !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty {
+                Color.clear.frame(width: 32, height: 32)
             }
         }
         .padding(.horizontal, 16)
@@ -293,6 +283,21 @@ struct PercentageView: View {
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
+        // Xmark sits as an overlay ON TOP of the glass surface so touches
+        // are never blocked by the glass effect hit-test area.
+        .overlay(alignment: .trailing) {
+            if !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty {
+                Button(action: clearAll) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.white.opacity(0.55))
+                        .frame(width: 44, height: 44)      // generous hit target
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .padding(.trailing, 4)
+            }
+        }
     }
 
     // MARK: - Clear Button
