@@ -47,6 +47,8 @@
 		2CBF5EDD2F5E1274009575C2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EDC2F5E1274009575C2 /* ColorPickerView.swift */; };
 		2CBF5EDF2F5E1274009575C2 /* AreaVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EDE2F5E1274009575C2 /* AreaVolumeView.swift */; };
 		2CBF5EE12F5E1281009575C2 /* OhmsLawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */; };
+		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
+		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
 		2CBF5EE32F5E1562009575C2 /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */; };
 		2CBF5EE52F5E15A8009575C2 /* BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE42F5E15A8009575C2 /* BMIView.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
@@ -113,6 +115,8 @@
 		2CBF5EDC2F5E1274009575C2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		2CBF5EDE2F5E1274009575C2 /* AreaVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaVolumeView.swift; sourceTree = "<group>"; };
 		2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhmsLawView.swift; sourceTree = "<group>"; };
+		82B60AC8709404457D01D424 /* AspectRatioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioView.swift; sourceTree = "<group>"; };
+		44B923CFE82DBFA41976C241 /* RandomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizerView.swift; sourceTree = "<group>"; };
 		2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCalculatorView.swift; sourceTree = "<group>"; };
 		2CBF5EE42F5E15A8009575C2 /* BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIView.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				2CBF5EDC2F5E1274009575C2 /* ColorPickerView.swift */,
 				2CBF5EDE2F5E1274009575C2 /* AreaVolumeView.swift */,
 				2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */,
+				82B60AC8709404457D01D424 /* AspectRatioView.swift */,
+				44B923CFE82DBFA41976C241 /* RandomizerView.swift */,
 				2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */,
 				98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */,
 				2CBF5EE42F5E15A8009575C2 /* BMIView.swift */,
@@ -363,6 +369,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */,
+				DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */,
 				2CBF5EE32F5E1562009575C2 /* LoanCalculatorView.swift in Sources */,
 				2C5F83962F5DA6D6009898E9 /* ContentView.swift in Sources */,
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
