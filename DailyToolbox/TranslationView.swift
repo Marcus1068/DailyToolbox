@@ -104,7 +104,7 @@ final class LeoWebViewModel: NSObject {
     }
 }
 
-extension LeoWebViewModel: @preconcurrency WKNavigationDelegate {
+extension LeoWebViewModel: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
         isLoading = true; sync(from: webView)
     }

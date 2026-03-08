@@ -36,7 +36,7 @@ private struct MailComposeView: UIViewControllerRepresentable {
     let body: String
     @Binding var isPresented: Bool
 
-    func makeCoordinator() -> Coordinator { Coordinator(self) }
+    func makeCoordinator() -> Coordinator { Coordinator($isPresented) }
 
     func makeUIViewController(context: Context) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
@@ -50,13 +50,14 @@ private struct MailComposeView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
 
     final class Coordinator: NSObject, MFMailComposeViewControllerDelegate, @unchecked Sendable {
-        let parent: MailComposeView
-        init(_ parent: MailComposeView) { self.parent = parent }
+        let isPresented: Binding<Bool>
+        init(_ isPresented: Binding<Bool>) { self.isPresented = isPresented }
 
         func mailComposeController(_ controller: MFMailComposeViewController,
                                    didFinishWith result: MFMailComposeResult,
                                    error: Error?) {
-            parent.isPresented = false
+            let binding = isPresented
+            Task { @MainActor in binding.wrappedValue = false }
         }
     }
 }
