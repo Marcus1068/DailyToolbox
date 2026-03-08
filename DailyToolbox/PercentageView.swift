@@ -68,57 +68,75 @@ struct PercentageView: View {
     @State private var resultScale: CGFloat = 1.0
     @FocusState private var focusedField: PercentField?
 
-    // MARK: Compute
+    // MARK: Helpers
 
-    private func sanitize(_ s: String) -> String {
-        s.replacingOccurrences(of: ",", with: ".")
+    /// Allow digits and at most one decimal point; replace comma with dot.
+    private func numericOnly(_ s: String) -> String {
+        let normalized = s.replacingOccurrences(of: ",", with: ".")
+        var dotSeen = false
+        return String(normalized.filter { c in
+            if c == "." {
+                guard !dotSeen else { return false }
+                dotSeen = true; return true
+            }
+            return c.isNumber
+        })
     }
 
-    private func calculate() {
-        let rateVal  = Double(sanitize(rateText))
-        let valueVal = Double(sanitize(valueText))
-        let baseVal  = Double(sanitize(baseText))
+    /// Parse a field string to Double (safe for both user input and computed output).
+    private func parse(_ s: String) -> Double? {
+        Double(s.filter { $0.isNumber || $0 == "." })
+    }
 
+    // MARK: Compute
+
+    private func calculate() {
+        let rateVal  = parse(rateText)
+        let valueVal = parse(valueText)
+        let baseVal  = parse(baseText)
+
+        let rateEmpty  = rateText.trimmingCharacters(in: .whitespaces).isEmpty
+        let valueEmpty = valueText.trimmingCharacters(in: .whitespaces).isEmpty
+        let baseEmpty  = baseText.trimmingCharacters(in: .whitespaces).isEmpty
+
+        var solved: PercentField? = nil
         var newRate  = rateText
         var newValue = valueText
         var newBase  = baseText
-        var solved: PercentField? = nil
 
-        if let v = valueVal, let r = rateVal, baseText.trimmingCharacters(in: .whitespaces).isEmpty {
-            let p = Percent(prozentwert: v, prozentsatz: r)
-            newBase = p.grundWertToString
+        if let v = valueVal, let r = rateVal, baseEmpty {
+            // base = value / rate * 100
+            newBase = String(format: "%g", v / r * 100.0)
             solved = .base
-        } else if let v = valueVal, let b = baseVal, rateText.trimmingCharacters(in: .whitespaces).isEmpty {
-            let p = Percent(prozentwert: v, grundwert: b)
-            newRate = p.prozentSatzToString
+        } else if let v = valueVal, let b = baseVal, rateEmpty {
+            // rate = value / base * 100
+            newRate = String(format: "%g", v / b * 100.0)
             solved = .rate
-        } else if let r = rateVal, let b = baseVal, valueText.trimmingCharacters(in: .whitespaces).isEmpty {
-            let p = Percent(prozentsatz: r, grundwert: b)
-            newValue = p.prozentWertToString
+        } else if let r = rateVal, let b = baseVal, valueEmpty {
+            // value = rate * base / 100
+            newValue = String(format: "%g", r * b / 100.0)
             solved = .value
         }
 
+        guard let solved else { return }
+
         withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
-            if solved != nil {
-                rateText  = newRate
-                valueText = newValue
-                baseText  = newBase
-                solvedField = solved
-                resultScale = 1.08
-            }
+            rateText    = newRate
+            valueText   = newValue
+            baseText    = newBase
+            solvedField = solved
+            resultScale = 1.08
         }
-        if solved != nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                withAnimation(.spring(response: 0.25)) { resultScale = 1.0 }
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            withAnimation(.spring(response: 0.25)) { resultScale = 1.0 }
         }
     }
 
     private func clearAll() {
         withAnimation(.easeInOut(duration: 0.2)) {
-            rateText  = ""
-            valueText = ""
-            baseText  = ""
+            rateText    = ""
+            valueText   = ""
+            baseText    = ""
             solvedField = nil
         }
     }
@@ -133,7 +151,7 @@ struct PercentageView: View {
                     VStack(spacing: 24) {
                         headerCard
                         inputSection
-                        controlRow
+                        clearButton
                         if solvedField != nil {
                             resultBadge
                         }
@@ -241,7 +259,13 @@ struct PercentageView: View {
                     .foregroundStyle(.white)
                     .tint(Color(red: 0.20, green: 0.95, blue: 0.75))
                     .onChange(of: text.wrappedValue) { _, newVal in
-                        text.wrappedValue = newVal.replacingOccurrences(of: ",", with: ".")
+                        // Ignore programmatic updates from calculate()
+                        guard focusedField == field else { return }
+                        let filtered = numericOnly(newVal)
+                        if filtered != newVal {
+                            text.wrappedValue = filtered
+                            return
+                        }
                         solvedField = nil
                         calculate()
                     }
@@ -253,6 +277,7 @@ struct PercentageView: View {
                 Button {
                     text.wrappedValue = ""
                     solvedField = nil
+                    calculate()
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.white.opacity(0.35))
@@ -270,34 +295,17 @@ struct PercentageView: View {
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
     }
 
-    // MARK: - Controls
+    // MARK: - Clear Button
 
-    private var controlRow: some View {
-        HStack(spacing: 12) {
-            Button(action: calculate) {
-                Label(
-                    "Calculate",
-                    systemImage: "equal.circle.fill"
-                )
-                .font(.body.weight(.semibold))
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-            }
-            .buttonStyle(.glassProminent)
-
-            Button(action: clearAll) {
-                Label(
-                    "Clear",
-                    systemImage: "trash"
-                )
+    private var clearButton: some View {
+        Button(action: clearAll) {
+            Label("Clear All", systemImage: "trash")
                 .font(.body.weight(.semibold))
                 .foregroundStyle(.white.opacity(0.85))
+                .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
-                .padding(.horizontal, 8)
-            }
-            .buttonStyle(.glass)
         }
+        .buttonStyle(.glass)
     }
 
     // MARK: - Result Badge
@@ -319,9 +327,9 @@ struct PercentageView: View {
     }
 
     private var resultSummary: String {
-        guard let r = Double(rateText), let v = Double(valueText), let b = Double(baseText) else {
-            return ""
-        }
+        guard let r = parse(rateText),
+              let v = parse(valueText),
+              let b = parse(baseText) else { return "" }
         let rFmt = r.formatted(.number.precision(.fractionLength(2)))
         let vFmt = v.formatted(.number.precision(.fractionLength(2)))
         let bFmt = b.formatted(.number.precision(.fractionLength(2)))
@@ -332,7 +340,7 @@ struct PercentageView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         PercentageView()
     }
 }
