@@ -14,7 +14,6 @@ struct ContentView: View {
             // same navigation context as the NavigationLink, so it always works.
             NavigationStack {
                 MasterView()
-                    .navigationTitle("DailyToolbox")
                     .navigationDestination(for: ToolItem.self) { item in
                         toolDetailView(for: item)
                     }
@@ -24,7 +23,6 @@ struct ContentView: View {
             // detail NavigationStack, which is the correct side for split views.
             NavigationSplitView {
                 MasterView()
-                    .navigationTitle("DailyToolbox")
             } detail: {
                 NavigationStack {
                     ToolPlaceholder()

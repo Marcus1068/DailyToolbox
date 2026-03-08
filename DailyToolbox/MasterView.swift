@@ -81,7 +81,7 @@ struct MasterView: View {
 
     var body: some View {
         ZStack {
-            // Midnight aurora background
+            // Deep blue-slate background — noticeably lighter than the cards
             MeshGradient(width: 3, height: 3,
                 points: [
                     [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
@@ -89,15 +89,15 @@ struct MasterView: View {
                     [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
                 ],
                 colors: [
-                    Color(red: 0.04, green: 0.04, blue: 0.16),
-                    Color(red: 0.06, green: 0.02, blue: 0.22),
-                    Color(red: 0.03, green: 0.05, blue: 0.18),
-                    Color(red: 0.05, green: 0.03, blue: 0.20),
-                    Color(red: 0.09, green: 0.03, blue: 0.28),
-                    Color(red: 0.04, green: 0.06, blue: 0.22),
-                    Color(red: 0.03, green: 0.06, blue: 0.14),
-                    Color(red: 0.05, green: 0.10, blue: 0.20),
-                    Color(red: 0.02, green: 0.05, blue: 0.16)
+                    Color(red: 0.08, green: 0.10, blue: 0.28),
+                    Color(red: 0.10, green: 0.12, blue: 0.38),
+                    Color(red: 0.07, green: 0.09, blue: 0.30),
+                    Color(red: 0.12, green: 0.10, blue: 0.40),
+                    Color(red: 0.16, green: 0.12, blue: 0.52),
+                    Color(red: 0.10, green: 0.11, blue: 0.38),
+                    Color(red: 0.07, green: 0.10, blue: 0.26),
+                    Color(red: 0.11, green: 0.13, blue: 0.36),
+                    Color(red: 0.08, green: 0.09, blue: 0.28)
                 ]
             )
             .ignoresSafeArea()
@@ -105,6 +105,9 @@ struct MasterView: View {
             GlassEffectContainer {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 28) {
+                        // Custom app header
+                        appHeader
+
                         ForEach(ToolSection.catalogue) { section in
                             sectionBlock(section)
                         }
@@ -114,15 +117,48 @@ struct MasterView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) { Color.clear }
+        }
+        .toolbarBackground(.hidden, for: .navigationBar)
+    }
+
+    private var appHeader: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("DailyToolbox")
+                .font(.system(size: 36, weight: .bold, design: .rounded))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.white, Color(red: 0.75, green: 0.85, blue: 1.0)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
+
+            Text("12 built-in tools")
+                .font(.system(size: 14, weight: .medium, design: .rounded))
+                .foregroundStyle(.white.opacity(0.55))
+        }
+        .padding(.top, 8)
+        .padding(.horizontal, 4)
     }
 
     private func sectionBlock(_ section: ToolSection) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(section.title.uppercased())
-                .font(.system(size: 11, weight: .semibold))
-                .tracking(1.5)
-                .foregroundStyle(.white.opacity(0.45))
-                .padding(.horizontal, 4)
+            HStack(spacing: 8) {
+                Text(section.title.uppercased())
+                    .font(.system(size: 11, weight: .bold))
+                    .tracking(1.8)
+                    .foregroundStyle(.white.opacity(0.70))
+
+                Rectangle()
+                    .fill(.white.opacity(0.12))
+                    .frame(height: 1)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(.horizontal, 4)
 
             LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(section.items) { item in
@@ -151,11 +187,12 @@ private struct ToolCard: View {
         VStack(spacing: 10) {
             ZStack {
                 Circle()
-                    .fill(item.color.opacity(0.18))
+                    .fill(item.color.opacity(0.25))
                     .frame(width: 60, height: 60)
                 Image(systemName: item.icon)
                     .font(.system(size: 26, weight: .semibold))
                     .foregroundStyle(item.color)
+                    .shadow(color: item.color.opacity(0.5), radius: 6)
             }
 
             VStack(spacing: 2) {
@@ -168,7 +205,7 @@ private struct ToolCard: View {
 
                 Text(item.subtitle)
                     .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.50))
+                    .foregroundStyle(.white.opacity(0.60))
                     .multilineTextAlignment(.center)
                     .lineLimit(1)
             }
@@ -177,7 +214,7 @@ private struct ToolCard: View {
         .padding(.vertical, 20)
         .padding(.horizontal, 10)
         .glassEffect(
-            .regular.tint(item.color.opacity(0.08)),
+            .regular.tint(item.color.opacity(0.14)),
             in: RoundedRectangle(cornerRadius: 24, style: .continuous)
         )
     }
