@@ -3,8 +3,11 @@
  DailyToolbox
 
  SwiftUI home screen shown as the primary panel in NavigationSplitView.
- Tapping a card sets the selectedItem binding, which ContentView uses
- to display the corresponding detail view.
+ Each ToolCard uses NavigationLink(value:) so that:
+   • on iPad (regular width)  → selection appears in the detail column
+   • on iPhone (compact width) → the destination is pushed onto the stack
+ The navigationDestination(for: ToolItem.self) lives in ContentView's detail
+ NavigationStack, which is where Apple recommends placing it for split views.
 */
 
 import SwiftUI
@@ -12,7 +15,7 @@ import SwiftUI
 // MARK: - Data model
 
 struct ToolItem: Identifiable, Hashable {
-    let id: String          // stable: reuses segueId
+    let id: String          // stable id = segueId
     let name: String
     let subtitle: String
     let icon: String
@@ -34,22 +37,22 @@ struct ToolSection: Identifiable {
 extension ToolSection {
     static let catalogue: [ToolSection] = [
         ToolSection(title: "Numbers", items: [
-            ToolItem(id: "showPercentage",   name: "Percentage",     subtitle: "Base & rate",              icon: "percent",                        color: Color(red: 0.00, green: 0.80, blue: 0.85), segueId: "showPercentage"),
-            ToolItem(id: "showCurrency",     name: "Currency",       subtitle: "Exchange rates",           icon: "coloncurrencysign.circle.fill",  color: Color(red: 0.45, green: 0.20, blue: 0.90), segueId: "showCurrency"),
-            ToolItem(id: "showDecimal",      name: "Number Bases",   subtitle: "Hex \u{00B7} Dec \u{00B7} Bin",  icon: "number.circle.fill",      color: Color(red: 0.20, green: 0.45, blue: 1.00), segueId: "showDecimal"),
-            ToolItem(id: "showInterestRate", name: "Interest Rate",  subtitle: "Compound & simple",        icon: "chart.line.uptrend.xyaxis",      color: Color(red: 0.00, green: 0.78, blue: 0.42), segueId: "showInterestRate"),
-            ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",           icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
+            ToolItem(id: "showPercentage",   name: "Percentage",     subtitle: "Base & rate",                   icon: "percent",                        color: Color(red: 0.00, green: 0.80, blue: 0.85), segueId: "showPercentage"),
+            ToolItem(id: "showCurrency",     name: "Currency",       subtitle: "Exchange rates",                icon: "coloncurrencysign.circle.fill",  color: Color(red: 0.45, green: 0.20, blue: 0.90), segueId: "showCurrency"),
+            ToolItem(id: "showDecimal",      name: "Number Bases",   subtitle: "Hex \u{00B7} Dec \u{00B7} Bin", icon: "number.circle.fill",             color: Color(red: 0.20, green: 0.45, blue: 1.00), segueId: "showDecimal"),
+            ToolItem(id: "showInterestRate", name: "Interest Rate",  subtitle: "Compound & simple",             icon: "chart.line.uptrend.xyaxis",      color: Color(red: 0.00, green: 0.78, blue: 0.42), segueId: "showInterestRate"),
+            ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",                icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
         ]),
         ToolSection(title: "Conversions", items: [
-            ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium", color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),
-            ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",             icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
-            ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",             icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
+            ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium",  color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),
+            ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",                  icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
+            ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",                  icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
         ]),
         ToolSection(title: "Tools", items: [
-            ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",        icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
-            ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",         icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
-            ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",             icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
-            ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",             icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
+            ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",             icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
+            ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",              icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
+            ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                  icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
+            ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",                  icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
         ]),
     ]
 }
@@ -57,8 +60,6 @@ extension ToolSection {
 // MARK: - MasterView
 
 struct MasterView: View {
-
-    @Binding var selectedItem: ToolItem?
 
     private let columns = [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 14)]
 
@@ -111,9 +112,7 @@ struct MasterView: View {
 
             LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(section.items) { item in
-                    ToolCard(item: item, isSelected: selectedItem == item) {
-                        selectedItem = item
-                    }
+                    ToolCard(item: item)
                 }
             }
         }
@@ -125,17 +124,14 @@ struct MasterView: View {
 private struct ToolCard: View {
 
     let item: ToolItem
-    let isSelected: Bool
-    let action: () -> Void
-
     @State private var pressed = false
 
     var body: some View {
-        Button(action: action) {
+        NavigationLink(value: item) {
             VStack(spacing: 10) {
                 ZStack {
                     Circle()
-                        .fill(item.color.opacity(isSelected ? 0.30 : 0.18))
+                        .fill(item.color.opacity(0.18))
                         .frame(width: 60, height: 60)
                     Image(systemName: item.icon)
                         .font(.system(size: 26, weight: .semibold))
@@ -151,7 +147,7 @@ private struct ToolCard: View {
                         .minimumScaleFactor(0.85)
 
                     Text(item.subtitle)
-                        .font(.system(size: 11, weight: .regular))
+                        .font(.system(size: 11))
                         .foregroundStyle(.white.opacity(0.50))
                         .multilineTextAlignment(.center)
                         .lineLimit(1)
@@ -161,14 +157,9 @@ private struct ToolCard: View {
             .padding(.vertical, 20)
             .padding(.horizontal, 10)
             .glassEffect(
-                .regular.tint(isSelected ? item.color.opacity(0.18) : item.color.opacity(0.08)),
+                .regular.tint(item.color.opacity(0.08)),
                 in: RoundedRectangle(cornerRadius: 24, style: .continuous)
             )
-            .overlay(
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .strokeBorder(item.color.opacity(isSelected ? 0.5 : 0), lineWidth: 1.5)
-            )
-            .animation(.spring(duration: 0.2), value: isSelected)
         }
         .buttonStyle(.plain)
         .scaleEffect(pressed ? 0.94 : 1.0)
@@ -184,6 +175,15 @@ private struct ToolCard: View {
 // MARK: - Preview
 
 #Preview {
-    @Previewable @State var selected: ToolItem? = nil
-    MasterView(selectedItem: $selected)
+    NavigationSplitView {
+        MasterView()
+            .navigationTitle("DailyToolbox")
+    } detail: {
+        NavigationStack {
+            ToolPlaceholder()
+                .navigationDestination(for: ToolItem.self) { _ in
+                    ToolPlaceholder()
+                }
+        }
+    }
 }
