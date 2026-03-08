@@ -258,19 +258,20 @@ struct TemperatureView: View {
     var body: some View {
         ZStack {
             background
-            GlassEffectContainer {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        headerCard
-                        gaugeCard
-                        inputSection
-                        if let cls = classification {
-                            classificationBadge(cls)
-                        }
+            // No single outer GlassEffectContainer — each card manages its own
+            // glass scope so that interactive overlays (± button) are genuinely
+            // above the glass compositing layer in the render tree.
+            ScrollView {
+                VStack(spacing: 20) {
+                    GlassEffectContainer { headerCard }
+                    GlassEffectContainer { gaugeCard }
+                    inputSection
+                    if let cls = classification {
+                        GlassEffectContainer { classificationBadge(cls) }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 28)
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 28)
             }
             .onTapGesture { focused = nil }
         }
@@ -372,9 +373,42 @@ struct TemperatureView: View {
 
     private var inputSection: some View {
         VStack(spacing: 12) {
-            inputCard(field: .celsius,    text: $celsiusText)
-            inputCard(field: .fahrenheit, text: $fahrenheitText)
-            inputCard(field: .kelvin,     text: $kelvinText)
+            cardRow(field: .celsius,    text: $celsiusText)
+            cardRow(field: .fahrenheit, text: $fahrenheitText)
+            cardRow(field: .kelvin,     text: $kelvinText)
+        }
+    }
+
+    // The ± button and unit badge live in a ZStack ABOVE the GlassEffectContainer
+    // so they are outside the glass compositing context and fully hittable.
+    @ViewBuilder
+    private func cardRow(field: TempField, text: Binding<String>) -> some View {
+        ZStack(alignment: .trailing) {
+            GlassEffectContainer {
+                inputCard(field: field, text: text)
+            }
+            HStack(spacing: 10) {
+                if field.allowsNegative {
+                    Button {
+                        guard !text.wrappedValue.isEmpty else { return }
+                        text.wrappedValue = toggleSign(text.wrappedValue)
+                        calculate(changed: field)
+                    } label: {
+                        Text("±")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundStyle(.white.opacity(text.wrappedValue.isEmpty ? 0.30 : 0.85))
+                            .frame(width: 34, height: 34)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.glass)
+                    .disabled(text.wrappedValue.isEmpty)
+                }
+                Text(field.unit)
+                    .font(.caption.weight(.bold).monospacedDigit())
+                    .foregroundStyle(.white.opacity(0.60))
+                    .frame(minWidth: 24, alignment: .trailing)
+            }
+            .padding(.trailing, 16)
         }
     }
 
@@ -411,29 +445,8 @@ struct TemperatureView: View {
                     }
             }
 
-            Spacer(minLength: 0)
-
-            // ± sign toggle (enabled only for scales that allow negatives)
-            if field.allowsNegative {
-                Button {
-                    guard !text.wrappedValue.isEmpty else { return }
-                    text.wrappedValue = toggleSign(text.wrappedValue)
-                    calculate(changed: field)
-                } label: {
-                    Text("±")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(.white.opacity(text.wrappedValue.isEmpty ? 0.25 : 0.70))
-                        .frame(width: 34, height: 34)
-                }
-                .buttonStyle(.glass)
-                .disabled(text.wrappedValue.isEmpty)
-            }
-
-            // Unit badge
-            Text(field.unit)
-                .font(.caption.weight(.bold).monospacedDigit())
-                .foregroundStyle(.white.opacity(0.55))
-                .frame(minWidth: 28, alignment: .trailing)
+            // Reserve space for the trailing ± button + unit badge overlay
+            Color.clear.frame(width: field.allowsNegative ? 80 : 40)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
