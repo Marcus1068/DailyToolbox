@@ -45,10 +45,28 @@ struct AboutView: View {
 
     private var mailURL: URL? {
         let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "DailyToolbox"
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-        let subject = "\(appName) \(version) \(Global.support)"
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        return URL(string: "mailto:\(Global.emailAdr)?subject=\(subject)")
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
+        let build   = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?"
+        let osVer   = ProcessInfo.processInfo.operatingSystemVersion
+        let os      = "iOS \(osVer.majorVersion).\(osVer.minorVersion).\(osVer.patchVersion)"
+
+        let subject = "\(appName) \(version) Feedback"
+        let body    = """
+            My feedback / suggestion:
+
+            ---
+            App: \(appName) \(version) (\(build))
+            System: \(os)
+            """
+
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path   = Global.emailAdr
+        components.queryItems = [
+            URLQueryItem(name: "subject", value: subject),
+            URLQueryItem(name: "body",    value: body)
+        ]
+        return components.url
     }
 
     // MARK: Body
@@ -167,33 +185,13 @@ struct AboutView: View {
     // MARK: - Action Buttons
 
     private var actionButtons: some View {
-        VStack(spacing: 10) {
-            actionRow(
-                icon: "envelope.fill",
-                iconColor: Color(red: 0.25, green: 0.65, blue: 1.0),
-                title: Global.appFeedback,
-                subtitle: "Send us your thoughts"
-            ) {
-                if let url = mailURL { openURL(url) }
-            }
-
-            actionRow(
-                icon: "info.circle.fill",
-                iconColor: Color(red: 0.28, green: 0.82, blue: 0.50),
-                title: Global.appInformation,
-                subtitle: "Website & documentation"
-            ) {
-                if let url = URL(string: Global.website) { openURL(url) }
-            }
-
-            actionRow(
-                icon: "lock.shield.fill",
-                iconColor: Color(red: 0.95, green: 0.55, blue: 0.20),
-                title: Global.appPrivacy,
-                subtitle: "Privacy policy"
-            ) {
-                if let url = URL(string: Global.privacy) { openURL(url) }
-            }
+        actionRow(
+            icon: "envelope.fill",
+            iconColor: Color(red: 0.25, green: 0.65, blue: 1.0),
+            title: "Send Feedback",
+            subtitle: "Questions, ideas or bug reports"
+        ) {
+            if let url = mailURL { openURL(url) }
         }
     }
 
