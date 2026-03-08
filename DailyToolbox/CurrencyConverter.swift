@@ -34,37 +34,7 @@ limitations under the License.
 <Cube>
 <Cube time="2020-03-06">
 <Cube currency="USD" rate="1.1336"/>
-<Cube currency="JPY" rate="119.08"/>
-<Cube currency="BGN" rate="1.9558"/>
-<Cube currency="CZK" rate="25.458"/>
-<Cube currency="DKK" rate="7.4697"/>
-<Cube currency="GBP" rate="0.87165"/>
-<Cube currency="HUF" rate="335.48"/>
-<Cube currency="PLN" rate="4.3042"/>
-<Cube currency="RON" rate="4.8110"/>
-<Cube currency="SEK" rate="10.6145"/>
-<Cube currency="CHF" rate="1.0589"/>
-<Cube currency="ISK" rate="143.00"/>
-<Cube currency="NOK" rate="10.4983"/>
-<Cube currency="HRK" rate="7.5035"/>
-<Cube currency="RUB" rate="77.5058"/>
-<Cube currency="TRY" rate="6.9209"/>
-<Cube currency="AUD" rate="1.7103"/>
-<Cube currency="BRL" rate="5.2748"/>
-<Cube currency="CAD" rate="1.5213"/>
-<Cube currency="CNY" rate="7.8511"/>
-<Cube currency="HKD" rate="8.8089"/>
-<Cube currency="IDR" rate="16558.49"/>
-<Cube currency="ILS" rate="3.9576"/>
-<Cube currency="INR" rate="83.5860"/>
-<Cube currency="KRW" rate="1351.63"/>
-<Cube currency="MXN" rate="22.9958"/>
-<Cube currency="MYR" rate="4.7294"/>
-<Cube currency="NZD" rate="1.7858"/>
-<Cube currency="PHP" rate="57.542"/>
-<Cube currency="SGD" rate="1.5630"/>
-<Cube currency="THB" rate="35.640"/>
-<Cube currency="ZAR" rate="17.8514"/>
+...
 </Cube>
 </Cube>
 </gesmes:Envelope>
@@ -79,15 +49,10 @@ struct Cube: Codable {
     var rate: String
 }
 
-
-// need to be declared outside of class otherwise loses values after xml parser runs
-private var cubes: [Cube] = []
-
 private let fileName: String = "currencyData.json"
 private let xmlFile: String = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
 
 // works based on EUR reference currency
-
 class CurrencyConverter: NSObject, XMLParserDelegate {
     
     // variables
@@ -95,187 +60,152 @@ class CurrencyConverter: NSObject, XMLParserDelegate {
     private var currency = String()
     private var rate = String()
     private var lastUpdate = String()
+    private var cubes: [Cube] = []
 
-    // init functions
-    override init(){
+    private override init() {
         super.init()
-        
-        // add EUR to list since we only get values from EUR to xxx and EUR is not included
-        let euro = Cube(currency: "EUR", rate: "1.0")
-        cubes.append(euro)
-        
-        let xmlFileURL = URL(string: xmlFile)
-        
-        let parser = XMLParser(contentsOf: xmlFileURL!)
-        let xmlDic = self
-        parser!.delegate = xmlDic
-        if parser!.parse()
-        {
-            print("XML Parsing OK")
-            
-            lastUpdate = Date().toString(withFormat: "dd-MMM-yyyy")
-            
-            //print(cubes)
-            //print(cubes.count)
-            
-            // store currency data into file for offline use
-            let encoder = JSONEncoder()
-            if let jsondata = try? encoder.encode(cubes),
-                let jsonstr = String(data: jsondata, encoding: .utf8){
-                //print(jsonstr)
-                
-                let filePath = getDocumentsDirectory().appendingPathComponent(fileName)
+    }
+    
+    /// Async factory: fetches live rates from ECB, falls back to cached JSON on failure.
+    static func load() async -> CurrencyConverter {
+        let converter = CurrencyConverter()
+        await converter.fetchRates()
+        return converter
+    }
 
-                do {
-                    try jsonstr.write(to: filePath, atomically: true, encoding: String.Encoding.utf8)
-                } catch {
-                    // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-                    print("Writing JSON file failed!")
-                }
-            }
+    private func fetchRates() async {
+        // add EUR to list since we only get values from EUR to xxx and EUR is not included
+        cubes = [Cube(currency: "EUR", rate: "1.0")]
+
+        guard let xmlFileURL = URL(string: xmlFile) else {
+            await loadCachedRates()
+            return
         }
-        else
-        {
-            // something went wrong, XML format or network problems might occur
-            //print("XML Parser error: ", parser!.parserError!, ", line: ", parser!.lineNumber, ", column: ", parser!.columnNumber);
-            
-            if let contents = readData(fileName: fileName){
-                // decode from JSON
-                let decoder = JSONDecoder()
-                cubes.removeAll()
-                let jsonData = contents.data(using: .utf8)!
-                if let cubeCopy = try? decoder.decode([Cube].self, from: jsonData){
-                    print(cubeCopy)
-                    cubes = cubeCopy
-                    lastUpdate = "offline usage, no network"
-                }
-            }
-        }
-    }
-    
-    // read file as string
-    internal func readData(fileName: String) -> String?{
-        
-        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let pathURL = docPath.appendingPathComponent(fileName)
-        
+
         do {
-            let contents = try String(contentsOfFile: pathURL.path, encoding: .utf8)
-            //contents = cleanRows(file: contents)
-            return contents
-            
+            let (data, _) = try await URLSession.shared.data(from: xmlFileURL)
+            let parser = XMLParser(data: data)
+            parser.delegate = self
+            if parser.parse() {
+                lastUpdate = Date().toMediumDateString()
+                await saveRatesToCache()
+            } else {
+                await loadCachedRates()
+            }
         } catch {
-            print("File Read Error for file \(pathURL.absoluteString)", error)
-            
-            return nil
+            await loadCachedRates()
+        }
+    }
+
+    private func saveRatesToCache() async {
+        let encoder = JSONEncoder()
+        guard let jsonData = try? encoder.encode(cubes),
+              let jsonStr = String(data: jsonData, encoding: .utf8) else { return }
+        let filePath = URL.documentsDirectory.appending(path: fileName)
+        do {
+            try jsonStr.write(to: filePath, atomically: true, encoding: .utf8)
+        } catch {
+            print("Writing JSON file failed: \(error)")
+        }
+    }
+
+    private func loadCachedRates() async {
+        let pathURL = URL.documentsDirectory.appending(path: fileName)
+        do {
+            let contents = try String(contentsOf: pathURL, encoding: .utf8)
+            let decoder = JSONDecoder()
+            guard let jsonData = contents.data(using: .utf8),
+                  let cubeCopy = try? decoder.decode([Cube].self, from: jsonData) else { return }
+            cubes = cubeCopy
+            lastUpdate = "offline usage, no network"
+        } catch {
+            print("File Read Error: \(error)")
         }
     }
     
-    // functions
-    
-    func getLastUpdate() -> String{
+    // MARK: - Public API
+
+    func getLastUpdate() -> String {
         return lastUpdate
     }
     
-    // list of all currencies and according rates
-    func getCurrencyList() -> [Cube]{
+    func getCurrencyList() -> [Cube] {
         return cubes
     }
     
-    // list of all currencies and according rates
-    func getCurrencyStrings() -> [String]{
-        var str: [String] = [String]()
-        
-        for i in cubes{
-            str.append(i.currency)
-        }
-        
-        return str.removingDuplicates()
+    func getCurrencyStrings() -> [String] {
+        return cubes.map(\.currency).removingDuplicates()
     }
     
-    // list of all currencies and according rates
-    func getCurrencyArray() -> [[String]]{
-        var str: [[String]] = [[String]]()
-        
-        for i in cubes{
-            str.append([i.currency, i.currency])
-        }
-        
-        return str.removingDuplicates()
+    func getCurrencyArray() -> [[String]] {
+        return cubes.map { [$0.currency, $0.currency] }.removingDuplicates()
     }
     
-    // get rate based on currency
-    func getRate(currency: String) -> Double{
-        var rate: Double = 1.0
-        
-        for v in cubes{
-            if v.currency == currency{
-                rate = Double(v.rate)!
-            }
-        }
-        
-        return rate
+    func getRate(currency: String) -> Double {
+        return cubes.first(where: { $0.currency == currency }).flatMap { Double($0.rate) } ?? 1.0
     }
     
     // convert from currency A to currency B
     // 1. convert base currency to EUR
     // 2. compute EUR * dest
-    func convertFromTo(baseCurrency: String, destCurrency: String) -> Double{
+    func convertFromTo(baseCurrency: String, destCurrency: String) -> Double {
         let base = getRate(currency: baseCurrency)
         let dest = getRate(currency: destCurrency)
-        
-        let conv = 1.0 / base * dest
-        return conv
+        return 1.0 / base * dest
     }
     
-    // delegates
-    internal func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    // MARK: - XMLParserDelegate
 
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         if elementName == "Cube" {
-            if let name = attributeDict["currency"]{
+            if let name = attributeDict["currency"] {
                 currency = name
-                //print(currency)
             }
-            
-            if let tag = attributeDict["rate"]{
+            if let tag = attributeDict["rate"] {
                 rate = tag
-                //print(rate)
             }
-            
         }
-        
         self.elementName = elementName
     }
 
-
-    internal func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "Cube" {
-            let cube = Cube(currency: currency, rate: rate)
-            cubes.append(cube)
-            //print(cubes.count)
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "Cube", !currency.isEmpty, !rate.isEmpty {
+            cubes.append(Cube(currency: currency, rate: rate))
+            currency = ""
+            rate = ""
         }
     }
 
-    
-    internal func parser(_ parser: XMLParser, foundCharacters string: String) {
-        //let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        //print(data)
-        //print(string)
-        /*if (!data.isEmpty) {
-            if self.elementName == "Cube" {
-                currency += data
-                rate += data
-            }
-        } */
-    }
+    func parser(_ parser: XMLParser, foundCharacters string: String) {}
         
-    internal func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         print("XML Parser failure error: ", parseError)
-    }
-  
-    internal func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
     }
 }
 
+// MARK: - Preview Support
+
+#if DEBUG
+extension CurrencyConverter {
+    /// Returns a pre-populated instance for SwiftUI Previews (no network call needed).
+    static var preview: CurrencyConverter {
+        let c = CurrencyConverter()
+        c.cubes = [
+            Cube(currency: "EUR", rate: "1.0"),
+            Cube(currency: "USD", rate: "1.0847"),
+            Cube(currency: "GBP", rate: "0.8563"),
+            Cube(currency: "JPY", rate: "161.48"),
+            Cube(currency: "CHF", rate: "0.9712"),
+            Cube(currency: "AUD", rate: "1.6632"),
+            Cube(currency: "CAD", rate: "1.4891"),
+            Cube(currency: "CNY", rate: "7.8721"),
+            Cube(currency: "SEK", rate: "11.2340"),
+            Cube(currency: "NOK", rate: "11.7650"),
+            Cube(currency: "DKK", rate: "7.4600"),
+            Cube(currency: "PLN", rate: "4.2480"),
+        ]
+        c.lastUpdate = "Preview data"
+        return c
+    }
+}
+#endif
