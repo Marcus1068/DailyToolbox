@@ -210,10 +210,10 @@
             filePath = "DailyToolbox/Global.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "getRTFFileFromBundle(fileName:)"
-            landmarkType = "7">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "appstoreReview()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -270,7 +270,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "getOSVersion()"
+            landmarkName = "getDeviceName()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
