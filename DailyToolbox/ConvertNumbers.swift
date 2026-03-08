@@ -38,12 +38,12 @@ class ConvertNumbers: CustomStringConvertible{
     
     var hexadecimal: String{
         get { return String(decimal, radix: 16)}
-        set { decimal = Int(newValue, radix: 2)!}
+        set { decimal = Int(newValue, radix: 16) ?? decimal}
     }
     
     var binary: String{
         get { return String(decimal, radix: 2)}
-        set { decimal = Int(newValue, radix: 16)!}
+        set { decimal = Int(newValue, radix: 2) ?? decimal}
     }
 
     // computed properties
@@ -58,11 +58,11 @@ class ConvertNumbers: CustomStringConvertible{
     }
     
     init(hexadecimal: String){
-        self.decimal = Int(hexadecimal, radix: 16)!
+        self.decimal = Int(hexadecimal, radix: 16) ?? 0
     }
     
     init(binary: String){
-        self.decimal = Int(binary, radix: 2)!
+        self.decimal = Int(binary, radix: 2) ?? 0
     }
     
     init(roman: String){

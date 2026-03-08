@@ -47,15 +47,13 @@ class Benchmark{
         return Float(seconds)
     }
     
-    // calculate benchmark and return in seconds passed since start, based on C arc4random method
+    // calculate benchmark and return in seconds passed since start, based on random
     static func benchmarkRandomNumbersArc4(range: Int) -> Float{
         let start = Date()
         
         var sum = 0
         for _ in 1...range{
-            // swift regular random method takes about 5 times longer than arc4random
-            // sum += Int.random(in: 0 ..< 100)
-            sum += Int(arc4random_uniform(100))
+            sum += Int.random(in: 0..<100)
         }
         
         let end = Date()
@@ -126,7 +124,7 @@ class Benchmark{
     
     // racecar as example
     static func isPalindrome(_ str: String) -> Bool {
-      let strippedString = str.replacingOccurrences(of: "\\W", with: "", options: .regularExpression, range: nil)
+      let strippedString = str.replacing(/\W/, with: "")
       let length = strippedString.count
 
       if length > 1 {

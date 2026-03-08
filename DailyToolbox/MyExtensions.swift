@@ -82,7 +82,6 @@ extension UIViewController {
 
 extension UIViewController{
     // MARK: - UIPointerInteractionDelegate
-    @available(iOS 13.4, *)
     func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
         let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
         view.addInteraction(pointerInteraction)
@@ -103,7 +102,7 @@ extension UIViewController{
     } */
     
     // lift effect
-    @objc(pointerInteraction:styleForRegion:) @available(iOS 13.4, *)
+    @objc(pointerInteraction:styleForRegion:)
     func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
         var pointerStyle: UIPointerStyle? = nil
 
@@ -159,19 +158,10 @@ extension Array where Element: Equatable {
 }
 
 
-// to get string from a date
-// usage: yourString = yourDate.toString(withFormat: "yyyy")
 extension Date {
-    func toString(withFormat format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.dateStyle = DateFormatter.Style.medium
-        formatter.timeStyle = DateFormatter.Style.none
-        let myString = formatter.string(from: self)
-        let yourDate = formatter.date(from: myString)
-        formatter.dateFormat = format
-        
-        return formatter.string(from: yourDate!)
+    /// Returns a formatted date string using the medium date style.
+    func toMediumDateString() -> String {
+        self.formatted(date: .abbreviated, time: .omitted)
     }
 }
 
@@ -182,18 +172,17 @@ public struct Local{
     static let locale = Locale.current
     
     //Returns true if the locale uses the metric system (Note: Only three countries do not use the metric system: the US, Liberia and Myanmar.)
-    static let isMetric = locale.usesMetricSystem
+    static let isMetric = locale.measurementSystem == .metric
     
     //Returns the currency code of the locale. For example, for “zh-Hant-HK”, returns “HKD”.
-    static let currencyCode  = locale.currencyCode
+    static let currencyCode  = locale.currency?.identifier
     
-    //Returns the currency symbol of the locale. For example, for “zh-Hant-HK”, returns “HK$”.
+    //Returns the currency symbol of the locale. For example, for "zh-Hant-HK", returns "HK$".
     static let currencySymbol = locale.currencySymbol
     
-    static let languageCode = locale.languageCode
+    static let languageCode = locale.language.languageCode?.identifier
     
-    static func currentLocaleForDate() -> String{
-        return Local.languageCode!
-        
+    static func currentLocaleForDate() -> String {
+        return Local.languageCode ?? "en"
     }
 }

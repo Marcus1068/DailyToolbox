@@ -27,7 +27,7 @@ limitations under the License.
 import UIKit
 import WebKit
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // iCloud key value store

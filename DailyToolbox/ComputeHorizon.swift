@@ -42,7 +42,7 @@ class ComputeHorizon: CustomStringConvertible{
     }
     
     var viewDistanceToString: String{
-        return String(format: "%.2f", self.viewDistance) + "km"
+        return viewDistance.formatted(.number.precision(.fractionLength(2))) + "km"
     }
     
     // init
@@ -52,8 +52,7 @@ class ComputeHorizon: CustomStringConvertible{
         self.altitude = altitude
     }
     
-    // reduce comma value
     var description: String{
-        return String(format: "%.2f", self.viewDistance) + "km"
+        return viewDistance.formatted(.number.precision(.fractionLength(2))) + "km"
     }
 }

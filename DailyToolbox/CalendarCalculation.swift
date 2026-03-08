@@ -57,7 +57,7 @@ class CalendarCalculation {
     // add an event to device default calendar
     func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date) async throws {
         let eventStore = EKEventStore()
-        let granted = try await eventStore.requestAccess(to: .event)
+        let granted = try await eventStore.requestFullAccessToEvents()
         guard granted else {
             throw CalendarError.accessDenied
         }

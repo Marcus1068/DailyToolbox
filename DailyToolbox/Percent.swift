@@ -37,7 +37,7 @@ class Percent{
     var prozentwert: Double     // prozentwert = prozentsatz * grundwert / 100%
     
     var prozentWertToString: String{
-        return String(format: "%.2f", prozentwert)
+        return prozentwert.formatted(.number.precision(.fractionLength(2)))
     }
     
     // Der Grundwert gibt Antwort auf Fragen wie:
@@ -46,7 +46,7 @@ class Percent{
     var grundwert: Double       // grundwert = prozentwert/prozentsatz * 100%
     
     var grundWertToString: String{
-        return String(format: "%.2f", grundwert)
+        return grundwert.formatted(.number.precision(.fractionLength(2)))
     }
     
     // Der Prozentsatz gibt Antwort auf Fragen wie:
@@ -56,7 +56,7 @@ class Percent{
     var prozentsatz: Double
     
     var prozentSatzToString: String{
-        return String(format: "%.2f", prozentsatz)
+        return prozentsatz.formatted(.number.precision(.fractionLength(2)))
     }
     
     // Grundwert ermitteln

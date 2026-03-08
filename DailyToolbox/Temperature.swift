@@ -36,7 +36,7 @@ class Temperature: CustomStringConvertible{
     // computed properties
     
     var kelvinToString: String{
-        return String(format: "%.2f", kelvin)
+        return kelvin.formatted(.number.precision(.fractionLength(2)))
     }
     
     var celsius: Double{
@@ -45,7 +45,7 @@ class Temperature: CustomStringConvertible{
     }
     
     var celsiusToString: String{
-        return String(format: "%.2f", celsius)
+        return celsius.formatted(.number.precision(.fractionLength(2)))
     }
     
     var fahrenheit: Double{
@@ -54,7 +54,7 @@ class Temperature: CustomStringConvertible{
     }
     
     var fahrenheitToString: String{
-        return String(format: "%.2f", fahrenheit)
+        return fahrenheit.formatted(.number.precision(.fractionLength(2)))
     }
     
     // Init functions

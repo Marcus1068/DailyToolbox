@@ -26,6 +26,7 @@
 
 import UIKit
 
+@MainActor
 class DeviceInfo: NSObject {
     
     // iOS version info
@@ -78,6 +79,6 @@ class DeviceInfo: NSObject {
     
     static func getDeviceUUID() -> UUID
     {
-        return UIDevice.current.identifierForVendor!
+        return UIDevice.current.identifierForVendor ?? UUID()
     }
 }

@@ -31,9 +31,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
-            landmarkType = "7">
+            endingLineNumber = "153">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -47,9 +45,51 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "CurrencyConverterViewController"
-            landmarkType = "3">
+            endingLineNumber = "136">
+            <Locations>
+               <Location
+                  uuid = "460EDA33-75E3-4176-B55F-7A63F6D9178D - 6ec6a88a579306cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyToolbox.CurrencyConverterViewController.pickerView(_: __C.UIPickerView, didSelectRow: Swift.Int, inComponent: Swift.Int) -&gt; ()"
+                  moduleName = "DailyToolbox.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/CurrencyConverterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136">
+               </Location>
+               <Location
+                  uuid = "460EDA33-75E3-4176-B55F-7A63F6D9178D - 6ec6a88a579306cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyToolbox.CurrencyConverterViewController.pickerView(_: __C.UIPickerView, didSelectRow: Swift.Int, inComponent: Swift.Int) -&gt; ()"
+                  moduleName = "DailyToolbox.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/CurrencyConverterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136">
+               </Location>
+               <Location
+                  uuid = "460EDA33-75E3-4176-B55F-7A63F6D9178D - 6ec6a88a579306cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyToolbox.CurrencyConverterViewController.pickerView(_: __C.UIPickerView, didSelectRow: Swift.Int, inComponent: Swift.Int) -&gt; ()"
+                  moduleName = "DailyToolbox.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/CurrencyConverterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,83 +106,6 @@
             endingLineNumber = "93"
             landmarkName = "decimalToRoman"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "F681B690-8C47-4F07-BD07-1D990CA71D86 - 89f12059cbc5dab9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1262">
-               </Location>
-               <Location
-                  uuid = "F681B690-8C47-4F07-BD07-1D990CA71D86 - 89f12059cbc5dab9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1546">
-               </Location>
-               <Location
-                  uuid = "F681B690-8C47-4F07-BD07-1D990CA71D86 - 89f12059cbc5dab9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "2796">
-               </Location>
-               <Location
-                  uuid = "F681B690-8C47-4F07-BD07-1D990CA71D86 - 89f12059cbc5dab9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "3971">
-               </Location>
-               <Location
-                  uuid = "F681B690-8C47-4F07-BD07-1D990CA71D86 - 89f12059cbc5dab9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "5075">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,98 +138,6 @@
             endingLineNumber = "133"
             landmarkName = "decimalToRoman"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4069">
-               </Location>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4108">
-               </Location>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4501">
-               </Location>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4576">
-               </Location>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "5072">
-               </Location>
-               <Location
-                  uuid = "B5B15795-6806-49B7-9A0D-9F14C934FDC2 - 89f12059cbc5d591"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DailyToolbox.ConvertNumbers.decimalToRoman.getter : Swift.String"
-                  moduleName = "DailyToolbox"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcus/Projekte/DailyToolbox/DailyToolbox/ConvertNumbers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "5155">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -392,9 +263,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "configureView()"
-            landmarkType = "7">
+            endingLineNumber = "40">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -407,8 +276,8 @@
             filePath = "DailyToolbox/DeviceInfo.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "getOSVersion()"
             landmarkType = "7">
          </BreakpointContent>

@@ -26,7 +26,6 @@ limitations under the License.
 
 
 import UIKit
-import StoreKit
 
 class Global{
     // App store link
@@ -112,8 +111,8 @@ extension UIViewController{
 
         // Has the process been completed several times and the user has not already been prompted for this version?
         if count >= 4 && currentVersion != lastVersionPromptedForReview {
-            let twoSecondsFromNow = DispatchTime.now() + 2.0
-            DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) { [navigationController] in
+            Task { @MainActor [navigationController] in
+                try? await Task.sleep(for: .seconds(2))
                 if navigationController?.topViewController is MasterViewController {
                     //SKStoreReviewController.requestReview()
                     UserDefaults.standard.set(currentVersion, forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)

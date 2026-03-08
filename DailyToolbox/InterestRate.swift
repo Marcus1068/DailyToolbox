@@ -35,21 +35,21 @@ class InterestRate{
     var zinsen: Double
     
     var zinsenToString: String{
-        return String(format: "%.2f", zinsen)
+        return zinsen.formatted(.number.precision(.fractionLength(2)))
     }
     
     // capital
     var kapital: Double
     
     var kapitalToString: String{
-        return String(format: "%.2f", kapital)
+        return kapital.formatted(.number.precision(.fractionLength(2)))
     }
     
     // interest rate
     var zinssatz: Double
     
     var zinssatzToString: String{
-        return String(format: "%.2f", zinssatz)
+        return zinssatz.formatted(.number.precision(.fractionLength(2)))
     }
     
     // Kapital ermitteln

@@ -27,6 +27,7 @@ limitations under the License.
 import UIKit
 import CoreLocation
 
+@MainActor
 class HorizonViewController: UIViewController, UITextFieldDelegate {
 
     private let locationManager = CLLocationManager()
@@ -165,7 +166,7 @@ class HorizonViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension HorizonViewController: CLLocationManagerDelegate {
+extension HorizonViewController: @preconcurrency CLLocationManagerDelegate {
     
     // update location when changes occur
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
