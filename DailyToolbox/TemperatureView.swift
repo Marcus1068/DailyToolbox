@@ -395,12 +395,19 @@ struct TemperatureView: View {
                         calculate(changed: field)
                     } label: {
                         Text("±")
-                            .font(.system(size: 17, weight: .semibold))
-                            .foregroundStyle(.white.opacity(text.wrappedValue.isEmpty ? 0.30 : 0.85))
-                            .frame(width: 34, height: 34)
-                            .contentShape(Rectangle())
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(text.wrappedValue.isEmpty
+                                ? .white.opacity(0.35)
+                                : field.accentColor)
+                            .frame(width: 36, height: 36)
+                            .background(
+                                Circle()
+                                    .fill(.black.opacity(0.30))
+                                    .stroke(.white.opacity(0.18), lineWidth: 1)
+                            )
+                            .contentShape(Circle())
                     }
-                    .buttonStyle(.glass)
+                    .buttonStyle(.plain)
                     .disabled(text.wrappedValue.isEmpty)
                 }
                 Text(field.unit)
