@@ -24,42 +24,11 @@ limitations under the License.
 //  Copyright © 2020 Marcus Deuß. All rights reserved.
 //
 
-import UIKit
-import WebKit
+import SwiftUI
 
-class TranslationViewController: UIViewController {
-
-    @IBOutlet weak var webView: WKWebView!
-    
-    func configureView() {
-        // Update the user interface for the detail item.
-        
-        self.title = NSLocalizedString("Translation module", comment: "Translation")
-        
-        let url = URL(string: "https://dict.leo.org/dict/mobile.php")!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-        
-        hideKeyboardWhenTappedAround()
+@MainActor
+class TranslationViewController: UIHostingController<TranslationView> {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder, rootView: TranslationView())
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        configureView()
-        
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
