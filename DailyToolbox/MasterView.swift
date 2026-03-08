@@ -77,6 +77,8 @@ struct ToolPlaceholder: View {
 
 struct MasterView: View {
 
+    let onSelect: (ToolItem) -> Void
+
     private let columns = [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 14)]
 
     var body: some View {
@@ -162,7 +164,7 @@ struct MasterView: View {
 
             LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(section.items) { item in
-                    ToolCard(item: item)
+                    ToolCard(item: item, onSelect: onSelect)
                 }
             }
         }
@@ -174,10 +176,10 @@ struct MasterView: View {
 private struct ToolCard: View {
 
     let item: ToolItem
-    @State private var pressed = false
+    let onSelect: (ToolItem) -> Void
 
     var body: some View {
-        NavigationLink(value: item) {
+        Button { onSelect(item) } label: {
             cardContent
         }
         .buttonStyle(PressableCardStyle())
@@ -234,8 +236,7 @@ private struct PressableCardStyle: ButtonStyle {
 
 #Preview {
     NavigationStack {
-        MasterView()
-            .navigationTitle("DailyToolbox")
+        MasterView(onSelect: { _ in })
             .navigationDestination(for: ToolItem.self) { _ in ToolPlaceholder() }
     }
 }
