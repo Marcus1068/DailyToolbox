@@ -289,9 +289,9 @@ struct PercentageView: View {
             if !rateText.isEmpty || !valueText.isEmpty || !baseText.isEmpty {
                 Button(action: clearAll) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(.white.opacity(0.55))
-                        .frame(width: 44, height: 44)      // generous hit target
+                        .font(.system(size: 22))
+                        .foregroundStyle(.white.opacity(0.85))
+                        .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
