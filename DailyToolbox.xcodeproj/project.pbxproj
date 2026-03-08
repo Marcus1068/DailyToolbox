@@ -36,13 +36,13 @@
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
 		2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867423F6AA480011D886 /* Assets.xcassets */; };
-		2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */; };
 		2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */; };
 		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
+		2C5F83A12F5DB001009898E9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83A02F5DB000009898E9 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,6 @@
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBD867423F6AA480011D886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2CBD867723F6AA480011D886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CBD867923F6AA480011D886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CBD867E23F6AA490011D886 /* DailyToolboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyToolboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToolboxTests.swift; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		2C5F83A02F5DB000009898E9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,6 @@
 				2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */,
 				2CBD866923F6AA480011D886 /* AppDelegate.swift */,
 				2CBD867423F6AA480011D886 /* Assets.xcassets */,
-				2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */,
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2C5F83952F5DA6D6009898E9 /* ContentView.swift */,
@@ -184,7 +183,8 @@
 		};
 		2CBD869023F6B3CE0011D886 /* Views */ = {
 			isa = PBXGroup;
-			children = (				2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */,
+			children = (
+				2C5F83A02F5DB000009898E9 /* SplashView.swift */,				2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */,
 				2C5F83912F5DA548009898E9 /* MasterView.swift */,
 
 				2C5F836D2F5D8C02009898E9 /* AboutView.swift */,
@@ -306,7 +306,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */,
 				2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
 				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
@@ -340,6 +339,7 @@
 				2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
 				2C5F83862F5D9F94009898E9 /* DecimalRomanNumbersView.swift in Sources */,
+				2C5F83A12F5DB001009898E9 /* SplashView.swift in Sources */,
 				2C5F83822F5D9BBB009898E9 /* PowerConsumptionView.swift in Sources */,
 				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
 				2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */,
@@ -381,14 +381,6 @@
 /* Begin PBXVariantGroup section */
 
 
-		2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2CBD867723F6AA480011D886 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
