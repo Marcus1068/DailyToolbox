@@ -51,6 +51,8 @@ struct ContentView: View {
         case "showTemp":         TemperatureView()
         case "showPower":        PowerConsumptionView()
         case "showTranslation":  TranslationView()
+        case "showUnitConv":     UnitConverterView()
+        case "showTipSplitter":  TipSplitterView()
         case "showCalendar":     CalendarCalculationView()
         case "showHorizon":      HorizonView()
         case "showBenchmark":    BenchmarkView()

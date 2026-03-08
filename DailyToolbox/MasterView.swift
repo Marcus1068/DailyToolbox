@@ -43,10 +43,12 @@ extension ToolSection {
         ]),
         ToolSection(title: "Conversions", items: [
             ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium",  color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),
+            ToolItem(id: "showUnitConv",     name: "Unit Converter", subtitle: "Length · Weight · Volume · Speed",          icon: "arrow.left.arrow.right", color: Color(red: 0.20, green: 0.55, blue: 1.00), segueId: "showUnitConv"),
             ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",                   icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
             ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",                   icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
         ]),
         ToolSection(title: "Tools", items: [
+            ToolItem(id: "showTipSplitter",  name: "Tip Splitter",   subtitle: "Bill & tip per person",          icon: "fork.knife.circle.fill",         color: Color(red: 0.90, green: 0.62, blue: 0.10), segueId: "showTipSplitter"),
             ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",              icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
             ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",               icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
             ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                   icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),

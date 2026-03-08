@@ -41,6 +41,8 @@
 		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 		2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */; };
+		2CBF5ED62F5E0755009575C2 /* UnitConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */; };
+		2CBF5ED82F5E0785009575C2 /* TipSplitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
@@ -97,6 +99,8 @@
 		2CBD869423F6BE7E0011D886 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
 		2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverterView.swift; sourceTree = "<group>"; };
+		2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSplitterView.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2C5F83952F5DA6D6009898E9 /* ContentView.swift */,
 				2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */,
+				2CBF5ED52F5E0755009575C2 /* UnitConverterView.swift */,
+				2CBF5ED72F5E0785009575C2 /* TipSplitterView.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -339,10 +345,12 @@
 				2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */,
 				2C5F837E2F5D9A44009898E9 /* CalendarCalculationView.swift in Sources */,
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
+				2CBF5ED62F5E0755009575C2 /* UnitConverterView.swift in Sources */,
 				2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */,
 				2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */,
+				2CBF5ED82F5E0785009575C2 /* TipSplitterView.swift in Sources */,
 				2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */,
 				2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
