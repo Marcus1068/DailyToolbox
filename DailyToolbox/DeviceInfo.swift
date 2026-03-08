@@ -18,67 +18,29 @@
 
 //
 //  DeviceInfo.swift
-//  
 //
 //  Created by Marcus Deuß on 17.04.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-@MainActor
-class DeviceInfo: NSObject {
-    
-    // iOS version info
-    /// get the current iOS version
-    ///
-    /// - Parameters:
-    ///
-    /// - Returns: String with version number
-    
-    static func getOSVersion() -> String
-    {
-        #if targetEnvironment(macCatalyst)
-        return UIDevice.current.systemVersion // + " Catalyst"
-        #else
-        return UIDevice.current.systemVersion
-        #endif
+enum DeviceInfo {
+
+    /// Current OS version string, e.g. "18.3.1"
+    static func getOSVersion() -> String {
+        let v = ProcessInfo.processInfo.operatingSystemVersion
+        return "\(v.majorVersion).\(v.minorVersion).\(v.patchVersion)"
     }
-    
-    static func getOSName() -> String
-    {
-        return UIDevice.current.systemName
-    }
-    
-    // iOS battery level
-    /// get the current iOS battery level
-    ///
-    /// - Parameters:
-    ///
-    /// - Returns: Float with battery level
-    
-    static func getbatteryLevel() -> Float
-    {
-        return UIDevice.current.batteryLevel
-    }
-    
-    /// get the current iOS device name
-    ///
-    /// - Parameters:
-    /// - Returns:  the device name as String
-    
-    static func getDeviceName() -> String
-    {
-        return UIDevice.current.name
-    }
-    
-    /// get the current iOS device UUID
-    ///
-    /// - Parameters:
-    /// - Returns:  the device UUID
-    
-    static func getDeviceUUID() -> UUID
-    {
-        return UIDevice.current.identifierForVendor ?? UUID()
+
+    /// User-visible device name derived from the Bonjour hostname.
+    /// ProcessInfo.hostName typically returns "Marcuss-iPhone.local";
+    /// stripping the ".local" suffix gives a clean display name.
+    static func getDeviceName() -> String {
+        let host = ProcessInfo.processInfo.hostName
+        if host.hasSuffix(".local") {
+            return String(host.dropLast(".local".count))
+        }
+        return host
     }
 }
