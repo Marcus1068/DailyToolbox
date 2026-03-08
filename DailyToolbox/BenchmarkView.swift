@@ -1,12 +1,39 @@
 /*
- BenchmarkView.swift
- DailyToolbox
 
- SwiftUI replacement for BenchmarkViewController / BenchmarkPageViewController.
- Consolidates all benchmark functionality into one liquid-glass screen.
+Copyright 2020 Marcus Deuß
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 */
 
+//
+//  BenchmarkView.swift
+//  DailyToolbox
+//
+//  8-benchmark suite: integer math, float math, memory bandwidth,
+//  array sort, JSON codec, string processing, SHA-256, LZFSE compression.
+//
+
 import SwiftUI
+import CryptoKit
+
+// MARK: - JSON helper (file-scope: Codable types cannot be defined inside closures)
+
+private struct BenchJSONItem: Codable, Sendable {
+    let id: Int
+    let label: String
+    let value: Double
+}
 
 // MARK: - Benchmark Runner
 
@@ -14,68 +41,166 @@ import SwiftUI
 final class BenchmarkRunner {
 
     enum BenchType: String, CaseIterable, Identifiable {
-        case arc4     = "arc4random"
-        case swift    = "Swift.random"
-        case addition = "Addition"
-        case strings  = "Strings"
+        case intArith   = "Integer Math"
+        case floatMath  = "Float Math"
+        case memory     = "Memory"
+        case arraySort  = "Array Sort"
+        case jsonCodec  = "JSON Codec"
+        case stringProc = "Strings"
+        case crypto     = "SHA-256"
+        case compress   = "Compression"
 
         var id: String { rawValue }
 
         var icon: String {
             switch self {
-            case .arc4:     "dice.fill"
-            case .swift:    "bolt.fill"
-            case .addition: "plus.circle.fill"
-            case .strings:  "textformat.characters"
+            case .intArith:   return "function"
+            case .floatMath:  return "waveform.path"
+            case .memory:     return "memorychip"
+            case .arraySort:  return "arrow.up.arrow.down"
+            case .jsonCodec:  return "doc.badge.arrow.up"
+            case .stringProc: return "textformat.characters"
+            case .crypto:     return "lock.shield.fill"
+            case .compress:   return "arrow.down.left.arrow.up.right"
             }
         }
 
         var accentColor: Color {
             switch self {
-            case .arc4:     Color(red: 0.00, green: 0.85, blue: 1.00)  // electric cyan
-            case .swift:    Color(red: 0.55, green: 0.25, blue: 1.00)  // violet
-            case .addition: Color(red: 0.00, green: 0.90, blue: 0.50)  // neon green
-            case .strings:  Color(red: 1.00, green: 0.60, blue: 0.00)  // amber
+            case .intArith:   return Color(red: 0.00, green: 0.85, blue: 1.00)  // cyan
+            case .floatMath:  return Color(red: 0.55, green: 0.25, blue: 1.00)  // violet
+            case .memory:     return Color(red: 0.00, green: 0.90, blue: 0.50)  // neon green
+            case .arraySort:  return Color(red: 1.00, green: 0.60, blue: 0.00)  // amber
+            case .jsonCodec:  return Color(red: 0.20, green: 0.70, blue: 1.00)  // sky blue
+            case .stringProc: return Color(red: 1.00, green: 0.30, blue: 0.60)  // rose
+            case .crypto:     return Color(red: 0.90, green: 0.80, blue: 0.20)  // gold
+            case .compress:   return Color(red: 0.40, green: 1.00, blue: 0.60)  // mint
+            }
+        }
+
+        // Iteration or byte counts per selectable tier
+        var ranges: [Int] {
+            switch self {
+            case .intArith:   return [100_000,  500_000, 2_000_000, 5_000_000]
+            case .floatMath:  return [100_000,  500_000, 1_000_000, 2_000_000]
+            case .memory:     return [100_000,  500_000, 1_000_000, 5_000_000]
+            case .arraySort:  return [ 10_000,   50_000,   200_000,   500_000]
+            case .jsonCodec:  return [    100,      500,     1_000,     5_000]
+            case .stringProc: return [  1_000,    5_000,    20_000,    50_000]
+            case .crypto:     return [ 10_240,  102_400,   524_288, 2_097_152]  // 10KB…2MB
+            case .compress:   return [ 10_240,  102_400,   524_288, 2_097_152]  // 10KB…2MB
+            }
+        }
+
+        var defaultRange: Int { ranges[1] }
+
+        func rangeLabel(_ n: Int) -> String {
+            switch self {
+            case .crypto, .compress:
+                if n >= 1_048_576 { return "\(n / 1_048_576) MB" }
+                return "\(n / 1_024) KB"
+            case .jsonCodec:
+                return n >= 1_000 ? "\(n / 1_000)K obj" : "\(n) obj"
+            default:
+                if n >= 1_000_000 { return "\(n / 1_000_000)M" }
+                return "\(n / 1_000)K"
             }
         }
     }
 
-    let ranges = [10_000, 50_000, 200_000, 500_000]
-    var selectedRange: [BenchType: Int] = [
-        .arc4: 50_000, .swift: 50_000, .addition: 50_000, .strings: 0
-    ]
-    var repeatCount: Int = 1
-    var results: [BenchType: Double] = [:]
-    var isRunning: BenchType?
-    var isRunningAll = false
+    var selectedRange: [BenchType: Int]
+    var repeatCount:   Int = 1
+    var results:       [BenchType: Double] = [:]
+    var isRunning:     BenchType?
+    var isRunningAll   = false
 
     let deviceName = DeviceInfo.getDeviceName()
     let osVersion  = DeviceInfo.getOSVersion()
 
-    // Run one benchmark type on a detached background task
+    init() {
+        selectedRange = Dictionary(
+            uniqueKeysWithValues: BenchType.allCases.map { ($0, $0.defaultRange) }
+        )
+    }
+
+    // MARK: Run single benchmark
+
     func run(_ type: BenchType) async {
         guard isRunning == nil else { return }
         isRunning = type
-        let range = selectedRange[type] ?? 50_000
+        let range = selectedRange[type] ?? type.defaultRange
         let reps  = repeatCount
 
         let elapsed: Double = await Task.detached(priority: .userInitiated) {
-            var last: Double = 0
+            var last = 0.0
             for _ in 0..<reps {
                 let start = Date()
                 switch type {
-                case .arc4:
+
+                // 1. Integer Arithmetic — tight multiply / XOR / shift loop
+                case .intArith:
+                    var x: UInt64 = 1
+                    for i in 1...range {
+                        x = (x &* UInt64(i &+ 1)) ^ (x >> 3) &+ UInt64(i)
+                    }
+                    _ = x
+
+                // 2. Float Math — sin + cos + sqrt per iteration (tests FPU/SIMD)
+                case .floatMath:
+                    var acc = 0.0
+                    for i in 0..<range {
+                        let d = Double(i) * 0.001
+                        acc += sin(d) + cos(d) + sqrt(d + 1.0)
+                    }
+                    _ = acc
+
+                // 3. Memory Bandwidth — allocate, fill, then sum a large Int array
+                case .memory:
+                    var arr = [Int](repeating: 0, count: range)
+                    for i in 0..<range { arr[i] = i &* 3 &+ 1 }
                     var sum = 0
-                    for _ in 0..<range { sum += Int.random(in: 0..<100) }
-                case .swift:
-                    var sum = 0
-                    for _ in 0..<range { sum += Int.random(in: 0..<100) }
-                case .addition:
-                    var sum = 0.0
-                    for _ in 0..<range { sum += Double.random(in: 0..<1) }
-                case .strings:
-                    var s = "Benchmark test with Swift"
-                    for _ in 0..<25 { s += s }
+                    for v in arr { sum = sum &+ v }
+                    _ = sum
+
+                // 4. Array Sort — sort N random integers (tests branch predictor + cache)
+                case .arraySort:
+                    var arr = (0..<range).map { _ in Int.random(in: 0..<1_000_000) }
+                    arr.sort()
+                    _ = arr.first
+
+                // 5. JSON Codec — encode + decode N lightweight Codable objects
+                case .jsonCodec:
+                    let items = (0..<range).map {
+                        BenchJSONItem(id: $0, label: "item_\($0)", value: Double($0) * 1.618)
+                    }
+                    let encoder = JSONEncoder()
+                    let decoder = JSONDecoder()
+                    if let data = try? encoder.encode(items) {
+                        _ = try? decoder.decode([BenchJSONItem].self, from: data)
+                    }
+
+                // 6. String Processing — contains + split + joined per iteration
+                case .stringProc:
+                    let base = "The quick brown fox jumps over the lazy dog. Swift is powerful and safe."
+                    var found = 0
+                    for _ in 0..<range {
+                        if base.contains("fox") { found &+= 1 }
+                        let parts = base.split(separator: " ")
+                        _ = parts.joined(separator: "-")
+                    }
+                    _ = found
+
+                // 7. SHA-256 — hash N bytes via CryptoKit (tests hardware crypto engine)
+                case .crypto:
+                    let data = Data(repeating: 0x5A, count: range)
+                    _ = SHA256.hash(data: data)
+
+                // 8. Compression — LZFSE compress + decompress N bytes
+                case .compress:
+                    let source = Data((0..<range).map { UInt8($0 & 0xFF) })
+                    if let compressed = try? (source as NSData).compressed(using: .lzfse) as Data {
+                        _ = try? (compressed as NSData).decompressed(using: .lzfse)
+                    }
                 }
                 last = Date().timeIntervalSince(start)
             }
@@ -88,17 +213,16 @@ final class BenchmarkRunner {
 
     func runAll() async {
         isRunningAll = true
-        for type in BenchType.allCases {
-            await run(type)
-        }
+        for type in BenchType.allCases { await run(type) }
         isRunningAll = false
     }
 
-    // Simple composite score (lower total time → higher score, max ~1000)
+    // Score: lower total runtime across all 8 benchmarks = higher score.
+    // 6.0 s ceiling — a modern iPhone should total well under 1 s.
     var score: Int? {
         guard results.count == BenchType.allCases.count else { return nil }
         let total = BenchType.allCases.compactMap { results[$0] }.reduce(0, +)
-        return max(0, Int((2.0 - min(total, 2.0)) / 2.0 * 1000))
+        return max(0, Int((6.0 - min(total, 6.0)) / 6.0 * 1000))
     }
 }
 
@@ -110,8 +234,8 @@ struct BenchmarkView: View {
 
     var body: some View {
         ZStack {
-            // Deep-space MeshGradient background
-            MeshGradient(width: 3, height: 3,
+            MeshGradient(
+                width: 3, height: 3,
                 points: [
                     [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
                     [0.0, 0.5], [0.5, 0.5], [1.0, 0.5],
@@ -138,9 +262,7 @@ struct BenchmarkView: View {
                         benchmarkGrid
                         repeatRow
                         runAllButton
-                        if !runner.results.isEmpty {
-                            timingChart
-                        }
+                        if !runner.results.isEmpty { timingChart }
                     }
                     .padding()
                 }
@@ -149,7 +271,7 @@ struct BenchmarkView: View {
         .navigationTitle("Benchmark")
     }
 
-    // MARK: - Device Info Card
+    // MARK: - Device Card
 
     private var deviceCard: some View {
         HStack(spacing: 14) {
@@ -187,10 +309,13 @@ struct BenchmarkView: View {
         .animation(.spring(duration: 0.4), value: runner.score)
     }
 
-    // MARK: - 2x2 Benchmark Grid
+    // MARK: - 2×4 Benchmark Grid
 
     private var benchmarkGrid: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
+        LazyVGrid(
+            columns: [GridItem(.flexible()), GridItem(.flexible())],
+            spacing: 14
+        ) {
             ForEach(BenchmarkRunner.BenchType.allCases) { type in
                 BenchCard(type: type, runner: runner)
             }
@@ -210,9 +335,7 @@ struct BenchmarkView: View {
             Button {
                 if runner.repeatCount > 1 { runner.repeatCount -= 1 }
             } label: {
-                Image(systemName: "minus")
-                    .frame(width: 30, height: 30)
-                    .contentShape(Rectangle())
+                Image(systemName: "minus").frame(width: 30, height: 30).contentShape(Rectangle())
             }
             .buttonStyle(.glass)
             .disabled(runner.repeatCount <= 1)
@@ -226,9 +349,7 @@ struct BenchmarkView: View {
             Button {
                 if runner.repeatCount < 10 { runner.repeatCount += 1 }
             } label: {
-                Image(systemName: "plus")
-                    .frame(width: 30, height: 30)
-                    .contentShape(Rectangle())
+                Image(systemName: "plus").frame(width: 30, height: 30).contentShape(Rectangle())
             }
             .buttonStyle(.glass)
             .disabled(runner.repeatCount >= 10)
@@ -246,12 +367,9 @@ struct BenchmarkView: View {
         } label: {
             HStack(spacing: 10) {
                 if runner.isRunningAll {
-                    ProgressView()
-                        .tint(.white)
-                        .scaleEffect(0.85)
+                    ProgressView().tint(.white).scaleEffect(0.85)
                 } else {
-                    Image(systemName: "play.circle.fill")
-                        .font(.system(size: 17))
+                    Image(systemName: "play.circle.fill").font(.system(size: 17))
                 }
                 Text(runner.isRunningAll ? "Running\u{2026}" : "Run All Benchmarks")
                     .fontWeight(.semibold)
@@ -263,12 +381,11 @@ struct BenchmarkView: View {
         .disabled(runner.isRunning != nil || runner.isRunningAll)
     }
 
-    // MARK: - Timing Comparison Chart
+    // MARK: - Timing Chart
 
     private var timingChart: some View {
         let maxTime = BenchmarkRunner.BenchType.allCases
-            .compactMap { runner.results[$0] }
-            .max() ?? 1.0
+            .compactMap { runner.results[$0] }.max() ?? 1.0
 
         return VStack(alignment: .leading, spacing: 12) {
             Text("Timing Comparison")
@@ -285,9 +402,7 @@ struct BenchmarkView: View {
 
                         GeometryReader { geo in
                             ZStack(alignment: .leading) {
-                                Capsule()
-                                    .fill(.white.opacity(0.08))
-                                    .frame(height: 10)
+                                Capsule().fill(.white.opacity(0.08)).frame(height: 10)
                                 Capsule()
                                     .fill(type.accentColor.opacity(0.85))
                                     .frame(
@@ -299,8 +414,7 @@ struct BenchmarkView: View {
                         }
                         .frame(height: 10)
 
-                        let sText = String(format: "%.3fs", t)
-                        Text(sText)
+                        Text(String(format: "%.3fs", t))
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(.white.opacity(0.65))
                             .frame(width: 50, alignment: .trailing)
@@ -319,15 +433,14 @@ struct BenchmarkView: View {
 
 private struct BenchCard: View {
 
-    let type: BenchmarkRunner.BenchType
+    let type:   BenchmarkRunner.BenchType
     let runner: BenchmarkRunner
 
-    private let ranges = [10_000, 50_000, 200_000, 500_000]
-
     var body: some View {
-        let isActive = runner.isRunning == type
-        let isBusy   = runner.isRunning != nil || runner.isRunningAll
-        let result   = runner.results[type]
+        let isActive     = runner.isRunning == type
+        let isBusy       = runner.isRunning != nil || runner.isRunningAll
+        let result       = runner.results[type]
+        let currentRange = runner.selectedRange[type] ?? type.defaultRange
 
         VStack(alignment: .leading, spacing: 8) {
 
@@ -339,9 +452,7 @@ private struct BenchCard: View {
                     .symbolEffect(.pulse, isActive: isActive)
                 Spacer()
                 if isActive {
-                    ProgressView()
-                        .tint(type.accentColor)
-                        .scaleEffect(0.7)
+                    ProgressView().tint(type.accentColor).scaleEffect(0.7)
                 }
             }
 
@@ -352,32 +463,22 @@ private struct BenchCard: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
 
-            // Range / descriptor
-            if type != .strings {
-                let currentRange = runner.selectedRange[type] ?? 50_000
-                Menu {
-                    ForEach(ranges, id: \.self) { r in
-                        Button(rangeLabel(r)) {
-                            runner.selectedRange[type] = r
-                        }
-                    }
-                } label: {
-                    HStack(spacing: 3) {
-                        Text(rangeLabel(currentRange))
-                            .font(.system(size: 11, weight: .medium))
-                        Image(systemName: "chevron.up.chevron.down")
-                            .font(.system(size: 9))
-                    }
-                    .foregroundStyle(.white.opacity(0.65))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .glassEffect(.regular, in: Capsule())
+            // Range picker
+            Menu {
+                ForEach(type.ranges, id: \.self) { r in
+                    Button(type.rangeLabel(r)) { runner.selectedRange[type] = r }
                 }
-            } else {
-                Text("25\u{00D7} doubling")
-                    .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.45))
-                    .frame(height: 25, alignment: .center)
+            } label: {
+                HStack(spacing: 3) {
+                    Text(type.rangeLabel(currentRange))
+                        .font(.system(size: 11, weight: .medium))
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.system(size: 9))
+                }
+                .foregroundStyle(.white.opacity(0.65))
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .glassEffect(.regular, in: Capsule())
             }
 
             // Result
@@ -415,16 +516,12 @@ private struct BenchCard: View {
             in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
     }
-
-    private func rangeLabel(_ n: Int) -> String {
-        n >= 1_000 ? "\(n / 1_000)K" : "\(n)"
-    }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         BenchmarkView()
     }
 }
