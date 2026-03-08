@@ -62,6 +62,8 @@ struct ContentView: View {
         case "showFuelCost":     FuelCostView()
         case "showAspectRatio":  AspectRatioView()
         case "showRandomizer":   RandomizerView()
+        case "showGermanHolidays": GermanHolidaysView()
+        case "showHolidays":     GermanHolidaysView()
         case "showCalendar":     CalendarCalculationView()
         case "showHorizon":      HorizonView()
         case "showBenchmark":    BenchmarkView()

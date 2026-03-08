@@ -53,12 +53,14 @@ extension ToolSection {
             ToolItem(id: "showAspectRatio",  name: "Aspect Ratio",   subtitle: "Scale & ratio calculator",       icon: "aspectratio.fill",               color: Color(red: 0.70, green: 0.40, blue: 1.00), segueId: "showAspectRatio"),
         ]),
         ToolSection(title: "Tools", items: [
+            ToolItem(id: "showHolidays",      name: "German Holidays",subtitle: "Public & school holidays",       icon: "flag.fill",                      color: Color(red: 0.95, green: 0.75, blue: 0.20), segueId: "showHolidays"),
             ToolItem(id: "showFuelCost",      name: "Fuel Cost",      subtitle: "Trip · Consumption · Price",     icon: "fuelpump.fill",                  color: Color(red: 0.25, green: 0.78, blue: 0.55), segueId: "showFuelCost"),
             ToolItem(id: "showRandomizer",    name: "Randomizer",     subtitle: "Coin · Dice · Number · List",    icon: "dice.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.15), segueId: "showRandomizer"),
             ToolItem(id: "showTipSplitter",  name: "Tip Splitter",   subtitle: "Bill & tip per person",          icon: "fork.knife.circle.fill",         color: Color(red: 0.90, green: 0.62, blue: 0.10), segueId: "showTipSplitter"),
             ToolItem(id: "showQRCode",       name: "QR Code",        subtitle: "URL · Text · WiFi · Contact",    icon: "qrcode",                         color: Color(red: 0.55, green: 0.35, blue: 0.95), segueId: "showQRCode"),
             ToolItem(id: "showOhmsLaw",      name: "Ohm's Law",      subtitle: "V · I · R · P calculator",      icon: "bolt.horizontal.circle.fill",    color: Color(red: 1.00, green: 0.70, blue: 0.15), segueId: "showOhmsLaw"),
             ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",              icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
+            ToolItem(id: "showGermanHolidays",name: "German Holidays",subtitle: "Public & school holidays",       icon: "flag.fill",                      color: Color(red: 0.85, green: 0.15, blue: 0.15), segueId: "showGermanHolidays"),
             ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",               icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
             ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                   icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
             ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",                   icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
@@ -150,7 +152,7 @@ struct MasterView: View {
                 )
                 .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
 
-            Text("23 built-in tools")
+            Text("24 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(.white.opacity(0.55))
         }
