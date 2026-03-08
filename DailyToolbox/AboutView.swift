@@ -31,6 +31,7 @@ import SwiftUI
 struct AboutView: View {
 
     @Environment(\.openURL) private var openURL
+    @State private var showMailUnavailable = false
 
     private var appVersion: String {
         let v = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
@@ -89,6 +90,14 @@ struct AboutView: View {
         .navigationTitle("About")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .alert("Mail Not Available", isPresented: $showMailUnavailable) {
+            Button("Copy Address") {
+                UIPasteboard.general.string = Global.emailAdr
+            }
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("No mail app is configured on this device.\n\nYou can reach us at:\n\(Global.emailAdr)")
+        }
     }
 
     // MARK: - Background
@@ -191,7 +200,10 @@ struct AboutView: View {
             title: "Send Feedback",
             subtitle: "Questions, ideas or bug reports"
         ) {
-            if let url = mailURL { openURL(url) }
+            guard let url = mailURL else { showMailUnavailable = true; return }
+            openURL(url) { accepted in
+                if !accepted { showMailUnavailable = true }
+            }
         }
     }
 
