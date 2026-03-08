@@ -94,30 +94,24 @@ class Global{
     
 }
 
-extension UIViewController{
-    // for having app store review message popup
-    func appstoreReview(){
-        // If the count has not yet been stored, this will return 0
-        var count = UserDefaults.standard.integer(forKey: UserDefaultKeys.processCompletedCountKey)
-        count += 1
-        UserDefaults.standard.set(count, forKey: UserDefaultKeys.processCompletedCountKey)
+/// Increments the launch counter and requests an App Store review after 4 launches.
+@MainActor
+func appstoreReview() {
+    var count = UserDefaults.standard.integer(forKey: UserDefaultKeys.processCompletedCountKey)
+    count += 1
+    UserDefaults.standard.set(count, forKey: UserDefaultKeys.processCompletedCountKey)
 
-        // Get the current bundle version for the app
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
-            else { fatalError("Expected to find a bundle version in the info dictionary") }
+    let infoDictionaryKey = kCFBundleVersionKey as String
+    guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
+        else { return }
 
-        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
+    let lastVersionPrompted = UserDefaults.standard.string(forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
 
-        // Has the process been completed several times and the user has not already been prompted for this version?
-        if count >= 4 && currentVersion != lastVersionPromptedForReview {
-            Task { @MainActor [navigationController] in
-                try? await Task.sleep(for: .seconds(2))
-                if navigationController?.topViewController is MasterViewController {
-                    //SKStoreReviewController.requestReview()
-                    UserDefaults.standard.set(currentVersion, forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
-                }
-            }
+    if count >= 4 && currentVersion != lastVersionPrompted {
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(2))
+            // SKStoreReviewController.requestReview() — re-enable when using StoreKit
+            UserDefaults.standard.set(currentVersion, forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
         }
     }
 }

@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
-		2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */; };
 		2C04CDB2245309E4009944AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C04CDB4245309E4009944AD /* Localizable.strings */; };
 		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
-		2C2A8376247AEF830076EEDE /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */; };
-		2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */; };
 		2C5A88F224548525006D0B4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F024548525006D0B4E /* InfoPlist.strings */; };
 		2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F42455913A006D0B4E /* Roman german.rtf */; };
 		2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F624559152006D0B4E /* Roman english.rtf */; };
@@ -24,49 +21,28 @@
 		2C5F83762F5D9586009898E9 /* ConvertNumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83752F5D9586009898E9 /* ConvertNumbersView.swift */; };
 		2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83772F5D96B5009898E9 /* InterestRateView.swift */; };
 		2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83792F5D98C3009898E9 /* HorizonView.swift */; };
-		2C5F837C2F5D98D3009898E9 /* HorizonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */; };
 		2C5F837E2F5D9A44009898E9 /* CalendarCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F837D2F5D9A44009898E9 /* CalendarCalculationView.swift */; };
-		2C5F83802F5D9A4A009898E9 /* CalendarCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F837F2F5D9A4A009898E9 /* CalendarCalculationViewController.swift */; };
 		2C5F83822F5D9BBB009898E9 /* PowerConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83812F5D9BBB009898E9 /* PowerConsumptionView.swift */; };
-		2C5F83842F5D9BC2009898E9 /* PowerConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83832F5D9BC2009898E9 /* PowerConsumptionViewController.swift */; };
 		2C5F83862F5D9F94009898E9 /* DecimalRomanNumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83852F5D9F94009898E9 /* DecimalRomanNumbersView.swift */; };
-		2C5F83882F5D9F9B009898E9 /* DecimalRomanNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83872F5D9F9B009898E9 /* DecimalRomanNumbersViewController.swift */; };
 		2C5F838A2F5DA0B5009898E9 /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83892F5DA0B5009898E9 /* TranslationView.swift */; };
-		2C5F838C2F5DA0BC009898E9 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F838B2F5DA0BC009898E9 /* TranslationViewController.swift */; };
 		2C5F838E2F5DA39F009898E9 /* BenchmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */; };
-		2C5F83902F5DA51B009898E9 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F838F2F5DA51B009898E9 /* MasterViewController.swift */; };
 		2C5F83922F5DA548009898E9 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83912F5DA548009898E9 /* MasterView.swift */; };
+		2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */; };
+		2C5F83962F5DA6D6009898E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83952F5DA6D6009898E9 /* ContentView.swift */; };
 		2C8040C72439F1590057909D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8040C62439F1590057909D /* WebKit.framework */; };
-		2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */; };
 		2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D209241A920900BA4363 /* InterestRate.swift */; };
 		2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */; };
-		2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */; };
 		2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B2343242663D6007A20DF /* MyExtensions.swift */; };
-		2C9312B3247BDE3000CC0192 /* BenchmarkPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */; };
-		2C9312B5247BDF9400CC0192 /* BenchmarkPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */; };
-		2C9312B7247BDFA600CC0192 /* BenchmarkPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */; };
-		2C9312B9247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */; };
 		2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94C9A523F994D6002D7C28 /* Percent.swift */; };
-		2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BE1692402BB79006A27AD /* TranslationViewController.swift */; };
-		2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA494A6245227F700E61CC5 /* AboutViewController.swift */; };
 		2CA494A924522AB300E61CC5 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA494A824522AB300E61CC5 /* Global.swift */; };
 		2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */; };
-		2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */; };
-		2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB592A824082BD70020F152 /* BenchmarkViewController.swift */; };
 		2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866923F6AA480011D886 /* AppDelegate.swift */; };
-		2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866B23F6AA480011D886 /* SceneDelegate.swift */; };
-		2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866D23F6AA480011D886 /* MasterViewController.swift */; };
-		2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD866F23F6AA480011D886 /* PercentageViewController.swift */; };
-		2CBD867323F6AA480011D886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867123F6AA480011D886 /* Main.storyboard */; };
 		2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867423F6AA480011D886 /* Assets.xcassets */; };
 		2CBD867823F6AA480011D886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */; };
 		2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */; };
-		2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */; };
-		2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */; };
 		2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869423F6BE7E0011D886 /* Temperature.swift */; };
 		2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD869623F6BE990011D886 /* ConvertNumbers.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
-		2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E424044261008825E6 /* HorizonViewController.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
 /* End PBXBuildFile section */
@@ -83,15 +59,12 @@
 
 /* Begin PBXFileReference section */
 		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
-		2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumptionViewController.swift; sourceTree = "<group>"; };
 		2C04CDAE245308CE009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2C04CDAF245308CE009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2C04CDB3245309E4009944AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C04CDB5245309E7009944AD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
-		2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
-		2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C5A88F124548525006D0B4E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
 		2C5A88F624559152006D0B4E /* Roman english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman english.rtf"; sourceTree = "<group>"; };
@@ -102,42 +75,24 @@
 		2C5F83752F5D9586009898E9 /* ConvertNumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersView.swift; sourceTree = "<group>"; };
 		2C5F83772F5D96B5009898E9 /* InterestRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateView.swift; sourceTree = "<group>"; };
 		2C5F83792F5D98C3009898E9 /* HorizonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonView.swift; sourceTree = "<group>"; };
-		2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonViewController.swift; sourceTree = "<group>"; };
 		2C5F837D2F5D9A44009898E9 /* CalendarCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationView.swift; sourceTree = "<group>"; };
-		2C5F837F2F5D9A4A009898E9 /* CalendarCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationViewController.swift; sourceTree = "<group>"; };
 		2C5F83812F5D9BBB009898E9 /* PowerConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumptionView.swift; sourceTree = "<group>"; };
-		2C5F83832F5D9BC2009898E9 /* PowerConsumptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumptionViewController.swift; sourceTree = "<group>"; };
 		2C5F83852F5D9F94009898E9 /* DecimalRomanNumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersView.swift; sourceTree = "<group>"; };
-		2C5F83872F5D9F9B009898E9 /* DecimalRomanNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalRomanNumbersViewController.swift; sourceTree = "<group>"; };
 		2C5F83892F5DA0B5009898E9 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
-		2C5F838B2F5DA0BC009898E9 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkView.swift; sourceTree = "<group>"; };
-		2C5F838F2F5DA51B009898E9 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2C5F83912F5DA548009898E9 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToolboxApp.swift; sourceTree = "<group>"; };
+		2C5F83952F5DA6D6009898E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C8040C62439F1590057909D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateViewController.swift; sourceTree = "<group>"; };
 		2C87D209241A920900BA4363 /* InterestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRate.swift; sourceTree = "<group>"; };
 		2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculation.swift; sourceTree = "<group>"; };
-		2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculationViewController.swift; sourceTree = "<group>"; };
 		2C8B2343242663D6007A20DF /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
 		2C8F24FA248161B0002F10D7 /* DailyToolboxRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolboxRelease.entitlements; sourceTree = "<group>"; };
-		2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPageViewController.swift; sourceTree = "<group>"; };
-		2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage1ViewController.swift; sourceTree = "<group>"; };
-		2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage2ViewController.swift; sourceTree = "<group>"; };
-		2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkPage3ViewController.swift; sourceTree = "<group>"; };
 		2C94C9A523F994D6002D7C28 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
-		2C9BE1692402BB79006A27AD /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
-		2CA494A6245227F700E61CC5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		2CA494A824522AB300E61CC5 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2CAAE4EC240FFE9A00D13315 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
-		2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
-		2CB592A824082BD70020F152 /* BenchmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkViewController.swift; sourceTree = "<group>"; };
 		2CBD866623F6AA480011D886 /* DailyToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBD866923F6AA480011D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CBD866B23F6AA480011D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CBD866D23F6AA480011D886 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		2CBD866F23F6AA480011D886 /* PercentageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageViewController.swift; sourceTree = "<group>"; };
-		2CBD867223F6AA480011D886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CBD867423F6AA480011D886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CBD867723F6AA480011D886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CBD867923F6AA480011D886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,12 +100,9 @@
 		2CBD868223F6AA490011D886 /* DailyToolboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToolboxTests.swift; sourceTree = "<group>"; };
 		2CBD868423F6AA490011D886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToolbox.entitlements; sourceTree = "<group>"; };
-		2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
-		2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertNumbersViewController.swift; sourceTree = "<group>"; };
 		2CBD869423F6BE7E0011D886 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		2CBD869623F6BE990011D886 /* ConvertNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertNumbers.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
-		2CD4C2E424044261008825E6 /* HorizonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonViewController.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,20 +172,14 @@
 				2CBD869023F6B3CE0011D886 /* ViewControllers */,
 				2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */,
 				2CBD866923F6AA480011D886 /* AppDelegate.swift */,
-				2CBD866B23F6AA480011D886 /* SceneDelegate.swift */,
-				2CBD867123F6AA480011D886 /* Main.storyboard */,
 				2CBD867423F6AA480011D886 /* Assets.xcassets */,
 				2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */,
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5A88F024548525006D0B4E /* InfoPlist.strings */,
-				2C5F837B2F5D98D3009898E9 /* HorizonViewController.swift */,
-				2C5F837F2F5D9A4A009898E9 /* CalendarCalculationViewController.swift */,
-				2C5F83832F5D9BC2009898E9 /* PowerConsumptionViewController.swift */,
-				2C5F83872F5D9F9B009898E9 /* DecimalRomanNumbersViewController.swift */,
-				2C5F838B2F5DA0BC009898E9 /* TranslationViewController.swift */,
 				2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */,
-				2C5F838F2F5DA51B009898E9 /* MasterViewController.swift */,
 				2C5F83912F5DA548009898E9 /* MasterView.swift */,
+				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
+				2C5F83952F5DA6D6009898E9 /* ContentView.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -250,26 +196,8 @@
 		2CBD869023F6B3CE0011D886 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2CBD866D23F6AA480011D886 /* MasterViewController.swift */,
-				2CBD866F23F6AA480011D886 /* PercentageViewController.swift */,
-				2CBD868E23F6AC750011D886 /* TemperatureViewController.swift */,
-				2CBD869123F6B43B0011D886 /* ConvertNumbersViewController.swift */,
-				2C9BE1692402BB79006A27AD /* TranslationViewController.swift */,
-				2CD4C2E424044261008825E6 /* HorizonViewController.swift */,
-				2CB592A824082BD70020F152 /* BenchmarkViewController.swift */,
-				2CAAE4EE2410008E00D13315 /* CurrencyConverterViewController.swift */,
-				2C87D207241A91EF00BA4363 /* InterestRateViewController.swift */,
-				2C87D20D241A96E600BA4363 /* CalendarCalculationViewController.swift */,
-				2C2C5802241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift */,
-				2C034906244B17BE00AEE556 /* PowerConsumptionViewController.swift */,
-				2CA494A6245227F700E61CC5 /* AboutViewController.swift */,
 				2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
 				2C2A8372247A960A0076EEDE /* MenuController.swift */,
-				2C2A8375247AEF830076EEDE /* SpinnerViewController.swift */,
-				2C9312B2247BDE3000CC0192 /* BenchmarkPageViewController.swift */,
-				2C9312B4247BDF9400CC0192 /* BenchmarkPage1ViewController.swift */,
-				2C9312B6247BDFA600CC0192 /* BenchmarkPage2ViewController.swift */,
-				2C9312B8247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift */,
 				2C5F836D2F5D8C02009898E9 /* AboutView.swift */,
 				2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */,
 				2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */,
@@ -391,7 +319,6 @@
 				2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */,
 				2C04CDB2245309E4009944AD /* Localizable.strings in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
-				2CBD867323F6AA480011D886 /* Main.storyboard in Resources */,
 				2C5A88F224548525006D0B4E /* InfoPlist.strings in Resources */,
 				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
 			);
@@ -411,57 +338,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C87D208241A91EF00BA4363 /* InterestRateViewController.swift in Sources */,
+				2C5F83962F5DA6D6009898E9 /* ContentView.swift in Sources */,
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
 				2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */,
 				2C5F837E2F5D9A44009898E9 /* CalendarCalculationView.swift in Sources */,
 				2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */,
-				2C87D20E241A96E600BA4363 /* CalendarCalculationViewController.swift in Sources */,
 				2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */,
 				2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */,
-				2C2A8376247AEF830076EEDE /* SpinnerViewController.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */,
 				2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */,
-				2C5F83902F5DA51B009898E9 /* MasterViewController.swift in Sources */,
+				2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */,
 				2C94C9A623F994D6002D7C28 /* Percent.swift in Sources */,
-				2C9312B5247BDF9400CC0192 /* BenchmarkPage1ViewController.swift in Sources */,
-				2C5F838C2F5DA0BC009898E9 /* TranslationViewController.swift in Sources */,
 				2C5F83862F5D9F94009898E9 /* DecimalRomanNumbersView.swift in Sources */,
 				2C5F83822F5D9BBB009898E9 /* PowerConsumptionView.swift in Sources */,
 				2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */,
 				2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */,
-				2CBD866C23F6AA480011D886 /* SceneDelegate.swift in Sources */,
 				2C5F83742F5D922F009898E9 /* TemperatureView.swift in Sources */,
 				2C5F83922F5DA548009898E9 /* MasterView.swift in Sources */,
-				2C2C5803241BF65C00079EC5 /* DecimalRomanNumbersViewController.swift in Sources */,
-				2C5F83842F5D9BC2009898E9 /* PowerConsumptionViewController.swift in Sources */,
-				2C9BE16A2402BB79006A27AD /* TranslationViewController.swift in Sources */,
 				2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */,
-				2CBD866E23F6AA480011D886 /* MasterViewController.swift in Sources */,
-				2C5F83882F5D9F9B009898E9 /* DecimalRomanNumbersViewController.swift in Sources */,
-				2C5F83802F5D9A4A009898E9 /* CalendarCalculationViewController.swift in Sources */,
-				2CD4C2E524044261008825E6 /* HorizonViewController.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
-				2C9312B3247BDE3000CC0192 /* BenchmarkPageViewController.swift in Sources */,
-				2C5F837C2F5D98D3009898E9 /* HorizonViewController.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
 				2C5F83762F5D9586009898E9 /* ConvertNumbersView.swift in Sources */,
 				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
-				2C9312B9247BFE9D00CC0192 /* BenchmarkPage3ViewController.swift in Sources */,
-				2CAAE4EF2410008E00D13315 /* CurrencyConverterViewController.swift in Sources */,
 				2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */,
 				2C5F838A2F5DA0B5009898E9 /* TranslationView.swift in Sources */,
-				2CBD867023F6AA480011D886 /* PercentageViewController.swift in Sources */,
-				2C034907244B17BE00AEE556 /* PowerConsumptionViewController.swift in Sources */,
-				2CB592A924082BD70020F152 /* BenchmarkViewController.swift in Sources */,
 				2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */,
-				2C9312B7247BDFA600CC0192 /* BenchmarkPage2ViewController.swift in Sources */,
-				2CBD868F23F6AC750011D886 /* TemperatureViewController.swift in Sources */,
-				2CA494A7245227F700E61CC5 /* AboutViewController.swift in Sources */,
 				2C5F838E2F5DA39F009898E9 /* BenchmarkView.swift in Sources */,
-				2CBD869223F6B43B0011D886 /* ConvertNumbersViewController.swift in Sources */,
 				2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */,
 				2CA494A924522AB300E61CC5 /* Global.swift in Sources */,
 			);
@@ -504,13 +408,11 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2CBD867123F6AA480011D886 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2CBD867223F6AA480011D886 /* Base */,
 				2C04CDAE245308CE009944AD /* de */,
 			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		2CBD867623F6AA480011D886 /* LaunchScreen.storyboard */ = {
