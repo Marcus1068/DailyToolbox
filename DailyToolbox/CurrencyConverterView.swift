@@ -82,9 +82,9 @@ struct CurrencyConverterView: View {
 
     @State private var cvt: CurrencyConverter?
     @State private var isLoading = true
-    @State private var fromCurrency = "EUR"
-    @State private var toCurrency  = "USD"
-    @State private var amountText  = "1.00"
+    @AppStorage("currency.from")   private var fromCurrency = "EUR"
+    @AppStorage("currency.to")     private var toCurrency   = "USD"
+    @AppStorage("currency.amount") private var amountText   = "1.00"
     @State private var showFromPicker = false
     @State private var showToPicker   = false
     @State private var swapRotation: Double = 0
@@ -98,7 +98,7 @@ struct CurrencyConverterView: View {
     fileprivate init(preview cvt: CurrencyConverter) {
         _cvt = State(initialValue: cvt)
         _isLoading = State(initialValue: false)
-        _toCurrency = State(initialValue: "USD")
+        _toCurrency = AppStorage(wrappedValue: "USD", "currency.to")
     }
 #endif
 
