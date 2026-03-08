@@ -27,6 +27,7 @@
 		2C5F83922F5DA548009898E9 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83912F5DA548009898E9 /* MasterView.swift */; };
 		2C5F83942F5DA6CC009898E9 /* DailyToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */; };
 		2C5F83962F5DA6D6009898E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83952F5DA6D6009898E9 /* ContentView.swift */; };
+		2C5F83A12F5DB001009898E9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83A02F5DB000009898E9 /* SplashView.swift */; };
 		2C8040C72439F1590057909D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8040C62439F1590057909D /* WebKit.framework */; };
 		2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D209241A920900BA4363 /* InterestRate.swift */; };
 		2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */; };
@@ -42,7 +43,6 @@
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
-		2C5F83A12F5DB001009898E9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83A02F5DB000009898E9 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +76,7 @@
 		2C5F83912F5DA548009898E9 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToolboxApp.swift; sourceTree = "<group>"; };
 		2C5F83952F5DA6D6009898E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2C5F83A02F5DB000009898E9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2C8040C62439F1590057909D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C87D209241A920900BA4363 /* InterestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRate.swift; sourceTree = "<group>"; };
 		2C87D20B241A96C300BA4363 /* CalendarCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCalculation.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
-		2C5F83A02F5DB000009898E9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,9 +184,9 @@
 		2CBD869023F6B3CE0011D886 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C5F83A02F5DB000009898E9 /* SplashView.swift */,				2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */,
+				2C5F83A02F5DB000009898E9 /* SplashView.swift */,
+				2C5F838D2F5DA39F009898E9 /* BenchmarkView.swift */,
 				2C5F83912F5DA548009898E9 /* MasterView.swift */,
-
 				2C5F836D2F5D8C02009898E9 /* AboutView.swift */,
 				2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */,
 				2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */,
@@ -217,9 +217,9 @@
 				2C8B2343242663D6007A20DF /* MyExtensions.swift */,
 				2C034904244B13F700AEE556 /* PowerConsumption.swift */,
 				2CA494A824522AB300E61CC5 /* Global.swift */,
-							2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
+				2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
 				2C2A8372247A960A0076EEDE /* MenuController.swift */,
-);
+			);
 			name = Model;
 			sourceTree = "<group>";
 		};
@@ -378,11 +378,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-
-
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		2CBD868523F6AA490011D886 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -530,7 +525,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.33;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -558,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.33;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
