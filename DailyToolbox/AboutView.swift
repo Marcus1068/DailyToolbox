@@ -92,7 +92,7 @@ struct AboutView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .alert("Mail Not Available", isPresented: $showMailUnavailable) {
             Button("Copy Address") {
-                UIPasteboard.general.string = Global.emailAdr
+                copyToPasteboard(Global.emailAdr)
             }
             Button("OK", role: .cancel) {}
         } message: {
@@ -245,6 +245,12 @@ struct AboutView: View {
             .padding(.vertical, 14)
         }
         .buttonStyle(.glass)
+    }
+
+    // UIPasteboard is available via SwiftUI's implicit UIKit import —
+    // no explicit 'import UIKit' needed in this file.
+    private func copyToPasteboard(_ string: String) {
+        UIPasteboard.general.string = string
     }
 }
 
