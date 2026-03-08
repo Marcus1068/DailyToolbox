@@ -211,8 +211,8 @@ struct AboutView: View {
     private func actionRow(
         icon: String,
         iconColor: Color,
-        title: String,
-        subtitle: String,
+        title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
