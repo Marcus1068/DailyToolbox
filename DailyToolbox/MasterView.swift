@@ -40,6 +40,8 @@ extension ToolSection {
             ToolItem(id: "showDecimal",      name: "Number Bases",   subtitle: "Hex \u{00B7} Dec \u{00B7} Bin",  icon: "number.circle.fill",             color: Color(red: 0.20, green: 0.45, blue: 1.00), segueId: "showDecimal"),
             ToolItem(id: "showInterestRate", name: "Interest Rate",  subtitle: "Compound & simple",              icon: "chart.line.uptrend.xyaxis",      color: Color(red: 0.00, green: 0.78, blue: 0.42), segueId: "showInterestRate"),
             ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",                 icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
+            ToolItem(id: "showLoan",         name: "Loan Calculator",subtitle: "Monthly payment & interest",     icon: "house.fill",                     color: Color(red: 0.35, green: 0.55, blue: 0.95), segueId: "showLoan"),
+            ToolItem(id: "showBMI",          name: "BMI Calculator", subtitle: "BMI · BMR · Ideal weight",       icon: "figure.stand",                   color: Color(red: 0.90, green: 0.35, blue: 0.30), segueId: "showBMI"),
         ]),
         ToolSection(title: "Conversions", items: [
             ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium",  color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),
@@ -50,6 +52,7 @@ extension ToolSection {
             ToolItem(id: "showAreaVolume",   name: "Area & Volume",  subtitle: "Shapes & formulas",              icon: "square.on.circle",               color: Color(red: 0.25, green: 0.75, blue: 0.40), segueId: "showAreaVolume"),
         ]),
         ToolSection(title: "Tools", items: [
+            ToolItem(id: "showFuelCost",      name: "Fuel Cost",      subtitle: "Trip · Consumption · Price",     icon: "fuelpump.fill",                  color: Color(red: 0.25, green: 0.78, blue: 0.55), segueId: "showFuelCost"),
             ToolItem(id: "showTipSplitter",  name: "Tip Splitter",   subtitle: "Bill & tip per person",          icon: "fork.knife.circle.fill",         color: Color(red: 0.90, green: 0.62, blue: 0.10), segueId: "showTipSplitter"),
             ToolItem(id: "showQRCode",       name: "QR Code",        subtitle: "URL · Text · WiFi · Contact",    icon: "qrcode",                         color: Color(red: 0.55, green: 0.35, blue: 0.95), segueId: "showQRCode"),
             ToolItem(id: "showOhmsLaw",      name: "Ohm's Law",      subtitle: "V · I · R · P calculator",      icon: "bolt.horizontal.circle.fill",    color: Color(red: 1.00, green: 0.70, blue: 0.15), segueId: "showOhmsLaw"),
@@ -145,7 +148,7 @@ struct MasterView: View {
                 )
                 .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
 
-            Text("18 built-in tools")
+            Text("21 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(.white.opacity(0.55))
         }
