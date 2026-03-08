@@ -389,7 +389,9 @@ struct CurrencyConverterView: View {
         let converter = await CurrencyConverter.load()
         cvt = converter
         let list = converter.getCurrencyStrings()
-        if list.count > 1 { toCurrency = list[1] }
+        // Only fall back to defaults if the saved codes are not in the loaded list
+        if !list.contains(fromCurrency), let first = list.first { fromCurrency = first }
+        if !list.contains(toCurrency),  list.count > 1            { toCurrency  = list[1] }
         isLoading = false
     }
 }
