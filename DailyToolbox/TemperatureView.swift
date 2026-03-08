@@ -175,8 +175,20 @@ struct TemperatureView: View {
 
     private var celsiusValue: Double? { Double(celsiusText) }
 
-    private func sanitize(_ s: String) -> String {
-        s.replacingOccurrences(of: ",", with: ".")
+    /// Allow digits, at most one decimal point, and an optional leading minus.
+    /// Replaces comma with dot (handles European keyboards).
+    private func numericOnly(_ s: String, allowNegative: Bool = false) -> String {
+        let normalized = s.replacingOccurrences(of: ",", with: ".")
+        let isNeg = allowNegative && normalized.hasPrefix("-")
+        var dotSeen = false
+        let digits = String(normalized.filter { c in
+            if c == "." {
+                guard !dotSeen else { return false }
+                dotSeen = true; return true
+            }
+            return c.isNumber
+        })
+        return (isNeg ? "-" : "") + digits
     }
 
     private func toggleSign(_ text: String) -> String {
@@ -188,7 +200,7 @@ struct TemperatureView: View {
     private func calculate(changed: TempField) {
         switch changed {
         case .celsius:
-            guard let c = Double(sanitize(celsiusText)) else {
+            guard let c = Double(numericOnly(celsiusText, allowNegative: true)) else {
                 fahrenheitText = ""; kelvinText = ""; return
             }
             let t = Temperature(celsius: c)
@@ -197,7 +209,7 @@ struct TemperatureView: View {
                 kelvinText     = t.kelvinToString
             }
         case .fahrenheit:
-            guard let f = Double(sanitize(fahrenheitText)) else {
+            guard let f = Double(numericOnly(fahrenheitText, allowNegative: true)) else {
                 celsiusText = ""; kelvinText = ""; return
             }
             let t = Temperature(fahrenheit: f)
@@ -206,7 +218,7 @@ struct TemperatureView: View {
                 kelvinText  = t.kelvinToString
             }
         case .kelvin:
-            guard let k = Double(sanitize(kelvinText)), k >= 0 else {
+            guard let k = Double(numericOnly(kelvinText)), k >= 0 else {
                 celsiusText = ""; fahrenheitText = ""; return
             }
             let t = Temperature(kelvin: k)
@@ -390,12 +402,11 @@ struct TemperatureView: View {
                     .foregroundStyle(.white)
                     .tint(field.accentColor)
                     .onChange(of: text.wrappedValue) { _, newVal in
-                        // sanitize: keep digits, decimal, and a leading minus
-                        let clean = sanitize(newVal)
-                        let isNeg = clean.hasPrefix("-")
-                        let digits = clean.filter { $0.isNumber || $0 == "." }
-                        let result = (isNeg ? "-" : "") + digits
-                        if result != text.wrappedValue { text.wrappedValue = result }
+                        // Ignore programmatic updates from calculate() — only
+                        // process keystrokes from the field the user is typing in.
+                        guard focused == field else { return }
+                        let filtered = numericOnly(newVal, allowNegative: field.allowsNegative)
+                        if filtered != newVal { text.wrappedValue = filtered; return }
                         calculate(changed: field)
                     }
             }
@@ -465,7 +476,7 @@ struct TemperatureView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         TemperatureView()
     }
 }
