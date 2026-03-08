@@ -16,65 +16,24 @@ limitations under the License.
 
 */
 
-
 //
 //  MenuController.swift
-//  Inventory
+//  DailyToolbox
 //
 //  Created by Marcus Deuß on 09.04.20.
 //  Copyright © 2020 Marcus Deuß. All rights reserved.
 //
 
+#if targetEnvironment(macCatalyst)
 import UIKit
 
-class MenuController{
-    
-    // macCatalyst: Create menu
-    #if targetEnvironment(macCatalyst)
-    
-    /* Create UIMenu objects and use them to construct the menus and submenus your app displays. You provide menus for your app when it runs on macOS, and key command elements in those menus also appear in the discoverability HUD on iPad when the user presses the command key. You also use menus to display contextual actions in response to specific interactions with one of your views. Every menu has a title, an optional image, and an optional set of child elements. When the user selects an element from the menu, the system executes the code that you provide.
-     */
-    
-    struct CommandPListKeys {
-        static let ArrowsKeyIdentifier = "id"   // Arrow command-keys
-        static let PaperIdentifierKey = "paper" // paper style commands
-        static let ToolsIdentifierKey = "tool"  // Tool commands
-    }
-    
-    
+/// Configures the Mac Catalyst menu bar by removing menus that don't
+/// apply to this app (Format, Edit, Help).
+class MenuController {
     init(with builder: UIMenuBuilder) {
-        // First remove the menus in the menu bar you don't want, in our case the Format menu.
-        // The format menu doesn't make sense
         builder.remove(menu: .format)
         builder.remove(menu: .edit)
         builder.remove(menu: .help)
-        
-        //builder.insertSibling(MenuController.preferencesMenu(), afterMenu: .about)
-        
-   
-        
     }
-/*
-    class func preferencesMenu() -> UIMenu {
-        // Create the preferences/about menu entries with command-p
-        
-        let prefCommand = UIKeyCommand(title: "Preferences",
-                                        image: nil,
-                                        action: #selector(AppDelegate.preferencesMenu),
-                                        input: "T",
-                                        modifierFlags: .command,
-                                        propertyList: nil)
-        
-        return UIMenu(title: "",
-                      image: nil,
-                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.preferences"),
-                      options: [.displayInline],
-                      children: [prefCommand])
-    }
-  */
-    
-
-    
-    #endif
-    
 }
+#endif
