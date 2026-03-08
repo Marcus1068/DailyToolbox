@@ -25,66 +25,30 @@ limitations under the License.
 //
 
 import SwiftUI
-import MessageUI
-import UIKit
-
-// MARK: - Mail Compose (UIViewControllerRepresentable)
-
-private struct MailComposeView: UIViewControllerRepresentable {
-    let subject: String
-    let recipients: [String]
-    let body: String
-    @Binding var isPresented: Bool
-
-    func makeCoordinator() -> Coordinator { Coordinator($isPresented) }
-
-    func makeUIViewController(context: Context) -> MFMailComposeViewController {
-        let vc = MFMailComposeViewController()
-        vc.mailComposeDelegate = context.coordinator
-        vc.setToRecipients(recipients)
-        vc.setSubject(subject)
-        vc.setMessageBody(body, isHTML: false)
-        return vc
-    }
-
-    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
-
-    final class Coordinator: NSObject, MFMailComposeViewControllerDelegate, @unchecked Sendable {
-        let isPresented: Binding<Bool>
-        init(_ isPresented: Binding<Bool>) { self.isPresented = isPresented }
-
-        func mailComposeController(_ controller: MFMailComposeViewController,
-                                   didFinishWith result: MFMailComposeResult,
-                                   error: Error?) {
-            let binding = isPresented
-            Task { @MainActor in binding.wrappedValue = false }
-        }
-    }
-}
 
 // MARK: - About View
 
 struct AboutView: View {
 
-    @State private var showMail = false
-    @State private var showMailError = false
+    @Environment(\.openURL) private var openURL
 
     private var appVersion: String {
         let v = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
         let b = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?"
-        return "\("Version"): \(v) (\(b))"
+        return "Version \(v) (\(b))"
     }
 
     private var deviceInfo: String {
-        let name = UIDevice.current.name
-        let os   = UIDevice.current.systemVersion
-        return "\("Running on") \(name) \(os)"
+        let v = ProcessInfo.processInfo.operatingSystemVersion
+        return "iOS \(v.majorVersion).\(v.minorVersion).\(v.patchVersion)"
     }
 
-    private var mailSubject: String {
+    private var mailURL: URL? {
         let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "DailyToolbox"
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-        return "\(appName) \(version) \(Global.support)"
+        let subject = "\(appName) \(version) \(Global.support)"
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return URL(string: "mailto:\(Global.emailAdr)?subject=\(subject)")
     }
 
     // MARK: Body
@@ -107,19 +71,6 @@ struct AboutView: View {
         .navigationTitle("About")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .sheet(isPresented: $showMail) {
-            MailComposeView(
-                subject: mailSubject,
-                recipients: [Global.emailAdr],
-                body: "I have some suggestions: ",
-                isPresented: $showMail
-            )
-        }
-        .alert(Global.emailNotSent, isPresented: $showMailError) {
-            Button(Global.ok) {}
-        } message: {
-            Text("\(Global.emailDevice)\n\(Global.emailConfig)")
-        }
     }
 
     // MARK: - Background
@@ -223,11 +174,7 @@ struct AboutView: View {
                 title: Global.appFeedback,
                 subtitle: "Send us your thoughts"
             ) {
-                if MFMailComposeViewController.canSendMail() {
-                    showMail = true
-                } else {
-                    showMailError = true
-                }
+                if let url = mailURL { openURL(url) }
             }
 
             actionRow(
@@ -236,7 +183,7 @@ struct AboutView: View {
                 title: Global.appInformation,
                 subtitle: "Website & documentation"
             ) {
-                openURL(Global.website)
+                if let url = URL(string: Global.website) { openURL(url) }
             }
 
             actionRow(
@@ -245,7 +192,7 @@ struct AboutView: View {
                 title: Global.appPrivacy,
                 subtitle: "Privacy policy"
             ) {
-                openURL(Global.privacy)
+                if let url = URL(string: Global.privacy) { openURL(url) }
             }
         }
     }
@@ -289,19 +236,13 @@ struct AboutView: View {
         }
         .buttonStyle(.glass)
     }
-
-    // MARK: - Helpers
-
-    private func openURL(_ urlString: String) {
-        guard let url = URL(string: urlString) else { return }
-        UIApplication.shared.open(url)
-    }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         AboutView()
     }
 }
+
