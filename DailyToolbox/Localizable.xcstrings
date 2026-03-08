@@ -7,6 +7,9 @@
     "—  m" : {
 
     },
+    "#RRGGBB" : {
+
+    },
     "%" : {
       "shouldTranslate" : false
     },
@@ -120,6 +123,7 @@
     },
     "15 built-in tools" : {
       "comment" : "About view / splash: total number of tools",
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -149,6 +153,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "15 strumenti integrati"
+          }
+        }
+      }
+    },
+    "18 built-in tools" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 eingebaute Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 strumenti integrati"
           }
         }
       }
@@ -368,6 +406,74 @@
     "Apache License 2.0" : {
       "shouldTranslate" : false
     },
+    "Area" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Areal"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fläche"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Área"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aire"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area"
+          }
+        }
+      }
+    },
+    "Area & Volume" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Areal og volumen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fläche & Volumen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Área y Volumen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aire et Volume"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area e Volume"
+          }
+        }
+      }
+    },
     "Array Sort" : {
       "comment" : "Benchmark type name",
       "localizations" : {
@@ -434,6 +540,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "s.l.m."
+          }
+        }
+      }
+    },
+    "Base (b)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundlinje (b)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis (b)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base (b)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base (b)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base (b)"
           }
         }
       }
@@ -956,6 +1096,40 @@
         }
       }
     },
+    "Calculate" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beregn"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berechnen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcular"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcola"
+          }
+        }
+      }
+    },
     "calculated" : {
       "comment" : "Interest rate: badge shown on the solved field",
       "localizations" : {
@@ -1339,6 +1513,40 @@
         }
       }
     },
+    "Circle" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cirkel"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Círculo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cercle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerchio"
+          }
+        }
+      }
+    },
     "Clear" : {
       "comment" : "Button: clear all input fields",
       "localizations" : {
@@ -1408,6 +1616,9 @@
         }
       }
     },
+    "CMYK (%)" : {
+
+    },
     "Cold" : {
       "comment" : "Temperature classification",
       "localizations" : {
@@ -1439,6 +1650,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Freddo"
+          }
+        }
+      }
+    },
+    "Color Converter" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farvekonverter"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbkonverter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convertidor de color"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convertisseur de couleur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convertitore colori"
+          }
+        }
+      }
+    },
+    "Color Picker" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farvevælger"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbwähler"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selector de color"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélecteur de couleur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selettore colori"
           }
         }
       }
@@ -1544,6 +1823,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compressione"
+          }
+        }
+      }
+    },
+    "Cone" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kegle"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kegel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cono"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cône"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cono"
           }
         }
       }
@@ -2035,6 +2348,40 @@
         }
       }
     },
+    "Current" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strøm"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stromstärke"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corriente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intensité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corrente"
+          }
+        }
+      }
+    },
     "Custom" : {
       "comment" : "Tip splitter: label for custom tip percentage stepper",
       "localizations" : {
@@ -2066,6 +2413,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Personalizzato"
+          }
+        }
+      }
+    },
+    "Cylinder" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cylinder"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zylinder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cilindro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cylindre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cilindro"
           }
         }
       }
@@ -2436,6 +2817,40 @@
     "dict.leo.org" : {
       "shouldTranslate" : false
     },
+    "Dimensions" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensioner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abmessungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensiones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensions"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensioni"
+          }
+        }
+      }
+    },
     "e.g. 0.30 for 30 ct/kWh" : {
       "localizations" : {
         "da" : {
@@ -2573,6 +2988,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inserisci l'importo del conto per vedere i risultati"
+          }
+        }
+      }
+    },
+    "Enter any 2 values to solve" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indtast 2 værdier for at løse"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 beliebige Werte eingeben"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa 2 valores para resolver"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez 2 valeurs pour résoudre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci 2 valori per calcolare"
           }
         }
       }
@@ -3238,6 +3687,40 @@
         }
       }
     },
+    "Formulas" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formler"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formeln"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fórmulas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formules"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formule"
+          }
+        }
+      }
+    },
     "FR↔DE" : {
       "shouldTranslate" : false
     },
@@ -3659,6 +4142,43 @@
         }
       }
     },
+    "Height (h)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Højde (h)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höhe (h)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alto (h)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauteur (h)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altezza (h)"
+          }
+        }
+      }
+    },
+    "HEX" : {
+      "shouldTranslate" : false
+    },
     "Hex · Dec · Bin" : {
       "comment" : "Number bases tool subtitle",
       "localizations" : {
@@ -3693,6 +4213,9 @@
           }
         }
       }
+    },
+    "HEX · RGB · HSB · CMYK" : {
+      "shouldTranslate" : false
     },
     "Hexadecimal" : {
       "localizations" : {
@@ -3934,6 +4457,9 @@
           }
         }
       }
+    },
+    "HSB" : {
+      "shouldTranslate" : false
     },
     "I before V or X subtracts (IV=4, IX=9)" : {
       "localizations" : {
@@ -5192,6 +5718,74 @@
         }
       }
     },
+    "Ohm's Law" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohms lov"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohmsches Gesetz"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ley de Ohm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loi d'Ohm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legge di Ohm"
+          }
+        }
+      }
+    },
+    "Ohm's Law Calculator" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohms lov beregner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohmsches-Gesetz-Rechner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculadora Ley de Ohm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculateur loi d'Ohm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatore legge di Ohm"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "da" : {
@@ -5829,31 +6423,31 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strøm"
+            "value" : "Effekt"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strom"
+            "value" : "Leistung"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Energía"
+            "value" : "Potencia"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Énergie"
+            "value" : "Puissance"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elettricità"
+            "value" : "Potenza"
           }
         }
       }
@@ -6102,6 +6696,40 @@
         }
       }
     },
+    "Radius (r)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radius (r)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radius (r)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radio (r)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rayon (r)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raggio (r)"
+          }
+        }
+      }
+    },
     "Rate" : {
       "comment" : "Interest rate summary row: rate label (short form)",
       "localizations" : {
@@ -6172,6 +6800,40 @@
         }
       }
     },
+    "Rectangle" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rektangel"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechteck"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rectángulo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rectangle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rettangolo"
+          }
+        }
+      }
+    },
     "Repeat" : {
       "comment" : "Benchmark: repeat count label",
       "localizations" : {
@@ -6203,6 +6865,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ripeti"
+          }
+        }
+      }
+    },
+    "Resistance" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modstand"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widerstand"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resistencia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résistance"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resistenza"
           }
         }
       }
@@ -6276,6 +6972,9 @@
           }
         }
       }
+    },
+    "RGB (0–255)" : {
+
     },
     "Roman" : {
       "comment" : "Roman numerals: roman field label",
@@ -6908,6 +7607,74 @@
     "SHA-256" : {
       "shouldTranslate" : false
     },
+    "Shape" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Form"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Form"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forma"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forme"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forma"
+          }
+        }
+      }
+    },
+    "Shapes & formulas" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Former og formler"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formen & Formeln"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formas y fórmulas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formes et formules"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forme e formule"
+          }
+        }
+      }
+    },
     "Share" : {
       "comment" : "QR code action button: share the generated QR image",
       "localizations" : {
@@ -7008,6 +7775,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Velocità"
+          }
+        }
+      }
+    },
+    "Sphere" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kugle"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kugel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esfera"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sphère"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfera"
           }
         }
       }
@@ -7113,6 +7914,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Coppie sottrattive:"
+          }
+        }
+      }
+    },
+    "Surface Area" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overfladeareal"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oberfläche"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Área superficial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aire de la surface"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area superficiale"
           }
         }
       }
@@ -7569,6 +8404,40 @@
         }
       }
     },
+    "Triangle" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trekant"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dreieck"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triángulo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triangle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triangolo"
+          }
+        }
+      }
+    },
     "TV" : {
       "shouldTranslate" : false
     },
@@ -7715,6 +8584,40 @@
     "URL · Text · WiFi · Contact · Email" : {
       "comment" : "QR code tool: subtitle listing supported types — technical terms, not translated",
       "shouldTranslate" : false
+    },
+    "V · I · R · P calculator" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V · I · R · P beregner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V · I · R · P Rechner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculadora V · I · R · P"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculateur V · I · R · P"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatore V · I · R · P"
+          }
+        }
+      }
     },
     "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
       "localizations" : {
@@ -7886,6 +8789,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Raggio di visibilità"
+          }
+        }
+      }
+    },
+    "Voltage" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spænding"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spannung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltaje"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tension"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tensione"
           }
         }
       }
@@ -8140,6 +9077,40 @@
     "WEP" : {
       "comment" : "QR code WiFi security type — technical standard name, not translated",
       "shouldTranslate" : false
+    },
+    "Width (w)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bredde (w)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breite (w)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancho (w)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largeur (w)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Larghezza (w)"
+          }
+        }
+      }
     },
     "WPA/WPA2" : {
       "comment" : "QR code WiFi security type — technical standard name, not translated",

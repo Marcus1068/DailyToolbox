@@ -46,10 +46,13 @@ extension ToolSection {
             ToolItem(id: "showUnitConv",     name: "Unit Converter", subtitle: "Length · Weight · Volume · Speed",          icon: "arrow.left.arrow.right", color: Color(red: 0.20, green: 0.55, blue: 1.00), segueId: "showUnitConv"),
             ToolItem(id: "showPower",        name: "Power",          subtitle: "Watts & cost",                   icon: "bolt.fill",                      color: Color(red: 1.00, green: 0.60, blue: 0.00), segueId: "showPower"),
             ToolItem(id: "showTranslation",  name: "Translation",    subtitle: "dict.leo.org",                   icon: "character.bubble.fill",          color: Color(red: 0.00, green: 0.65, blue: 0.72), segueId: "showTranslation"),
+            ToolItem(id: "showColorPicker",  name: "Color Picker",   subtitle: "HEX · RGB · HSB · CMYK",        icon: "paintpalette.fill",              color: Color(red: 0.80, green: 0.30, blue: 0.90), segueId: "showColorPicker"),
+            ToolItem(id: "showAreaVolume",   name: "Area & Volume",  subtitle: "Shapes & formulas",              icon: "square.on.circle",               color: Color(red: 0.25, green: 0.75, blue: 0.40), segueId: "showAreaVolume"),
         ]),
         ToolSection(title: "Tools", items: [
             ToolItem(id: "showTipSplitter",  name: "Tip Splitter",   subtitle: "Bill & tip per person",          icon: "fork.knife.circle.fill",         color: Color(red: 0.90, green: 0.62, blue: 0.10), segueId: "showTipSplitter"),
             ToolItem(id: "showQRCode",       name: "QR Code",        subtitle: "URL · Text · WiFi · Contact",    icon: "qrcode",                         color: Color(red: 0.55, green: 0.35, blue: 0.95), segueId: "showQRCode"),
+            ToolItem(id: "showOhmsLaw",      name: "Ohm's Law",      subtitle: "V · I · R · P calculator",      icon: "bolt.horizontal.circle.fill",    color: Color(red: 1.00, green: 0.70, blue: 0.15), segueId: "showOhmsLaw"),
             ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",              icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
             ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",               icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
             ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                   icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
@@ -142,7 +145,7 @@ struct MasterView: View {
                 )
                 .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
 
-            Text("15 built-in tools")
+            Text("18 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(.white.opacity(0.55))
         }
