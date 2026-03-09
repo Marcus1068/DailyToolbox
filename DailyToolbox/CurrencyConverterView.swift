@@ -398,8 +398,10 @@ struct CurrencyConverterView: View {
 
 // MARK: - Preview
 
+#if DEBUG
 #Preview {
     NavigationView {
         CurrencyConverterView(preview: .preview)
     }
 }
+#endif

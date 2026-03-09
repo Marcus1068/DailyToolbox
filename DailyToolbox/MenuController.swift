@@ -29,6 +29,7 @@ import UIKit
 
 /// Configures the Mac Catalyst menu bar by removing menus that don't
 /// apply to this app (Format, Edit, Help).
+@MainActor
 class MenuController {
     init(with builder: UIMenuBuilder) {
         builder.remove(menu: .format)
