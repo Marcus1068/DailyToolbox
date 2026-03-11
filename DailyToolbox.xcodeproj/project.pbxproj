@@ -11,6 +11,7 @@
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
 		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
+		2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA8692F6202A700F1BDCC /* WindChillView.swift */; };
 		2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F42455913A006D0B4E /* Roman german.rtf */; };
 		2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F624559152006D0B4E /* Roman english.rtf */; };
 		2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836D2F5D8C02009898E9 /* AboutView.swift */; };
@@ -75,6 +76,7 @@
 		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2C4AA8672F61D5E000F1BDCC /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
+		2C4AA8692F6202A700F1BDCC /* WindChillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindChillView.swift; sourceTree = "<group>"; };
 		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
 		2C5A88F624559152006D0B4E /* Roman english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman english.rtf"; sourceTree = "<group>"; };
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				2CBD867923F6AA480011D886 /* Info.plist */,
 				2C5F83932F5DA6CC009898E9 /* DailyToolboxApp.swift */,
 				2CBF5ED22F5DFFAC009575C2 /* Localizable.xcstrings */,
+				2C4AA8692F6202A700F1BDCC /* WindChillView.swift */,
 			);
 			path = DailyToolbox;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				2C5F83742F5D922F009898E9 /* TemperatureView.swift in Sources */,
 				2C5F83922F5DA548009898E9 /* MasterView.swift in Sources */,
 				2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */,
+				2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2CBF5EDD2F5E1274009575C2 /* ColorPickerView.swift in Sources */,
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
