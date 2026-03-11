@@ -181,7 +181,7 @@ struct WindChillView: View {
 
     private var comfort: ComfortLevel { ComfortLevel.from(feelsLikeCelsius: feelsLikeC) }
 
-    private var mode: String {
+    private var mode: LocalizedStringKey {
         if WindChillCalculator.windChill(tempC: storedTempC, windKmh: storedWindKmh) != nil {
             return "Wind Chill"
         }
@@ -309,7 +309,7 @@ struct WindChillView: View {
         )
     }
 
-    private var comfortDescription: String {
+    private var comfortDescription: LocalizedStringKey {
         switch comfort {
         case .frostbiteDanger:  return "Exposed skin can freeze in under 30 minutes"
         case .veryCold:         return "Dress in warm layers, limit time outdoors"
