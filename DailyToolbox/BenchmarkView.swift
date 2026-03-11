@@ -283,10 +283,10 @@ struct BenchmarkView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(runner.deviceName)
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("iOS \(runner.osVersion)")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
 
             Spacer()
@@ -298,7 +298,7 @@ struct BenchmarkView: View {
                         .foregroundStyle(.cyan)
                     Text("score")
                         .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.55))
+                        .foregroundStyle(Color.primary.opacity(0.55))
                 }
                 .transition(.scale.combined(with: .opacity))
             }
@@ -327,10 +327,10 @@ struct BenchmarkView: View {
     private var repeatRow: some View {
         HStack(spacing: 12) {
             Image(systemName: "repeat")
-                .foregroundStyle(.white.opacity(0.7))
+                .foregroundStyle(Color.primary.opacity(0.7))
             Text("Repeat")
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.75))
+                .foregroundStyle(Color.primary.opacity(0.75))
             Spacer()
             Button {
                 if runner.repeatCount > 1 { runner.repeatCount -= 1 }
@@ -342,7 +342,7 @@ struct BenchmarkView: View {
 
             Text("\(runner.repeatCount)")
                 .font(.system(size: 18, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .frame(minWidth: 32)
                 .animation(.spring(duration: 0.2), value: runner.repeatCount)
 
@@ -367,7 +367,7 @@ struct BenchmarkView: View {
         } label: {
             HStack(spacing: 10) {
                 if runner.isRunningAll {
-                    ProgressView().tint(.white).scaleEffect(0.85)
+                    ProgressView().tint(.primary).scaleEffect(0.85)
                 } else {
                     Image(systemName: "play.circle.fill").font(.system(size: 17))
                 }
@@ -390,7 +390,7 @@ struct BenchmarkView: View {
         return VStack(alignment: .leading, spacing: 12) {
             Text("Timing Comparison")
                 .font(.headline)
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(Color.primary.opacity(0.85))
 
             ForEach(BenchmarkRunner.BenchType.allCases) { type in
                 if let t = runner.results[type] {
@@ -402,7 +402,7 @@ struct BenchmarkView: View {
 
                         GeometryReader { geo in
                             ZStack(alignment: .leading) {
-                                Capsule().fill(.white.opacity(0.08)).frame(height: 10)
+                                Capsule().fill(Color.primary.opacity(0.08)).frame(height: 10)
                                 Capsule()
                                     .fill(type.accentColor.opacity(0.85))
                                     .frame(
@@ -416,7 +416,7 @@ struct BenchmarkView: View {
 
                         Text(String(format: "%.3fs", t))
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                            .foregroundStyle(.white.opacity(0.65))
+                            .foregroundStyle(Color.primary.opacity(0.65))
                             .frame(width: 50, alignment: .trailing)
                     }
                 }
@@ -459,7 +459,7 @@ private struct BenchCard: View {
             // Name
             Text(LocalizedStringKey(type.rawValue))
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
 
@@ -475,7 +475,7 @@ private struct BenchCard: View {
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 9))
                 }
-                .foregroundStyle(.white.opacity(0.65))
+                .foregroundStyle(Color.primary.opacity(0.65))
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
                 .glassEffect(.regular, in: Capsule())
@@ -491,11 +491,11 @@ private struct BenchCard: View {
                         .animation(.spring(duration: 0.4), value: t)
                     Text("s")
                         .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.55))
+                        .foregroundStyle(Color.primary.opacity(0.55))
                 } else {
                     Text("\u{2014}")
                         .font(.system(size: 17, weight: .bold))
-                        .foregroundStyle(.white.opacity(0.25))
+                        .foregroundStyle(Color.primary.opacity(0.25))
                 }
             }
 

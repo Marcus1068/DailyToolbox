@@ -68,7 +68,7 @@ private struct CostResultRow: View {
                     .foregroundStyle(accent.opacity(0.85))
                 Text(String(format: "%.3f kWh", kwh))
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.32))
+                    .foregroundStyle(Color.primary.opacity(0.32))
             }
 
             Spacer()
@@ -83,7 +83,7 @@ private struct CostResultRow: View {
                             colors: [Color(red: 1.0, green: 0.88, blue: 0.20),
                                      Color(red: 1.0, green: 0.60, blue: 0.12)],
                             startPoint: .topLeading, endPoint: .bottomTrailing))
-                        : AnyShapeStyle(.white.opacity(0.80))
+                        : AnyShapeStyle(Color.primary.opacity(0.80))
                 )
                 .contentTransition(.numericText())
                 .animation(.spring(response: 0.35), value: cost)
@@ -209,10 +209,10 @@ struct PowerConsumptionView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Power Cost Calculator")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Enter wattage, hours/day and price per kWh")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -295,13 +295,13 @@ struct PowerConsumptionView: View {
                     .foregroundStyle(accent.opacity(0.88))
                 Text(hint)
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.32))
+                    .foregroundStyle(Color.primary.opacity(0.32))
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     TextField(placeholder, text: text)
                         .keyboardType(.decimalPad)
                         .focused($focused, equals: field)
                         .font(.title2.weight(.bold).monospacedDigit())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                         .tint(accent)
                         .onChange(of: text.wrappedValue) { _, new in
                             let clean = new.replacingOccurrences(of: ",", with: ".")
@@ -310,7 +310,7 @@ struct PowerConsumptionView: View {
                         }
                     Text(unit)
                         .font(.callout.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.38))
+                        .foregroundStyle(Color.primary.opacity(0.38))
                 }
             }
 
@@ -325,7 +325,7 @@ struct PowerConsumptionView: View {
                     } label: {
                         Image(systemName: "chevron.up")
                             .font(.caption.weight(.bold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.primary)
                             .frame(width: 26, height: 26)
                     }
                     .buttonStyle(.glass)
@@ -337,7 +337,7 @@ struct PowerConsumptionView: View {
                     } label: {
                         Image(systemName: "chevron.down")
                             .font(.caption.weight(.bold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.primary)
                             .frame(width: 26, height: 26)
                     }
                     .buttonStyle(.glass)
@@ -347,7 +347,7 @@ struct PowerConsumptionView: View {
                     text.wrappedValue = ""
                 } label: {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.white.opacity(0.28))
+                        .foregroundStyle(Color.primary.opacity(0.28))
                         .font(.system(size: 18))
                 }
                 .buttonStyle(.plain)
@@ -368,7 +368,7 @@ struct PowerConsumptionView: View {
                 Text("Quick Presets")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.48))
+            .foregroundStyle(Color.primary.opacity(0.48))
             .padding(.leading, 2)
 
             ScrollView(.horizontal, showsIndicators: false) {
@@ -385,10 +385,10 @@ struct PowerConsumptionView: View {
                                 VStack(alignment: .leading, spacing: 1) {
                                     Text(LocalizedStringKey(preset.name))
                                         .font(.caption2.weight(.semibold))
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(Color.primary)
                                     Text("\(Int(preset.watts))W")
                                         .font(.system(size: 9, weight: .medium).monospacedDigit())
-                                        .foregroundStyle(.white.opacity(0.45))
+                                        .foregroundStyle(Color.primary.opacity(0.45))
                                 }
                             }
                             .padding(.horizontal, 10)
@@ -417,7 +417,7 @@ struct PowerConsumptionView: View {
                 Text("Cost Overview")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.50))
+            .foregroundStyle(Color.primary.opacity(0.50))
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 12)
 
@@ -431,7 +431,7 @@ struct PowerConsumptionView: View {
                     large:  false
                 )
 
-                Divider().overlay(.white.opacity(0.08))
+                Divider().overlay(Color.primary.opacity(0.08))
 
                 CostResultRow(
                     icon:   "calendar",
@@ -442,7 +442,7 @@ struct PowerConsumptionView: View {
                     large:  false
                 )
 
-                Divider().overlay(.white.opacity(0.08))
+                Divider().overlay(Color.primary.opacity(0.08))
 
                 CostResultRow(
                     icon:   "calendar.badge.clock",
@@ -455,7 +455,7 @@ struct PowerConsumptionView: View {
             }
 
             // Energy bar (daily : monthly : yearly proportional)
-            Divider().overlay(.white.opacity(0.08)).padding(.top, 12)
+            Divider().overlay(Color.primary.opacity(0.08)).padding(.top, 12)
             energyBar(r)
                 .padding(.top, 10)
         }
@@ -494,11 +494,11 @@ struct PowerConsumptionView: View {
         HStack(spacing: 8) {
             Text(label)
                 .font(.caption2.weight(.medium))
-                .foregroundStyle(.white.opacity(0.40))
+                .foregroundStyle(Color.primary.opacity(0.40))
                 .frame(width: 34, alignment: .trailing)
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(.white.opacity(0.06))
+                    .fill(Color.primary.opacity(0.06))
                     .frame(height: 8)
                 RoundedRectangle(cornerRadius: 3)
                     .fill(LinearGradient(
@@ -515,10 +515,10 @@ struct PowerConsumptionView: View {
         HStack(spacing: 12) {
             Image(systemName: "bolt.slash")
                 .font(.system(size: 22, weight: .medium))
-                .foregroundStyle(.white.opacity(0.22))
+                .foregroundStyle(Color.primary.opacity(0.22))
             Text("Fill in all three fields to see your power costs")
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.35))
+                .foregroundStyle(Color.primary.opacity(0.35))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

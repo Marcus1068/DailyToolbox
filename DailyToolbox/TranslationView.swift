@@ -192,7 +192,7 @@ struct TranslationView: View {
                     )
                     .focused($searchFocused)
                     .font(.body)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(accentTeal)
                     .autocorrectionDisabled()
                     .submitLabel(.search)
@@ -201,7 +201,7 @@ struct TranslationView: View {
                     if !searchText.isEmpty {
                         Button { searchText = "" } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(.white.opacity(0.38))
+                                .foregroundStyle(Color.primary.opacity(0.38))
                                 .font(.system(size: 15))
                         }
                         .buttonStyle(.plain)
@@ -243,7 +243,7 @@ struct TranslationView: View {
                                     .foregroundStyle(
                                         selectedLang == lang
                                             ? accentTeal
-                                            : .white.opacity(0.65)
+                                            : Color.primary.opacity(0.65)
                                     )
                             }
                             .padding(.horizontal, 10)
@@ -281,7 +281,7 @@ struct TranslationView: View {
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(viewModel.canGoBack ? .white : .white.opacity(0.25))
+                    .foregroundStyle(viewModel.canGoBack ? Color.primary : Color.primary.opacity(0.25))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
             }
@@ -296,12 +296,12 @@ struct TranslationView: View {
                 ZStack {
                     if viewModel.isLoading {
                         ProgressView()
-                            .tint(.white.opacity(0.70))
+                            .tint(Color.primary.opacity(0.70))
                             .scaleEffect(0.9)
                     } else {
                         Image(systemName: "arrow.clockwise")
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(.white.opacity(0.70))
+                            .foregroundStyle(Color.primary.opacity(0.70))
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -316,7 +316,7 @@ struct TranslationView: View {
             } label: {
                 Image(systemName: "house")
                     .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(Color.primary.opacity(0.70))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
             }
@@ -329,7 +329,7 @@ struct TranslationView: View {
             } label: {
                 Image(systemName: "chevron.right")
                     .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(viewModel.canGoForward ? .white : .white.opacity(0.25))
+                    .foregroundStyle(viewModel.canGoForward ? Color.primary : Color.primary.opacity(0.25))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
             }

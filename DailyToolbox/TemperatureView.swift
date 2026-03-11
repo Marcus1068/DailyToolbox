@@ -111,7 +111,7 @@ private struct TemperatureGaugeView: View {
                     ForEach(ticks, id: \.value) { tick in
                         let pos = max(0, min(1, (tick.value - gaugeMin) / (gaugeMax - gaugeMin)))
                         Rectangle()
-                            .fill(.white.opacity(0.40))
+                            .fill(Color.primary.opacity(0.40))
                             .frame(width: 1.5, height: 10)
                             .offset(x: pos * (geo.size.width - 2), y: 10)
                     }
@@ -141,7 +141,7 @@ private struct TemperatureGaugeView: View {
                     let pos = max(0, min(1, (tick.value - gaugeMin) / (gaugeMax - gaugeMin)))
                     Text(tick.label)
                         .font(.system(size: 9, weight: .medium).monospacedDigit())
-                        .foregroundStyle(.white.opacity(0.55))
+                        .foregroundStyle(Color.primary.opacity(0.55))
                         .position(x: pos * geo.size.width, y: 6)
                 }
             }
@@ -326,16 +326,16 @@ struct TemperatureView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Temperature Conversion")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Enter any value — the others update live.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -352,7 +352,7 @@ struct TemperatureView: View {
                 Label("Temperature Scale",
                       systemImage: "gauge.open.with.lines.needle.33percent")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(Color.primary.opacity(0.70))
                 Spacer()
                 if let c = celsiusValue {
                     Text(c.formatted(.number.precision(.fractionLength(1))) + " °C")
@@ -397,13 +397,13 @@ struct TemperatureView: View {
                         Text("±")
                             .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(text.wrappedValue.isEmpty
-                                ? .white.opacity(0.35)
+                                ? Color.primary.opacity(0.35)
                                 : field.accentColor)
                             .frame(width: 36, height: 36)
                             .background(
                                 Circle()
                                     .fill(.black.opacity(0.30))
-                                    .stroke(.white.opacity(0.18), lineWidth: 1)
+                                    .stroke(Color.primary.opacity(0.18), lineWidth: 1)
                             )
                             .contentShape(Circle())
                     }
@@ -412,7 +412,7 @@ struct TemperatureView: View {
                 }
                 Text(field.unit)
                     .font(.caption.weight(.bold).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
                     .frame(minWidth: 24, alignment: .trailing)
             }
             .padding(.trailing, 16)
@@ -440,7 +440,7 @@ struct TemperatureView: View {
                     .keyboardType(.decimalPad)
                     .focused($focused, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(field.accentColor)
                     .onChange(of: text.wrappedValue) { _, newVal in
                         // Ignore programmatic updates from calculate() — only
@@ -470,14 +470,14 @@ struct TemperatureView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(cls.label)
                     .font(.subheadline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 if let c = celsiusValue {
                     let cStr = c.formatted(.number.precision(.fractionLength(1)))
                     let fStr = (Double(fahrenheitText) ?? 0).formatted(.number.precision(.fractionLength(1)))
                     let kStr = (Double(kelvinText) ?? 0).formatted(.number.precision(.fractionLength(1)))
                     Text("\(cStr) °C · \(fStr) °F · \(kStr) K")
                         .font(.caption.monospacedDigit())
-                        .foregroundStyle(.white.opacity(0.65))
+                        .foregroundStyle(Color.primary.opacity(0.65))
                 }
             }
             Spacer()

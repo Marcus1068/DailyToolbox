@@ -142,7 +142,7 @@ struct MasterView: View {
                 } label: {
                     Image(systemName: "info.circle.fill")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(Color.primary.opacity(0.85))
                 }
             }
         }
@@ -166,7 +166,7 @@ struct MasterView: View {
                 .font(.system(size: 36, weight: .bold, design: .rounded))
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [.white, Color(red: 0.75, green: 0.85, blue: 1.0)],
+                        colors: [Color.primary, Color(red: 0.30, green: 0.50, blue: 0.90)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -175,7 +175,7 @@ struct MasterView: View {
 
             Text("24 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.55))
+                .foregroundStyle(Color.primary.opacity(0.55))
         }
         .padding(.top, 8)
         .padding(.horizontal, 4)
@@ -187,11 +187,11 @@ struct MasterView: View {
                 Text(LocalizedStringKey(section.title))
                     .font(.system(size: 11, weight: .bold))
                     .tracking(1.8)
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(Color.primary.opacity(0.70))
                     .textCase(.uppercase)
 
                 Rectangle()
-                    .fill(.white.opacity(0.12))
+                    .fill(Color.primary.opacity(0.12))
                     .frame(height: 1)
                     .frame(maxWidth: .infinity)
             }
@@ -235,14 +235,14 @@ private struct ToolCard: View {
             VStack(spacing: 2) {
                 Text(LocalizedStringKey(item.name))
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
 
                 Text(LocalizedStringKey(item.subtitle))
                     .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
                     .multilineTextAlignment(.center)
                     .lineLimit(1)
             }

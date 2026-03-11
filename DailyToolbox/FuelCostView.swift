@@ -178,21 +178,21 @@ struct FuelCostView: View {
                     colors: [Color(red:0.25,green:0.85,blue:0.60), Color(red:0.10,green:0.65,blue:0.45)],
                     startPoint: .topLeading, endPoint: .bottomTrailing))
                 Image(systemName: "fuelpump.fill")
-                    .font(.title2).foregroundStyle(.white)
+                    .font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Fuel & Trip Cost")
-                    .font(.headline.weight(.bold)).foregroundStyle(.white)
+                    .font(.headline.weight(.bold)).foregroundStyle(Color.primary)
                 Text("Distance · Consumption · Price")
-                    .font(.caption).foregroundStyle(.white.opacity(0.65))
+                    .font(.caption).foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
             }
             .buttonStyle(.glass)
         }
@@ -218,7 +218,7 @@ struct FuelCostView: View {
                         } label: {
                             Text(unit.localizedKey)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                                .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 8)
                                 .background(sel ? accent : Color.clear,
@@ -228,7 +228,7 @@ struct FuelCostView: View {
                     }
                 }
                 .padding(3)
-                .background(Color.white.opacity(0.08),
+                .background(Color.primary.opacity(0.08),
                             in: RoundedRectangle(cornerRadius: 13, style: .continuous))
             }
 
@@ -270,7 +270,7 @@ struct FuelCostView: View {
                     .keyboardType(.decimalPad)
                     .focused($focused, equals: focusTag)
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(accent)
                     .onChange(of: text.wrappedValue) { _, _ in
                         guard focused == focusTag else { return }
@@ -279,7 +279,7 @@ struct FuelCostView: View {
             }
             .padding(12)
             .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(Color.white.opacity(0.07)))
+                .fill(Color.primary.opacity(0.07)))
         }
     }
 
@@ -292,7 +292,7 @@ struct FuelCostView: View {
             VStack(spacing: 6) {
                 Text("Total Trip Cost")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
                 Text(currency(res.totalCost))
                     .font(.system(size: 42, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(accent)
@@ -302,12 +302,12 @@ struct FuelCostView: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 20)
 
-            Divider().overlay(Color.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
 
             HStack(spacing: 0) {
                 resultCell(label: "Fuel Needed", value: res.fuelString,
                            color: Color(red:0.80,green:1.00,blue:0.65))
-                Divider().frame(height: 50).overlay(Color.white.opacity(0.10))
+                Divider().frame(height: 50).overlay(Color.primary.opacity(0.10))
                 resultCell(label: "Cost per Unit", value: res.costPerUnitString,
                            color: Color(red:0.55,green:0.85,blue:1.00))
             }
@@ -321,7 +321,7 @@ struct FuelCostView: View {
         VStack(spacing: 4) {
             Text(label)
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.55))
+                .foregroundStyle(Color.primary.opacity(0.55))
             Text(value)
                 .font(.subheadline.weight(.bold).monospacedDigit())
                 .foregroundStyle(color)

@@ -141,16 +141,16 @@ struct BMIView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle().fill(LinearGradient(colors: [Color(red:0.95,green:0.45,blue:0.35), Color(red:0.80,green:0.25,blue:0.20)], startPoint: .topLeading, endPoint: .bottomTrailing))
-                Image(systemName: "figure.stand").font(.title2).foregroundStyle(.white)
+                Image(systemName: "figure.stand").font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
             VStack(alignment: .leading, spacing: 4) {
-                Text("BMI & Body Metrics").font(.headline.weight(.bold)).foregroundStyle(.white)
-                Text("BMI · BMR · Ideal weight").font(.caption).foregroundStyle(.white.opacity(0.65))
+                Text("BMI & Body Metrics").font(.headline.weight(.bold)).foregroundStyle(Color.primary)
+                Text("BMI · BMR · Ideal weight").font(.caption).foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
-                Image(systemName: "arrow.counterclockwise").font(.system(size: 14, weight: .semibold)).foregroundStyle(.white.opacity(0.75))
+                Image(systemName: "arrow.counterclockwise").font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.75))
             }
             .buttonStyle(.glass)
         }
@@ -190,7 +190,7 @@ struct BMIView: View {
                 } label: {
                     Text(item[keyPath: label])
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                        .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                         .padding(.horizontal, 12).padding(.vertical, 8)
                         .background(sel ? Color(red:1.00,green:0.60,blue:0.55) : Color.clear,
                                     in: RoundedRectangle(cornerRadius: 10, style: .continuous))
@@ -199,7 +199,7 @@ struct BMIView: View {
             }
         }
         .padding(3)
-        .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
         .frame(maxWidth: .infinity)
     }
 
@@ -208,8 +208,8 @@ struct BMIView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(label).font(.caption.weight(.semibold)).foregroundStyle(Color(red:1.00,green:0.60,blue:0.55).opacity(0.80))
             TextField(placeholder, text: text).keyboardType(.decimalPad).focused($focused, equals: focusTag)
-                .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(.white).tint(Color(red:1.00,green:0.60,blue:0.55))
-                .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.07)))
+                .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(Color(red:1.00,green:0.60,blue:0.55))
+                .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
                 .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
         }
         .frame(maxWidth: .infinity)
@@ -220,13 +220,13 @@ struct BMIView: View {
         VStack(spacing: 16) {
             HStack(alignment: .center, spacing: 20) {
                 VStack(spacing: 4) {
-                    Text("BMI").font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+                    Text("BMI").font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
                     Text(res.bmiString).font(.system(size: 48, weight: .bold, design: .rounded)).foregroundStyle(res.category.color)
                 }
                 VStack(alignment: .leading, spacing: 6) {
                     Text(res.category.name).font(.title3.weight(.bold)).foregroundStyle(res.category.color)
                     Text("Ideal weight: \(kgLbs(res.idealMin)) – \(kgLbs(res.idealMax))")
-                        .font(.caption).foregroundStyle(.white.opacity(0.60))
+                        .font(.caption).foregroundStyle(Color.primary.opacity(0.60))
                 }
                 Spacer()
             }
@@ -253,11 +253,11 @@ struct BMIView: View {
             }
             .frame(height: 14)
             HStack {
-                Text("10").font(.system(size: 9)).foregroundStyle(.white.opacity(0.40))
-                Spacer(); Text("18.5").font(.system(size: 9)).foregroundStyle(.white.opacity(0.40))
-                Spacer(); Text("25").font(.system(size: 9)).foregroundStyle(.white.opacity(0.40))
-                Spacer(); Text("30").font(.system(size: 9)).foregroundStyle(.white.opacity(0.40))
-                Spacer(); Text("40").font(.system(size: 9)).foregroundStyle(.white.opacity(0.40))
+                Text("10").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
+                Spacer(); Text("18.5").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
+                Spacer(); Text("25").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
+                Spacer(); Text("30").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
+                Spacer(); Text("40").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
             }
         }
     }
@@ -270,9 +270,9 @@ struct BMIView: View {
                 Text(String(format: "%.0f", res.bmr))
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(Color(red:1.00,green:0.78,blue:0.55))
-                Text("kcal/day").font(.subheadline.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+                Text("kcal/day").font(.subheadline.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
             }
-            Text("Calories your body burns at rest (Mifflin-St Jeor)").font(.caption).foregroundStyle(.white.opacity(0.45))
+            Text("Calories your body burns at rest (Mifflin-St Jeor)").font(.caption).foregroundStyle(Color.primary.opacity(0.45))
         }
         .padding(.horizontal, 18).padding(.vertical, 16)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))

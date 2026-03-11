@@ -50,7 +50,7 @@ private struct CurrencyPickerSheet: View {
                     HStack {
                         Text(code)
                             .font(.body.monospacedDigit())
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(Color.primary)
                         Spacer()
                         if code == selected {
                             Image(systemName: "checkmark")
@@ -189,11 +189,11 @@ struct CurrencyConverterView: View {
         VStack(spacing: 16) {
             ProgressView()
                 .progressViewStyle(.circular)
-                .tint(.white)
+                .tint(.primary)
                 .scaleEffect(1.4)
             Text("Fetching rates…")
                 .font(.subheadline.weight(.medium))
-                .foregroundStyle(.white.opacity(0.75))
+                .foregroundStyle(Color.primary.opacity(0.75))
         }
     }
 
@@ -206,14 +206,14 @@ struct CurrencyConverterView: View {
                 systemImage: "banknote"
             )
             .font(.caption.weight(.semibold))
-            .foregroundStyle(.white.opacity(0.70))
+            .foregroundStyle(Color.primary.opacity(0.70))
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 TextField("0.00", text: $amountText)
                     .keyboardType(.decimalPad)
                     .focused($amountFocused)
                     .font(.system(size: 44, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(Color(red: 0.68, green: 0.56, blue: 1.0))
                     .onChange(of: amountText) { _, val in
                         amountText = val.replacingOccurrences(of: ",", with: ".")
@@ -221,12 +221,12 @@ struct CurrencyConverterView: View {
 
                 Text(fromCurrency)
                     .font(.title2.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .padding(.bottom, 4)
             }
 
             Divider()
-                .overlay(.white.opacity(0.15))
+                .overlay(Color.primary.opacity(0.15))
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
@@ -267,10 +267,10 @@ struct CurrencyConverterView: View {
                     .foregroundStyle(accentColor.opacity(0.80))
                 Text(code)
                     .font(.system(size: 28, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Image(systemName: "chevron.down")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(.white.opacity(0.40))
+                    .foregroundStyle(Color.primary.opacity(0.40))
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 18)
@@ -287,7 +287,7 @@ struct CurrencyConverterView: View {
         } label: {
             Image(systemName: "arrow.left.arrow.right")
                 .font(.system(size: 18, weight: .bold))
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(Color.primary.opacity(0.85))
                 .rotationEffect(.degrees(swapRotation))
                 .frame(width: 48, height: 48)
         }
@@ -303,7 +303,7 @@ struct CurrencyConverterView: View {
                 systemImage: "equal.circle"
             )
             .font(.caption.weight(.semibold))
-            .foregroundStyle(.white.opacity(0.70))
+            .foregroundStyle(Color.primary.opacity(0.70))
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(resultFormatted)
@@ -323,12 +323,12 @@ struct CurrencyConverterView: View {
 
                 Text(toCurrency)
                     .font(.title2.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .padding(.bottom, 4)
             }
 
             Divider()
-                .overlay(.white.opacity(0.15))
+                .overlay(Color.primary.opacity(0.15))
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
@@ -345,35 +345,35 @@ struct CurrencyConverterView: View {
             if let rate = unitRate {
                 HStack {
                     Image(systemName: "arrow.triangle.2.circlepath")
-                        .foregroundStyle(.white.opacity(0.55))
+                        .foregroundStyle(Color.primary.opacity(0.55))
                         .font(.caption)
                     Text("1 \(fromCurrency) = \(rate.formatted(.number.precision(.fractionLength(4)))) \(toCurrency)")
                         .font(.subheadline.weight(.medium).monospacedDigit())
-                        .foregroundStyle(.white.opacity(0.80))
+                        .foregroundStyle(Color.primary.opacity(0.80))
                 }
             }
 
-            Divider().overlay(.white.opacity(0.12))
+            Divider().overlay(Color.primary.opacity(0.12))
 
             HStack(spacing: 6) {
                 Image(systemName: "clock")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
                 Text("Last update:")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
                 Text(cvt?.getLastUpdate() ?? "—")
                     .font(.caption.weight(.medium).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
             }
 
             HStack(spacing: 6) {
                 Image(systemName: "building.columns")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.35))
+                    .foregroundStyle(Color.primary.opacity(0.35))
                 Text("Source: European Central Bank")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.40))
+                    .foregroundStyle(Color.primary.opacity(0.40))
             }
         }
         .frame(maxWidth: .infinity)

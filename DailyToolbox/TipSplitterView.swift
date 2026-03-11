@@ -145,10 +145,10 @@ struct TipSplitterView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Tip Splitter")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Bill & tip per person")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button {
@@ -161,7 +161,7 @@ struct TipSplitterView: View {
             } label: {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -181,13 +181,13 @@ struct TipSplitterView: View {
             HStack(spacing: 10) {
                 Text(currencyFormatter.currencySymbol ?? "$")
                     .font(.title2.weight(.bold))
-                    .foregroundStyle(.white.opacity(0.50))
+                    .foregroundStyle(Color.primary.opacity(0.50))
 
                 TextField("0.00", text: $billText)
                     .keyboardType(.decimalPad)
                     .focused($billFocused)
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(Color(red: 1.00, green: 0.82, blue: 0.35))
                     .onChange(of: billText) { _, newVal in
                         let filtered = numericOnly(newVal)
@@ -226,14 +226,14 @@ struct TipSplitterView: View {
                     } label: {
                         Text("\(Int(preset))%")
                             .font(.subheadline.weight(.semibold).monospacedDigit())
-                            .foregroundStyle(tipPercent == preset ? .black : .white)
+                            .foregroundStyle(tipPercent == preset ? .black : Color.primary)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 9)
                             .background(
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                                     .fill(tipPercent == preset
                                           ? Color(red: 1.00, green: 0.85, blue: 0.30)
-                                          : Color.white.opacity(0.12))
+                                          : Color.primary.opacity(0.12))
                             )
                     }
                     .buttonStyle(.plain)
@@ -244,7 +244,7 @@ struct TipSplitterView: View {
             HStack(spacing: 16) {
                 Text("Custom")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                 Spacer()
                 HStack(spacing: 0) {
                     stepperButton(systemImage: "minus") {
@@ -252,7 +252,7 @@ struct TipSplitterView: View {
                     }
                     Text("\(Int(tipPercent))%")
                         .font(.subheadline.weight(.bold).monospacedDigit())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                         .frame(minWidth: 48)
                         .multilineTextAlignment(.center)
                     stepperButton(systemImage: "plus") {
@@ -261,7 +261,7 @@ struct TipSplitterView: View {
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.white.opacity(0.10))
+                        .fill(Color.primary.opacity(0.10))
                 )
             }
         }
@@ -289,7 +289,7 @@ struct TipSplitterView: View {
                     .foregroundStyle(Color(red: 1.00, green: 0.82, blue: 0.35).opacity(0.85))
                 Text("\(people) \(people == 1 ? String(localized: "person") : String(localized: "people"))")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .contentTransition(.numericText())
                     .animation(.spring(response: 0.25), value: people)
             }
@@ -302,7 +302,7 @@ struct TipSplitterView: View {
                 }
                 Text("\(people)")
                     .font(.title3.weight(.bold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .frame(minWidth: 44)
                     .multilineTextAlignment(.center)
                     .contentTransition(.numericText())
@@ -313,7 +313,7 @@ struct TipSplitterView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(.white.opacity(0.10))
+                    .fill(Color.primary.opacity(0.10))
             )
         }
         .padding(.horizontal, 18)
@@ -334,15 +334,15 @@ struct TipSplitterView: View {
                 Toggle("Round Up", isOn: $roundUp)
                     .toggleStyle(SwitchToggleStyle(tint: Color(red: 1.00, green: 0.75, blue: 0.25)))
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(Color.primary.opacity(0.70))
                     .labelsHidden()
                 Text("Round Up")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             .padding(.bottom, 14)
 
-            Divider().background(.white.opacity(0.12))
+            Divider().background(Color.primary.opacity(0.12))
                 .padding(.bottom, 14)
 
             // Totals
@@ -351,7 +351,7 @@ struct TipSplitterView: View {
             resultRow(label: "Grand Total",  value: formatCurrency(grandTotal), accent: true)
 
             if people > 1 {
-                Divider().background(.white.opacity(0.12))
+                Divider().background(Color.primary.opacity(0.12))
                     .padding(.vertical, 12)
 
                 Text("Per Person (\(people))")
@@ -375,10 +375,10 @@ struct TipSplitterView: View {
         HStack(spacing: 12) {
             Image(systemName: "banknote")
                 .font(.system(size: 20, weight: .regular))
-                .foregroundStyle(.white.opacity(0.35))
+                .foregroundStyle(Color.primary.opacity(0.35))
             Text("Enter a bill amount to see results")
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.40))
+                .foregroundStyle(Color.primary.opacity(0.40))
             Spacer()
         }
         .padding(.horizontal, 18)
@@ -398,7 +398,7 @@ struct TipSplitterView: View {
         HStack {
             Text(label)
                 .font(large ? .subheadline.weight(.semibold) : .subheadline)
-                .foregroundStyle(accent ? .white : .white.opacity(0.65))
+                .foregroundStyle(accent ? Color.primary : Color.primary.opacity(0.65))
             Spacer()
             Text(value)
                 .font(large
@@ -406,7 +406,7 @@ struct TipSplitterView: View {
                       : .subheadline.weight(.semibold).monospacedDigit())
                 .foregroundStyle(accent
                                  ? Color(red: 1.00, green: 0.88, blue: 0.40)
-                                 : .white)
+                                 : Color.primary)
                 .contentTransition(.numericText())
                 .animation(.spring(response: 0.25), value: value)
         }
@@ -418,7 +418,7 @@ struct TipSplitterView: View {
         Button(action: action) {
             Image(systemName: systemImage)
                 .font(.system(size: 14, weight: .bold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .frame(width: 38, height: 38)
         }
         .buttonStyle(.plain)

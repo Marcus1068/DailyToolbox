@@ -104,8 +104,8 @@ struct SplashView: View {
                                 .stroke(
                                     LinearGradient(
                                         colors: [
-                                            Color.white.opacity(0.35),
-                                            Color.white.opacity(0.05)
+                                            Color.primary.opacity(0.35),
+                                            Color.primary.opacity(0.05)
                                         ],
                                         startPoint: .topLeading,
                                         endPoint: .bottomTrailing
@@ -158,7 +158,7 @@ struct SplashView: View {
                 // Subtitle
                 Text("Your daily tools, beautifully crafted")
                     .font(.system(size: 15, weight: .medium, design: .rounded))
-                    .foregroundStyle(Color.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .opacity(subtitleOpacity)
                     .offset(y: subtitleOffset)
 
@@ -167,7 +167,7 @@ struct SplashView: View {
                 // Bottom loading shimmer bar
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Color.white.opacity(0.08))
+                        .fill(Color.primary.opacity(0.08))
                         .frame(width: 120, height: 3)
 
                     Capsule()

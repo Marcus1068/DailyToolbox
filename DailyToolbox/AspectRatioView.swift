@@ -256,20 +256,20 @@ struct AspectRatioView: View {
                     colors: [Color(red:0.75,green:0.45,blue:1.00), Color(red:0.55,green:0.25,blue:0.85)],
                     startPoint: .topLeading, endPoint: .bottomTrailing))
                 Image(systemName: "aspectratio.fill")
-                    .font(.title2).foregroundStyle(.white)
+                    .font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
             VStack(alignment: .leading, spacing: 4) {
                 Text("Aspect Ratio")
-                    .font(.headline.weight(.bold)).foregroundStyle(.white)
+                    .font(.headline.weight(.bold)).foregroundStyle(Color.primary)
                 Text("Calculate & scale dimensions")
-                    .font(.caption).foregroundStyle(.white.opacity(0.65))
+                    .font(.caption).foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
             }
             .buttonStyle(.glass)
         }
@@ -299,14 +299,14 @@ struct AspectRatioView: View {
                                 .frame(width: bw, height: min(bh, maxW))
                             Text(p.label)
                                 .font(.caption2.weight(.bold))
-                                .foregroundStyle(.white.opacity(0.85))
+                                .foregroundStyle(Color.primary.opacity(0.85))
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color.white.opacity(0.06),
+                        .background(Color.primary.opacity(0.06),
                                     in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1))
+                            .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1))
                     }
                     .buttonStyle(.plain)
                 }
@@ -335,7 +335,7 @@ struct AspectRatioView: View {
                         } label: {
                             Text(axis.localizedKey)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                                .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                 .padding(.horizontal, 12).padding(.vertical, 7)
                                 .background(sel ? accent : Color.clear,
                                             in: RoundedRectangle(cornerRadius: 10, style: .continuous))
@@ -344,14 +344,14 @@ struct AspectRatioView: View {
                     }
                 }
                 .padding(3)
-                .background(Color.white.opacity(0.08),
+                .background(Color.primary.opacity(0.08),
                             in: RoundedRectangle(cornerRadius: 13, style: .continuous))
             }
 
             HStack(spacing: 14) {
                 dimField(label: "Width", placeholder: "1920", text: $widthText,
                          focusTag: 1, locked: lockAxis == .width) { onWidthChange() }
-                Text("×").font(.title2.weight(.light)).foregroundStyle(.white.opacity(0.40))
+                Text("×").font(.title2.weight(.light)).foregroundStyle(Color.primary.opacity(0.40))
                 dimField(label: "Height", placeholder: "1080", text: $heightText,
                          focusTag: 2, locked: lockAxis == .height) { onHeightChange() }
             }
@@ -401,11 +401,11 @@ struct AspectRatioView: View {
                 .keyboardType(.decimalPad)
                 .focused($focused, equals: focusTag)
                 .font(.title2.weight(.semibold).monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .tint(accent)
                 .padding(12)
                 .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(locked ? accent.opacity(0.10) : Color.white.opacity(0.07)))
+                    .fill(locked ? accent.opacity(0.10) : Color.primary.opacity(0.07)))
                 .overlay(locked ? RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .strokeBorder(accent.opacity(0.30), lineWidth: 1) : nil)
                 .onChange(of: text.wrappedValue) { _, _ in onChange() }
@@ -429,19 +429,19 @@ struct AspectRatioView: View {
             }
             .frame(maxWidth: .infinity)
 
-            Divider().overlay(Color.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
 
             HStack(spacing: 0) {
                 VStack(spacing: 3) {
-                    Text("Decimal").font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.50))
-                    Text(decimal).font(.subheadline.weight(.bold).monospacedDigit()).foregroundStyle(.white)
+                    Text("Decimal").font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.50))
+                    Text(decimal).font(.subheadline.weight(.bold).monospacedDigit()).foregroundStyle(Color.primary)
                 }
                 .frame(maxWidth: .infinity)
 
-                Divider().frame(height: 36).overlay(Color.white.opacity(0.10))
+                Divider().frame(height: 36).overlay(Color.primary.opacity(0.10))
 
                 VStack(spacing: 3) {
-                    Text("Orientation").font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.50))
+                    Text("Orientation").font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.50))
                     Text(w >= h ? (w == h ? "Square" : "Landscape") : "Portrait")
                         .font(.subheadline.weight(.bold))
                         .foregroundStyle(accent)

@@ -73,7 +73,7 @@ private struct YearRingView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(.white.opacity(0.08), lineWidth: 13)
+                .stroke(Color.primary.opacity(0.08), lineWidth: 13)
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
@@ -213,10 +213,10 @@ struct CalendarCalculationView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Calendar Calculator")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Count days to any date, Christmas or Easter")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -240,11 +240,11 @@ struct CalendarCalculationView: View {
 
                 Text(countdownLabel)
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
 
                 Text(selectedDate.formatted(date: .long, time: .omitted))
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.35))
+                    .foregroundStyle(Color.primary.opacity(0.35))
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
             }
@@ -301,11 +301,11 @@ struct CalendarCalculationView: View {
                     Text(emoji).font(.title3)
                     Text(label)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                 }
                 Text(date.formatted(date: .abbreviated, time: .omitted))
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.42))
+                    .foregroundStyle(Color.primary.opacity(0.42))
                 Spacer(minLength: 6)
                 Text(days.formatted())
                     .font(.system(size: 30, weight: .black, design: .rounded).monospacedDigit())
@@ -332,7 +332,7 @@ struct CalendarCalculationView: View {
                 Text("Pick a date")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.50))
+            .foregroundStyle(Color.primary.opacity(0.50))
 
             DatePicker("", selection: $selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
@@ -356,7 +356,7 @@ struct CalendarCalculationView: View {
                 systemImage: "calendar.badge.plus"
             )
             .font(.body.weight(.semibold))
-            .foregroundStyle(.white)
+            .foregroundStyle(Color.primary)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
         }

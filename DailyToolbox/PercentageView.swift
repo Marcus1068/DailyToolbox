@@ -214,10 +214,10 @@ struct PercentageView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Percentage Calculation")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Fill in any two fields — the third is solved automatically.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
@@ -252,7 +252,7 @@ struct PercentageView: View {
                 Button(action: clearAll) {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 22, weight: .medium))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                         .shadow(color: .black.opacity(0.4), radius: 3)
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
@@ -290,7 +290,7 @@ struct PercentageView: View {
                     .keyboardType(.decimalPad)
                     .focused($focusedField, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(Color(red: 0.20, green: 0.95, blue: 0.75))
                     .onChange(of: text.wrappedValue) { _, newVal in
                         // Ignore programmatic updates from calculate()
@@ -323,7 +323,7 @@ struct PercentageView: View {
         Button(action: clearAll) {
             Label("Clear All", systemImage: "trash")
                 .font(.body.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(Color.primary.opacity(0.85))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
         }
@@ -339,7 +339,7 @@ struct PercentageView: View {
                 .font(.system(size: 20))
             Text(resultSummary)
                 .font(.subheadline.weight(.medium))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -252,16 +252,16 @@ struct UnitConverterView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Unit Converter")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Enter any value — the others update live.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -287,13 +287,13 @@ struct UnitConverterView: View {
                             Text(cat.label)
                                 .font(.system(size: 10, weight: .semibold))
                         }
-                        .foregroundStyle(category == cat ? cat.accentColor : .white.opacity(0.40))
+                        .foregroundStyle(category == cat ? cat.accentColor : Color.primary.opacity(0.40))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .background(
                             category == cat
                                 ? RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .fill(.white.opacity(0.14))
+                                    .fill(Color.primary.opacity(0.14))
                                     .transition(.opacity)
                                 : nil
                         )
@@ -316,7 +316,7 @@ struct UnitConverterView: View {
                 .foregroundStyle(category.accentColor.opacity(0.80))
             Text("Type in any field — all others update instantly.")
                 .font(.caption)
-                .foregroundStyle(.white.opacity(0.60))
+                .foregroundStyle(Color.primary.opacity(0.60))
             Spacer()
         }
         .padding(.horizontal, 16)
@@ -358,7 +358,7 @@ struct UnitConverterView: View {
                     .keyboardType(.decimalPad)
                     .focused($focusedId, equals: entry.id)
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(entry.accentColor)
                     .onChange(of: binding.wrappedValue) { _, newVal in
                         guard focusedId == entry.id else { return }
@@ -370,7 +370,7 @@ struct UnitConverterView: View {
 
             Text(entry.shortLabel)
                 .font(.caption.weight(.bold).monospacedDigit())
-                .foregroundStyle(.white.opacity(0.55))
+                .foregroundStyle(Color.primary.opacity(0.55))
                 .frame(minWidth: 32, alignment: .trailing)
         }
         .padding(.horizontal, 16)

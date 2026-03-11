@@ -145,10 +145,10 @@ struct RandomizerView: View {
                         Text(t.localizedKey)
                             .font(.caption.weight(.semibold))
                     }
-                    .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                    .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                     .padding(.horizontal, 14).padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
-                    .background(sel ? accent : Color.white.opacity(0.08),
+                    .background(sel ? accent : Color.primary.opacity(0.08),
                                 in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 }
                 .buttonStyle(.plain)
@@ -177,12 +177,12 @@ struct RandomizerView: View {
                 if let heads = coinResult {
                     Text(heads ? "H" : "T")
                         .font(.system(size: 52, weight: .black, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(Color.primary.opacity(0.85))
                         .rotation3DEffect(.degrees(coinRotation), axis: (x: 0, y: 1, z: 0))
                 } else {
                     Image(systemName: "questionmark")
                         .font(.system(size: 48, weight: .light))
-                        .foregroundStyle(.white.opacity(0.40))
+                        .foregroundStyle(Color.primary.opacity(0.40))
                 }
             }
             .frame(height: 160)
@@ -190,7 +190,7 @@ struct RandomizerView: View {
             Text(coinResult == nil ? "Tap to flip"
                  : coinResult! ? "Heads!" : "Tails!")
                 .font(.title2.weight(.bold))
-                .foregroundStyle(coinResult == nil ? .white.opacity(0.40) : accent)
+                .foregroundStyle(coinResult == nil ? Color.primary.opacity(0.40) : accent)
 
             Button { flipCoin() } label: {
                 Label("Flip Coin", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
@@ -235,9 +235,9 @@ struct RandomizerView: View {
                         } label: {
                             Text(d.label)
                                 .font(.subheadline.weight(.bold))
-                                .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                                .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                 .padding(.horizontal, 18).padding(.vertical, 10)
-                                .background(sel ? accent : Color.white.opacity(0.10),
+                                .background(sel ? accent : Color.primary.opacity(0.10),
                                             in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
                         .buttonStyle(.plain)
@@ -250,37 +250,37 @@ struct RandomizerView: View {
             HStack {
                 Text("Number of dice")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
                 Spacer()
                 HStack(spacing: 0) {
                     Button {
                         if diceCount > 1 { withAnimation { diceCount -= 1; diceResult = nil } }
                     } label: {
                         Image(systemName: "minus").font(.system(size: 13, weight: .bold))
-                            .foregroundStyle(diceCount > 1 ? accent : .white.opacity(0.25))
+                            .foregroundStyle(diceCount > 1 ? accent : Color.primary.opacity(0.25))
                             .frame(width: 36, height: 36)
                     }
                     .buttonStyle(.plain)
                     Text("\(diceCount)")
                         .font(.headline.weight(.bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                         .frame(minWidth: 28)
                     Button {
                         if diceCount < 5 { withAnimation { diceCount += 1; diceResult = nil } }
                     } label: {
                         Image(systemName: "plus").font(.system(size: 13, weight: .bold))
-                            .foregroundStyle(diceCount < 5 ? accent : .white.opacity(0.25))
+                            .foregroundStyle(diceCount < 5 ? accent : Color.primary.opacity(0.25))
                             .frame(width: 36, height: 36)
                     }
                     .buttonStyle(.plain)
                 }
-                .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
 
             // Result
             ZStack {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(0.05))
+                    .fill(Color.primary.opacity(0.05))
                     .frame(height: 110)
 
                 if let result = diceResult {
@@ -291,13 +291,13 @@ struct RandomizerView: View {
                             .scaleEffect(diceScale)
                         if diceCount > 1 {
                             Text("total of \(diceCount) × \(dieType.label)")
-                                .font(.caption).foregroundStyle(.white.opacity(0.45))
+                                .font(.caption).foregroundStyle(Color.primary.opacity(0.45))
                         }
                     }
                 } else {
                     VStack(spacing: 6) {
-                        Image(systemName: "dice").font(.largeTitle).foregroundStyle(.white.opacity(0.20))
-                        Text("Roll to see result").font(.caption).foregroundStyle(.white.opacity(0.30))
+                        Image(systemName: "dice").font(.largeTitle).foregroundStyle(Color.primary.opacity(0.20))
+                        Text("Roll to see result").font(.caption).foregroundStyle(Color.primary.opacity(0.30))
                     }
                 }
             }
@@ -332,7 +332,7 @@ struct RandomizerView: View {
             // Result hero
             ZStack {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(0.05))
+                    .fill(Color.primary.opacity(0.05))
                     .frame(height: 100)
                 if let n = numberResult {
                     Text("\(n)")
@@ -342,13 +342,13 @@ struct RandomizerView: View {
                 } else {
                     Text("?")
                         .font(.system(size: 54, weight: .black, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.15))
+                        .foregroundStyle(Color.primary.opacity(0.15))
                 }
             }
 
             HStack(spacing: 14) {
                 rangeField(label: "Min", text: $minText, tag: 1)
-                Text("–").font(.title2.weight(.light)).foregroundStyle(.white.opacity(0.40))
+                Text("–").font(.title2.weight(.light)).foregroundStyle(Color.primary.opacity(0.40))
                 rangeField(label: "Max", text: $maxText, tag: 2)
             }
 
@@ -374,9 +374,9 @@ struct RandomizerView: View {
                 .keyboardType(.numberPad)
                 .focused($numFocused, equals: tag)
                 .font(.title3.weight(.semibold).monospacedDigit())
-                .foregroundStyle(.white).tint(accent)
+                .foregroundStyle(Color.primary).tint(accent)
                 .padding(12)
-                .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.07)))
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
         }
         .frame(maxWidth: .infinity)
     }
@@ -401,11 +401,11 @@ struct RandomizerView: View {
                     .focused($listFocused)
                     .scrollContentBackground(.hidden)
                     .font(.body)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(accent)
                     .frame(minHeight: 100)
                     .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.07)))
+                    .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
             }
 
             if let pick = listResult {
@@ -413,7 +413,7 @@ struct RandomizerView: View {
                     RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent.opacity(0.15))
                     VStack(spacing: 4) {
                         Text("Selected")
-                            .font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+                            .font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
                         Text(pick)
                             .font(.title2.weight(.bold))
                             .foregroundStyle(accent)

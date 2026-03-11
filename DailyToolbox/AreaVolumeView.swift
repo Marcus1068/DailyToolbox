@@ -198,10 +198,10 @@ struct AreaVolumeView: View {
                                 .font(.title2)
                                 .foregroundStyle(selected
                                     ? Color(red:0.55,green:1.00,blue:0.65)
-                                    : .white.opacity(0.55))
+                                    : Color.primary.opacity(0.55))
                             Text(geo.localizedKey)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(selected ? .white : .white.opacity(0.55))
+                                .foregroundStyle(selected ? Color.primary : Color.primary.opacity(0.55))
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -209,13 +209,13 @@ struct AreaVolumeView: View {
                             RoundedRectangle(cornerRadius: 14, style: .continuous)
                                 .fill(selected
                                     ? Color(red:0.55,green:1.00,blue:0.65).opacity(0.18)
-                                    : Color.white.opacity(0.06))
+                                    : Color.primary.opacity(0.06))
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 14, style: .continuous)
                                 .strokeBorder(selected
                                     ? Color(red:0.55,green:1.00,blue:0.65).opacity(0.55)
-                                    : Color.white.opacity(0.08), lineWidth: 1)
+                                    : Color.primary.opacity(0.08), lineWidth: 1)
                         )
                     }
                     .buttonStyle(.plain)
@@ -243,7 +243,7 @@ struct AreaVolumeView: View {
                 Button(action: clearAll) {
                     Image(systemName: "arrow.counterclockwise")
                         .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.70))
+                        .foregroundStyle(Color.primary.opacity(0.70))
                 }
                 .buttonStyle(.glass)
             }
@@ -283,12 +283,12 @@ struct AreaVolumeView: View {
                 .keyboardType(.decimalPad)
                 .focused($focused, equals: focusTag)
                 .font(.title3.weight(.semibold).monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .tint(Color(red:0.55,green:1.00,blue:0.65))
                 .padding(12)
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.white.opacity(0.07))
+                        .fill(Color.primary.opacity(0.07))
                 )
                 .onChange(of: text.wrappedValue) { _, _ in
                     guard self.focused == focusTag else { return }
@@ -307,7 +307,7 @@ struct AreaVolumeView: View {
             resultRow(label: shape.info.areaLabel ?? "Area", value: res.areaString, unit: "m²")
 
             if let vol = res.volumeString, let lbl = shape.info.volumeLabel {
-                Divider().overlay(Color.white.opacity(0.12))
+                Divider().overlay(Color.primary.opacity(0.12))
                 resultRow(label: lbl, value: vol, unit: "m³")
             }
         }
@@ -322,7 +322,7 @@ struct AreaVolumeView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(value)
                         .font(.title2.weight(.bold).monospacedDigit())
@@ -330,7 +330,7 @@ struct AreaVolumeView: View {
                         .minimumScaleFactor(0.6)
                     Text(unit)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.55))
+                        .foregroundStyle(Color.primary.opacity(0.55))
                 }
             }
             Spacer()
@@ -339,7 +339,7 @@ struct AreaVolumeView: View {
             } label: {
                 Image(systemName: "doc.on.doc")
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             .buttonStyle(.glass)
         }

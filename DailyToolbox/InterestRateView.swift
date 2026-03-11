@@ -41,7 +41,7 @@ private struct RateGaugeView: View {
         ZStack {
             // Track ring
             Circle()
-                .stroke(.white.opacity(0.08), lineWidth: 16)
+                .stroke(Color.primary.opacity(0.08), lineWidth: 16)
 
             // Filled arc
             Circle()
@@ -63,12 +63,12 @@ private struct RateGaugeView: View {
             VStack(spacing: 1) {
                 Text(clampedRate.formatted(.number.precision(.fractionLength(2))))
                     .font(.system(size: 26, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .contentTransition(.numericText())
                     .animation(.spring(response: 0.3), value: clampedRate)
                 Text("%")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
             }
         }
         .frame(width: 130, height: 130)
@@ -259,10 +259,10 @@ struct InterestRateView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Interest Rate Calculation")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Fill in two values — the third is solved automatically.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.62))
+                    .foregroundStyle(Color.primary.opacity(0.62))
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -284,14 +284,14 @@ struct InterestRateView: View {
                     value: interestText,
                     color: InterestField.interest.accentColor
                 )
-                Divider().overlay(.white.opacity(0.12))
+                Divider().overlay(Color.primary.opacity(0.12))
                 summaryRow(
                     icon: "building.columns",
                     label: "Capital",
                     value: capitalText,
                     color: InterestField.capital.accentColor
                 )
-                Divider().overlay(.white.opacity(0.12))
+                Divider().overlay(Color.primary.opacity(0.12))
                 summaryRow(
                     icon: "percent",
                     label: "Rate",
@@ -319,11 +319,11 @@ struct InterestRateView: View {
                 .frame(width: 16)
             Text(label)
                 .font(.caption)
-                .foregroundStyle(.white.opacity(0.55))
+                .foregroundStyle(Color.primary.opacity(0.55))
             Spacer()
             Text(value.isEmpty ? "—" : value)
                 .font(.caption.weight(.semibold).monospacedDigit())
-                .foregroundStyle(value.isEmpty ? .white.opacity(0.25) : .white.opacity(0.90))
+                .foregroundStyle(value.isEmpty ? Color.primary.opacity(0.25) : Color.primary.opacity(0.90))
                 .contentTransition(.numericText())
         }
     }
@@ -361,12 +361,12 @@ struct InterestRateView: View {
                 }
                 Text(field.subtitle)
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.35))
+                    .foregroundStyle(Color.primary.opacity(0.35))
                 TextField("0.00", text: text)
                     .keyboardType(.decimalPad)
                     .focused($focused, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(field.accentColor)
                     .onChange(of: text.wrappedValue) { _, newVal in
                         text.wrappedValue = newVal.replacingOccurrences(of: ",", with: ".")
@@ -383,7 +383,7 @@ struct InterestRateView: View {
                     solvedField = nil
                 } label: {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.white.opacity(0.30))
+                        .foregroundStyle(Color.primary.opacity(0.30))
                         .font(.system(size: 18))
                 }
                 .buttonStyle(.plain)
@@ -410,7 +410,7 @@ struct InterestRateView: View {
                     systemImage: "equal.circle.fill"
                 )
                 .font(.body.weight(.semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
             }
@@ -422,7 +422,7 @@ struct InterestRateView: View {
                     systemImage: "trash"
                 )
                 .font(.body.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(Color.primary.opacity(0.85))
                 .padding(.vertical, 14)
                 .padding(.horizontal, 8)
             }
@@ -440,11 +440,11 @@ struct InterestRateView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(resultSummary)
                     .font(.subheadline.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .fixedSize(horizontal: false, vertical: true)
                 Text("Interest = Rate × Capital ÷ 100")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
             }
             Spacer()
         }

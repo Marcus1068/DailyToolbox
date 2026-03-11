@@ -58,7 +58,7 @@ private struct SymbolChipView: View {
                 .foregroundStyle(accent)
             Text(value.formatted())
                 .font(.system(size: 11, weight: .semibold).monospacedDigit())
-                .foregroundStyle(.white.opacity(0.60))
+                .foregroundStyle(Color.primary.opacity(0.60))
         }
         .frame(minWidth: 44)
         .padding(.horizontal, 10)
@@ -155,10 +155,10 @@ struct DecimalRomanNumbersView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Roman Number Converter")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Bidirectional conversion — range I (1) to MMMCMXCIX (3999)")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -185,7 +185,7 @@ struct DecimalRomanNumbersView: View {
                     .keyboardType(.numberPad)
                     .focused($focused, equals: .decimal)
                     .font(.system(size: 34, weight: .black, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(gold)
                     .minimumScaleFactor(0.5)
                     .onChange(of: decimalText) { _, new in
@@ -194,7 +194,7 @@ struct DecimalRomanNumbersView: View {
                     }
                 Text("1 – 3999")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.30))
+                    .foregroundStyle(Color.primary.opacity(0.30))
             }
             .padding(14)
             .frame(maxWidth: .infinity)
@@ -210,7 +210,7 @@ struct DecimalRomanNumbersView: View {
             VStack(spacing: 4) {
                 Image(systemName: "arrow.left.arrow.right")
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.40))
+                    .foregroundStyle(Color.primary.opacity(0.40))
             }
             .frame(width: 20)
 
@@ -227,7 +227,7 @@ struct DecimalRomanNumbersView: View {
                 TextField("XLII", text: $romanText)
                     .focused($focused, equals: .roman)
                     .font(.system(size: 28, weight: .black, design: .serif).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(crimson)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.characters)
@@ -238,7 +238,7 @@ struct DecimalRomanNumbersView: View {
                     }
                 Text("I V X L C D M")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.30))
+                    .foregroundStyle(Color.primary.opacity(0.30))
             }
             .padding(14)
             .frame(maxWidth: .infinity)
@@ -262,7 +262,7 @@ struct DecimalRomanNumbersView: View {
                 .font(.system(size: 16))
             Text(msg)
                 .font(.caption.weight(.medium))
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(Color.primary.opacity(0.85))
                 .fixedSize(horizontal: false, vertical: true)
             Spacer()
         }
@@ -285,7 +285,7 @@ struct DecimalRomanNumbersView: View {
                 Text("Symbol Reference")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.50))
+            .foregroundStyle(Color.primary.opacity(0.50))
 
             // Symbols grid (4 + 3)
             VStack(spacing: 8) {
@@ -304,7 +304,7 @@ struct DecimalRomanNumbersView: View {
                 }
             }
 
-            Divider().overlay(.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
 
             // Subtractive pairs
             HStack(spacing: 5) {
@@ -313,7 +313,7 @@ struct DecimalRomanNumbersView: View {
                 Text("Subtractive pairs:")
                     .font(.caption2.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.42))
+            .foregroundStyle(Color.primary.opacity(0.42))
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())],
                       spacing: 6) {
@@ -324,7 +324,7 @@ struct DecimalRomanNumbersView: View {
                             .foregroundStyle(crimson.opacity(0.90))
                         Text("=")
                             .font(.caption2)
-                            .foregroundStyle(.white.opacity(0.35))
+                            .foregroundStyle(Color.primary.opacity(0.35))
                         Text(pair.value.formatted())
                             .font(.caption.weight(.bold).monospacedDigit())
                             .foregroundStyle(gold.opacity(0.80))
@@ -350,7 +350,7 @@ struct DecimalRomanNumbersView: View {
                 Text("Rules")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.50))
+            .foregroundStyle(Color.primary.opacity(0.50))
 
             let rules: [String] = [
                 "Symbols are written largest to smallest, left to right",
@@ -370,7 +370,7 @@ struct DecimalRomanNumbersView: View {
                             .foregroundStyle(gold.opacity(0.55))
                         Text(rule)
                             .font(.caption)
-                            .foregroundStyle(.white.opacity(0.72))
+                            .foregroundStyle(Color.primary.opacity(0.72))
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }

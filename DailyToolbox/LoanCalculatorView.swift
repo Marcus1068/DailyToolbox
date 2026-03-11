@@ -122,16 +122,16 @@ struct LoanCalculatorView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle().fill(LinearGradient(colors: [Color(red:0.35,green:0.60,blue:1.00), Color(red:0.20,green:0.40,blue:0.90)], startPoint: .topLeading, endPoint: .bottomTrailing))
-                Image(systemName: "house.fill").font(.title2).foregroundStyle(.white)
+                Image(systemName: "house.fill").font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
             VStack(alignment: .leading, spacing: 4) {
-                Text("Loan Calculator").font(.headline.weight(.bold)).foregroundStyle(.white)
-                Text("Monthly payment & total cost").font(.caption).foregroundStyle(.white.opacity(0.65))
+                Text("Loan Calculator").font(.headline.weight(.bold)).foregroundStyle(Color.primary)
+                Text("Monthly payment & total cost").font(.caption).foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
-                Image(systemName: "arrow.counterclockwise").font(.system(size: 14, weight: .semibold)).foregroundStyle(.white.opacity(0.75))
+                Image(systemName: "arrow.counterclockwise").font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.75))
             }
             .buttonStyle(.glass)
         }
@@ -149,8 +149,8 @@ struct LoanCalculatorView: View {
                 HStack(spacing: 10) {
                     TextField("30", text: $termText)
                         .keyboardType(.decimalPad).focused($focused, equals: 3)
-                        .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(.white).tint(accent)
-                        .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.07)))
+                        .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(accent)
+                        .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
                         .onChange(of: termText) { _, _ in guard focused == 3 else { return }; calculate() }
                     HStack(spacing: 0) {
                         ForEach(TermUnit.allCases, id: \.self) { unit in
@@ -160,7 +160,7 @@ struct LoanCalculatorView: View {
                             } label: {
                                 Text(unit.localizedKey)
                                     .font(.caption.weight(.semibold))
-                                    .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                                    .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                     .padding(.horizontal, 14).padding(.vertical, 10)
                                     .background(sel ? accent : Color.clear, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                             }
@@ -168,7 +168,7 @@ struct LoanCalculatorView: View {
                         }
                     }
                     .padding(3)
-                    .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                    .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
                 }
             }
             Button(action: calculate) {
@@ -188,10 +188,10 @@ struct LoanCalculatorView: View {
             HStack(spacing: 10) {
                 Text(prefix).font(.title3)
                 TextField(placeholder, text: text).keyboardType(.decimalPad).focused($focused, equals: focusTag)
-                    .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(.white).tint(accent)
+                    .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(accent)
                     .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
             }
-            .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.07)))
+            .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
         }
     }
 
@@ -199,26 +199,26 @@ struct LoanCalculatorView: View {
     private func resultCard(_ res: LoanResult) -> some View {
         VStack(spacing: 0) {
             VStack(spacing: 6) {
-                Text("Monthly Payment").font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.60))
+                Text("Monthly Payment").font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.60))
                 Text(currency(res.monthlyPayment))
                     .font(.system(size: 40, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(accent).minimumScaleFactor(0.6).lineLimit(1)
-                Text("× \(res.numPayments) payments").font(.caption).foregroundStyle(.white.opacity(0.45))
+                Text("× \(res.numPayments) payments").font(.caption).foregroundStyle(Color.primary.opacity(0.45))
             }
             .frame(maxWidth: .infinity).padding(.vertical, 20)
-            Divider().overlay(Color.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
             HStack(spacing: 0) {
                 summaryCell(label: "Total Paid", value: currency(res.totalPaid), color: Color(red:0.70,green:0.90,blue:1.00))
-                Divider().frame(height: 50).overlay(Color.white.opacity(0.10))
+                Divider().frame(height: 50).overlay(Color.primary.opacity(0.10))
                 summaryCell(label: "Total Interest", value: currency(res.totalInterest), color: Color(red:1.00,green:0.65,blue:0.45))
             }
             .padding(.vertical, 14)
-            Divider().overlay(Color.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
             VStack(spacing: 8) {
                 HStack {
-                    Text("Principal").font(.caption2.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+                    Text("Principal").font(.caption2.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
                     Spacer()
-                    Text("Interest").font(.caption2.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+                    Text("Interest").font(.caption2.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
                 }
                 GeometryReader { geo in
                     HStack(spacing: 2) {
@@ -239,7 +239,7 @@ struct LoanCalculatorView: View {
     @ViewBuilder
     private func summaryCell(label: LocalizedStringKey, value: String, color: Color) -> some View {
         VStack(spacing: 4) {
-            Text(label).font(.caption.weight(.semibold)).foregroundStyle(.white.opacity(0.55))
+            Text(label).font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
             Text(value).font(.subheadline.weight(.bold).monospacedDigit()).foregroundStyle(color).minimumScaleFactor(0.6).lineLimit(1)
         }
         .frame(maxWidth: .infinity)

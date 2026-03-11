@@ -217,23 +217,23 @@ struct OhmsLawView: View {
                     ], startPoint: .topLeading, endPoint: .bottomTrailing))
                 Image(systemName: "bolt.circle.fill")
                     .font(.title)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Ohm's Law Calculator")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Enter any 2 values to solve")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
             }
             .buttonStyle(.glass)
         }
@@ -284,22 +284,22 @@ struct OhmsLawView: View {
             .keyboardType(.decimalPad)
             .focused($focused, equals: field)
             .font(.title2.weight(.bold).monospacedDigit())
-            .foregroundStyle(isComputed ? accent : .white)
+            .foregroundStyle(isComputed ? accent : Color.primary)
             .tint(accent)
             .onChange(of: texts[field] ?? "") { _, _ in fieldChanged(field) }
 
             Text(field.symbol)
                 .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                .foregroundStyle(.white.opacity(0.30))
+                .foregroundStyle(Color.primary.opacity(0.30))
         }
         .padding(14)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(isComputed ? accent.opacity(0.08) : Color.white.opacity(0.05))
+                .fill(isComputed ? accent.opacity(0.08) : Color.primary.opacity(0.05))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .strokeBorder(isComputed ? accent.opacity(0.35) : Color.white.opacity(0.08), lineWidth: 1)
+                .strokeBorder(isComputed ? accent.opacity(0.35) : Color.primary.opacity(0.08), lineWidth: 1)
         )
     }
 
@@ -309,7 +309,7 @@ struct OhmsLawView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Formulas")
                 .font(.caption.weight(.bold))
-                .foregroundStyle(.white.opacity(0.50))
+                .foregroundStyle(Color.primary.opacity(0.50))
 
             VStack(alignment: .leading, spacing: 6) {
                 formulaRow("V = I × R")
@@ -328,7 +328,7 @@ struct OhmsLawView: View {
     private func formulaRow(_ text: String) -> some View {
         Text(text)
             .font(.system(.caption, design: .monospaced))
-            .foregroundStyle(.white.opacity(0.50))
+            .foregroundStyle(Color.primary.opacity(0.50))
     }
 }
 

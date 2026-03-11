@@ -132,7 +132,7 @@ private struct HorizonSceneView: View {
                 ForEach(horizonStars.indices, id: \.self) { i in
                     let s = horizonStars[i]
                     Circle()
-                        .fill(.white.opacity(s.op))
+                        .fill(Color.primary.opacity(s.op))
                         .frame(width: s.sz, height: s.sz)
                         .position(x: s.x * w, y: s.y * h * 0.95)
                 }
@@ -148,7 +148,7 @@ private struct HorizonSceneView: View {
                 }
                 .stroke(
                     LinearGradient(
-                        colors: [.white.opacity(0.20), .white.opacity(0.82), .white.opacity(0.20)],
+                        colors: [Color.primary.opacity(0.20), Color.primary.opacity(0.82), Color.primary.opacity(0.20)],
                         startPoint: .leading, endPoint: .trailing
                     ),
                     lineWidth: 1.5
@@ -162,19 +162,19 @@ private struct HorizonSceneView: View {
                     p.move(to: CGPoint(x: eyeX, y: hy - 2))
                     p.addLine(to: CGPoint(x: eyeX, y: eyeY + 13))
                 }
-                .stroke(.white.opacity(0.38), lineWidth: 1.0)
+                .stroke(Color.primary.opacity(0.38), lineWidth: 1.0)
 
                 // Dashed sight line from eye to horizon
                 Path { p in
                     p.move(to: CGPoint(x: eyeX, y: eyeY))
                     p.addLine(to: CGPoint(x: w - 26, y: hy))
                 }
-                .stroke(.white.opacity(0.52),
+                .stroke(Color.primary.opacity(0.52),
                         style: StrokeStyle(lineWidth: 1.3, dash: [7, 5]))
 
                 Image(systemName: "eye.fill")
                     .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(Color.primary.opacity(0.85))
                     .position(x: eyeX, y: eyeY)
 
                 // Glowing horizon dot
@@ -188,10 +188,10 @@ private struct HorizonSceneView: View {
                 if distanceKm > 0 {
                     Text(String(format: "%.2f km", distanceKm))
                         .font(.caption.weight(.bold).monospacedDigit())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
-                        .background(Color.white.opacity(0.12), in: Capsule())
+                        .background(Color.primary.opacity(0.12), in: Capsule())
                         .position(x: w - 54, y: h - 16)
                         .contentTransition(.numericText())
                         .animation(.spring(response: 0.4), value: distanceKm)
@@ -308,10 +308,10 @@ struct HorizonView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Horizon Calculator")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("GPS altitude + eye level → distance to horizon")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -347,7 +347,7 @@ struct HorizonView: View {
                     }
                 }
                 .font(.title2.weight(.bold).monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .contentTransition(.numericText())
                 .animation(.spring(response: 0.35), value: altitude)
 
@@ -362,10 +362,10 @@ struct HorizonView: View {
             VStack(spacing: 4) {
                 Text("ASL")
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.30))
+                    .foregroundStyle(Color.primary.opacity(0.30))
                 ZStack(alignment: .bottom) {
                     RoundedRectangle(cornerRadius: 3)
-                        .fill(.white.opacity(0.07))
+                        .fill(Color.primary.opacity(0.07))
                         .frame(width: 8, height: 50)
                     RoundedRectangle(cornerRadius: 3)
                         .fill(
@@ -407,7 +407,7 @@ struct HorizonView: View {
                         .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.88))
                     Text("Your eyes above ground")
                         .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.35))
+                        .foregroundStyle(Color.primary.opacity(0.35))
                 }
                 Spacer()
                 // ± step buttons
@@ -415,7 +415,7 @@ struct HorizonView: View {
                     Button { adjustEyeLevel(by: -0.05) } label: {
                         Image(systemName: "minus")
                             .font(.caption.weight(.bold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.primary)
                             .frame(width: 30, height: 30)
                     }
                     .buttonStyle(.glass)
@@ -423,7 +423,7 @@ struct HorizonView: View {
                     Button { adjustEyeLevel(by: +0.05) } label: {
                         Image(systemName: "plus")
                             .font(.caption.weight(.bold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.primary)
                             .frame(width: 30, height: 30)
                     }
                     .buttonStyle(.glass)
@@ -435,7 +435,7 @@ struct HorizonView: View {
                     .keyboardType(.decimalPad)
                     .focused($focused)
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(Color(red: 0.28, green: 0.88, blue: 0.65))
                     .onChange(of: eyeLevelText) { _, new in
                         let s = new.replacingOccurrences(of: ",", with: ".")
@@ -444,7 +444,7 @@ struct HorizonView: View {
                     }
                 Text("m")
                     .font(.title2.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.40))
+                    .foregroundStyle(Color.primary.opacity(0.40))
             }
             .padding(.leading, 2)
         }
@@ -471,7 +471,7 @@ struct HorizonView: View {
                 Spacer()
                 Image(systemName: "arrow.forward.to.line")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.28))
+                    .foregroundStyle(Color.primary.opacity(0.28))
             }
             HStack(alignment: .lastTextBaseline, spacing: 6) {
                 Text(distanceKm.formatted(.number.precision(.fractionLength(2))))
@@ -488,7 +488,7 @@ struct HorizonView: View {
                     .animation(.spring(response: 0.4), value: distanceKm)
                 Text("km")
                     .font(.title2.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.52))
+                    .foregroundStyle(Color.primary.opacity(0.52))
                     .padding(.bottom, 5)
                 Spacer()
             }
@@ -515,13 +515,13 @@ struct HorizonView: View {
                 Text("Formula")
                     .font(.caption.weight(.semibold))
             }
-            .foregroundStyle(.white.opacity(0.52))
+            .foregroundStyle(Color.primary.opacity(0.52))
 
             Text("d = 3.57 × √( altitude + eye level )")
                 .font(.system(.subheadline, design: .monospaced).weight(.medium))
-                .foregroundStyle(.white.opacity(0.88))
+                .foregroundStyle(Color.primary.opacity(0.88))
 
-            Divider().overlay(.white.opacity(0.10))
+            Divider().overlay(Color.primary.opacity(0.10))
 
             Text("d = 3.57 × √( \(altStr) + \(eyeStr) ) = \(distStr) km")
                 .font(.caption.monospacedDigit())

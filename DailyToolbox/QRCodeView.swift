@@ -230,10 +230,10 @@ struct QRCodeView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("QR Code Generator")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("URL · Text · WiFi · Contact · Email")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button {
@@ -241,7 +241,7 @@ struct QRCodeView: View {
             } label: {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -267,13 +267,13 @@ struct QRCodeView: View {
                             Text(type.label)
                                 .font(.system(size: 9, weight: .semibold))
                         }
-                        .foregroundStyle(qrType == type ? type.accentColor : .white.opacity(0.38))
+                        .foregroundStyle(qrType == type ? type.accentColor : Color.primary.opacity(0.38))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .background(
                             qrType == type
                                 ? RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .fill(.white.opacity(0.14))
+                                    .fill(Color.primary.opacity(0.14))
                                 : nil
                         )
                     }
@@ -317,7 +317,7 @@ struct QRCodeView: View {
             formLabel("Enter Text", icon: "text.alignleft", accent: QRType.text.accentColor)
             TextEditor(text: $plainText)
                 .font(.body.monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .tint(QRType.text.accentColor)
                 .scrollContentBackground(.hidden)
                 .frame(minHeight: 100, maxHeight: 180)
@@ -347,14 +347,14 @@ struct QRCodeView: View {
                         } label: {
                             Text(sec.rawValue)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(wifiSecurity == sec ? .black : .white)
+                                .foregroundStyle(wifiSecurity == sec ? .black : Color.primary)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 8)
                                 .background(
                                     RoundedRectangle(cornerRadius: 8)
                                         .fill(wifiSecurity == sec
                                               ? QRType.wifi.accentColor
-                                              : Color.white.opacity(0.12))
+                                              : Color.primary.opacity(0.12))
                                 )
                         }
                         .buttonStyle(.plain)
@@ -365,7 +365,7 @@ struct QRCodeView: View {
             Toggle(isOn: $wifiHidden) {
                 Label("Hidden Network", systemImage: "eye.slash")
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.80))
+                    .foregroundStyle(Color.primary.opacity(0.80))
             }
             .toggleStyle(SwitchToggleStyle(tint: QRType.wifi.accentColor))
         }
@@ -402,7 +402,7 @@ struct QRCodeView: View {
                 formLabel("Message", icon: "text.bubble", accent: QRType.email.accentColor)
                 TextEditor(text: $emailBody)
                     .font(.body)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(QRType.email.accentColor)
                     .scrollContentBackground(.hidden)
                     .frame(minHeight: 80, maxHeight: 140)
@@ -429,14 +429,14 @@ struct QRCodeView: View {
 
             Text(payload)
                 .font(.system(size: 11, design: .monospaced))
-                .foregroundStyle(.white.opacity(0.50))
+                .foregroundStyle(Color.primary.opacity(0.50))
                 .lineLimit(2)
                 .truncationMode(.middle)
                 .multilineTextAlignment(.center)
 
             Text("\(payload.count) characters")
                 .font(.caption2.monospacedDigit())
-                .foregroundStyle(.white.opacity(0.35))
+                .foregroundStyle(Color.primary.opacity(0.35))
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 18)
@@ -458,7 +458,7 @@ struct QRCodeView: View {
             ) {
                 Label("Share", systemImage: "square.and.arrow.up")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
             }
@@ -474,7 +474,7 @@ struct QRCodeView: View {
                 Label(copied ? "Copied!" : "Copy",
                       systemImage: copied ? "checkmark.circle.fill" : "doc.on.doc")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(copied ? Color(red: 0.40, green: 1.00, blue: 0.60) : .white)
+                    .foregroundStyle(copied ? Color(red: 0.40, green: 1.00, blue: 0.60) : Color.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
             }
@@ -488,10 +488,10 @@ struct QRCodeView: View {
         HStack(spacing: 12) {
             Image(systemName: "qrcode")
                 .font(.system(size: 22, weight: .regular))
-                .foregroundStyle(.white.opacity(0.30))
+                .foregroundStyle(Color.primary.opacity(0.30))
             Text("Fill in the fields above to generate a QR code")
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.38))
+                .foregroundStyle(Color.primary.opacity(0.38))
             Spacer()
         }
         .padding(.horizontal, 18)
@@ -533,13 +533,13 @@ struct QRCodeView: View {
             }
             .focused($focusedField, equals: id)
             .font(.body.weight(.medium))
-            .foregroundStyle(.white)
+            .foregroundStyle(Color.primary)
             .tint(accent)
             .padding(.horizontal, 12)
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(.white.opacity(0.08))
+                    .fill(Color.primary.opacity(0.08))
             )
         }
     }

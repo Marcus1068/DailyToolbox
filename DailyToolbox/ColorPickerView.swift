@@ -262,13 +262,13 @@ struct ColorPickerView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(currentColor ?? Color.white.opacity(0.08))
+                    .fill(currentColor ?? Color.primary.opacity(0.08))
                     .frame(width: 52, height: 52)
                 if rgb == nil {
                     Circle()
                         .strokeBorder(
                             LinearGradient(
-                                colors: [.white.opacity(0.35), .white.opacity(0.10)],
+                                colors: [Color.primary.opacity(0.35), Color.primary.opacity(0.10)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
@@ -282,16 +282,16 @@ struct ColorPickerView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Color Converter")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("HEX · RGB · HSB · CMYK")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -331,7 +331,7 @@ struct ColorPickerView: View {
                     .textInputAutocapitalization(.never)
                     .focused($focusedId, equals: "hex")
                     .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(hexAccent)
                     .onChange(of: hexText) { _, newVal in
                         guard focusedId == "hex" else { return }
@@ -473,7 +473,7 @@ struct ColorPickerView: View {
                 .keyboardType(.decimalPad)
                 .focused($focusedId, equals: fieldId)
                 .font(.title3.weight(.semibold).monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.primary)
                 .tint(accent)
                 .onChange(of: text.wrappedValue) { _, newVal in
                     guard focusedId?.hasPrefix(guardPrefix) == true else { return }

@@ -281,9 +281,9 @@ struct GermanHolidaysView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("German Holidays")
-                    .font(.headline.weight(.bold)).foregroundStyle(.white)
+                    .font(.headline.weight(.bold)).foregroundStyle(Color.primary)
                 Text("Public holidays & school breaks")
-                    .font(.caption).foregroundStyle(.white.opacity(0.65))
+                    .font(.caption).foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
         }
@@ -304,18 +304,18 @@ struct GermanHolidaysView: View {
                     VStack(alignment: .leading, spacing: 1) {
                         Text("Federal State")
                             .font(.system(size: 10, weight: .semibold))
-                            .foregroundStyle(.white.opacity(0.50))
+                            .foregroundStyle(Color.primary.opacity(0.50))
                         Text(selectedState.name)
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.primary)
                     }
                     Spacer()
                     Image(systemName: "chevron.right")
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.40))
+                        .foregroundStyle(Color.primary.opacity(0.40))
                 }
                 .padding(14)
-                .background(Color.white.opacity(0.07),
+                .background(Color.primary.opacity(0.07),
                             in: RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
             .buttonStyle(.plain)
@@ -330,10 +330,10 @@ struct GermanHolidaysView: View {
                     } label: {
                         Text(String(y))
                             .font(.subheadline.weight(.bold))
-                            .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                            .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
-                            .background(sel ? accent : Color.white.opacity(0.08),
+                            .background(sel ? accent : Color.primary.opacity(0.08),
                                         in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     .buttonStyle(.plain)
@@ -356,10 +356,10 @@ struct GermanHolidaysView: View {
                         Image(systemName: t.icon).font(.system(size: 12, weight: .semibold))
                         Text(t.localizedKey).font(.caption.weight(.semibold))
                     }
-                    .foregroundStyle(sel ? .black : .white.opacity(0.65))
+                    .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 11)
-                    .background(sel ? accent : Color.white.opacity(0.08),
+                    .background(sel ? accent : Color.primary.opacity(0.08),
                                 in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 }
                 .buttonStyle(.plain)
@@ -391,15 +391,15 @@ struct GermanHolidaysView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .fill(h.isToday ? accent.opacity(0.25)
-                          : h.isPast ? Color.white.opacity(0.05)
+                          : h.isPast ? Color.primary.opacity(0.05)
                           : accent.opacity(0.12))
                 VStack(spacing: 0) {
                     Text(h.date.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "de_DE"))))
                         .font(.system(size: 9, weight: .bold))
-                        .foregroundStyle(h.isPast ? .white.opacity(0.30) : accent.opacity(0.85))
+                        .foregroundStyle(h.isPast ? Color.primary.opacity(0.30) : accent.opacity(0.85))
                     Text(h.date.formatted(.dateTime.day()))
                         .font(.system(size: 20, weight: .black, design: .rounded))
-                        .foregroundStyle(h.isPast ? .white.opacity(0.30) : .white)
+                        .foregroundStyle(h.isPast ? Color.primary.opacity(0.30) : Color.primary)
                 }
                 .padding(.vertical, 6)
             }
@@ -408,11 +408,11 @@ struct GermanHolidaysView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(h.name)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(h.isPast ? .white.opacity(0.40) : .white)
+                    .foregroundStyle(h.isPast ? Color.primary.opacity(0.40) : Color.primary)
                     .lineLimit(1)
                 Text(weekday)
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
             }
 
             Spacer()
@@ -426,7 +426,7 @@ struct GermanHolidaysView: View {
             } else if !h.isPast {
                 Text(h.daysLabel)
                     .font(.caption2.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
                     .multilineTextAlignment(.trailing)
             }
         }
@@ -436,7 +436,6 @@ struct GermanHolidaysView: View {
 
         if !isLast {
             Divider()
-                .overlay(Color.white.opacity(0.08))
                 .padding(.horizontal, 16)
         }
     }
@@ -463,7 +462,7 @@ struct GermanHolidaysView: View {
             // Color bar
             RoundedRectangle(cornerRadius: 3, style: .continuous)
                 .fill(h.isActive ? accent
-                      : h.isPast ? Color.white.opacity(0.15)
+                      : h.isPast ? Color.primary.opacity(0.15)
                       : accentRed.opacity(0.80))
                 .frame(width: 4)
                 .padding(.vertical, 4)
@@ -472,7 +471,7 @@ struct GermanHolidaysView: View {
                 HStack {
                     Text(h.formattedName)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(h.isPast ? .white.opacity(0.40) : .white)
+                        .foregroundStyle(h.isPast ? Color.primary.opacity(0.40) : Color.primary)
                     Spacer()
                     if h.isActive {
                         Text("Läuft")
@@ -485,14 +484,14 @@ struct GermanHolidaysView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "calendar")
                         .font(.system(size: 10))
-                        .foregroundStyle(.white.opacity(0.40))
+                        .foregroundStyle(Color.primary.opacity(0.40))
                     Text("\(startStr) – \(endStr)")
                         .font(.caption)
-                        .foregroundStyle(.white.opacity(h.isPast ? 0.30 : 0.55))
+                        .foregroundStyle(Color.primary.opacity(h.isPast ? 0.30 : 0.55))
                 }
                 Text("\(h.durationDays) Tage")
                     .font(.caption2.weight(.semibold))
-                    .foregroundStyle(h.isPast ? .white.opacity(0.25) : accent.opacity(0.75))
+                    .foregroundStyle(h.isPast ? Color.primary.opacity(0.25) : accent.opacity(0.75))
             }
         }
         .padding(.horizontal, 16)
@@ -501,7 +500,6 @@ struct GermanHolidaysView: View {
 
         if !isLast {
             Divider()
-                .overlay(Color.white.opacity(0.08))
                 .padding(.horizontal, 16)
         }
     }
@@ -516,7 +514,7 @@ struct GermanHolidaysView: View {
                     .foregroundStyle(accent.opacity(0.50))
                 Text("Select a state and year")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
             }
             .frame(maxWidth: .infinity)
             .padding(40)
@@ -532,7 +530,7 @@ struct GermanHolidaysView: View {
                     .scaleEffect(1.2)
                 Text("Loading holidays…")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
             }
             .frame(maxWidth: .infinity)
             .padding(30)
@@ -548,10 +546,10 @@ struct GermanHolidaysView: View {
                 .foregroundStyle(accentRed.opacity(0.80))
             Text("Could not load holidays")
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.70))
+                .foregroundStyle(Color.primary.opacity(0.70))
             Text(message)
                 .font(.caption)
-                .foregroundStyle(.white.opacity(0.35))
+                .foregroundStyle(Color.primary.opacity(0.35))
                 .multilineTextAlignment(.center)
             Button {
                 Task { await vm.load(stateCode: selectedState.code, year: savedYear) }
@@ -585,11 +583,11 @@ struct GermanHolidaysView: View {
                         } label: {
                             HStack {
                                 Text(state.name)
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(Color.primary)
                                 Spacer()
                                 Text(state.code)
                                     .font(.caption.weight(.semibold))
-                                    .foregroundStyle(.white.opacity(0.45))
+                                    .foregroundStyle(Color.primary.opacity(0.45))
                                 if state.code == selectedState.code {
                                     Image(systemName: "checkmark")
                                         .font(.system(size: 13, weight: .semibold))
@@ -597,7 +595,7 @@ struct GermanHolidaysView: View {
                                 }
                             }
                         }
-                        .listRowBackground(Color.white.opacity(0.07))
+                        .listRowBackground(Color.primary.opacity(0.07))
                     }
                 }
                 .scrollContentBackground(.hidden)

@@ -106,11 +106,11 @@ private struct BitGridView: View {
                     .foregroundStyle(Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.80))
                 Text("Bit Pattern")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.65))
+                    .foregroundStyle(Color.primary.opacity(0.65))
                 Spacer()
                 Text("\(bitWidth)-bit")
                     .font(.caption2.weight(.bold).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(Color.primary.opacity(0.45))
             }
 
             // Bits grouped into nibbles (4 bits), bytes separated by slightly more space
@@ -121,7 +121,7 @@ private struct BitGridView: View {
                     if nibbleIdx > 0 && nibbleIdx % 2 == 0 {
                         Divider()
                             .frame(width: 1, height: 28)
-                            .overlay(.white.opacity(0.18))
+                            .overlay(Color.primary.opacity(0.18))
                     }
                     HStack(spacing: 3) {
                         ForEach(Array(nibble.enumerated()), id: \.offset) { _, isOn in
@@ -154,13 +154,13 @@ private struct BitGridView: View {
             RoundedRectangle(cornerRadius: 5, style: .continuous)
                 .fill(isOn
                     ? Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.22)
-                    : Color.white.opacity(0.05))
+                    : Color.primary.opacity(0.05))
                 .overlay {
                     RoundedRectangle(cornerRadius: 5, style: .continuous)
                         .strokeBorder(
                             isOn
                                 ? Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.55)
-                                : Color.white.opacity(0.10),
+                                : Color.primary.opacity(0.10),
                             lineWidth: 1
                         )
                 }
@@ -168,7 +168,7 @@ private struct BitGridView: View {
                 .font(.system(size: 11, weight: .bold, design: .monospaced))
                 .foregroundStyle(isOn
                     ? Color(red: 0.20, green: 0.90, blue: 0.70)
-                    : .white.opacity(0.22))
+                    : Color.primary.opacity(0.22))
         }
         .frame(width: 22, height: 26)
         .animation(.spring(response: 0.25, dampingFraction: 0.7), value: isOn)
@@ -315,16 +315,16 @@ struct ConvertNumbersView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Number Converter")
                     .font(.headline.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                 Text("Enter any base — Decimal, Hex, or Binary.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.60))
+                    .foregroundStyle(Color.primary.opacity(0.60))
             }
             Spacer()
             Button(action: clearAll) {
                 Image(systemName: "arrow.counterclockwise")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(Color.primary.opacity(0.70))
                     .frame(width: 34, height: 34)
             }
             .buttonStyle(.glass)
@@ -355,7 +355,7 @@ struct ConvertNumbersView: View {
                         .foregroundStyle(base.accentColor.opacity(0.85))
                     Text(base.shortLabel)
                         .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.30))
+                        .foregroundStyle(Color.primary.opacity(0.30))
                 }
                 TextField(base.placeholder, text: text)
                     .keyboardType(base.keyboardType)
@@ -363,7 +363,7 @@ struct ConvertNumbersView: View {
                     .textInputAutocapitalization(.characters)
                     .focused($focused, equals: base)
                     .font(.system(size: 20, weight: .semibold, design: .monospaced))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
                     .tint(base.accentColor)
                     .onChange(of: text.wrappedValue) { _, newVal in
                         let filtered = filterInput(newVal, for: base)
@@ -381,7 +381,7 @@ struct ConvertNumbersView: View {
                 } label: {
                     Image(systemName: "doc.on.doc")
                         .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.50))
+                        .foregroundStyle(Color.primary.opacity(0.50))
                         .frame(width: 32, height: 32)
                 }
                 .buttonStyle(.glass)

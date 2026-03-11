@@ -145,7 +145,7 @@ struct AboutView: View {
                     RoundedRectangle(cornerRadius: 26, style: .continuous)
                         .strokeBorder(
                             LinearGradient(
-                                colors: [.white.opacity(0.65), .white.opacity(0.10)],
+                                colors: [Color.primary.opacity(0.65), Color.primary.opacity(0.10)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
@@ -158,15 +158,15 @@ struct AboutView: View {
             VStack(spacing: 6) {
                 Text("DailyToolbox")
                     .font(.system(size: 34, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.primary)
 
                 Text(appVersion)
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.75))
+                    .foregroundStyle(Color.primary.opacity(0.75))
 
                 Text(deviceInfo)
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                    .foregroundStyle(Color.primary.opacity(0.55))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 12)
             }
@@ -180,9 +180,9 @@ struct AboutView: View {
         VStack(alignment: .leading, spacing: 14) {
             Label("Appearance", systemImage: "paintbrush.fill")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.90))
+                .foregroundStyle(Color.primary.opacity(0.90))
 
-            Divider().overlay(.white.opacity(0.18))
+            Divider().overlay(Color.primary.opacity(0.18))
 
             HStack(spacing: 8) {
                 ForEach(AppearanceMode.allCases, id: \.self) { mode in
@@ -195,22 +195,22 @@ struct AboutView: View {
                         VStack(spacing: 6) {
                             Image(systemName: mode.icon)
                                 .font(.system(size: 18, weight: .semibold))
-                                .foregroundStyle(selected ? Color(red: 0.18, green: 0.44, blue: 0.86) : .white.opacity(0.60))
+                                .foregroundStyle(selected ? Color(red: 0.18, green: 0.44, blue: 0.86) : Color.primary.opacity(0.60))
                             Text(mode.label)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(selected ? .white : .white.opacity(0.55))
+                                .foregroundStyle(selected ? .primary : Color.primary.opacity(0.55))
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .background(
                             selected
-                                ? Color.white.opacity(0.18)
-                                : Color.white.opacity(0.07),
+                                ? Color.primary.opacity(0.18)
+                                : Color.primary.opacity(0.07),
                             in: RoundedRectangle(cornerRadius: 14, style: .continuous)
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                .strokeBorder(selected ? Color.white.opacity(0.40) : Color.clear, lineWidth: 1)
+                                .strokeBorder(selected ? Color.primary.opacity(0.40) : Color.clear, lineWidth: 1)
                         )
                     }
                     .buttonStyle(.plain)
@@ -228,18 +228,18 @@ struct AboutView: View {
         VStack(alignment: .leading, spacing: 12) {
             Label("© 2020–2026 Marcus Deuß", systemImage: "c.circle")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.90))
+                .foregroundStyle(Color.primary.opacity(0.90))
 
             Divider()
-                .overlay(.white.opacity(0.18))
+                .overlay(Color.primary.opacity(0.18))
 
             Label("Apache License 2.0", systemImage: "doc.text")
                 .font(.footnote)
-                .foregroundStyle(.white.opacity(0.72))
+                .foregroundStyle(Color.primary.opacity(0.72))
 
             Label("Open Source on GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
                 .font(.footnote)
-                .foregroundStyle(.white.opacity(0.72))
+                .foregroundStyle(Color.primary.opacity(0.72))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
@@ -284,17 +284,17 @@ struct AboutView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .font(.body.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.primary)
                     Text(subtitle)
                         .font(.caption)
-                        .foregroundStyle(.white.opacity(0.58))
+                        .foregroundStyle(Color.primary.opacity(0.58))
                 }
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(.white.opacity(0.35))
+                    .foregroundStyle(Color.primary.opacity(0.35))
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
