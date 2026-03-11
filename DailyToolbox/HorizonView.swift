@@ -29,19 +29,19 @@ import CoreLocation
 @Observable
 @MainActor
 final class HorizonLocationManager: NSObject {
-    var altitude: Double        = 0.0
+    var altitude: Double         = 0.0
     var verticalAccuracy: Double = -1.0
     var authorizationStatus: CLAuthorizationStatus = .notDetermined
-    var isSearching: Bool       = true
+    var isSearching: Bool        = true
 
     var isAuthorized: Bool {
         authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways
     }
 
     var accuracyLabel: String {
-        if !isAuthorized    { return "No Permission" }
-        if isSearching       { return "Searching…" }
-        if verticalAccuracy < 0 { return "Unavailable" }
+        if !isAuthorized         { return "No Permission" }
+        if isSearching           { return "Searching…" }
+        if verticalAccuracy < 0  { return "Unavailable" }
         return String(format: "±%.0f m", verticalAccuracy)
     }
 
@@ -57,15 +57,16 @@ final class HorizonLocationManager: NSObject {
 
     override init() {
         super.init()
-        manager.delegate          = self
-        manager.desiredAccuracy   = kCLLocationAccuracyBest
-        manager.distanceFilter    = kCLDistanceFilterNone
-        authorizationStatus       = manager.authorizationStatus
+        manager.delegate       = self
+        manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        manager.distanceFilter = kCLDistanceFilterNone
+        authorizationStatus    = manager.authorizationStatus
     }
 
     func start() {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        isSearching = true
     }
 
     func stop() {
@@ -75,15 +76,21 @@ final class HorizonLocationManager: NSObject {
 
 extension HorizonLocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let loc = locations.last else { return }
-        altitude         = loc.altitude
-        verticalAccuracy = loc.verticalAccuracy
-        isSearching      = false
+        guard let loc = locations.last, loc.verticalAccuracy >= 0 else { return }
+        // Dispatch to main actor to guarantee SwiftUI picks up @Observable changes
+        Task { @MainActor [weak self] in
+            self?.altitude         = loc.altitude
+            self?.verticalAccuracy = loc.verticalAccuracy
+            self?.isSearching      = false
+        }
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        authorizationStatus = manager.authorizationStatus
-        if isAuthorized { manager.startUpdatingLocation() }
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            self.authorizationStatus = manager.authorizationStatus
+            if self.isAuthorized { manager.startUpdatingLocation() }
+        }
     }
 }
 
@@ -445,7 +452,7 @@ struct HorizonView: View {
                 Spacer()
                 // ± step buttons
                 HStack(spacing: 8) {
-                    Button { adjustEyeLevel(by: -0.05) } label: {
+                    Button { adjustEyeLevel(by: -0.10) } label: {
                         Image(systemName: "minus")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(Color.primary)
@@ -453,7 +460,7 @@ struct HorizonView: View {
                     }
                     .buttonStyle(.glass)
 
-                    Button { adjustEyeLevel(by: +0.05) } label: {
+                    Button { adjustEyeLevel(by: +0.10) } label: {
                         Image(systemName: "plus")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(Color.primary)
@@ -488,7 +495,8 @@ struct HorizonView: View {
 
     private func adjustEyeLevel(by delta: Double) {
         let current = Double(sanitize(eyeLevelText)) ?? 1.70
-        let newVal  = max(0.0, (current + delta * 10).rounded() / 10)
+        // Round to nearest 0.01 to avoid floating-point drift
+        let newVal  = max(0.0, min(5.0, ((current + delta) * 100).rounded() / 100))
         eyeLevelText = String(format: "%.2f", newVal)
         NSUbiquitousKeyValueStore.default.set(eyeLevelText, forKey: Global.keyEyeLevel)
     }

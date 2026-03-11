@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F19E79A9D08EC74E7EB66F7 /* GermanHolidaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */; };
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
 		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
@@ -47,15 +48,14 @@
 		2CBF5EDD2F5E1274009575C2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EDC2F5E1274009575C2 /* ColorPickerView.swift */; };
 		2CBF5EDF2F5E1274009575C2 /* AreaVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EDE2F5E1274009575C2 /* AreaVolumeView.swift */; };
 		2CBF5EE12F5E1281009575C2 /* OhmsLawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */; };
-		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
-		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
-		0F19E79A9D08EC74E7EB66F7 /* GermanHolidaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */; };
 		2CBF5EE32F5E1562009575C2 /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */; };
 		2CBF5EE52F5E15A8009575C2 /* BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF5EE42F5E15A8009575C2 /* BMIView.swift */; };
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
+		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
 		DA89F60DBDBB571877892DDA /* FuelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */; };
+		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +72,7 @@
 		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
 		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		2C4AA8672F61D5E000F1BDCC /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
 		2C5A88F624559152006D0B4E /* Roman english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman english.rtf"; sourceTree = "<group>"; };
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -116,14 +117,14 @@
 		2CBF5EDC2F5E1274009575C2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		2CBF5EDE2F5E1274009575C2 /* AreaVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaVolumeView.swift; sourceTree = "<group>"; };
 		2CBF5EE02F5E1281009575C2 /* OhmsLawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhmsLawView.swift; sourceTree = "<group>"; };
-		82B60AC8709404457D01D424 /* AspectRatioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioView.swift; sourceTree = "<group>"; };
-		44B923CFE82DBFA41976C241 /* RandomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizerView.swift; sourceTree = "<group>"; };
-		698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCalculatorView.swift; sourceTree = "<group>"; };
 		2CBF5EE42F5E15A8009575C2 /* BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIView.swift; sourceTree = "<group>"; };
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		44B923CFE82DBFA41976C241 /* RandomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizerView.swift; sourceTree = "<group>"; };
+		698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
+		82B60AC8709404457D01D424 /* AspectRatioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioView.swift; sourceTree = "<group>"; };
 		98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +172,7 @@
 				2CBD866723F6AA480011D886 /* Products */,
 				2C8040C52439F1590057909D /* Frameworks */,
 				2CBF5EDB2F5E1154009575C2 /* OhmsLawView.swift */,
+				2C4AA8672F61D5E000F1BDCC /* GermanHolidaysView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -571,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 58;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -583,7 +585,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.05;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -599,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 58;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -611,7 +613,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.05;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
