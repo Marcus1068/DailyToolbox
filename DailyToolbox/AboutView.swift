@@ -237,9 +237,14 @@ struct AboutView: View {
                 .font(.footnote)
                 .foregroundStyle(Color.primary.opacity(0.72))
 
-            Label("Open Source on GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
-                .font(.footnote)
-                .foregroundStyle(Color.primary.opacity(0.72))
+            Button {
+                openURL(URL(string: "https://github.com/Marcus1068/DailyToolbox")!)
+            } label: {
+                Label("Open Source on GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
+                    .font(.footnote)
+                    .foregroundStyle(Color(red: 0.20, green: 0.50, blue: 1.0))
+            }
+            .buttonStyle(.plain)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)

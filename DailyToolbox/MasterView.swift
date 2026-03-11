@@ -196,11 +196,18 @@ struct MasterView: View {
     }
 
     private var appHeader: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("DailyToolbox")
-                .font(.system(size: 36, weight: .bold, design: .rounded))
-                .foregroundStyle(titleGradient)
-                .shadow(color: titleShadowColor, radius: 12)
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        return VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .lastTextBaseline, spacing: 8) {
+                Text("DailyToolbox")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundStyle(titleGradient)
+                    .shadow(color: titleShadowColor, radius: 12)
+
+                Text("v\(version)")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .foregroundStyle(Color.primary.opacity(0.40))
+            }
 
             Text("24 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
