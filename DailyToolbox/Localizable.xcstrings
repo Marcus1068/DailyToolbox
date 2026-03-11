@@ -304,7 +304,40 @@
       }
     },
     "°C · °F · K": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Temperature converter subtitle — unit symbols unchanged",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C · °F · K"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C · °F · K"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C · °F · K"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C · °F · K"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C · °F · K"
+          }
+        }
+      }
     },
     "°F": {
       "shouldTranslate": false,
@@ -6549,7 +6582,40 @@
       }
     },
     "HEX · RGB · HSB · CMYK": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Color picker subtitle — abbreviations unchanged",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEX · RGB · HSB · CMYK"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEX · RGB · HSB · CMYK"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEX · RGB · HSB · CMYK"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEX · RGB · HSB · CMYK"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEX · RGB · HSB · CMYK"
+          }
+        }
+      }
     },
     "Hexadecimal": {
       "localizations": {
@@ -15257,6 +15323,76 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pericoloso – stare in ambienti con aria condizionata"
+          }
+        }
+      }
+    },
+    "Feels-like · Heat index": {
+      "comment": "WindChillView tool subtitle in grid",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gefühlte Temp. · Hitzeindex"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatura percepita · Indice di calore"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensación térmica · Índice de calor"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oplevet temperatur · Varmeindeks"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Température ressentie · Indice de chaleur"
+          }
+        }
+      }
+    },
+    "Solar times · Golden hour": {
+      "comment": "SunriseView tool subtitle in grid",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenzeiten · Goldene Stunde"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orari solari · Ora d'oro"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horarios solares · Hora dorada"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soltider · Den gyldne time"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horaires solaires · Heure dorée"
           }
         }
       }
