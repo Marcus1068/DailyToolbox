@@ -268,13 +268,79 @@
       "shouldTranslate": false
     },
     "°C": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Celsius unit symbol",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°C"
+          }
+        }
+      }
     },
     "°C · °F · K": {
       "shouldTranslate": false
     },
     "°F": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Fahrenheit unit symbol",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°F"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°F"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°F"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°F"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "°F"
+          }
+        }
+      }
     },
     "→": {},
     "±": {
@@ -6519,7 +6585,41 @@
         }
       }
     },
-    "HI = −8.78 + 1.61·T + 2.34·RH − 0.15·T·RH − …": {},
+    "HI = −8.78 + 1.61·T + 2.34·RH − 0.15·T·RH − …": {
+      "comment": "Heat index formula expression",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        }
+      }
+    },
     "Hidden Network": {
       "comment": "QR code WiFi form: hidden network toggle label",
       "localizations": {
@@ -7313,8 +7413,40 @@
       "shouldTranslate": false
     },
     "km/h": {
-      "comment": "Unit converter: kilometers per hour — universal abbreviation",
-      "shouldTranslate": false
+      "comment": "Speed unit",
+      "shouldTranslate": false,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "km/h"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "km/h"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "km/h"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "km/h"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "km/h"
+          }
+        }
+      }
     },
     "Knots": {
       "comment": "Unit converter: knot speed unit label",
@@ -8674,8 +8806,40 @@
       "comment": "Time of day label"
     },
     "mph": {
-      "comment": "Unit converter: miles per hour — universal abbreviation",
-      "shouldTranslate": false
+      "comment": "Speed unit (miles per hour)",
+      "shouldTranslate": false,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mph"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mph"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mph"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mph"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mph"
+          }
+        }
+      }
     },
     "Network Name (SSID)": {
       "comment": "QR code WiFi form: SSID field label",
@@ -8885,8 +9049,76 @@
         }
       }
     },
-    "No significant wind chill or heat index effect at these conditions. Feels-like equals air temperature.": {},
-    "NOAA Wind Chill (T ≤ 10°C, wind ≥ 4.8 km/h)": {},
+    "No significant wind chill or heat index effect at these conditions. Feels-like equals air temperature.": {
+      "comment": "Formula card: no formula active",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein nennenswerter Windkälte- oder Hitzeindexeffekt. Gefühlte Temperatur entspricht der Lufttemperatur."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nessun effetto significativo di raffreddamento eolico o indice di calore. La temperatura percepita equivale a quella dell'aria."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin efecto significativo de sensación térmica o índice de calor. La temperatura aparente es igual a la temperatura del aire."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingen væsentlig vindafkøling eller varmeindekseffekt. Den oplevede temperatur svarer til lufttemperaturen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun effet de refroidissement éolien ou d'indice de chaleur significatif. La température ressentie est égale à la température de l'air."
+          }
+        }
+      }
+    },
+    "NOAA Wind Chill (T ≤ 10°C, wind ≥ 4.8 km/h)": {
+      "comment": "Formula source label",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOAA Windkälte (T ≤ 10 °C, Wind ≥ 4,8 km/h)"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raffreddamento eolico NOAA (T ≤ 10 °C, vento ≥ 4,8 km/h)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensación térmica NOAA (T ≤ 10 °C, viento ≥ 4,8 km/h)"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOAA vindafkøling (T ≤ 10 °C, vind ≥ 4,8 km/h)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refroidissement éolien NOAA (T ≤ 10 °C, vent ≥ 4,8 km/h)"
+          }
+        }
+      }
+    },
     "None": {
       "comment": "QR code WiFi security: no encryption",
       "localizations": {
@@ -11073,7 +11305,41 @@
         }
       }
     },
-    "Rothfusz Heat Index (T ≥ 27°C, RH ≥ 40%)": {},
+    "Rothfusz Heat Index (T ≥ 27°C, RH ≥ 40%)": {
+      "comment": "Formula source label",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rothfusz Hitzeindex (T ≥ 27 °C, LF ≥ 40 %)"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indice di calore Rothfusz (T ≥ 27 °C, UR ≥ 40 %)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Índice de calor Rothfusz (T ≥ 27 °C, HR ≥ 40 %)"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rothfusz varmeindeks (T ≥ 27 °C, RF ≥ 40 %)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indice de chaleur Rothfusz (T ≥ 27 °C, HR ≥ 40 %)"
+          }
+        }
+      }
+    },
     "Round Up": {
       "comment": "Tip splitter: toggle label — round per-person amount up to nearest whole number",
       "localizations": {
@@ -13801,7 +14067,41 @@
         }
       }
     },
-    "WC = 13.12 + 0.6215·T − 11.37·V⁰·¹⁶ + 0.3965·T·V⁰·¹⁶": {},
+    "WC = 13.12 + 0.6215·T − 11.37·V⁰·¹⁶ + 0.3965·T·V⁰·¹⁶": {
+      "comment": "Wind chill formula expression",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
+          }
+        }
+      }
+    },
     "Website or Link": {
       "comment": "QR code URL form: field label",
       "localizations": {
