@@ -210,6 +210,40 @@ struct HorizonView: View {
     @State private var locationManager = HorizonLocationManager()
     @State private var eyeLevelText:    String  = "1.70"
     @FocusState private var focused:    Bool
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive accent colors (dark: bright/light tones; light: darker/saturated)
+
+    private var blueAccent: Color {
+        colorScheme == .dark
+            ? Color(red: 0.45, green: 0.74, blue: 1.00)
+            : Color(red: 0.08, green: 0.42, blue: 0.88)
+    }
+    private var greenAccent: Color {
+        colorScheme == .dark
+            ? Color(red: 0.28, green: 0.88, blue: 0.65)
+            : Color(red: 0.05, green: 0.58, blue: 0.38)
+    }
+    private var goldAccent: Color {
+        colorScheme == .dark
+            ? Color(red: 1.00, green: 0.82, blue: 0.22)
+            : Color(red: 0.68, green: 0.48, blue: 0.00)
+    }
+    private var cyanAccent: Color {
+        colorScheme == .dark
+            ? Color(red: 0.55, green: 0.88, blue: 1.00)
+            : Color(red: 0.08, green: 0.46, blue: 0.78)
+    }
+    private var glassTintBlue: Color {
+        colorScheme == .dark
+            ? Color(red: 0.03, green: 0.10, blue: 0.38)
+            : Color(red: 0.60, green: 0.78, blue: 1.00)
+    }
+    private var glassTintGold: Color {
+        colorScheme == .dark
+            ? Color(red: 0.10, green: 0.08, blue: 0.01)
+            : Color(red: 1.00, green: 0.90, blue: 0.60)
+    }
 
     // MARK: Computed
 
@@ -337,7 +371,7 @@ struct HorizonView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("GPS Altitude")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color(red: 0.45, green: 0.74, blue: 1.0).opacity(0.85))
+                    .foregroundStyle(blueAccent.opacity(0.90))
 
                 Group {
                     if locationManager.isSearching {
@@ -370,8 +404,7 @@ struct HorizonView: View {
                     RoundedRectangle(cornerRadius: 3)
                         .fill(
                             LinearGradient(
-                                colors: [Color(red: 0.30, green: 0.60, blue: 1.0),
-                                         Color(red: 0.55, green: 0.88, blue: 1.0)],
+                                colors: [blueAccent.opacity(0.80), cyanAccent],
                                 startPoint: .bottom, endPoint: .top
                             )
                         )
@@ -383,7 +416,7 @@ struct HorizonView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .glassEffect(
-            .regular.tint(Color(red: 0.03, green: 0.10, blue: 0.38)),
+            .regular.tint(glassTintBlue),
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
     }
@@ -395,16 +428,16 @@ struct HorizonView: View {
             HStack(spacing: 10) {
                 ZStack {
                     Circle()
-                        .fill(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.14))
+                        .fill(greenAccent.opacity(0.14))
                         .frame(width: 38, height: 38)
                     Image(systemName: "eye")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65))
+                        .foregroundStyle(greenAccent)
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Eye Level")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color(red: 0.28, green: 0.88, blue: 0.65).opacity(0.88))
+                        .foregroundStyle(greenAccent.opacity(0.90))
                     Text("Your eyes above ground")
                         .font(.caption2)
                         .foregroundStyle(Color.primary.opacity(0.35))
@@ -436,7 +469,7 @@ struct HorizonView: View {
                     .focused($focused)
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(Color(red: 0.28, green: 0.88, blue: 0.65))
+                    .tint(greenAccent)
                     .onChange(of: eyeLevelText) { _, new in
                         let s = new.replacingOccurrences(of: ",", with: ".")
                         if s != new { eyeLevelText = s }
@@ -467,7 +500,7 @@ struct HorizonView: View {
             HStack {
                 Text("Horizon Distance")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color(red: 1.00, green: 0.82, blue: 0.22).opacity(0.85))
+                    .foregroundStyle(goldAccent.opacity(0.90))
                 Spacer()
                 Image(systemName: "arrow.forward.to.line")
                     .font(.caption)
@@ -478,8 +511,7 @@ struct HorizonView: View {
                     .font(.system(size: 54, weight: .black, design: .rounded).monospacedDigit())
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color(red: 1.00, green: 0.85, blue: 0.28),
-                                     Color(red: 1.00, green: 0.60, blue: 0.18)],
+                            colors: [goldAccent, goldAccent.opacity(0.70)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -496,7 +528,7 @@ struct HorizonView: View {
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
         .glassEffect(
-            .regular.tint(Color(red: 0.10, green: 0.08, blue: 0.01)),
+            .regular.tint(glassTintGold),
             in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
     }
@@ -525,7 +557,7 @@ struct HorizonView: View {
 
             Text("d = 3.57 × √( \(altStr) + \(eyeStr) ) = \(distStr) km")
                 .font(.caption.monospacedDigit())
-                .foregroundStyle(Color(red: 0.55, green: 0.88, blue: 1.0).opacity(0.72))
+                .foregroundStyle(cyanAccent.opacity(0.85))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(16)
