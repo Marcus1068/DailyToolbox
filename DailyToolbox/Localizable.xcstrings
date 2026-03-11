@@ -102,11 +102,97 @@
     "%@-bit": {
       "shouldTranslate": false
     },
+    "%@%@°": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@%2$@°"
+          }
+        }
+      }
+    },
     "%@%%": {
       "shouldTranslate": false
     },
     "%@W": {
       "shouldTranslate": false
+    },
+    "%dh %02dm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$dh %2$02dm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dh %02dm"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dh %02dm"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dh %02dm"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dh %02dm"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dh %02dm"
+          }
+        }
+      },
+      "comment": "Duration format: hours and minutes"
+    },
+    "%dm": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dm"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dm"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dm"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dm"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%dm"
+          }
+        }
+      },
+      "comment": "Duration format: minutes only"
     },
     "%lld Tage": {
       "extractionState": "manual",
@@ -190,6 +276,7 @@
     "°F": {
       "shouldTranslate": false
     },
+    "→": {},
     "±": {
       "shouldTranslate": false
     },
@@ -687,6 +774,41 @@
           }
         }
       }
+    },
+    "Air temp:": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lufttemp.:"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temp. aria:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temp. aire:"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lufttemp.:"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temp. air :"
+          }
+        }
+      },
+      "comment": "Short label for current air temperature"
     },
     "Amount": {
       "comment": "Currency converter: input amount label",
@@ -2315,6 +2437,76 @@
         }
       }
     },
+    "Civil Dawn": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bürgerliche Morgendämmerung"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alba civile"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurora civil"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borgerlig daggry"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aube civile"
+          }
+        }
+      },
+      "comment": "Astronomical twilight event"
+    },
+    "Civil Dusk": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bürgerliche Abenddämmerung"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crepuscolo civile"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crepúsculo civil"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borgerlig tusmørke"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crépuscule civil"
+          }
+        }
+      },
+      "comment": "Astronomical twilight event"
+    },
     "Clear": {
       "comment": "Button: clear all input fields",
       "localizations": {
@@ -3434,6 +3626,41 @@
         }
       }
     },
+    "d = 1.22 × √( altitude + eye level )": {
+      "comment": "Horizon formula in miles",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( højde + øjenhøjde )"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( Höhe + Augenhöhe )"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitud + nivel ojos )"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitude + hauteur yeux )"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitudine + livello occhi )"
+          }
+        }
+      }
+    },
     "d = 3.57 × √( %@ + %@ ) = %@ km": {
       "extractionState": "stale",
       "localizations": {
@@ -3720,6 +3947,41 @@
           }
         }
       }
+    },
+    "Day Length": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tageslänge"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durata del giorno"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duración del día"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daglængde"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durée du jour"
+          }
+        }
+      },
+      "comment": "Duration of daylight"
     },
     "days": {
       "comment": "Calendar: days label",
@@ -4171,6 +4433,41 @@
         }
       }
     },
+    "Elevation": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevation"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevazione"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevación"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevation"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Élévation"
+          }
+        }
+      },
+      "comment": "Sun elevation angle label"
+    },
     "Email Address": {
       "comment": "QR code contact form: email field label",
       "localizations": {
@@ -4417,6 +4714,41 @@
     },
     "ES↔DE": {
       "shouldTranslate": false
+    },
+    "Evening": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abend"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sera"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarde"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aften"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soir"
+          }
+        }
+      },
+      "comment": "Time of day label"
     },
     "Event title": {
       "comment": "Calendar event alert text field placeholder",
@@ -5183,6 +5515,41 @@
         }
       }
     },
+    "ft": {
+      "comment": "Feet unit abbreviation",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        }
+      }
+    },
     "Fuel & Trip Cost": {
       "localizations": {
         "da": {
@@ -5627,6 +5994,41 @@
           }
         }
       }
+    },
+    "Golden Hour": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ora d'oro"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora dorada"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Den gyldne time"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure dorée"
+          }
+        }
+      },
+      "comment": "Photography/lighting term"
     },
     "GPS Altitude": {
       "localizations": {
@@ -6117,6 +6519,7 @@
         }
       }
     },
+    "HI = −8.78 + 1.61·T + 2.34·RH − 0.15·T·RH − …": {},
     "Hidden Network": {
       "comment": "QR code WiFi form: hidden network toggle label",
       "localizations": {
@@ -6437,6 +6840,41 @@
           }
         }
       }
+    },
+    "in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tra"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "en"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "om"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dans"
+          }
+        }
+      },
+      "comment": "Preposition: event happens in X minutes"
     },
     "in %lld Tagen": {
       "extractionState": "manual",
@@ -7364,6 +7802,76 @@
         }
       }
     },
+    "Locating…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortung…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Localizzazione…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Localizando…"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lokaliserer…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Localisation…"
+          }
+        }
+      },
+      "comment": "GPS searching status"
+    },
+    "Location permission needed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standortberechtigung erforderlich"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorizzazione posizione necessaria"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se necesita permiso de ubicación"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Placeringstilladelse nødvendig"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisation de localisation requise"
+          }
+        }
+      },
+      "comment": "GPS permission prompt"
+    },
     "Lock H": {
       "localizations": {
         "da": {
@@ -8130,6 +8638,41 @@
         }
       }
     },
+    "Morning": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mattino"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mañana"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matin"
+          }
+        }
+      },
+      "comment": "Time of day label"
+    },
     "mph": {
       "comment": "Unit converter: miles per hour — universal abbreviation",
       "shouldTranslate": false
@@ -8342,6 +8885,8 @@
         }
       }
     },
+    "No significant wind chill or heat index effect at these conditions. Feels-like equals air temperature.": {},
+    "NOAA Wind Chill (T ≤ 10°C, wind ≥ 4.8 km/h)": {},
     "None": {
       "comment": "QR code WiFi security: no encryption",
       "localizations": {
@@ -10528,6 +11073,7 @@
         }
       }
     },
+    "Rothfusz Heat Index (T ≥ 27°C, RH ≥ 40%)": {},
     "Round Up": {
       "comment": "Tip splitter: toggle label — round per-person amount up to nearest whole number",
       "localizations": {
@@ -11300,6 +11846,41 @@
         }
       }
     },
+    "Solar Noon": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenmittag"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mezzogiorno solare"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mediodía solar"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solmiddag"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Midi solaire"
+          }
+        }
+      },
+      "comment": "Solar event label"
+    },
     "Source: European Central Bank": {
       "localizations": {
         "da": {
@@ -11541,6 +12122,111 @@
           }
         }
       }
+    },
+    "Sunrise": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenaufgang"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alba"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amanecer"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solopgang"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lever du soleil"
+          }
+        }
+      },
+      "comment": "Solar event label"
+    },
+    "Sunrise & Sunset": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenauf- & -untergang"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alba e tramonto"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amanecer y atardecer"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solopgang & solnedgang"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lever & coucher du soleil"
+          }
+        }
+      },
+      "comment": "View / tool title"
+    },
+    "Sunset": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenuntergang"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tramonto"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atardecer"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solnedgang"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coucher du soleil"
+          }
+        }
+      },
+      "comment": "Solar event label"
     },
     "Surface Area": {
       "localizations": {
@@ -13115,6 +13801,7 @@
         }
       }
     },
+    "WC = 13.12 + 0.6215·T − 11.37·V⁰·¹⁶ + 0.3965·T·V⁰·¹⁶": {},
     "Website or Link": {
       "comment": "QR code URL form: field label",
       "localizations": {
@@ -13401,6 +14088,41 @@
         }
       }
     },
+    "yd": {
+      "comment": "Yards unit abbreviation",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        }
+      }
+    },
     "Year": {
       "comment": "Power consumption bar chart label",
       "localizations": {
@@ -13574,107 +14296,667 @@
         }
       }
     },
-    "yd": {
-      "comment": "Yards unit abbreviation",
+    "Frostbite Danger": {
+      "comment": "Wind chill comfort level",
       "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frostbidfare"
+          }
+        },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "yd"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yd"
+            "value": "Erfrierungsgefahr"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "yd"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yd"
+            "value": "Peligro de congelación"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "yd"
+            "value": "Danger d'engelures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pericolo di congelamento"
           }
         }
       }
     },
-    "ft": {
-      "comment": "Feet unit abbreviation",
+    "Very Cold": {
+      "comment": "Wind chill comfort level",
       "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meget koldt"
+          }
+        },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "ft"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ft"
+            "value": "Sehr kalt"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "ft"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ft"
+            "value": "Muy frío"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "ft"
+            "value": "Très froid"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Molto freddo"
           }
         }
       }
     },
-    "d = 1.22 × √( altitude + eye level )": {
-      "comment": "Horizon formula in miles",
+    "Very Hot": {
+      "comment": "Heat index comfort level",
       "localizations": {
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "d = 1,22 × √( højde + øjenhøjde )"
+            "value": "Meget varmt"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "d = 1,22 × √( Höhe + Augenhöhe )"
+            "value": "Sehr heiß"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "d = 1,22 × √( altitud + nivel ojos )"
+            "value": "Muy caluroso"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "d = 1,22 × √( altitude + hauteur yeux )"
+            "value": "Très chaud"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "d = 1,22 × √( altitudine + livello occhi )"
+            "value": "Molto caldo"
+          }
+        }
+      }
+    },
+    "Heat Stroke Danger": {
+      "comment": "Heat index comfort level",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varmeslagfare"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hitzschlaggefahr"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peligro de golpe de calor"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danger de coup de chaleur"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pericolo di colpo di calore"
+          }
+        }
+      }
+    },
+    "Wind Chill": {
+      "comment": "Wind chill calculation mode label",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vindafkøling"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windkälte"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensación térmica por viento"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refroidissement éolien"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raffreddamento da vento"
+          }
+        }
+      }
+    },
+    "Heat Index": {
+      "comment": "Heat index calculation mode label",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varmeindeks"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hitzeindex"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Índice de calor"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indice de chaleur"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indice di calore"
+          }
+        }
+      }
+    },
+    "Apparent Temperature": {
+      "comment": "Wind chill mode when no formula applies",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tilsyneladende temperatur"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gefühlte Temperatur"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatura aparente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Température apparente"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatura apparente"
+          }
+        }
+      }
+    },
+    "Air Temperature": {
+      "comment": "Input field label",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lufttemperatur"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lufttemperatur"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatura del aire"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Température de l'air"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatura dell'aria"
+          }
+        }
+      }
+    },
+    "Wind Speed": {
+      "comment": "Input field label",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vindhastighed"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windgeschwindigkeit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velocidad del viento"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vitesse du vent"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velocità del vento"
+          }
+        }
+      }
+    },
+    "Humidity": {
+      "comment": "Input field label",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luftfugtighed"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luftfeuchtigkeit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Humedad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Humidité"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umidità"
+          }
+        }
+      }
+    },
+    "Exposed skin can freeze in under 30 minutes": {
+      "comment": "Frostbite danger advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ubeskyttet hud kan fryse på under 30 minutter"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbedeckte Haut kann in weniger als 30 Minuten erfrieren"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La piel expuesta puede congelarse en menos de 30 minutos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La peau exposée peut geler en moins de 30 minutes"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pelle esposta può congelare in meno di 30 minuti"
+          }
+        }
+      }
+    },
+    "Dress in warm layers, limit time outdoors": {
+      "comment": "Very cold advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klæd dig i varme lag, begræns tid udendørs"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warme Kleidungsschichten anziehen, Aufenthalt im Freien begrenzen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vestirse en capas abrigadas, limitar el tiempo al aire libre"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Habillez-vous en couches chaudes, limitez le temps en extérieur"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vestirsi a strati caldi, limitare il tempo all'aperto"
+          }
+        }
+      }
+    },
+    "Warm clothing required": {
+      "comment": "Cold advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varmt tøj påkrævet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warme Kleidung erforderlich"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se requiere ropa abrigada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vêtements chauds requis"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indumenti caldi necessari"
+          }
+        }
+      }
+    },
+    "Light jacket recommended": {
+      "comment": "Cool advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Let jakke anbefales"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leichte Jacke empfohlen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se recomienda chaqueta ligera"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veste légère recommandée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giacca leggera consigliata"
+          }
+        }
+      }
+    },
+    "Pleasant conditions for outdoor activity": {
+      "comment": "Comfortable advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behagelige forhold for udendørs aktivitet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angenehme Bedingungen für Outdoor-Aktivitäten"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Condiciones agradables para actividades al aire libre"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conditions agréables pour les activités de plein air"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Condizioni piacevoli per attività all'aperto"
+          }
+        }
+      }
+    },
+    "Light clothing, stay hydrated": {
+      "comment": "Warm advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Let beklædning, hold dig hydreret"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leichte Kleidung, ausreichend Flüssigkeit trinken"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ropa ligera, mantenerse hidratado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vêtements légers, restez hydraté"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbigliamento leggero, rimanere idratati"
+          }
+        }
+      }
+    },
+    "Drink water regularly, seek shade": {
+      "comment": "Hot advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drik vand regelmæssigt, søg skygge"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regelmäßig Wasser trinken, Schatten aufsuchen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beber agua regularmente, buscar sombra"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buvez de l'eau régulièrement, cherchez l'ombre"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bere acqua regolarmente, cercare ombra"
+          }
+        }
+      }
+    },
+    "Limit strenuous activity, risk of heat exhaustion": {
+      "comment": "Very hot advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Begræns hård aktivitet, risiko for hedeudmattelse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anstrengende Aktivitäten begrenzen, Erschöpfungsrisiko"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitar actividad extenuante, riesgo de agotamiento por calor"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitez l'activité intense, risque d'épuisement par la chaleur"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitare le attività faticose, rischio di esaurimento da calore"
+          }
+        }
+      }
+    },
+    "Dangerous — stay indoors in air conditioning": {
+      "comment": "Heat stroke danger advisory",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Farligt – bliv indendørs med aircondition"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gefährlich – im Inneren mit Klimaanlage bleiben"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peligroso — quédese en interiores con aire acondicionado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dangereux — restez à l'intérieur avec la climatisation"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pericoloso – stare in ambienti con aria condizionata"
           }
         }
       }
