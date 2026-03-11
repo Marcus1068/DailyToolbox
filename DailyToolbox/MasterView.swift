@@ -211,7 +211,8 @@ struct MasterView: View {
                     .foregroundStyle(Color.primary.opacity(0.40))
             }
 
-            Text("24 built-in tools")
+            let toolCount = ToolSection.catalogue.flatMap(\.items).count
+            Text("\(toolCount) built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.primary.opacity(0.55))
         }
