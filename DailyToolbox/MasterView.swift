@@ -93,6 +93,7 @@ struct MasterView: View {
     let onSelect: (ToolItem) -> Void
 
     private let columns = [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 14)]
+    @State private var showAbout = false
 
     var body: some View {
         ZStack {
@@ -135,8 +136,28 @@ struct MasterView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) { Color.clear }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showAbout = true
+                } label: {
+                    Image(systemName: "info.circle.fill")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.85))
+                }
+            }
         }
         .toolbarBackground(.hidden, for: .navigationBar)
+        .sheet(isPresented: $showAbout) {
+            NavigationStack {
+                AboutView()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button("Done") { showAbout = false }
+                                .fontWeight(.semibold)
+                        }
+                    }
+            }
+        }
     }
 
     private var appHeader: some View {
