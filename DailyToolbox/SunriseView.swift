@@ -23,6 +23,7 @@ limitations under the License.
 
 import SwiftUI
 import CoreLocation
+import MapKit
 
 // MARK: - Location Manager
 
@@ -38,8 +39,7 @@ final class SunLocationManager: NSObject {
         authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways
     }
 
-    private let manager  = CLLocationManager()
-    private let geocoder = CLGeocoder()
+    private let manager = CLLocationManager()
 
     override init() {
         super.init()
@@ -58,19 +58,18 @@ final class SunLocationManager: NSObject {
 extension SunLocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.last else { return }
+        // Update coordinate/searching state on main actor immediately
         Task { @MainActor [weak self] in
-            guard let self else { return }
-            coordinate  = loc.coordinate
-            isSearching = false
-            geocoder.reverseGeocodeLocation(loc) { placemarks, _ in
-                Task { @MainActor [weak self] in
-                    guard let self else { return }
-                    if let p = placemarks?.first {
-                        locationName = [p.locality, p.country]
-                            .compactMap { $0 }.joined(separator: ", ")
-                    }
-                }
-            }
+            self?.coordinate  = loc.coordinate
+            self?.isSearching = false
+        }
+        // Geocode in a detached nonisolated Task — MKReverseGeocodingRequest is not Sendable
+        Task.detached { [weak self] in
+            guard let request = MKReverseGeocodingRequest(location: loc),
+                  let items   = try? await request.mapItems,
+                  let repr    = items.first?.addressRepresentations else { return }
+            let name = repr.cityWithContext(.automatic) ?? repr.cityName ?? ""
+            await MainActor.run { [weak self] in self?.locationName = name }
         }
     }
 
