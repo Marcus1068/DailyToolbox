@@ -65,8 +65,20 @@ struct FuelCostView: View {
 
     @State private var result: FuelResult? = nil
     @FocusState private var focused: Int?
+    @Environment(\.colorScheme) private var colorScheme
 
-    private let accent = Color(red: 0.35, green: 0.90, blue: 0.70)
+    private var accent: Color {
+        colorScheme == .dark ? Color(red: 0.35, green: 0.90, blue: 0.70)
+                             : Color(red: 0.05, green: 0.58, blue: 0.38)
+    }
+    private var fuelColor: Color {
+        colorScheme == .dark ? Color(red: 0.80, green: 1.00, blue: 0.65)
+                             : Color(red: 0.15, green: 0.55, blue: 0.20)
+    }
+    private var costColor: Color {
+        colorScheme == .dark ? Color(red: 0.55, green: 0.85, blue: 1.00)
+                             : Color(red: 0.08, green: 0.45, blue: 0.80)
+    }
 
     // Labels
     private var distanceLabel: LocalizedStringKey {
@@ -175,7 +187,7 @@ struct FuelCostView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle().fill(LinearGradient(
-                    colors: [Color(red:0.25,green:0.85,blue:0.60), Color(red:0.10,green:0.65,blue:0.45)],
+                    colors: [accent, accent.opacity(0.70)],
                     startPoint: .topLeading, endPoint: .bottomTrailing))
                 Image(systemName: "fuelpump.fill")
                     .font(.title2).foregroundStyle(Color.primary)
@@ -306,10 +318,10 @@ struct FuelCostView: View {
 
             HStack(spacing: 0) {
                 resultCell(label: "Fuel Needed", value: res.fuelString,
-                           color: Color(red:0.80,green:1.00,blue:0.65))
+                           color: fuelColor)
                 Divider().frame(height: 50).overlay(Color.primary.opacity(0.10))
                 resultCell(label: "Cost per Unit", value: res.costPerUnitString,
-                           color: Color(red:0.55,green:0.85,blue:1.00))
+                           color: costColor)
             }
             .padding(.vertical, 14)
         }
