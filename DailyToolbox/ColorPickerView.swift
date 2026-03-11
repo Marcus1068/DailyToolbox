@@ -47,13 +47,30 @@ struct ColorPickerView: View {
     @State private var rgbCopied  = false
     @State private var hsbCopied  = false
     @State private var cmykCopied = false
+    @Environment(\.colorScheme) private var colorScheme
 
-    // MARK: - Accent Colors
+    // MARK: - Accent Colors (adaptive: light tones in dark mode, saturated/dark in light mode)
 
-    private let hexAccent  = Color(red: 0.85, green: 0.75, blue: 1.00)
-    private let rgbAccent  = Color(red: 1.00, green: 0.55, blue: 0.55)
-    private let hsbAccent  = Color(red: 0.55, green: 0.85, blue: 1.00)
-    private let cmykAccent = Color(red: 0.45, green: 0.95, blue: 0.65)
+    private var hexAccent:  Color {
+        colorScheme == .dark ? Color(red: 0.85, green: 0.75, blue: 1.00)
+                             : Color(red: 0.45, green: 0.15, blue: 0.80)
+    }
+    private var rgbAccent:  Color {
+        colorScheme == .dark ? Color(red: 1.00, green: 0.55, blue: 0.55)
+                             : Color(red: 0.80, green: 0.08, blue: 0.08)
+    }
+    private var hsbAccent:  Color {
+        colorScheme == .dark ? Color(red: 0.55, green: 0.85, blue: 1.00)
+                             : Color(red: 0.08, green: 0.45, blue: 0.85)
+    }
+    private var cmykAccent: Color {
+        colorScheme == .dark ? Color(red: 0.45, green: 0.95, blue: 0.65)
+                             : Color(red: 0.05, green: 0.58, blue: 0.32)
+    }
+    private var copiedColor: Color {
+        colorScheme == .dark ? Color(red: 0.40, green: 1.00, blue: 0.60)
+                             : Color(red: 0.05, green: 0.58, blue: 0.32)
+    }
 
     // MARK: - Derived
 
@@ -314,7 +331,7 @@ struct ColorPickerView: View {
                 } label: {
                     Text(hexCopied ? "✓" : "Copy")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(hexCopied ? Color(red: 0.40, green: 1.00, blue: 0.60) : hexAccent.opacity(0.75))
+                        .foregroundStyle(hexCopied ? copiedColor : hexAccent.opacity(0.75))
                         .frame(minWidth: 44)
                 }
                 .buttonStyle(.plain)
@@ -360,7 +377,7 @@ struct ColorPickerView: View {
                 } label: {
                     Text(rgbCopied ? "✓" : "Copy")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(rgbCopied ? Color(red: 0.40, green: 1.00, blue: 0.60) : rgbAccent.opacity(0.75))
+                        .foregroundStyle(rgbCopied ? copiedColor : rgbAccent.opacity(0.75))
                         .frame(minWidth: 44)
                 }
                 .buttonStyle(.plain)
@@ -395,7 +412,7 @@ struct ColorPickerView: View {
                 } label: {
                     Text(hsbCopied ? "✓" : "Copy")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(hsbCopied ? Color(red: 0.40, green: 1.00, blue: 0.60) : hsbAccent.opacity(0.75))
+                        .foregroundStyle(hsbCopied ? copiedColor : hsbAccent.opacity(0.75))
                         .frame(minWidth: 44)
                 }
                 .buttonStyle(.plain)
@@ -430,7 +447,7 @@ struct ColorPickerView: View {
                 } label: {
                     Text(cmykCopied ? "✓" : "Copy")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(cmykCopied ? Color(red: 0.40, green: 1.00, blue: 0.60) : cmykAccent.opacity(0.75))
+                        .foregroundStyle(cmykCopied ? copiedColor : cmykAccent.opacity(0.75))
                         .frame(minWidth: 44)
                 }
                 .buttonStyle(.plain)
