@@ -424,7 +424,40 @@
       "shouldTranslate": false
     },
     "1 – 3999": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Valid range hint for Roman numeral input",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 – 3999"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 – 3999"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 – 3999"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 – 3999"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 – 3999"
+          }
+        }
+      }
     },
     "1 %@ = %@ %@": {
       "localizations": {
@@ -6931,7 +6964,40 @@
       }
     },
     "I V X L C D M": {
-      "shouldTranslate": false
+      "shouldTranslate": false,
+      "comment": "Roman numeral symbol reference row",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I V X L C D M"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I V X L C D M"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I V X L C D M"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I V X L C D M"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I V X L C D M"
+          }
+        }
+      }
     },
     "Ideal weight: %@ – %@": {
       "localizations": {
