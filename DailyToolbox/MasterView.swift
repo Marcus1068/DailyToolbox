@@ -77,6 +77,7 @@ extension ToolSection {
             ToolItem(id: "showCalendar",     name: "Calendar",       subtitle: "Date calculations",              icon: "calendar.circle.fill",           color: Color(red: 0.55, green: 0.10, blue: 0.82), segueId: "showCalendar"),
             ToolItem(id: "showGermanHolidays",name: "German Holidays",subtitle: "Public & school holidays",       icon: "flag.fill",                      color: Color(red: 0.85, green: 0.15, blue: 0.15), segueId: "showGermanHolidays"),
             ToolItem(id: "showHorizon",      name: "Horizon",        subtitle: "Visibility range",               icon: "binoculars.fill",                color: Color(red: 0.10, green: 0.58, blue: 0.90), segueId: "showHorizon"),
+            ToolItem(id: "showSunrise",      name: "Sunrise & Sunset", subtitle: "Solar times · Golden hour",    icon: "sun.horizon.fill",               color: Color(red: 1.00, green: 0.72, blue: 0.10), segueId: "showSunrise"),
             ToolItem(id: "showBenchmark",    name: "Benchmark",      subtitle: "Device speed",                   icon: "speedometer",                    color: Color(red: 0.00, green: 0.82, blue: 1.00), segueId: "showBenchmark"),
             ToolItem(id: "showAbout",        name: "About",          subtitle: "DailyToolbox",                   icon: "info.circle.fill",               color: Color(red: 0.20, green: 0.50, blue: 1.00), segueId: "showAbout"),
         ]),

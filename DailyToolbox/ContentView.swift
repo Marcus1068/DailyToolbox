@@ -66,6 +66,7 @@ struct ContentView: View {
         case "showHolidays":     GermanHolidaysView()
         case "showCalendar":     CalendarCalculationView()
         case "showHorizon":      HorizonView()
+        case "showSunrise":      SunriseView()
         case "showBenchmark":    BenchmarkView()
         case "showAbout":        AboutView()
         default:                 ToolPlaceholder()

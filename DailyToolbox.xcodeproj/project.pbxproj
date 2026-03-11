@@ -56,6 +56,7 @@
 		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
 		DA89F60DBDBB571877892DDA /* FuelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */; };
 		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
+		ED594AE3762CE492FA6BD580 /* SunriseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889001BC656E4FB1229CE5D /* SunriseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1889001BC656E4FB1229CE5D /* SunriseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunriseView.swift; sourceTree = "<group>"; };
 		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
 		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				2CBF5EE22F5E1562009575C2 /* LoanCalculatorView.swift */,
 				98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */,
 				2CBF5EE42F5E15A8009575C2 /* BMIView.swift */,
+				1889001BC656E4FB1229CE5D /* SunriseView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				2CBF5EE52F5E15A8009575C2 /* BMIView.swift in Sources */,
 				2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */,
 				2CA494A924522AB300E61CC5 /* Global.swift in Sources */,
+				ED594AE3762CE492FA6BD580 /* SunriseView.swift in Sources */,
 			);
 		};
 		2CBD867A23F6AA490011D886 /* Sources */ = {
