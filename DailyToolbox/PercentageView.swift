@@ -149,6 +149,18 @@ struct PercentageView: View {
 
     // MARK: Body
 
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive accent (bright teal in dark, deep teal in light)
+    private var tealAccent: Color {
+        colorScheme == .dark ? Color(red: 0.20, green: 0.85, blue: 0.72)
+                             : Color(red: 0.02, green: 0.55, blue: 0.42)
+    }
+    private var tealGlass: Color {
+        colorScheme == .dark ? Color(red: 0.10, green: 0.65, blue: 0.54)
+                             : Color(red: 0.02, green: 0.42, blue: 0.32)
+    }
+
     var body: some View {
         ZStack {
             background
@@ -205,11 +217,11 @@ struct PercentageView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 0.10, green: 0.75, blue: 0.60).opacity(0.22))
+                    .fill(tealAccent.opacity(0.22))
                     .frame(width: 54, height: 54)
                 Image(systemName: "percent")
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundStyle(Color(red: 0.20, green: 0.95, blue: 0.75))
+                    .foregroundStyle(tealAccent)
             }
             VStack(alignment: .leading, spacing: 4) {
                 Text("Percentage Calculation")
@@ -267,7 +279,7 @@ struct PercentageView: View {
     private func inputCard(field: PercentField, text: Binding<String>) -> some View {
         let isSolved = solvedField == field
         let accentColor: Color = isSolved
-            ? Color(red: 0.20, green: 0.95, blue: 0.75)
+            ? tealAccent
             : .white
 
         HStack(spacing: 14) {
@@ -291,7 +303,7 @@ struct PercentageView: View {
                     .focused($focusedField, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(Color(red: 0.20, green: 0.95, blue: 0.75))
+                    .tint(tealAccent)
                     .onChange(of: text.wrappedValue) { _, newVal in
                         // Ignore programmatic updates from calculate()
                         guard focusedField == field else { return }
@@ -311,7 +323,7 @@ struct PercentageView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .glassEffect(
-            isSolved ? .regular.tint(Color(red: 0.10, green: 0.60, blue: 0.50)) : .regular,
+            isSolved ? .regular.tint(tealGlass) : .regular,
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
@@ -335,7 +347,7 @@ struct PercentageView: View {
     private var resultBadge: some View {
         HStack(spacing: 10) {
             Image(systemName: "checkmark.circle.fill")
-                .foregroundStyle(Color(red: 0.20, green: 0.95, blue: 0.75))
+                .foregroundStyle(tealAccent)
                 .font(.system(size: 20))
             Text(resultSummary)
                 .font(.subheadline.weight(.medium))
@@ -344,7 +356,7 @@ struct PercentageView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .glassEffect(.regular.tint(Color(red: 0.05, green: 0.55, blue: 0.45)), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular.tint(tealGlass), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 

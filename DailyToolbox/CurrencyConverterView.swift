@@ -90,6 +90,17 @@ struct CurrencyConverterView: View {
     @State private var swapRotation: Double = 0
     @FocusState private var amountFocused: Bool
 
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var purpleAccent: Color  { colorScheme == .dark ? Color(red: 0.68, green: 0.56, blue: 1.0) : Color(red: 0.42, green: 0.18, blue: 0.88) }
+    private var purpleAccent2: Color { colorScheme == .dark ? Color(red: 0.90, green: 0.70, blue: 1.0) : Color(red: 0.55, green: 0.28, blue: 0.95) }
+    private var resultGradient: LinearGradient {
+        colorScheme == .dark
+            ? LinearGradient(colors: [Color(red: 0.80, green: 0.68, blue: 1.0), Color(red: 0.92, green: 0.78, blue: 1.0)], startPoint: .leading, endPoint: .trailing)
+            : LinearGradient(colors: [Color(red: 0.42, green: 0.18, blue: 0.88), Color(red: 0.55, green: 0.28, blue: 0.95)], startPoint: .leading, endPoint: .trailing)
+    }
+    private var glassTint: Color { colorScheme == .dark ? Color(red: 0.30, green: 0.10, blue: 0.55) : Color(red: 0.22, green: 0.08, blue: 0.45) }
+
     // Default init used at runtime
     init() {}
 
@@ -214,7 +225,7 @@ struct CurrencyConverterView: View {
                     .focused($amountFocused)
                     .font(.system(size: 44, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(Color(red: 0.68, green: 0.56, blue: 1.0))
+                    .tint(purpleAccent)
                     .onChange(of: amountText) { _, val in
                         amountText = val.replacingOccurrences(of: ",", with: ".")
                     }
@@ -240,7 +251,7 @@ struct CurrencyConverterView: View {
             currencyButton(
                 code: fromCurrency,
                 label: "From",
-                accentColor: Color(red: 0.68, green: 0.56, blue: 1.0)
+                accentColor: purpleAccent
             ) { showFromPicker = true }
 
             swapButton
@@ -248,7 +259,7 @@ struct CurrencyConverterView: View {
             currencyButton(
                 code: toCurrency,
                 label: "To",
-                accentColor: Color(red: 0.90, green: 0.70, blue: 1.0)
+                accentColor: purpleAccent2
             ) { showToPicker = true }
         }
     }
@@ -309,14 +320,7 @@ struct CurrencyConverterView: View {
                 Text(resultFormatted)
                     .font(.system(size: 44, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.80, green: 0.68, blue: 1.0),
-                                Color(red: 0.92, green: 0.78, blue: 1.0)
-                            ],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        resultGradient
                     )
                     .contentTransition(.numericText())
                     .animation(.spring(response: 0.3), value: resultFormatted)
@@ -333,7 +337,7 @@ struct CurrencyConverterView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
         .glassEffect(
-            .regular.tint(Color(red: 0.30, green: 0.10, blue: 0.55)),
+            .regular.tint(glassTint),
             in: RoundedRectangle(cornerRadius: 24, style: .continuous)
         )
     }

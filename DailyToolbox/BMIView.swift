@@ -61,6 +61,12 @@ private struct BodyResult {
 }
 
 struct BMIView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var coralAccent: Color  { colorScheme == .dark ? Color(red: 0.95, green: 0.45, blue: 0.35) : Color(red: 0.82, green: 0.22, blue: 0.18) }
+    private var salmonAccent: Color { colorScheme == .dark ? Color(red: 0.95, green: 0.60, blue: 0.25) : Color(red: 0.80, green: 0.42, blue: 0.08) }
+    private var headerGradient: LinearGradient { LinearGradient(colors: [colorScheme == .dark ? Color(red:0.95,green:0.45,blue:0.35) : Color(red:0.78,green:0.20,blue:0.15), colorScheme == .dark ? Color(red:0.80,green:0.25,blue:0.20) : Color(red:0.62,green:0.10,blue:0.08)], startPoint: .topLeading, endPoint: .bottomTrailing) }
+
     @State private var units: UnitSystem = .metric
     @State private var sex: BiologicalSex = .male
     @State private var ageText = ""; @State private var heightText = ""; @State private var weightText = ""
@@ -140,7 +146,7 @@ struct BMIView: View {
     private var headerCard: some View {
         HStack(spacing: 16) {
             ZStack {
-                Circle().fill(LinearGradient(colors: [Color(red:0.95,green:0.45,blue:0.35), Color(red:0.80,green:0.25,blue:0.20)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                Circle().fill(headerGradient)
                 Image(systemName: "figure.stand").font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
@@ -160,7 +166,7 @@ struct BMIView: View {
 
     private var inputCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Your Details").font(.subheadline.weight(.bold)).foregroundStyle(Color(red:1.00,green:0.60,blue:0.55))
+            Text("Your Details").font(.subheadline.weight(.bold)).foregroundStyle(coralAccent)
             HStack(spacing: 10) {
                 segmentedPicker(items: UnitSystem.allCases, selected: $units, label: \.localizedKey)
                 segmentedPicker(items: BiologicalSex.allCases, selected: $sex, label: \.localizedKey)
@@ -172,7 +178,7 @@ struct BMIView: View {
             bodyField(label: "Age (optional, for BMR)", placeholder: "30", text: $ageText, focusTag: 3)
             Button(action: calculate) {
                 Text("Calculate").font(.headline.weight(.bold)).foregroundStyle(.black).frame(maxWidth: .infinity).padding(.vertical, 14)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color(red:1.00,green:0.60,blue:0.55)))
+                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(coralAccent))
             }
             .buttonStyle(.plain)
         }
@@ -192,7 +198,7 @@ struct BMIView: View {
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                         .padding(.horizontal, 12).padding(.vertical, 8)
-                        .background(sel ? Color(red:1.00,green:0.60,blue:0.55) : Color.clear,
+                        .background(sel ? coralAccent : Color.clear,
                                     in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 }
                 .buttonStyle(.plain)
@@ -206,9 +212,9 @@ struct BMIView: View {
     @ViewBuilder
     private func bodyField(label: LocalizedStringKey, placeholder: LocalizedStringKey, text: Binding<String>, focusTag: Int) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(label).font(.caption.weight(.semibold)).foregroundStyle(Color(red:1.00,green:0.60,blue:0.55).opacity(0.80))
+            Text(label).font(.caption.weight(.semibold)).foregroundStyle(coralAccent.opacity(0.80))
             TextField(placeholder, text: text).keyboardType(.decimalPad).focused($focused, equals: focusTag)
-                .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(Color(red:1.00,green:0.60,blue:0.55))
+                .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(coralAccent)
                 .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
                 .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
         }
@@ -242,12 +248,14 @@ struct BMIView: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     LinearGradient(
-                        colors: [Color(red:0.35,green:0.75,blue:1.00), Color(red:0.35,green:0.90,blue:0.55), Color(red:1.00,green:0.78,blue:0.25), Color(red:1.00,green:0.40,blue:0.35)],
+                        colors: colorScheme == .dark
+                            ? [Color(red:0.35,green:0.75,blue:1.00), Color(red:0.35,green:0.90,blue:0.55), Color(red:1.00,green:0.78,blue:0.25), Color(red:1.00,green:0.40,blue:0.35)]
+                            : [Color(red:0.10,green:0.45,blue:0.88), Color(red:0.08,green:0.55,blue:0.28), Color(red:0.68,green:0.44,blue:0.00), Color(red:0.82,green:0.15,blue:0.10)],
                         startPoint: .leading, endPoint: .trailing
                     )
                     .frame(height: 10).clipShape(Capsule())
                     let frac = CGFloat(min(max(bmi, 10), 40) - 10) / 30.0
-                    Circle().fill(.white).frame(width: 14, height: 14).shadow(color: .black.opacity(0.4), radius: 3)
+                    Circle().fill(colorScheme == .dark ? Color.white : Color.black).frame(width: 14, height: 14).shadow(color: .black.opacity(0.4), radius: 3)
                         .offset(x: frac * geo.size.width - 7, y: -2)
                 }
             }
@@ -265,11 +273,11 @@ struct BMIView: View {
     @ViewBuilder
     private func bmrCard(_ res: BodyResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Basal Metabolic Rate").font(.subheadline.weight(.bold)).foregroundStyle(Color(red:1.00,green:0.60,blue:0.55))
+            Text("Basal Metabolic Rate").font(.subheadline.weight(.bold)).foregroundStyle(coralAccent)
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text(String(format: "%.0f", res.bmr))
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(Color(red:1.00,green:0.78,blue:0.55))
+                    .foregroundStyle(salmonAccent)
                 Text("kcal/day").font(.subheadline.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
             }
             Text("Calories your body burns at rest (Mifflin-St Jeor)").font(.caption).foregroundStyle(Color.primary.opacity(0.45))

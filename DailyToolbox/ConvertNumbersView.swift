@@ -84,6 +84,10 @@ private enum NumberBase: CaseIterable {
 
 private struct BitGridView: View {
     let decimal: Int
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var binaryGreen: Color { colorScheme == .dark ? Color(red: 0.20, green: 0.90, blue: 0.70) : Color(red: 0.02, green: 0.55, blue: 0.38) }
+    private var hexPurple: Color   { colorScheme == .dark ? Color(red: 0.75, green: 0.45, blue: 1.00) : Color(red: 0.48, green: 0.18, blue: 0.82) }
 
     private var bitWidth: Int {
         switch decimal {
@@ -103,7 +107,7 @@ private struct BitGridView: View {
             HStack {
                 Image(systemName: "square.grid.3x1.below.line.grid.1x2")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.80))
+                    .foregroundStyle(binaryGreen.opacity(0.80))
                 Text("Bit Pattern")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.primary.opacity(0.65))
@@ -141,7 +145,7 @@ private struct BitGridView: View {
                     let nibbleVal = nibble.reduce(0) { ($0 << 1) | ($1 ? 1 : 0) }
                     Text(String(nibbleVal, radix: 16).uppercased())
                         .font(.system(size: 10, weight: .bold, design: .monospaced))
-                        .foregroundStyle(Color(red: 0.75, green: 0.45, blue: 1.00).opacity(0.70))
+                        .foregroundStyle(hexPurple.opacity(0.70))
                         .frame(width: 4 * 22 + 3 * 3, alignment: .center)
                 }
             }
@@ -153,13 +157,13 @@ private struct BitGridView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 5, style: .continuous)
                 .fill(isOn
-                    ? Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.22)
+                    ? binaryGreen.opacity(0.22)
                     : Color.primary.opacity(0.05))
                 .overlay {
                     RoundedRectangle(cornerRadius: 5, style: .continuous)
                         .strokeBorder(
                             isOn
-                                ? Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.55)
+                                ? binaryGreen.opacity(0.55)
                                 : Color.primary.opacity(0.10),
                             lineWidth: 1
                         )
@@ -167,7 +171,7 @@ private struct BitGridView: View {
             Text(isOn ? "1" : "0")
                 .font(.system(size: 11, weight: .bold, design: .monospaced))
                 .foregroundStyle(isOn
-                    ? Color(red: 0.20, green: 0.90, blue: 0.70)
+                    ? binaryGreen
                     : Color.primary.opacity(0.22))
         }
         .frame(width: 22, height: 26)
@@ -192,6 +196,20 @@ struct ConvertNumbersView: View {
     @State private var hexText:     String = ""
     @State private var binaryText:  String = ""
     @FocusState private var focused: NumberBase?
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive accent colors
+    private var decimalAccent: Color { colorScheme == .dark ? Color(red: 1.00, green: 0.78, blue: 0.20) : Color(red: 0.68, green: 0.46, blue: 0.00) }
+    private var hexAccent:     Color { colorScheme == .dark ? Color(red: 0.75, green: 0.45, blue: 1.00) : Color(red: 0.48, green: 0.18, blue: 0.82) }
+    private var binaryAccent:  Color { colorScheme == .dark ? Color(red: 0.20, green: 0.90, blue: 0.70) : Color(red: 0.02, green: 0.55, blue: 0.38) }
+
+    private func adaptedAccent(for base: NumberBase) -> Color {
+        switch base {
+        case .decimal:     return decimalAccent
+        case .hexadecimal: return hexAccent
+        case .binary:      return binaryAccent
+        }
+    }
 
     // MARK: Helpers
 
@@ -297,16 +315,13 @@ struct ConvertNumbersView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 0.20, green: 0.90, blue: 0.70).opacity(0.15))
+                    .fill(binaryAccent.opacity(0.15))
                     .frame(width: 52, height: 52)
                 Image(systemName: "number.square.fill")
                     .font(.system(size: 26, weight: .bold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [
-                                Color(red: 0.20, green: 0.90, blue: 0.70),
-                                Color(red: 0.75, green: 0.45, blue: 1.00)
-                            ],
+                            colors: [binaryAccent, hexAccent],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -341,18 +356,18 @@ struct ConvertNumbersView: View {
             // Icon
             ZStack {
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(base.accentColor.opacity(0.15))
+                    .fill(adaptedAccent(for: base).opacity(0.15))
                     .frame(width: 44, height: 44)
                 Image(systemName: base.icon)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundStyle(base.accentColor)
+                    .foregroundStyle(adaptedAccent(for: base))
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(base.label)
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(base.accentColor.opacity(0.85))
+                        .foregroundStyle(adaptedAccent(for: base).opacity(0.85))
                     Text(base.shortLabel)
                         .font(.caption2)
                         .foregroundStyle(Color.primary.opacity(0.30))
@@ -364,7 +379,7 @@ struct ConvertNumbersView: View {
                     .focused($focused, equals: base)
                     .font(.system(size: 20, weight: .semibold, design: .monospaced))
                     .foregroundStyle(Color.primary)
-                    .tint(base.accentColor)
+                    .tint(adaptedAccent(for: base))
                     .onChange(of: text.wrappedValue) { _, newVal in
                         let filtered = filterInput(newVal, for: base)
                         if filtered != text.wrappedValue { text.wrappedValue = filtered }
@@ -402,7 +417,7 @@ struct ConvertNumbersView: View {
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
         .glassEffect(
-            .regular.tint(Color(red: 0.05, green: 0.25, blue: 0.20)),
+            .regular.tint(colorScheme == .dark ? Color(red: 0.05, green: 0.25, blue: 0.20) : Color(red: 0.02, green: 0.35, blue: 0.25)),
             in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))

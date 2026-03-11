@@ -170,6 +170,28 @@ struct TemperatureView: View {
     @State private var fahrenheitText: String = ""
     @State private var kelvinText:     String = ""
     @FocusState private var focused: TempField?
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive accent colors for unit fields
+
+    private func fieldAccent(_ f: TempField) -> Color {
+        switch f {
+        case .celsius:
+            return colorScheme == .dark ? Color(red: 1.00, green: 0.65, blue: 0.30)
+                                        : Color(red: 0.78, green: 0.35, blue: 0.00)
+        case .fahrenheit:
+            return colorScheme == .dark ? Color(red: 1.00, green: 0.82, blue: 0.40)
+                                        : Color(red: 0.68, green: 0.46, blue: 0.00)
+        case .kelvin:
+            return colorScheme == .dark ? Color(red: 0.90, green: 0.55, blue: 0.25)
+                                        : Color(red: 0.65, green: 0.30, blue: 0.00)
+        }
+    }
+
+    private var orangeAccent: Color {
+        colorScheme == .dark ? Color(red: 1.0, green: 0.82, blue: 0.4)
+                             : Color(red: 0.72, green: 0.40, blue: 0.00)
+    }
 
     // MARK: Helpers
 
@@ -241,15 +263,16 @@ struct TemperatureView: View {
 
     private var classification: TempClass? {
         guard let c = celsiusValue else { return nil }
+        let dark = colorScheme == .dark
         switch c {
-        case ..<(-20):  return ("Extreme Cold", "🧊", Color(red: 0.15, green: 0.35, blue: 0.95))
-        case (-20)..<0: return ("Freezing", "❄️", Color(red: 0.25, green: 0.60, blue: 0.95))
-        case 0..<10:    return ("Cold", "🌨", Color(red: 0.15, green: 0.70, blue: 0.85))
-        case 10..<18:   return ("Cool", "🌤", Color(red: 0.15, green: 0.80, blue: 0.55))
-        case 18..<26:   return ("Comfortable", "☀️", Color(red: 0.90, green: 0.78, blue: 0.15))
-        case 26..<37:   return ("Warm", "🌡️", Color(red: 1.00, green: 0.55, blue: 0.10))
-        case 37..<60:   return ("Hot", "🔥", Color(red: 0.95, green: 0.28, blue: 0.08))
-        default:        return ("Extreme Heat", "♨️", Color(red: 0.85, green: 0.08, blue: 0.05))
+        case ..<(-20):  return ("Extreme Cold", "🧊", dark ? Color(red: 0.15, green: 0.35, blue: 0.95) : Color(red: 0.10, green: 0.20, blue: 0.82))
+        case (-20)..<0: return ("Freezing",     "❄️", dark ? Color(red: 0.25, green: 0.60, blue: 0.95) : Color(red: 0.10, green: 0.38, blue: 0.88))
+        case 0..<10:    return ("Cold",         "🌨", dark ? Color(red: 0.15, green: 0.70, blue: 0.85) : Color(red: 0.05, green: 0.48, blue: 0.78))
+        case 10..<18:   return ("Cool",         "🌤", dark ? Color(red: 0.15, green: 0.80, blue: 0.55) : Color(red: 0.05, green: 0.55, blue: 0.32))
+        case 18..<26:   return ("Comfortable",  "☀️", dark ? Color(red: 0.90, green: 0.78, blue: 0.15) : Color(red: 0.62, green: 0.44, blue: 0.00))
+        case 26..<37:   return ("Warm",         "🌡️", dark ? Color(red: 1.00, green: 0.55, blue: 0.10) : Color(red: 0.80, green: 0.32, blue: 0.00))
+        case 37..<60:   return ("Hot",          "🔥", dark ? Color(red: 0.95, green: 0.28, blue: 0.08) : Color(red: 0.80, green: 0.12, blue: 0.00))
+        default:        return ("Extreme Heat", "♨️", dark ? Color(red: 0.85, green: 0.08, blue: 0.05) : Color(red: 0.72, green: 0.05, blue: 0.00))
         }
     }
 
@@ -311,14 +334,13 @@ struct TemperatureView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 1.0, green: 0.65, blue: 0.3).opacity(0.20))
+                    .fill(orangeAccent.opacity(0.20))
                     .frame(width: 52, height: 52)
                 Image(systemName: "thermometer.sun.fill")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color(red: 1.0, green: 0.82, blue: 0.4),
-                                     Color(red: 1.0, green: 0.50, blue: 0.15)],
+                            colors: [orangeAccent, orangeAccent.opacity(0.70)],
                             startPoint: .top, endPoint: .bottom
                         )
                     )
@@ -357,7 +379,7 @@ struct TemperatureView: View {
                 if let c = celsiusValue {
                     Text(c.formatted(.number.precision(.fractionLength(1))) + " °C")
                         .font(.caption.weight(.bold).monospacedDigit())
-                        .foregroundStyle(Color(red: 1.0, green: 0.82, blue: 0.4))
+                        .foregroundStyle(orangeAccent)
                         .contentTransition(.numericText())
                         .animation(.spring(response: 0.3), value: celsiusValue)
                 }
@@ -398,7 +420,7 @@ struct TemperatureView: View {
                             .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(text.wrappedValue.isEmpty
                                 ? Color.primary.opacity(0.35)
-                                : field.accentColor)
+                                : fieldAccent(field))
                             .frame(width: 36, height: 36)
                             .background(
                                 Circle()
@@ -424,24 +446,24 @@ struct TemperatureView: View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(field.accentColor.opacity(0.18))
+                    .fill(fieldAccent(field).opacity(0.18))
                     .frame(width: 44, height: 44)
                 Image(systemName: field.icon)
                     .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(field.accentColor)
+                    .foregroundStyle(fieldAccent(field))
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(field.label)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(field.accentColor.opacity(0.85))
+                    .foregroundStyle(fieldAccent(field).opacity(0.85))
 
                 TextField("0", text: text)
                     .keyboardType(.decimalPad)
                     .focused($focused, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(field.accentColor)
+                    .tint(fieldAccent(field))
                     .onChange(of: text.wrappedValue) { _, newVal in
                         // Ignore programmatic updates from calculate() — only
                         // process keystrokes from the field the user is typing in.

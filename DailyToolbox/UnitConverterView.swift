@@ -117,8 +117,24 @@ struct UnitConverterView: View {
     @State private var category: UnitCategory = .length
     @State private var texts: [String: String] = [:]
     @FocusState private var focusedId: String?
+    @Environment(\.colorScheme) private var colorScheme
 
     private var units: [UnitEntry] { category.units }
+
+    // MARK: Adaptive accent colors (bright in dark mode, deep/saturated in light)
+
+    private func adaptedAccent(for cat: UnitCategory) -> Color {
+        switch cat {
+        case .length: return colorScheme == .dark ? Color(red: 0.35, green: 0.78, blue: 1.00)
+                                                  : Color(red: 0.08, green: 0.42, blue: 0.88)
+        case .weight: return colorScheme == .dark ? Color(red: 0.50, green: 0.92, blue: 0.45)
+                                                  : Color(red: 0.12, green: 0.58, blue: 0.15)
+        case .volume: return colorScheme == .dark ? Color(red: 0.35, green: 0.85, blue: 0.95)
+                                                  : Color(red: 0.05, green: 0.48, blue: 0.80)
+        case .speed:  return colorScheme == .dark ? Color(red: 1.00, green: 0.82, blue: 0.28)
+                                                  : Color(red: 0.68, green: 0.46, blue: 0.00)
+        }
+    }
 
     // MARK: Helpers
 
@@ -237,16 +253,12 @@ struct UnitConverterView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 0.35, green: 0.78, blue: 1.00).opacity(0.20))
+                    .fill(adaptedAccent(for: category).opacity(0.20))
                     .frame(width: 52, height: 52)
                 Image(systemName: "arrow.left.arrow.right")
                     .font(.system(size: 22, weight: .semibold))
                     .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color(red: 0.50, green: 0.90, blue: 1.00),
-                                     Color(red: 0.20, green: 0.60, blue: 0.95)],
-                            startPoint: .top, endPoint: .bottom
-                        )
+                        LinearGradient(colors: [adaptedAccent(for: category), adaptedAccent(for: category).opacity(0.70)], startPoint: .top, endPoint: .bottom)
                     )
             }
             VStack(alignment: .leading, spacing: 4) {
@@ -287,7 +299,7 @@ struct UnitConverterView: View {
                             Text(cat.label)
                                 .font(.system(size: 10, weight: .semibold))
                         }
-                        .foregroundStyle(category == cat ? cat.accentColor : Color.primary.opacity(0.40))
+                        .foregroundStyle(category == cat ? adaptedAccent(for: cat) : Color.primary.opacity(0.40))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .background(
@@ -313,7 +325,7 @@ struct UnitConverterView: View {
         HStack(spacing: 12) {
             Image(systemName: "info.circle")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(category.accentColor.opacity(0.80))
+                .foregroundStyle(adaptedAccent(for: category).opacity(0.80))
             Text("Type in any field — all others update instantly.")
                 .font(.caption)
                 .foregroundStyle(Color.primary.opacity(0.60))
@@ -342,24 +354,24 @@ struct UnitConverterView: View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(entry.accentColor.opacity(0.18))
+                    .fill(adaptedAccent(for: category).opacity(0.18))
                     .frame(width: 44, height: 44)
                 Image(systemName: entry.icon)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundStyle(entry.accentColor)
+                    .foregroundStyle(adaptedAccent(for: category))
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(entry.label)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(entry.accentColor.opacity(0.85))
+                    .foregroundStyle(adaptedAccent(for: category).opacity(0.85))
 
                 TextField("0", text: binding)
                     .keyboardType(.decimalPad)
                     .focused($focusedId, equals: entry.id)
                     .font(.title3.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(entry.accentColor)
+                    .tint(adaptedAccent(for: category))
                     .onChange(of: binding.wrappedValue) { _, newVal in
                         guard focusedId == entry.id else { return }
                         let filtered = numericOnly(newVal)

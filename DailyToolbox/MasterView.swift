@@ -9,8 +9,23 @@
 */
 
 import SwiftUI
+import UIKit
 
-// MARK: - Data model
+// MARK: - Color helpers
+
+private extension Color {
+    /// Returns a darkened, more-saturated version for use in light mode,
+    /// where the original bright pastel would be hard to see on white glass.
+    func deepened() -> Color {
+        let ui = UIColor(self)
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        ui.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return Color(hue: h,
+                     saturation: min(s * 1.15, 1.0),
+                     brightness: b * 0.60,
+                     opacity: a)
+    }
+}
 
 struct ToolItem: Identifiable, Hashable {
     let id: String          // stable id = segueId
@@ -94,6 +109,36 @@ struct MasterView: View {
 
     private let columns = [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 14)]
     @State private var showAbout = false
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive mesh gradient colors
+
+    private var meshColors: [Color] {
+        if colorScheme == .dark {
+            return [
+                Color(red: 0.08, green: 0.10, blue: 0.28), Color(red: 0.10, green: 0.12, blue: 0.38), Color(red: 0.07, green: 0.09, blue: 0.30),
+                Color(red: 0.12, green: 0.10, blue: 0.40), Color(red: 0.16, green: 0.12, blue: 0.52), Color(red: 0.10, green: 0.11, blue: 0.38),
+                Color(red: 0.07, green: 0.10, blue: 0.26), Color(red: 0.11, green: 0.13, blue: 0.36), Color(red: 0.08, green: 0.09, blue: 0.28)
+            ]
+        } else {
+            return [
+                Color(red: 0.92, green: 0.93, blue: 0.97), Color(red: 0.88, green: 0.90, blue: 0.96), Color(red: 0.90, green: 0.92, blue: 0.97),
+                Color(red: 0.86, green: 0.88, blue: 0.95), Color(red: 0.83, green: 0.86, blue: 0.94), Color(red: 0.87, green: 0.89, blue: 0.96),
+                Color(red: 0.90, green: 0.92, blue: 0.97), Color(red: 0.88, green: 0.90, blue: 0.95), Color(red: 0.91, green: 0.93, blue: 0.97)
+            ]
+        }
+    }
+
+    private var titleGradient: LinearGradient {
+        colorScheme == .dark
+            ? LinearGradient(colors: [Color.primary, Color(red: 0.30, green: 0.50, blue: 0.90)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            : LinearGradient(colors: [Color(red: 0.05, green: 0.05, blue: 0.15), Color(red: 0.10, green: 0.30, blue: 0.72)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+
+    private var titleShadowColor: Color {
+        colorScheme == .dark ? Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5)
+                             : Color(red: 0.1, green: 0.2, blue: 0.6).opacity(0.25)
+    }
 
     var body: some View {
         ZStack {
@@ -104,17 +149,7 @@ struct MasterView: View {
                     [0.0, 0.5], [0.5, 0.5], [1.0, 0.5],
                     [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
                 ],
-                colors: [
-                    Color(red: 0.08, green: 0.10, blue: 0.28),
-                    Color(red: 0.10, green: 0.12, blue: 0.38),
-                    Color(red: 0.07, green: 0.09, blue: 0.30),
-                    Color(red: 0.12, green: 0.10, blue: 0.40),
-                    Color(red: 0.16, green: 0.12, blue: 0.52),
-                    Color(red: 0.10, green: 0.11, blue: 0.38),
-                    Color(red: 0.07, green: 0.10, blue: 0.26),
-                    Color(red: 0.11, green: 0.13, blue: 0.36),
-                    Color(red: 0.08, green: 0.09, blue: 0.28)
-                ]
+                colors: meshColors
             )
             .ignoresSafeArea()
 
@@ -164,14 +199,8 @@ struct MasterView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text("DailyToolbox")
                 .font(.system(size: 36, weight: .bold, design: .rounded))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [Color.primary, Color(red: 0.30, green: 0.50, blue: 0.90)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .shadow(color: Color(red: 0.4, green: 0.6, blue: 1.0).opacity(0.5), radius: 12)
+                .foregroundStyle(titleGradient)
+                .shadow(color: titleShadowColor, radius: 12)
 
             Text("24 built-in tools")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -212,6 +241,11 @@ private struct ToolCard: View {
 
     let item: ToolItem
     let onSelect: (ToolItem) -> Void
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var displayColor: Color {
+        colorScheme == .dark ? item.color : item.color.deepened()
+    }
 
     var body: some View {
         Button { onSelect(item) } label: {
@@ -224,12 +258,12 @@ private struct ToolCard: View {
         VStack(spacing: 10) {
             ZStack {
                 Circle()
-                    .fill(item.color.opacity(0.25))
+                    .fill(displayColor.opacity(0.25))
                     .frame(width: 60, height: 60)
                 Image(systemName: item.icon)
                     .font(.system(size: 26, weight: .semibold))
-                    .foregroundStyle(item.color)
-                    .shadow(color: item.color.opacity(0.5), radius: 6)
+                    .foregroundStyle(displayColor)
+                    .shadow(color: displayColor.opacity(0.5), radius: 6)
             }
 
             VStack(spacing: 2) {
@@ -251,7 +285,7 @@ private struct ToolCard: View {
         .padding(.vertical, 20)
         .padding(.horizontal, 10)
         .glassEffect(
-            .regular.tint(item.color.opacity(0.14)),
+            .regular.tint(displayColor.opacity(0.14)),
             in: RoundedRectangle(cornerRadius: 24, style: .continuous)
         )
     }

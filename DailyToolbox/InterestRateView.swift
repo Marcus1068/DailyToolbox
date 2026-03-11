@@ -30,12 +30,13 @@ import SwiftUI
 
 private struct RateGaugeView: View {
     let rate: Double
+    @Environment(\.colorScheme) private var colorScheme
 
     private var clampedRate: Double { max(0, min(100, rate) ) }
     private var progress: Double    { clampedRate / 100 }
 
-    private let gaugeGold   = Color(red: 1.00, green: 0.82, blue: 0.22)
-    private let gaugeGreen  = Color(red: 0.28, green: 0.95, blue: 0.58)
+    private var gaugeGold:  Color { colorScheme == .dark ? Color(red: 1.00, green: 0.82, blue: 0.22) : Color(red: 0.68, green: 0.48, blue: 0.00) }
+    private var gaugeGreen: Color { colorScheme == .dark ? Color(red: 0.28, green: 0.95, blue: 0.58) : Color(red: 0.05, green: 0.58, blue: 0.28) }
 
     var body: some View {
         ZStack {
@@ -106,9 +107,9 @@ private enum InterestField: CaseIterable {
 
     var accentColor: Color {
         switch self {
-        case .interest: return Color(red: 1.00, green: 0.82, blue: 0.22)
-        case .capital:  return Color(red: 0.28, green: 0.95, blue: 0.58)
-        case .rate:     return Color(red: 0.95, green: 0.62, blue: 0.25)
+        case .interest: return Color(red: 1.00, green: 0.82, blue: 0.22)  // runtime: use fieldAccent()
+        case .capital:  return Color(red: 0.28, green: 0.95, blue: 0.58)  // runtime: use fieldAccent()
+        case .rate:     return Color(red: 0.95, green: 0.62, blue: 0.25)  // runtime: use fieldAccent()
         }
     }
 }
@@ -117,6 +118,20 @@ private enum InterestField: CaseIterable {
 
 struct InterestRateView: View {
 
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var greenAccent: Color  { colorScheme == .dark ? Color(red: 0.28, green: 0.95, blue: 0.58) : Color(red: 0.05, green: 0.52, blue: 0.28) }
+    private var goldAccent: Color   { colorScheme == .dark ? Color(red: 1.00, green: 0.82, blue: 0.22) : Color(red: 0.62, green: 0.42, blue: 0.00) }
+    private var orangeAccent: Color { colorScheme == .dark ? Color(red: 0.95, green: 0.62, blue: 0.25) : Color(red: 0.72, green: 0.36, blue: 0.00) }
+    private var glassTint: Color    { colorScheme == .dark ? Color(red: 0.06, green: 0.28, blue: 0.16) : Color(red: 0.04, green: 0.38, blue: 0.20) }
+
+    private func fieldAccent(_ f: InterestField) -> Color {
+        switch f {
+        case .interest: return greenAccent
+        case .capital:  return goldAccent
+        case .rate:     return orangeAccent
+        }
+    }
     @State private var interestText: String = ""
     @State private var capitalText:  String = ""
     @State private var rateText:     String = ""
@@ -243,14 +258,13 @@ struct InterestRateView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 0.28, green: 0.95, blue: 0.58).opacity(0.16))
+                    .fill(greenAccent.opacity(0.16))
                     .frame(width: 52, height: 52)
                 Image(systemName: "building.columns.fill")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color(red: 0.28, green: 0.95, blue: 0.58),
-                                     Color(red: 1.00, green: 0.82, blue: 0.22)],
+                            colors: [greenAccent, goldAccent],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -304,7 +318,7 @@ struct InterestRateView: View {
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
         .glassEffect(
-            .regular.tint(Color(red: 0.06, green: 0.28, blue: 0.16)),
+            .regular.tint(glassTint),
             in: RoundedRectangle(cornerRadius: 22, style: .continuous)
         )
         .transition(.move(edge: .top).combined(with: .opacity))
@@ -337,11 +351,11 @@ struct InterestRateView: View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(field.accentColor.opacity(0.18))
+                    .fill(fieldAccent(field).opacity(0.18))
                     .frame(width: 44, height: 44)
                 Image(systemName: field.icon)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundStyle(field.accentColor)
+                    .foregroundStyle(fieldAccent(field))
             }
             .scaleEffect(isSolved ? resultPulse : 1.0)
 
@@ -349,14 +363,14 @@ struct InterestRateView: View {
                 HStack(spacing: 6) {
                     Text(field.label)
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(field.accentColor.opacity(0.88))
+                        .foregroundStyle(fieldAccent(field).opacity(0.88))
                     if isSolved {
                         Text("calculated")
                             .font(.caption2.weight(.medium))
-                            .foregroundStyle(field.accentColor.opacity(0.60))
+                            .foregroundStyle(fieldAccent(field).opacity(0.60))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(field.accentColor.opacity(0.15), in: Capsule())
+                            .background(fieldAccent(field).opacity(0.15), in: Capsule())
                     }
                 }
                 Text(field.subtitle)
@@ -367,7 +381,7 @@ struct InterestRateView: View {
                     .focused($focused, equals: field)
                     .font(.title3.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(field.accentColor)
+                    .tint(fieldAccent(field))
                     .onChange(of: text.wrappedValue) { _, newVal in
                         text.wrappedValue = newVal.replacingOccurrences(of: ",", with: ".")
                         solvedField = nil
@@ -393,7 +407,7 @@ struct InterestRateView: View {
         .padding(.vertical, 14)
         .glassEffect(
             isSolved
-                ? .regular.tint(Color(red: 0.04, green: 0.28, blue: 0.16))
+                ? .regular.tint(glassTint)
                 : .regular,
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
@@ -435,7 +449,7 @@ struct InterestRateView: View {
     private var resultCard: some View {
         HStack(spacing: 10) {
             Image(systemName: "checkmark.seal.fill")
-                .foregroundStyle(Color(red: 0.28, green: 0.95, blue: 0.58))
+                .foregroundStyle(greenAccent)
                 .font(.system(size: 20))
             VStack(alignment: .leading, spacing: 2) {
                 Text(resultSummary)
@@ -450,7 +464,7 @@ struct InterestRateView: View {
         }
         .padding(16)
         .glassEffect(
-            .regular.tint(Color(red: 0.04, green: 0.32, blue: 0.18)),
+            .regular.tint(glassTint),
             in: RoundedRectangle(cornerRadius: 16, style: .continuous)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))

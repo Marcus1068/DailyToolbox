@@ -64,7 +64,14 @@ struct LoanCalculatorView: View {
     @State private var termUnit: TermUnit = .years
     @State private var result: LoanResult? = nil
     @FocusState private var focused: Int?
-    private let accent = Color(red: 0.45, green: 0.70, blue: 1.00)
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var accent: Color       { colorScheme == .dark ? Color(red: 0.45, green: 0.70, blue: 1.00) : Color(red: 0.08, green: 0.40, blue: 0.88) }
+    private var totalPaidColor: Color   { colorScheme == .dark ? Color(red: 0.70, green: 0.90, blue: 1.00) : Color(red: 0.06, green: 0.42, blue: 0.82) }
+    private var totalInterestColor: Color { colorScheme == .dark ? Color(red: 1.00, green: 0.65, blue: 0.45) : Color(red: 0.80, green: 0.32, blue: 0.00) }
+    private var principalBarColor: Color  { colorScheme == .dark ? Color(red: 0.35, green: 0.65, blue: 1.00) : Color(red: 0.10, green: 0.40, blue: 0.88) }
+    private var interestBarColor: Color   { colorScheme == .dark ? Color(red: 1.00, green: 0.55, blue: 0.35) : Color(red: 0.82, green: 0.28, blue: 0.05) }
+    private var headerCircle: LinearGradient { LinearGradient(colors: [colorScheme == .dark ? Color(red:0.35,green:0.60,blue:1.00) : Color(red:0.10,green:0.38,blue:0.88), colorScheme == .dark ? Color(red:0.20,green:0.40,blue:0.90) : Color(red:0.06,green:0.22,blue:0.78)], startPoint: .topLeading, endPoint: .bottomTrailing) }
 
     private func calculate() {
         let p = Double(principalText.replacingOccurrences(of: ",", with: ".")) ?? 0
@@ -121,7 +128,7 @@ struct LoanCalculatorView: View {
     private var headerCard: some View {
         HStack(spacing: 16) {
             ZStack {
-                Circle().fill(LinearGradient(colors: [Color(red:0.35,green:0.60,blue:1.00), Color(red:0.20,green:0.40,blue:0.90)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                Circle().fill(headerCircle)
                 Image(systemName: "house.fill").font(.title2).foregroundStyle(Color.primary)
             }
             .frame(width: 52, height: 52)
@@ -208,9 +215,9 @@ struct LoanCalculatorView: View {
             .frame(maxWidth: .infinity).padding(.vertical, 20)
             Divider().overlay(Color.primary.opacity(0.10))
             HStack(spacing: 0) {
-                summaryCell(label: "Total Paid", value: currency(res.totalPaid), color: Color(red:0.70,green:0.90,blue:1.00))
+                summaryCell(label: "Total Paid", value: currency(res.totalPaid), color: totalPaidColor)
                 Divider().frame(height: 50).overlay(Color.primary.opacity(0.10))
-                summaryCell(label: "Total Interest", value: currency(res.totalInterest), color: Color(red:1.00,green:0.65,blue:0.45))
+                summaryCell(label: "Total Interest", value: currency(res.totalInterest), color: totalInterestColor)
             }
             .padding(.vertical, 14)
             Divider().overlay(Color.primary.opacity(0.10))
@@ -223,9 +230,9 @@ struct LoanCalculatorView: View {
                 GeometryReader { geo in
                     HStack(spacing: 2) {
                         let ratio = CGFloat(res.totalPaid > 0 ? (res.totalPaid - res.totalInterest) / res.totalPaid : 1.0)
-                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(Color(red:0.35,green:0.65,blue:1.00))
+                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(principalBarColor)
                             .frame(width: max(4, geo.size.width * ratio - 2))
-                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(Color(red:1.00,green:0.55,blue:0.35))
+                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(interestBarColor)
                     }
                     .frame(height: 12)
                 }
