@@ -368,7 +368,7 @@ struct DecimalRomanNumbersView: View {
                         Text("•")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(gold.opacity(0.55))
-                        Text(rule)
+                        Text(LocalizedStringKey(rule))
                             .font(.caption)
                             .foregroundStyle(Color.primary.opacity(0.72))
                             .fixedSize(horizontal: false, vertical: true)

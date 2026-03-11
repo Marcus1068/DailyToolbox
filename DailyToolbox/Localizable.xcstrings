@@ -15462,6 +15462,76 @@
           }
         }
       }
+    },
+    "More than three %@ not allowed": {
+      "comment": "Roman numeral validation error: too many consecutive symbols",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr als drei %@ sind nicht erlaubt"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Più di tre %@ non sono consentiti"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más de tres %@ no están permitidos"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mere end tre %@ er ikke tilladt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus de trois %@ ne sont pas autorisés"
+          }
+        }
+      }
+    },
+    "%@ is not allowed": {
+      "comment": "Roman numeral validation error: invalid pair",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ist nicht erlaubt"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ non è consentito"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ no está permitido"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ er ikke tilladt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ n'est pas autorisé"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
