@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F19E79A9D08EC74E7EB66F7 /* GermanHolidaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */; };
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
-		2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
 		2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA8692F6202A700F1BDCC /* WindChillView.swift */; };
-		2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F42455913A006D0B4E /* Roman german.rtf */; };
-		2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A88F624559152006D0B4E /* Roman english.rtf */; };
 		2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836D2F5D8C02009898E9 /* AboutView.swift */; };
 		2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */; };
 		2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */; };
@@ -73,12 +70,9 @@
 /* Begin PBXFileReference section */
 		1889001BC656E4FB1229CE5D /* SunriseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunriseView.swift; sourceTree = "<group>"; };
 		2C034904244B13F700AEE556 /* PowerConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConsumption.swift; sourceTree = "<group>"; };
-		2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2C4AA8672F61D5E000F1BDCC /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		2C4AA8692F6202A700F1BDCC /* WindChillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindChillView.swift; sourceTree = "<group>"; };
-		2C5A88F42455913A006D0B4E /* Roman german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman german.rtf"; sourceTree = "<group>"; };
-		2C5A88F624559152006D0B4E /* Roman english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Roman english.rtf"; sourceTree = "<group>"; };
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageView.swift; sourceTree = "<group>"; };
 		2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
@@ -147,15 +141,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C5A88F3245590F1006D0B4E /* HelpTexts */ = {
-			isa = PBXGroup;
-			children = (
-				2C5A88F42455913A006D0B4E /* Roman german.rtf */,
-				2C5A88F624559152006D0B4E /* Roman english.rtf */,
-			);
-			path = HelpTexts;
-			sourceTree = "<group>";
-		};
 		2C8040C52439F1590057909D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				2C8F24FA248161B0002F10D7 /* DailyToolboxRelease.entitlements */,
-				2C5A88F3245590F1006D0B4E /* HelpTexts */,
 				2CBD869323F6BE4E0011D886 /* Model */,
 				2CBD869023F6B3CE0011D886 /* Views */,
 				2CBD868D23F6AA510011D886 /* DailyToolbox.entitlements */,
@@ -262,7 +246,6 @@
 				2C8B2343242663D6007A20DF /* MyExtensions.swift */,
 				2C034904244B13F700AEE556 /* PowerConsumption.swift */,
 				2CA494A824522AB300E61CC5 /* Global.swift */,
-				2C2A832D2479AC970076EEDE /* UserDefaultKeys.swift */,
 				2C2A8372247A960A0076EEDE /* MenuController.swift */,
 			);
 			name = Model;
@@ -352,10 +335,8 @@
 		2CBD866423F6AA480011D886 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
 				2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */,
-				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
 			);
 		};
 		2CBD867C23F6AA490011D886 /* Resources */ = {
@@ -397,7 +378,6 @@
 				2CAAE4ED240FFE9A00D13315 /* CurrencyConverter.swift in Sources */,
 				2C5F83742F5D922F009898E9 /* TemperatureView.swift in Sources */,
 				2C5F83922F5DA548009898E9 /* MasterView.swift in Sources */,
-				2C2A832E2479AC970076EEDE /* UserDefaultKeys.swift in Sources */,
 				2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */,
 				2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */,
 				2CBF5EDD2F5E1274009575C2 /* ColorPickerView.swift in Sources */,

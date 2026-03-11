@@ -69,7 +69,7 @@ private struct CurrencyPickerSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(Global.cancel) { dismiss() }
+                    Button("Cancel") { dismiss() }
                 }
             }
         }
