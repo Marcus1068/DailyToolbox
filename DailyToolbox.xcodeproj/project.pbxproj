@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -131,18 +131,14 @@
 /* Begin PBXFrameworksBuildPhase section */
 		2CBD866323F6AA480011D886 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				2C8040C72439F1590057909D /* WebKit.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2CBD867B23F6AA490011D886 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -279,8 +275,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = DailyToolbox;
 			productName = DailyToolbox;
 			productReference = 2CBD866623F6AA480011D886 /* DailyToolbox.app */;
@@ -325,7 +319,6 @@
 				};
 			};
 			buildConfigurationList = 2CBD866123F6AA480011D886 /* Build configuration list for PBXProject "DailyToolbox" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -338,6 +331,7 @@
 				fr,
 			);
 			mainGroup = 2CBD865D23F6AA480011D886;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = 2CBD866723F6AA480011D886 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,28 +345,23 @@
 /* Begin PBXResourcesBuildPhase section */
 		2CBD866423F6AA480011D886 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				2C5A88F724559152006D0B4E /* Roman english.rtf in Resources */,
 				2CBD867523F6AA480011D886 /* Assets.xcassets in Resources */,
 				2CBF5ED32F5DFFAC009575C2 /* Localizable.xcstrings in Resources */,
 				2C5A88F52455913A006D0B4E /* Roman german.rtf in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2CBD867C23F6AA490011D886 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2CBD866223F6AA480011D886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */,
 				DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */,
@@ -418,15 +407,12 @@
 				2C5F83782F5D96B5009898E9 /* InterestRateView.swift in Sources */,
 				2CA494A924522AB300E61CC5 /* Global.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2CBD867A23F6AA490011D886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				2CBD868323F6AA490011D886 /* DailyToolboxTests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -439,7 +425,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2CBD868523F6AA490011D886 /* Debug */ = {
+		2CBD868523F6AA490011D886 /* Debug configuration for PBXProject "DailyToolbox" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -506,7 +492,7 @@
 			};
 			name = Debug;
 		};
-		2CBD868623F6AA490011D886 /* Release */ = {
+		2CBD868623F6AA490011D886 /* Release configuration for PBXProject "DailyToolbox" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -567,13 +553,13 @@
 			};
 			name = Release;
 		};
-		2CBD868823F6AA490011D886 /* Debug */ = {
+		2CBD868823F6AA490011D886 /* Debug configuration for PBXNativeTarget "DailyToolbox" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -585,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.05;
+				MARKETING_VERSION = 2.06;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -595,13 +581,13 @@
 			};
 			name = Debug;
 		};
-		2CBD868923F6AA490011D886 /* Release */ = {
+		2CBD868923F6AA490011D886 /* Release configuration for PBXNativeTarget "DailyToolbox" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -613,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.05;
+				MARKETING_VERSION = 2.06;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -623,7 +609,7 @@
 			};
 			name = Release;
 		};
-		2CBD868B23F6AA490011D886 /* Debug */ = {
+		2CBD868B23F6AA490011D886 /* Debug configuration for PBXNativeTarget "DailyToolboxTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -643,7 +629,7 @@
 			};
 			name = Debug;
 		};
-		2CBD868C23F6AA490011D886 /* Release */ = {
+		2CBD868C23F6AA490011D886 /* Release configuration for PBXNativeTarget "DailyToolboxTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -669,28 +655,25 @@
 		2CBD866123F6AA480011D886 /* Build configuration list for PBXProject "DailyToolbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CBD868523F6AA490011D886 /* Debug */,
-				2CBD868623F6AA490011D886 /* Release */,
+				2CBD868523F6AA490011D886 /* Debug configuration for PBXProject "DailyToolbox" */,
+				2CBD868623F6AA490011D886 /* Release configuration for PBXProject "DailyToolbox" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		2CBD868723F6AA490011D886 /* Build configuration list for PBXNativeTarget "DailyToolbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CBD868823F6AA490011D886 /* Debug */,
-				2CBD868923F6AA490011D886 /* Release */,
+				2CBD868823F6AA490011D886 /* Debug configuration for PBXNativeTarget "DailyToolbox" */,
+				2CBD868923F6AA490011D886 /* Release configuration for PBXNativeTarget "DailyToolbox" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		2CBD868A23F6AA490011D886 /* Build configuration list for PBXNativeTarget "DailyToolboxTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CBD868B23F6AA490011D886 /* Debug */,
-				2CBD868C23F6AA490011D886 /* Release */,
+				2CBD868B23F6AA490011D886 /* Debug configuration for PBXNativeTarget "DailyToolboxTests" */,
+				2CBD868C23F6AA490011D886 /* Release configuration for PBXNativeTarget "DailyToolboxTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

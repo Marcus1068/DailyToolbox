@@ -103,7 +103,8 @@ private let horizonStars: [(x: Double, y: Double, op: Double, sz: Double)] = [
 ]
 
 private struct HorizonSceneView: View {
-    let distanceKm: Double
+    let distance: Double
+    let unit: String
 
     var body: some View {
         GeometryReader { geo in
@@ -192,8 +193,8 @@ private struct HorizonSceneView: View {
                     .position(x: w - 26, y: hy)
 
                 // Distance badge
-                if distanceKm > 0 {
-                    Text(String(format: "%.2f km", distanceKm))
+                if distance > 0 {
+                    Text(String(format: "%.2f \(unit)", distance))
                         .font(.caption.weight(.bold).monospacedDigit())
                         .foregroundStyle(Color.primary)
                         .padding(.horizontal, 10)
@@ -201,7 +202,7 @@ private struct HorizonSceneView: View {
                         .background(Color.primary.opacity(0.12), in: Capsule())
                         .position(x: w - 54, y: h - 16)
                         .contentTransition(.numericText())
-                        .animation(.spring(response: 0.4), value: distanceKm)
+                        .animation(.spring(response: 0.4), value: distance)
                 }
             }
         }
@@ -214,55 +215,65 @@ private struct HorizonSceneView: View {
 
 struct HorizonView: View {
 
-    @State private var locationManager = HorizonLocationManager()
-    @State private var eyeLevelText:    String  = "1.70"
-    @FocusState private var focused:    Bool
+    @State  private var locationManager = HorizonLocationManager()
     @Environment(\.colorScheme) private var colorScheme
 
-    // MARK: Adaptive accent colors (dark: bright/light tones; light: darker/saturated)
+    // Two AppStorage vars — that's all we need.
+    // eyeLevelMeters is ALWAYS in metres. Display converts on the fly.
+    @AppStorage("horizonView.eyeLevelMeters") private var eyeLevelMeters: Double = 0.0
+    @AppStorage("horizonView.useMiles")       private var showMiles:      Bool   = false
+
+    // MARK: Adaptive colors
 
     private var blueAccent: Color {
-        colorScheme == .dark
-            ? Color(red: 0.45, green: 0.74, blue: 1.00)
-            : Color(red: 0.08, green: 0.42, blue: 0.88)
+        colorScheme == .dark ? Color(red: 0.45, green: 0.74, blue: 1.00)
+                             : Color(red: 0.08, green: 0.42, blue: 0.88)
     }
     private var greenAccent: Color {
-        colorScheme == .dark
-            ? Color(red: 0.28, green: 0.88, blue: 0.65)
-            : Color(red: 0.05, green: 0.58, blue: 0.38)
+        colorScheme == .dark ? Color(red: 0.28, green: 0.88, blue: 0.65)
+                             : Color(red: 0.05, green: 0.58, blue: 0.38)
     }
     private var goldAccent: Color {
-        colorScheme == .dark
-            ? Color(red: 1.00, green: 0.82, blue: 0.22)
-            : Color(red: 0.68, green: 0.48, blue: 0.00)
+        colorScheme == .dark ? Color(red: 1.00, green: 0.82, blue: 0.22)
+                             : Color(red: 0.68, green: 0.48, blue: 0.00)
     }
     private var cyanAccent: Color {
-        colorScheme == .dark
-            ? Color(red: 0.55, green: 0.88, blue: 1.00)
-            : Color(red: 0.08, green: 0.46, blue: 0.78)
+        colorScheme == .dark ? Color(red: 0.55, green: 0.88, blue: 1.00)
+                             : Color(red: 0.08, green: 0.46, blue: 0.78)
     }
     private var glassTintBlue: Color {
-        colorScheme == .dark
-            ? Color(red: 0.03, green: 0.10, blue: 0.38)
-            : Color(red: 0.60, green: 0.78, blue: 1.00)
+        colorScheme == .dark ? Color(red: 0.03, green: 0.10, blue: 0.38)
+                             : Color(red: 0.60, green: 0.78, blue: 1.00)
     }
     private var glassTintGold: Color {
-        colorScheme == .dark
-            ? Color(red: 0.10, green: 0.08, blue: 0.01)
-            : Color(red: 1.00, green: 0.90, blue: 0.60)
+        colorScheme == .dark ? Color(red: 0.10, green: 0.08, blue: 0.01)
+                             : Color(red: 1.00, green: 0.90, blue: 0.60)
     }
 
     // MARK: Computed
 
-    private func sanitize(_ s: String) -> String {
-        s.replacingOccurrences(of: ",", with: ".")
+    private var altitude:        Double { locationManager.altitude }
+    private var distanceKm:      Double { ComputeHorizon(eyeLevel: eyeLevelMeters, altitude: altitude).viewDistance }
+    private var distanceDisplay: Double { showMiles ? distanceKm * 0.621371 : distanceKm }
+    private var unitLabel:       String { showMiles ? "mi" : "km" }
+    private var formulaConstant: String  { showMiles ? "1.22" : "3.57" }
+    private var eyeLevelUnitLabel: String { showMiles ? "ft" : "m" }
+
+    /// Eye level value to display — metres or feet, zero shows "—"
+    private var eyeLevelDisplay: String {
+        guard eyeLevelMeters > 0 else { return "—" }
+        let v = showMiles ? eyeLevelMeters * 3.28084 : eyeLevelMeters
+        return String(format: "%.2f", v)
     }
 
-    private var eyeLevel:   Double { Double(sanitize(eyeLevelText)) ?? 1.70 }
-    private var altitude:   Double { locationManager.altitude }
+    // MARK: Actions
 
-    private var distanceKm: Double {
-        ComputeHorizon(eyeLevel: eyeLevel, altitude: altitude).viewDistance
+    private func adjustEyeLevel(by delta: Double) {
+        // delta is in the current display unit (0.10 m or 0.10 ft); convert step to metres
+        let stepMetres = showMiles ? delta / 3.28084 : delta
+        let maxMetres  = 5.0
+        eyeLevelMeters = max(0.0, min(maxMetres,
+            ((eyeLevelMeters + stepMetres) * 1000).rounded() / 1000))
     }
 
     // MARK: Body
@@ -275,7 +286,7 @@ struct HorizonView: View {
                     VStack(spacing: 18) {
                         headerCard
                         gpsAltitudeCard
-                        HorizonSceneView(distanceKm: distanceKm)
+                        HorizonSceneView(distance: distanceDisplay, unit: unitLabel)
                         eyeLevelCard
                         resultCard
                         formulaCard
@@ -284,22 +295,13 @@ struct HorizonView: View {
                     .padding(.vertical, 28)
                 }
             }
-            .onTapGesture { focused = false }
+            .onTapGesture { }
         }
         .navigationTitle("Horizon")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .onAppear {
-            locationManager.start()
-            if let saved = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyEyeLevel),
-               !saved.isEmpty {
-                eyeLevelText = saved
-            }
-        }
-        .onDisappear {
-            locationManager.stop()
-            NSUbiquitousKeyValueStore.default.synchronize()
-        }
+        .onAppear  { locationManager.start() }
+        .onDisappear { locationManager.stop() }
     }
 
     // MARK: Background
@@ -471,18 +473,12 @@ struct HorizonView: View {
             }
 
             HStack(alignment: .lastTextBaseline, spacing: 6) {
-                TextField("1.70", text: $eyeLevelText)
-                    .keyboardType(.decimalPad)
-                    .focused($focused)
+                Text(eyeLevelDisplay)
                     .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(Color.primary)
-                    .tint(greenAccent)
-                    .onChange(of: eyeLevelText) { _, new in
-                        let s = new.replacingOccurrences(of: ",", with: ".")
-                        if s != new { eyeLevelText = s }
-                        NSUbiquitousKeyValueStore.default.set(s, forKey: Global.keyEyeLevel)
-                    }
-                Text("m")
+                    .contentTransition(.numericText())
+                    .animation(.spring(response: 0.35), value: eyeLevelMeters)
+                Text(eyeLevelUnitLabel)
                     .font(.title2.weight(.semibold))
                     .foregroundStyle(Color.primary.opacity(0.40))
             }
@@ -491,14 +487,6 @@ struct HorizonView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-    }
-
-    private func adjustEyeLevel(by delta: Double) {
-        let current = Double(sanitize(eyeLevelText)) ?? 1.70
-        // Round to nearest 0.01 to avoid floating-point drift
-        let newVal  = max(0.0, min(5.0, ((current + delta) * 100).rounded() / 100))
-        eyeLevelText = String(format: "%.2f", newVal)
-        NSUbiquitousKeyValueStore.default.set(eyeLevelText, forKey: Global.keyEyeLevel)
     }
 
     // MARK: Result Card
@@ -510,12 +498,15 @@ struct HorizonView: View {
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(goldAccent.opacity(0.90))
                 Spacer()
-                Image(systemName: "arrow.forward.to.line")
-                    .font(.caption)
-                    .foregroundStyle(Color.primary.opacity(0.28))
+                Picker("", selection: $showMiles) {
+                    Text("km").tag(false)
+                    Text("mi").tag(true)
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 90)
             }
             HStack(alignment: .lastTextBaseline, spacing: 6) {
-                Text(distanceKm.formatted(.number.precision(.fractionLength(2))))
+                Text(distanceDisplay.formatted(.number.precision(.fractionLength(2))))
                     .font(.system(size: 54, weight: .black, design: .rounded).monospacedDigit())
                     .foregroundStyle(
                         LinearGradient(
@@ -525,11 +516,13 @@ struct HorizonView: View {
                         )
                     )
                     .contentTransition(.numericText())
-                    .animation(.spring(response: 0.4), value: distanceKm)
-                Text("km")
+                    .animation(.spring(response: 0.4), value: distanceDisplay)
+                Text(unitLabel)
                     .font(.title2.weight(.semibold))
                     .foregroundStyle(Color.primary.opacity(0.52))
                     .padding(.bottom, 5)
+                    .contentTransition(.identity)
+                    .animation(.spring(response: 0.3), value: showMiles)
                 Spacer()
             }
         }
@@ -545,8 +538,8 @@ struct HorizonView: View {
 
     private var formulaCard: some View {
         let altStr  = String(format: "%.2f", altitude)
-        let eyeStr  = String(format: "%.2f", eyeLevel)
-        let distStr = String(format: "%.4f", distanceKm)
+        let eyeStr  = String(format: "%.2f", eyeLevelMeters)
+        let distStr = String(format: "%.4f", distanceDisplay)
 
         return VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
@@ -557,13 +550,15 @@ struct HorizonView: View {
             }
             .foregroundStyle(Color.primary.opacity(0.52))
 
-            Text("d = 3.57 × √( altitude + eye level )")
+            Text(showMiles
+                 ? "d = 1.22 × √( altitude + eye level )"
+                 : "d = 3.57 × √( altitude + eye level )")
                 .font(.system(.subheadline, design: .monospaced).weight(.medium))
                 .foregroundStyle(Color.primary.opacity(0.88))
 
             Divider().overlay(Color.primary.opacity(0.10))
 
-            Text("d = 3.57 × √( \(altStr) + \(eyeStr) ) = \(distStr) km")
+            Text("d = \(formulaConstant) × √( \(altStr) + \(eyeStr) ) = \(distStr) \(unitLabel)")
                 .font(.caption.monospacedDigit())
                 .foregroundStyle(cyanAccent.opacity(0.85))
                 .fixedSize(horizontal: false, vertical: true)

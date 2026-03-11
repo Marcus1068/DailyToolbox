@@ -3424,12 +3424,23 @@
         }
       }
     },
-    "d = 3.57 × √( %@ + %@ ) = %@ km": {
+    "d = %@ × √( %@ + %@ ) = %@ %@": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "new",
-            "value": "d = 3.57 × √( %1$@ + %2$@ ) = %3$@ km"
+            "value": "d = %1$@ × √( %2$@ + %3$@ ) = %4$@ %5$@"
+          }
+        }
+      }
+    },
+    "d = 3.57 × √( %@ + %@ ) = %@ km": {
+      "extractionState": "stale",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
           }
         },
         "de": {
@@ -3438,10 +3449,10 @@
             "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
           }
         },
-        "it": {
+        "en": {
           "stringUnit": {
-            "state": "translated",
-            "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+            "state": "new",
+            "value": "d = 3.57 × √( %1$@ + %2$@ ) = %3$@ km"
           }
         },
         "es": {
@@ -3450,13 +3461,13 @@
             "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
           }
         },
-        "da": {
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
           }
         },
-        "fr": {
+        "it": {
           "stringUnit": {
             "state": "translated",
             "value": "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
@@ -3466,18 +3477,17 @@
       "shouldTranslate": false
     },
     "d = 3.57 × √( altitude + eye level )": {
-      "shouldTranslate": false,
       "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 3,57 × √( højde + øjenhøjde )"
+          }
+        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "d = 3,57 × √( Höhe + Augenhöhe )"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "d = 3,57 × √( altitudine + livello occhi )"
           }
         },
         "es": {
@@ -3486,19 +3496,20 @@
             "value": "d = 3,57 × √( altitud + nivel ojos )"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "d = 3,57 × √( højde + øjenhøjde )"
-          }
-        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "d = 3,57 × √( altitude + hauteur yeux )"
           }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 3,57 × √( altitudine + livello occhi )"
+          }
         }
-      }
+      },
+      "shouldTranslate": false
     },
     "D, L, V never repeat — only one per numeral": {
       "localizations": {
@@ -7700,6 +7711,41 @@
           "stringUnit": {
             "state": "translated",
             "value": "Metrico"
+          }
+        }
+      }
+    },
+    "mi": {
+      "comment": "Miles unit abbreviation",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mi"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mi"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mi"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mi"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mi"
           }
         }
       }
@@ -13524,6 +13570,111 @@
           "stringUnit": {
             "state": "translated",
             "value": "I tuoi occhi sopra terra"
+          }
+        }
+      }
+    },
+    "yd": {
+      "comment": "Yards unit abbreviation",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yd"
+          }
+        }
+      }
+    },
+    "ft": {
+      "comment": "Feet unit abbreviation",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ft"
+          }
+        }
+      }
+    },
+    "d = 1.22 × √( altitude + eye level )": {
+      "comment": "Horizon formula in miles",
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( højde + øjenhøjde )"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( Höhe + Augenhöhe )"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitud + nivel ojos )"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitude + hauteur yeux )"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "d = 1,22 × √( altitudine + livello occhi )"
           }
         }
       }
