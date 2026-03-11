@@ -64,11 +64,18 @@ private func nextEaster() -> Date {
 
 private struct YearRingView: View {
     let days: Int
+    @Environment(\.colorScheme) private var colorScheme
 
     private var progress: Double { min(1.0, max(0, Double(days) / 365.0)) }
 
-    private let ringPurple = Color(red: 0.80, green: 0.50, blue: 1.00)
-    private let ringGold   = Color(red: 1.00, green: 0.78, blue: 0.20)
+    private var ringPurple: Color {
+        colorScheme == .dark ? Color(red: 0.80, green: 0.50, blue: 1.00)
+                             : Color(red: 0.52, green: 0.15, blue: 0.85)
+    }
+    private var ringGold: Color {
+        colorScheme == .dark ? Color(red: 1.00, green: 0.78, blue: 0.20)
+                             : Color(red: 0.68, green: 0.46, blue: 0.00)
+    }
 
     var body: some View {
         ZStack {
@@ -102,6 +109,30 @@ struct CalendarCalculationView: View {
     @State private var eventTitle:          String = ""
     @State private var showCalendarError:   Bool   = false
     @State private var calendarErrorMsg:    String = ""
+    @Environment(\.colorScheme) private var colorScheme
+
+    // MARK: Adaptive accent colors
+
+    private var purpleAccent: Color {
+        colorScheme == .dark ? Color(red: 0.80, green: 0.50, blue: 1.00)
+                             : Color(red: 0.52, green: 0.15, blue: 0.85)
+    }
+    private var goldAccent: Color {
+        colorScheme == .dark ? Color(red: 1.00, green: 0.78, blue: 0.20)
+                             : Color(red: 0.68, green: 0.46, blue: 0.00)
+    }
+    private var christmasAccent: Color {
+        colorScheme == .dark ? Color(red: 1.00, green: 0.32, blue: 0.32)
+                             : Color(red: 0.80, green: 0.08, blue: 0.08)
+    }
+    private var easterAccent: Color {
+        colorScheme == .dark ? Color(red: 0.40, green: 0.92, blue: 0.55)
+                             : Color(red: 0.05, green: 0.58, blue: 0.30)
+    }
+    private var glassTintPurple: Color {
+        colorScheme == .dark ? Color(red: 0.14, green: 0.05, blue: 0.38)
+                             : Color(red: 0.88, green: 0.78, blue: 1.00)
+    }
 
     // MARK: Computed
 
@@ -118,9 +149,16 @@ struct CalendarCalculationView: View {
     }
 
     private var countdownColor: Color {
-        if daysUntil > 0 { return Color(red: 1.00, green: 0.80, blue: 0.20) }
-        if daysUntil < 0 { return Color(red: 1.00, green: 0.38, blue: 0.38) }
-        return Color(red: 0.38, green: 0.95, blue: 0.60)
+        if daysUntil > 0 {
+            return colorScheme == .dark ? Color(red: 1.00, green: 0.80, blue: 0.20)
+                                        : Color(red: 0.68, green: 0.46, blue: 0.00)
+        }
+        if daysUntil < 0 {
+            return colorScheme == .dark ? Color(red: 1.00, green: 0.38, blue: 0.38)
+                                        : Color(red: 0.82, green: 0.12, blue: 0.12)
+        }
+        return colorScheme == .dark ? Color(red: 0.38, green: 0.95, blue: 0.60)
+                                    : Color(red: 0.05, green: 0.60, blue: 0.32)
     }
 
     private var countdownLabel: LocalizedStringKey {
@@ -203,8 +241,7 @@ struct CalendarCalculationView: View {
                     .font(.system(size: 22, weight: .bold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color(red: 0.88, green: 0.60, blue: 1.0),
-                                     Color(red: 0.55, green: 0.28, blue: 0.95)],
+                            colors: [purpleAccent, purpleAccent.opacity(0.65)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -254,7 +291,7 @@ struct CalendarCalculationView: View {
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
         .glassEffect(
-            .regular.tint(Color(red: 0.14, green: 0.05, blue: 0.38)),
+            .regular.tint(glassTintPurple),
             in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
         .animation(.spring(response: 0.3), value: daysUntil)
@@ -269,7 +306,7 @@ struct CalendarCalculationView: View {
                 label: "Christmas",
                 date: nextChristmas(),
                 days: daysUntilChristmas,
-                accent: Color(red: 1.0, green: 0.32, blue: 0.32)
+                accent: christmasAccent
             ) {
                 withAnimation(.spring(response: 0.35)) { selectedDate = nextChristmas() }
             }
@@ -279,7 +316,7 @@ struct CalendarCalculationView: View {
                 label: "Easter",
                 date: nextEaster(),
                 days: daysUntilEaster,
-                accent: Color(red: 0.40, green: 0.92, blue: 0.55)
+                accent: easterAccent
             ) {
                 withAnimation(.spring(response: 0.35)) { selectedDate = nextEaster() }
             }
@@ -336,8 +373,7 @@ struct CalendarCalculationView: View {
 
             DatePicker("", selection: $selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
-                .tint(Color(red: 0.88, green: 0.60, blue: 1.0))
-                .colorScheme(.dark)
+                .tint(purpleAccent)
                 .labelsHidden()
         }
         .padding(16)
