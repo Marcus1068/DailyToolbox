@@ -64,10 +64,10 @@ private struct PublicHoliday: Identifiable {
     var daysLabel: String {
         let today = Calendar.current.startOfDay(for: Date())
         let days = Calendar.current.dateComponents([.day], from: today, to: Calendar.current.startOfDay(for: date)).day ?? 0
-        if days == 0 { return "Heute" }
-        if days < 0  { return "vor \(-days) Tagen" }
-        if days == 1 { return "morgen" }
-        return "in \(days) Tagen"
+        if days == 0 { return NSLocalizedString("Heute", comment: "Today") }
+        if days < 0  { return String(format: NSLocalizedString("vor %lld Tagen", comment: "N days ago"), -days) }
+        if days == 1 { return NSLocalizedString("morgen", comment: "Tomorrow") }
+        return String(format: NSLocalizedString("in %lld Tagen", comment: "In N days"), days)
     }
 }
 
@@ -90,7 +90,6 @@ private struct SchoolHoliday: Identifiable {
     var isPast: Bool { Calendar.current.startOfDay(for: end) < Calendar.current.startOfDay(for: Date()) }
 
     var formattedName: String {
-        // "winterferien bayern 2025" → "Winterferien"
         let parts = name.components(separatedBy: " ")
         if let first = parts.first {
             return first.prefix(1).uppercased() + first.dropFirst()
@@ -99,16 +98,42 @@ private struct SchoolHoliday: Identifiable {
     }
 }
 
+/// A suggested bridge-day opportunity: take one leave day to create a 4-day weekend.
+private struct BridgeDaySuggestion: Identifiable {
+    /// ISO date string of the leave day — used as stable storage key.
+    let id: String
+    let holidayName: String
+    let holidayDate: Date
+    /// The single leave day to take (Friday after Thursday holiday, or Monday before Tuesday holiday).
+    let leaveDay: Date
+    /// First day of the consecutive 4-day window.
+    let windowStart: Date
+    /// Last day of the consecutive 4-day window.
+    let windowEnd: Date
+
+    var windowDescription: String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "dd.MM."
+        fmt.locale = Locale(identifier: "de_DE")
+        let endFmt = DateFormatter()
+        endFmt.dateFormat = "dd.MM.yyyy"
+        endFmt.locale = Locale(identifier: "de_DE")
+        return "\(fmt.string(from: windowStart))–\(endFmt.string(from: windowEnd))"
+    }
+}
+
 // MARK: - Holiday Tab
 
 private enum HolidayTab: String, CaseIterable {
     case publicHolidays = "Public Holidays"
     case schoolHolidays = "School Holidays"
+    case bridgeDays     = "Bridge Days"
 
     var icon: String {
         switch self {
         case .publicHolidays: return "flag.fill"
         case .schoolHolidays: return "backpack.fill"
+        case .bridgeDays:     return "airplane.departure"
         }
     }
     var localizedKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
@@ -191,8 +216,13 @@ struct GermanHolidaysView: View {
 
     @StateObject private var vm = HolidaysViewModel()
 
-    @AppStorage("germanHolidays.stateCode") private var savedStateCode: String = "BY"
-    @AppStorage("germanHolidays.year") private var savedYear: Int = Calendar.current.component(.year, from: Date())
+    @AppStorage("germanHolidays.stateCode")    private var savedStateCode:     String = "BY"
+    @AppStorage("germanHolidays.year")         private var savedYear:           Int    = Calendar.current.component(.year, from: Date())
+    @AppStorage("germanHolidays.leaveDays")    private var leaveDaysTotal:      Int    = 30
+    @AppStorage("germanHolidays.bookedBridges")private var bookedBridgesStr:    String = ""
+
+    @State private var leaveDaysText: String = ""
+    @FocusState private var leaveFieldFocused: Bool
 
     private var selectedState: GermanState {
         germanStates.first { $0.code == savedStateCode } ?? germanStates[1]
@@ -201,12 +231,81 @@ struct GermanHolidaysView: View {
     @State private var tab: HolidayTab = .publicHolidays
     @State private var showStatePicker = false
 
-    private let accent    = Color(red: 0.95, green: 0.78, blue: 0.22)   // German gold
-    private let accentRed = Color(red: 0.85, green: 0.15, blue: 0.18)   // German red
+    private let accent    = Color(red: 0.95, green: 0.78, blue: 0.22)
+    private let accentRed = Color(red: 0.85, green: 0.15, blue: 0.18)
+    private let bridgeGreen = Color(red: 0.22, green: 0.88, blue: 0.55)
+
+    private static let isoKey: DateFormatter = {
+        let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd"; f.locale = Locale(identifier: "de_DE"); return f
+    }()
 
     private var years: [Int] {
         let y = Calendar.current.component(.year, from: Date())
         return [y - 1, y, y + 1]
+    }
+
+    // MARK: - Bridge Day Logic
+
+    private var bookedSet: Set<String> {
+        Set(bookedBridgesStr.split(separator: ",").map(String.init).filter { !$0.isEmpty })
+    }
+
+    private var bridgeSuggestions: [BridgeDaySuggestion] {
+        guard case .loaded = vm.loadState else { return [] }
+        var cal = Calendar(identifier: .gregorian)
+        cal.locale = Locale(identifier: "de_DE")
+        var result: [BridgeDaySuggestion] = []
+
+        for holiday in vm.publicHolidays {
+            let weekday = cal.component(.weekday, from: holiday.date)
+            // weekday: 1=Sun 2=Mon 3=Tue 4=Wed 5=Thu 6=Fri 7=Sat
+
+            if weekday == 5 {
+                // Thursday holiday → take Friday → Th+Fr+Sa+Su
+                guard let leaveDay = cal.date(byAdding: .day, value: 1, to: holiday.date),
+                      let winEnd   = cal.date(byAdding: .day, value: 3, to: holiday.date)
+                else { continue }
+                guard !isInSchoolHolidays(leaveDay) else { continue }
+                let key = Self.isoKey.string(from: leaveDay)
+                result.append(BridgeDaySuggestion(
+                    id: key, holidayName: holiday.name, holidayDate: holiday.date,
+                    leaveDay: leaveDay, windowStart: holiday.date, windowEnd: winEnd
+                ))
+
+            } else if weekday == 3 {
+                // Tuesday holiday → take Monday → Sa+Su+Mo+Tu
+                guard let leaveDay   = cal.date(byAdding: .day, value: -1, to: holiday.date),
+                      let winStart   = cal.date(byAdding: .day, value: -3, to: holiday.date)
+                else { continue }
+                guard !isInSchoolHolidays(leaveDay) else { continue }
+                let key = Self.isoKey.string(from: leaveDay)
+                result.append(BridgeDaySuggestion(
+                    id: key, holidayName: holiday.name, holidayDate: holiday.date,
+                    leaveDay: leaveDay, windowStart: winStart, windowEnd: holiday.date
+                ))
+            }
+        }
+        return result.sorted { $0.leaveDay < $1.leaveDay }
+    }
+
+    private func isInSchoolHolidays(_ date: Date) -> Bool {
+        let d = Calendar.current.startOfDay(for: date)
+        return vm.schoolHolidays.contains { h in
+            d >= Calendar.current.startOfDay(for: h.start) &&
+            d <= Calendar.current.startOfDay(for: h.end)
+        }
+    }
+
+    private var leaveDaysUsed: Int {
+        bookedSet.intersection(bridgeSuggestions.map(\.id)).count
+    }
+
+    private var leaveDaysRemaining: Int { leaveDaysTotal - leaveDaysUsed }
+
+    private func toggleBridge(_ s: BridgeDaySuggestion) {
+        var set = bookedSet
+        if set.contains(s.id) { set.remove(s.id) } else { set.insert(s.id) }
+        bookedBridgesStr = set.joined(separator: ",")
     }
 
     // MARK: Body
@@ -231,8 +330,10 @@ struct GermanHolidaysView: View {
                             GlassEffectContainer { tabBar }
                             if tab == .publicHolidays {
                                 publicHolidaysList
-                            } else {
+                            } else if tab == .schoolHolidays {
                                 schoolHolidaysList
+                            } else {
+                                bridgeDaysContent
                             }
                         }
                     }
@@ -246,6 +347,7 @@ struct GermanHolidaysView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .sheet(isPresented: $showStatePicker) { statePickerSheet }
         .task { await vm.load(stateCode: selectedState.code, year: savedYear) }
+        .onAppear { leaveDaysText = String(leaveDaysTotal) }
     }
 
     // MARK: - Background
@@ -339,6 +441,75 @@ struct GermanHolidaysView: View {
                     .buttonStyle(.plain)
                 }
             }
+
+            // Leave days input row
+            HStack(spacing: 12) {
+                Image(systemName: "suitcase.rolling.fill")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(bridgeGreen)
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Annual Leave Days")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.50))
+                    Text("\(leaveDaysUsed) used · \(max(0, leaveDaysRemaining)) remaining")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(leaveDaysRemaining < 0
+                            ? accentRed.opacity(0.90)
+                            : Color.primary.opacity(0.45))
+                        .animation(.easeInOut(duration: 0.2), value: leaveDaysUsed)
+                }
+
+                Spacer()
+
+                // Stepper-style +/- with text field in the middle
+                HStack(spacing: 0) {
+                    Button {
+                        if leaveDaysTotal > 1 {
+                            leaveDaysTotal -= 1
+                            leaveDaysText = String(leaveDaysTotal)
+                        }
+                    } label: {
+                        Image(systemName: "minus")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                            .frame(width: 32, height: 34)
+                    }
+                    .buttonStyle(.plain)
+
+                    TextField("30", text: $leaveDaysText)
+                        .keyboardType(.numberPad)
+                        .focused($leaveFieldFocused)
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 15, weight: .bold, design: .rounded).monospacedDigit())
+                        .foregroundStyle(Color.primary)
+                        .tint(bridgeGreen)
+                        .frame(width: 44, height: 34)
+                        .onChange(of: leaveDaysText) { _, val in
+                            let digits = val.filter { $0.isNumber }
+                            if digits != val { leaveDaysText = digits }
+                            if let n = Int(digits), n > 0, n <= 365 { leaveDaysTotal = n }
+                        }
+
+                    Button {
+                        if leaveDaysTotal < 365 {
+                            leaveDaysTotal += 1
+                            leaveDaysText = String(leaveDaysTotal)
+                        }
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                            .frame(width: 32, height: 34)
+                    }
+                    .buttonStyle(.plain)
+                }
+                .background(Color.primary.opacity(0.09),
+                            in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            }
+            .padding(14)
+            .background(Color.primary.opacity(0.07),
+                        in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
@@ -352,9 +523,13 @@ struct GermanHolidaysView: View {
             ForEach(HolidayTab.allCases, id: \.self) { t in
                 let sel = tab == t
                 Button { withAnimation(.spring(response: 0.3)) { tab = t } } label: {
-                    HStack(spacing: 7) {
-                        Image(systemName: t.icon).font(.system(size: 12, weight: .semibold))
-                        Text(t.localizedKey).font(.caption.weight(.semibold))
+                    HStack(spacing: 6) {
+                        Image(systemName: t.icon).font(.system(size: 11, weight: .semibold))
+                        if t == .bridgeDays, case .loaded = vm.loadState, !bridgeSuggestions.isEmpty {
+                            Text("\(bridgeSuggestions.count)")
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundStyle(sel ? accent : Color.primary.opacity(0.55))
+                        }
                     }
                     .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                     .frame(maxWidth: .infinity)
@@ -387,7 +562,6 @@ struct GermanHolidaysView: View {
         let weekday = h.date.formatted(.dateTime.weekday(.wide).locale(Locale(identifier: "de_DE")))
 
         HStack(spacing: 14) {
-            // Date badge
             ZStack {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .fill(h.isToday ? accent.opacity(0.25)
@@ -435,8 +609,7 @@ struct GermanHolidaysView: View {
         .background(h.isToday ? accent.opacity(0.10) : Color.clear)
 
         if !isLast {
-            Divider()
-                .padding(.horizontal, 16)
+            Divider().padding(.horizontal, 16)
         }
     }
 
@@ -459,7 +632,6 @@ struct GermanHolidaysView: View {
         let endStr   = h.end.formatted(.dateTime.day().month(.abbreviated).year().locale(Locale(identifier: "de_DE")))
 
         HStack(spacing: 14) {
-            // Color bar
             RoundedRectangle(cornerRadius: 3, style: .continuous)
                 .fill(h.isActive ? accent
                       : h.isPast ? Color.primary.opacity(0.15)
@@ -499,8 +671,161 @@ struct GermanHolidaysView: View {
         .background(h.isActive ? accent.opacity(0.08) : Color.clear)
 
         if !isLast {
-            Divider()
-                .padding(.horizontal, 16)
+            Divider().padding(.horizontal, 16)
+        }
+    }
+
+    // MARK: - Bridge Days Content
+
+    private var bridgeDaysContent: some View {
+        VStack(spacing: 12) {
+            // Summary card
+            bridgeSummaryCard
+
+            if bridgeSuggestions.isEmpty {
+                GlassEffectContainer {
+                    VStack(spacing: 12) {
+                        Image(systemName: "calendar.badge.checkmark")
+                            .font(.system(size: 36))
+                            .foregroundStyle(bridgeGreen.opacity(0.50))
+                        Text("No bridge day opportunities found")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.primary.opacity(0.50))
+                        Text("No public holidays fall on Tuesday or Thursday outside school holiday periods.")
+                            .font(.caption)
+                            .foregroundStyle(Color.primary.opacity(0.35))
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(32)
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                }
+            } else {
+                GlassEffectContainer {
+                    VStack(spacing: 0) {
+                        ForEach(Array(bridgeSuggestions.enumerated()), id: \.element.id) { idx, s in
+                            bridgeDayRow(s, isLast: idx == bridgeSuggestions.count - 1)
+                        }
+                    }
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                }
+            }
+        }
+    }
+
+    private var bridgeSummaryCard: some View {
+        HStack(spacing: 0) {
+            summaryPill(value: leaveDaysTotal,              label: "Total",     color: Color.primary.opacity(0.70))
+            Divider().frame(height: 32).padding(.horizontal, 4)
+            summaryPill(value: leaveDaysUsed,               label: "Booked",    color: accentRed.opacity(0.80))
+            Divider().frame(height: 32).padding(.horizontal, 4)
+            summaryPill(value: max(0, leaveDaysRemaining),  label: "Remaining", color: bridgeGreen)
+            Divider().frame(height: 32).padding(.horizontal, 4)
+            summaryPill(value: bridgeSuggestions.count,     label: "Options",   color: accent)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 14)
+        .padding(.horizontal, 8)
+        .glassEffect(.regular.tint(bridgeGreen.opacity(0.08)),
+                     in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+
+    @ViewBuilder
+    private func summaryPill(value: Int, label: LocalizedStringKey, color: Color) -> some View {
+        VStack(spacing: 2) {
+            Text("\(value)")
+                .font(.system(size: 22, weight: .black, design: .rounded).monospacedDigit())
+                .foregroundStyle(color)
+                .contentTransition(.numericText())
+                .animation(.spring(response: 0.3), value: value)
+            Text(label)
+                .font(.system(size: 9, weight: .semibold))
+                .foregroundStyle(Color.primary.opacity(0.45))
+                .textCase(.uppercase)
+                .tracking(0.5)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    @ViewBuilder
+    private func bridgeDayRow(_ s: BridgeDaySuggestion, isLast: Bool) -> some View {
+        let booked = bookedSet.contains(s.id)
+        let leaveFmt: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "EE dd.MM."
+            f.locale = Locale.current
+            return f
+        }()
+
+        Button { withAnimation(.spring(response: 0.25)) { toggleBridge(s) } } label: {
+            HStack(spacing: 14) {
+                // Date badge
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(booked ? bridgeGreen.opacity(0.20) : Color.primary.opacity(0.06))
+                    VStack(spacing: 0) {
+                        Text(s.holidayDate.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "de_DE"))))
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundStyle(booked ? bridgeGreen.opacity(0.90) : accent.opacity(0.80))
+                        Text(s.holidayDate.formatted(.dateTime.day()))
+                            .font(.system(size: 20, weight: .black, design: .rounded))
+                            .foregroundStyle(Color.primary)
+                    }
+                    .padding(.vertical, 6)
+                }
+                .frame(width: 44)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(s.holidayName)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.primary)
+                        .lineLimit(1)
+
+                    HStack(spacing: 6) {
+                        Label {
+                            Text("Take \(leaveFmt.string(from: s.leaveDay))")
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(booked ? bridgeGreen : Color.primary.opacity(0.55))
+                        } icon: {
+                            Image(systemName: "suitcase.rolling.fill")
+                                .font(.system(size: 9))
+                                .foregroundStyle(booked ? bridgeGreen : Color.primary.opacity(0.40))
+                        }
+                    }
+
+                    HStack(spacing: 4) {
+                        Image(systemName: "calendar")
+                            .font(.system(size: 9))
+                            .foregroundStyle(Color.primary.opacity(0.35))
+                        Text("4 days off: \(s.windowDescription)")
+                            .font(.caption2)
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    }
+                }
+
+                Spacer()
+
+                // Checkmark toggle
+                ZStack {
+                    Circle()
+                        .fill(booked ? bridgeGreen : Color.primary.opacity(0.08))
+                        .frame(width: 28, height: 28)
+                    if booked {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(.black)
+                    }
+                }
+                .animation(.spring(response: 0.25), value: booked)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 13)
+            .background(booked ? bridgeGreen.opacity(0.07) : Color.clear)
+        }
+        .buttonStyle(.plain)
+
+        if !isLast {
+            Divider().padding(.horizontal, 16)
         }
     }
 
