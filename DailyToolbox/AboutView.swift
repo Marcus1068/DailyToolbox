@@ -32,6 +32,12 @@ struct AboutView: View {
 
     @Environment(\.openURL) private var openURL
     @State private var showMailUnavailable = false
+    @AppStorage("app.appearanceMode") private var appearanceModeRaw: String = AppearanceMode.system.rawValue
+
+    private var appearanceMode: AppearanceMode {
+        get { AppearanceMode(rawValue: appearanceModeRaw) ?? .system }
+        nonmutating set { appearanceModeRaw = newValue.rawValue }
+    }
 
     private var appVersion: String {
         let v = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
@@ -80,6 +86,7 @@ struct AboutView: View {
                     VStack(spacing: 28) {
                         heroSection
                         infoCard
+                        appearanceCard
                         actionButtons
                     }
                     .padding(.horizontal, 20)
@@ -167,11 +174,59 @@ struct AboutView: View {
         .padding(.top, 8)
     }
 
+    // MARK: - Appearance Card
+
+    private var appearanceCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Label("Appearance", systemImage: "paintbrush.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.90))
+
+            Divider().overlay(.white.opacity(0.18))
+
+            HStack(spacing: 8) {
+                ForEach(AppearanceMode.allCases, id: \.self) { mode in
+                    let selected = appearanceMode == mode
+                    Button {
+                        withAnimation(.spring(response: 0.25)) {
+                            appearanceModeRaw = mode.rawValue
+                        }
+                    } label: {
+                        VStack(spacing: 6) {
+                            Image(systemName: mode.icon)
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundStyle(selected ? Color(red: 0.18, green: 0.44, blue: 0.86) : .white.opacity(0.60))
+                            Text(mode.label)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(selected ? .white : .white.opacity(0.55))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(
+                            selected
+                                ? Color.white.opacity(0.18)
+                                : Color.white.opacity(0.07),
+                            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .strokeBorder(selected ? Color.white.opacity(0.40) : Color.clear, lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
     // MARK: - Info Card
 
     private var infoCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("© 2020–2025 Marcus Deuß", systemImage: "c.circle")
+            Label("© 2020–2026 Marcus Deuß", systemImage: "c.circle")
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(.white.opacity(0.90))
 
