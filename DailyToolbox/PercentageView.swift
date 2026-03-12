@@ -147,6 +147,14 @@ struct PercentageView: View {
         }
     }
 
+    private func clearField(_ f: PercentField) {
+        switch f {
+        case .rate:  rateText  = ""
+        case .value: valueText = ""
+        case .base:  baseText  = ""
+        }
+    }
+
     // MARK: Body
 
     @Environment(\.colorScheme) private var colorScheme
@@ -375,6 +383,12 @@ struct PercentageView: View {
                         if filtered != newVal {
                             text.wrappedValue = filtered
                             return
+                        }
+                        // If the user edits an input field while another field
+                        // shows a computed result, clear that result first so
+                        // calculate() always has exactly one empty slot to solve.
+                        if let prev = solvedField, prev != field {
+                            clearField(prev)
                         }
                         solvedField = nil
                         calculate()
