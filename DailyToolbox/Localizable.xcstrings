@@ -54,6 +54,41 @@
       },
       "shouldTranslate" : false
     },
+    "%@ = %@%% of %@" : {
+      "comment" : "Percentage result summary",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = %@%% af %@"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = %@%% von %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = %@%% de %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = %@%% de %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = %@%% di %@"
+          }
+        }
+      }
+    },
     "%@ built-in tools" : {
 
     },
@@ -1538,6 +1573,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Base e aliquota"
+          }
+        }
+      }
+    },
+    "Base = Value ÷ Rate × 100" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundværdi = Værdi ÷ Sats × 100"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert = Wert ÷ Prozentsatz × 100"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valor ÷ Tasa × 100"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valeur ÷ Taux × 100"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valore ÷ Tasso × 100"
           }
         }
       }
@@ -4821,6 +4890,108 @@
         }
       }
     },
+    "e.g. 15% of 200 = 30" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 15% af 200 = 30"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 15% von 200 = 30"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 15% de 200 = 30"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 15% de 200 = 30"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 15% di 200 = 30"
+          }
+        }
+      }
+    },
+    "e.g. 30 ÷ 15 × 100 = 200" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 30 ÷ 15 × 100 = 200"
+          }
+        }
+      }
+    },
+    "e.g. 30 ÷ 200 × 100 = 15 %" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 30 ÷ 200 × 100 = 15 %"
+          }
+        }
+      }
+    },
     "Easter" : {
       "localizations" : {
         "da" : {
@@ -5661,105 +5832,6 @@
         }
       }
     },
-    "How it works" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Sådan fungerer det" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "So funktioniert es" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cómo funciona" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Comment ça marche" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Come funziona" } }
-      }
-    },
-    "Enter any two of the three values — the missing one is calculated instantly." : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Indtast to af de tre værdier — den manglende beregnes øjeblikkeligt." } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gib zwei der drei Werte ein — der fehlende wird sofort berechnet." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Introduce dos de los tres valores — el que falta se calcula al instante." } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Entrez deux des trois valeurs — la valeur manquante est calculée instantanément." } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Inserisci due dei tre valori — quello mancante viene calcolato istantaneamente." } }
-      }
-    },
-    "Find the Value" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Find Værdien" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wert berechnen" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Calcular el Valor" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Trouver la Valeur" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Trova il Valore" } }
-      }
-    },
-    "Value = Rate % × Base" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Værdi = Sats % × Grundværdi" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wert = Prozentsatz % × Grundwert" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Valor = Tasa % × Base" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Valeur = Taux % × Base" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Valore = Tasso % × Base" } }
-      }
-    },
-    "e.g. 15% of 200 = 30" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "f.eks. 15% af 200 = 30" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "z. B. 15% von 200 = 30" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "ej. 15% de 200 = 30" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "ex. 15% de 200 = 30" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "es. 15% di 200 = 30" } }
-      }
-    },
-    "Find the Rate" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Find Procentsatsen" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Prozentsatz berechnen" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Calcular la Tasa" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Trouver le Taux" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Trova la Percentuale" } }
-      }
-    },
-    "Rate = Value ÷ Base × 100" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Sats = Værdi ÷ Grundværdi × 100" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Prozentsatz = Wert ÷ Grundwert × 100" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tasa = Valor ÷ Base × 100" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Taux = Valeur ÷ Base × 100" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Tasso = Valore ÷ Base × 100" } }
-      }
-    },
-    "e.g. 30 ÷ 200 × 100 = 15 %" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "f.eks. 30 ÷ 200 × 100 = 15 %" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "z. B. 30 ÷ 200 × 100 = 15 %" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "ej. 30 ÷ 200 × 100 = 15 %" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "ex. 30 ÷ 200 × 100 = 15 %" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "es. 30 ÷ 200 × 100 = 15 %" } }
-      }
-    },
-    "Find the Base" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Find Grundværdien" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Grundwert berechnen" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Calcular el Valor Base" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Trouver la Base" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Trova il Valore Base" } }
-      }
-    },
-    "Base = Value ÷ Rate × 100" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Grundværdi = Værdi ÷ Sats × 100" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Grundwert = Wert ÷ Prozentsatz × 100" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Base = Valor ÷ Tasa × 100" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Base = Valeur ÷ Taux × 100" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Base = Valore ÷ Tasso × 100" } }
-      }
-    },
-    "e.g. 30 ÷ 15 × 100 = 200" : {
-      "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "f.eks. 30 ÷ 15 × 100 = 200" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "z. B. 30 ÷ 15 × 100 = 200" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "ej. 30 ÷ 15 × 100 = 200" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "ex. 30 ÷ 15 × 100 = 200" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "es. 30 ÷ 15 × 100 = 200" } }
-      }
-    },
     "Fill in the fields above to generate a QR code" : {
       "comment" : "QR code empty state placeholder",
       "localizations" : {
@@ -5825,6 +5897,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inserisci due valori — il terzo viene risolto automaticamente."
+          }
+        }
+      }
+    },
+    "Find the Base" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Grundværdien"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert berechnen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcular el Valor Base"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver la Base"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova il Valore Base"
+          }
+        }
+      }
+    },
+    "Find the Rate" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Procentsatsen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozentsatz berechnen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcular la Tasa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver le Taux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova la Percentuale"
+          }
+        }
+      }
+    },
+    "Find the Value" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Værdien"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert berechnen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcular el Valor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver la Valeur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova il Valore"
           }
         }
       }
@@ -7489,6 +7663,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ore al giorno (0 – 24)"
+          }
+        }
+      }
+    },
+    "How it works" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sådan fungerer det"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So funktioniert es"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo funciona"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment ça marche"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come funziona"
           }
         }
       }
@@ -11761,6 +11969,40 @@
         }
       }
     },
+    "Rate = Value ÷ Base × 100" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sats = Værdi ÷ Grundværdi × 100"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozentsatz = Wert ÷ Grundwert × 100"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasa = Valor ÷ Base × 100"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taux = Valeur ÷ Base × 100"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasso = Valore ÷ Base × 100"
+          }
+        }
+      }
+    },
     "Rate in %" : {
       "comment" : "Interest rate field subtitle",
       "localizations" : {
@@ -14693,6 +14935,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valore"
+          }
+        }
+      }
+    },
+    "Value = Rate % × Base" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Værdi = Sats % × Grundværdi"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert = Prozentsatz % × Grundwert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor = Tasa % × Base"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valeur = Taux % × Base"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valore = Tasso % × Base"
           }
         }
       }

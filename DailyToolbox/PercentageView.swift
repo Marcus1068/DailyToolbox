@@ -110,11 +110,11 @@ struct PercentageView: View {
         var newValue = valueText
         var newBase  = baseText
 
-        if let v = valueVal, let r = rateVal, baseEmpty {
+        if let v = valueVal, let r = rateVal, r != 0, baseEmpty {
             // base = value / rate * 100
             newBase = String(format: "%g", v / r * 100.0)
             solved = .base
-        } else if let v = valueVal, let b = baseVal, rateEmpty {
+        } else if let v = valueVal, let b = baseVal, b != 0, rateEmpty {
             // rate = value / base * 100
             newRate = String(format: "%g", v / b * 100.0)
             solved = .rate
@@ -431,7 +431,8 @@ struct PercentageView: View {
         let rFmt = r.formatted(.number.precision(.fractionLength(2)))
         let vFmt = v.formatted(.number.precision(.fractionLength(2)))
         let bFmt = b.formatted(.number.precision(.fractionLength(2)))
-        return "\(vFmt) = \(rFmt)% of \(bFmt)"
+        let fmt = NSLocalizedString("%@ = %@%% of %@", comment: "Percentage result summary")
+        return String(format: fmt, vFmt, rFmt, bFmt)
     }
 }
 
