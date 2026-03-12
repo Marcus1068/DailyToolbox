@@ -170,6 +170,7 @@ struct PercentageView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     GlassEffectContainer { headerCard }
+                    GlassEffectContainer { howToCard }
                     inputSection
                     GlassEffectContainer { clearButton }
                     if solvedField != nil {
@@ -209,6 +210,69 @@ struct PercentageView: View {
             ]
         )
         .ignoresSafeArea()
+    }
+
+    // MARK: - How To Card
+
+    private var howToCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Label("How it works", systemImage: "lightbulb.fill")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(tealAccent)
+
+            Text("Enter any two of the three values — the missing one is calculated instantly.")
+                .font(.caption)
+                .foregroundStyle(Color.primary.opacity(0.75))
+                .fixedSize(horizontal: false, vertical: true)
+
+            Divider().overlay(tealAccent.opacity(0.25))
+
+            VStack(spacing: 10) {
+                formulaRow(
+                    icon: "number",
+                    label: "Find the Value",
+                    formula: "Value = Rate % × Base",
+                    example: "e.g. 15% of 200 = 30"
+                )
+                formulaRow(
+                    icon: "percent",
+                    label: "Find the Rate",
+                    formula: "Rate = Value ÷ Base × 100",
+                    example: "e.g. 30 ÷ 200 × 100 = 15 %"
+                )
+                formulaRow(
+                    icon: "square.stack.3d.up",
+                    label: "Find the Base",
+                    formula: "Base = Value ÷ Rate × 100",
+                    example: "e.g. 30 ÷ 15 × 100 = 200"
+                )
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
+    private func formulaRow(icon: String, label: LocalizedStringKey,
+                            formula: LocalizedStringKey, example: LocalizedStringKey) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(tealAccent)
+                .frame(width: 22)
+                .padding(.top, 2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.85))
+                Text(formula)
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(Color.primary.opacity(0.65))
+                Text(example)
+                    .font(.caption2)
+                    .foregroundStyle(tealAccent.opacity(0.85))
+            }
+        }
     }
 
     // MARK: - Header
