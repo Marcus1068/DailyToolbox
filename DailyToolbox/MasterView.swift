@@ -118,6 +118,24 @@ struct MasterView: View {
     @State private var showAbout = false
     @Environment(\.colorScheme) private var colorScheme
 
+    // Persisted favorites — stored as comma-separated IDs
+    @AppStorage("favorites") private var favoritesData: String = ""
+
+    private var favoriteIDs: Set<String> {
+        Set(favoritesData.split(separator: ",").map(String.init).filter { !$0.isEmpty })
+    }
+
+    private var favoriteItems: [ToolItem] {
+        let ids = favoriteIDs
+        return ToolSection.catalogue.flatMap(\.items).filter { ids.contains($0.id) }
+    }
+
+    private func toggleFavorite(_ item: ToolItem) {
+        var ids = favoriteIDs
+        if ids.contains(item.id) { ids.remove(item.id) } else { ids.insert(item.id) }
+        favoritesData = ids.joined(separator: ",")
+    }
+
     // MARK: Adaptive mesh gradient colors
 
     private var meshColors: [Color] {
@@ -165,6 +183,11 @@ struct MasterView: View {
                     VStack(alignment: .leading, spacing: 28) {
                         // Custom app header
                         appHeader
+
+                        // Favorites section — only shown when at least one item is starred
+                        if !favoriteItems.isEmpty {
+                            favoritesSection
+                        }
 
                         ForEach(ToolSection.catalogue) { section in
                             sectionBlock(section)
@@ -228,6 +251,38 @@ struct MasterView: View {
         .padding(.horizontal, 4)
     }
 
+    private var favoritesSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 8) {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(Color.yellow)
+                Text(LocalizedStringKey("Favorites"))
+                    .font(.system(size: 11, weight: .bold))
+                    .tracking(1.8)
+                    .foregroundStyle(Color.primary.opacity(0.70))
+                    .textCase(.uppercase)
+
+                Rectangle()
+                    .fill(Color.primary.opacity(0.12))
+                    .frame(height: 1)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(.horizontal, 4)
+
+            LazyVGrid(columns: columns, spacing: 14) {
+                ForEach(favoriteItems) { item in
+                    ToolCard(
+                        item: item,
+                        isFavorite: true,
+                        onSelect: onSelect,
+                        toggleFavorite: { toggleFavorite(item) }
+                    )
+                }
+            }
+        }
+    }
+
     private func sectionBlock(_ section: ToolSection) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
@@ -246,7 +301,12 @@ struct MasterView: View {
 
             LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(section.items) { item in
-                    ToolCard(item: item, onSelect: onSelect)
+                    ToolCard(
+                        item: item,
+                        isFavorite: favoriteIDs.contains(item.id),
+                        onSelect: onSelect,
+                        toggleFavorite: { toggleFavorite(item) }
+                    )
                 }
             }
         }
@@ -258,7 +318,9 @@ struct MasterView: View {
 private struct ToolCard: View {
 
     let item: ToolItem
+    let isFavorite: Bool
     let onSelect: (ToolItem) -> Void
+    let toggleFavorite: () -> Void
     @Environment(\.colorScheme) private var colorScheme
 
     private var displayColor: Color {
@@ -270,6 +332,18 @@ private struct ToolCard: View {
             cardContent
         }
         .buttonStyle(PressableCardStyle())
+        .contextMenu {
+            Button {
+                toggleFavorite()
+            } label: {
+                Label(
+                    isFavorite
+                        ? LocalizedStringKey("Remove from Favorites")
+                        : LocalizedStringKey("Add to Favorites"),
+                    systemImage: isFavorite ? "star.slash.fill" : "star.fill"
+                )
+            }
+        }
     }
 
     private var cardContent: some View {
@@ -302,6 +376,15 @@ private struct ToolCard: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
         .padding(.horizontal, 10)
+        .overlay(alignment: .topTrailing) {
+            if isFavorite {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(.yellow)
+                    .shadow(color: Color.yellow.opacity(0.6), radius: 4)
+                    .padding(10)
+            }
+        }
         .glassEffect(
             .regular.tint(displayColor.opacity(0.14)),
             in: RoundedRectangle(cornerRadius: 24, style: .continuous)
