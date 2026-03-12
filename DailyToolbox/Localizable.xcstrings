@@ -18327,6 +18327,74 @@
           }
         }
       }
+    },
+    "favorites.tip.ios": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halte eine Karte gedrückt, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste für schnellen Zugriff."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni premuta una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista per un accesso rapido."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantén pulsada una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista para acceso rápido."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tryk og hold på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen for hurtig adgang."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appuyez longuement sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste pour un accès rapide."
+          }
+        }
+      }
+    },
+    "favorites.tip.mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klicke mit der rechten Maustaste auf eine Karte, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fai clic destro su una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haz clic derecho en una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Højreklik på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faites un clic droit sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

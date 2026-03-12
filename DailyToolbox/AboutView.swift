@@ -85,6 +85,7 @@ struct AboutView: View {
                 ScrollView {
                     VStack(spacing: 28) {
                         heroSection
+                        tipsCard
                         infoCard
                         appearanceCard
                         actionButtons
@@ -172,6 +173,48 @@ struct AboutView: View {
             }
         }
         .padding(.top, 8)
+    }
+
+    // MARK: - Tips Card
+
+    private var tipsCard: some View {
+        #if targetEnvironment(macCatalyst)
+        let favTip = LocalizedStringKey("favorites.tip.mac")
+        #else
+        let favTip = LocalizedStringKey("favorites.tip.ios")
+        #endif
+        return VStack(alignment: .leading, spacing: 12) {
+            Label("Tips & Tricks", systemImage: "lightbulb.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.90))
+
+            Divider()
+                .overlay(Color.primary.opacity(0.18))
+
+            tipRow(
+                icon: "star.fill",
+                iconColor: .yellow,
+                text: favTip
+            )
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
+    @ViewBuilder
+    private func tipRow(icon: String, iconColor: Color, text: LocalizedStringKey) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(iconColor)
+                .shadow(color: iconColor.opacity(0.55), radius: 4)
+                .frame(width: 22)
+            Text(text)
+                .font(.footnote)
+                .foregroundStyle(Color.primary.opacity(0.78))
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 
     // MARK: - Appearance Card
