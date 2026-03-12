@@ -56,6 +56,16 @@ private enum PercentField: CaseIterable {
     }
 }
 
+// MARK: - History Entry
+
+private struct PercentEntry: Codable, Identifiable {
+    let id: UUID
+    let date: Date
+    let rate: Double
+    let value: Double
+    let base: Double
+}
+
 // MARK: - View
 
 struct PercentageView: View {
@@ -67,6 +77,7 @@ struct PercentageView: View {
     @State private var solvedField: PercentField? = nil
     @State private var resultScale: CGFloat = 1.0
     @FocusState private var focusedField: PercentField?
+    @AppStorage("percent.history") private var historyJSON = "[]"
 
     init(previewRate: String = "", previewValue: String = "", previewBase: String = "") {
         _rateText  = State(initialValue: previewRate)
@@ -155,6 +166,34 @@ struct PercentageView: View {
         }
     }
 
+    // MARK: History
+
+    private var historyEntries: [PercentEntry] {
+        guard let data = historyJSON.data(using: .utf8),
+              let entries = try? JSONDecoder().decode([PercentEntry].self, from: data)
+        else { return [] }
+        return entries
+    }
+
+    private func recordHistory() {
+        guard let r = parse(rateText),
+              let v = parse(valueText),
+              let b = parse(baseText) else { return }
+        let entry = PercentEntry(id: UUID(), date: Date(), rate: r, value: v, base: b)
+        // Skip if same as most recent
+        if let last = historyEntries.first,
+           abs(last.rate  - r) < 0.0001,
+           abs(last.value - v) < 0.0001,
+           abs(last.base  - b) < 0.0001 { return }
+        var entries = historyEntries
+        entries.insert(entry, at: 0)
+        if entries.count > 10 { entries = Array(entries.prefix(10)) }
+        if let data = try? JSONEncoder().encode(entries),
+           let json = String(data: data, encoding: .utf8) { historyJSON = json }
+    }
+
+    private func clearHistory() { historyJSON = "[]" }
+
     // MARK: Body
 
     @Environment(\.colorScheme) private var colorScheme
@@ -184,6 +223,9 @@ struct PercentageView: View {
                     if solvedField != nil {
                         GlassEffectContainer { resultBadge }
                     }
+                    if !historyEntries.isEmpty {
+                        GlassEffectContainer { historyCard }
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 28)
@@ -193,6 +235,9 @@ struct PercentageView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onTapGesture { focusedField = nil }
+        .onChange(of: solvedField) { _, newVal in
+            if newVal != nil { recordHistory() }
+        }
     }
 
     // MARK: - Background
@@ -447,6 +492,92 @@ struct PercentageView: View {
         let bFmt = b.formatted(.number.precision(.fractionLength(2)))
         let fmt = NSLocalizedString("%@ = %@%% of %@", comment: "Percentage result summary")
         return String(format: fmt, vFmt, rFmt, bFmt)
+    }
+    // MARK: - History Card
+
+    private var historyCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Label("Recent Calculations", systemImage: "clock.arrow.circlepath")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(tealAccent)
+                Spacer()
+                Button(action: clearHistory) {
+                    Text("Clear")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.primary.opacity(0.50))
+                }
+                .buttonStyle(.plain)
+            }
+
+            Divider().overlay(tealAccent.opacity(0.25))
+
+            VStack(spacing: 0) {
+                ForEach(historyEntries) { entry in
+                    Button {
+                        withAnimation(.spring(response: 0.3)) {
+                            rateText  = String(format: "%g", entry.rate)
+                            valueText = String(format: "%g", entry.value)
+                            baseText  = String(format: "%g", entry.base)
+                            solvedField = nil
+                        }
+                    } label: {
+                        HStack(spacing: 10) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                HStack(spacing: 6) {
+                                    entryChip(
+                                        label: "Rate",
+                                        value: entry.rate.formatted(.number.precision(.fractionLength(2))) + "%"
+                                    )
+                                    Image(systemName: "arrow.right")
+                                        .font(.caption2.weight(.bold))
+                                        .foregroundStyle(Color.primary.opacity(0.30))
+                                    entryChip(
+                                        label: "Value",
+                                        value: entry.value.formatted(.number.precision(.fractionLength(2)))
+                                    )
+                                    Text("of")
+                                        .font(.caption2)
+                                        .foregroundStyle(Color.primary.opacity(0.40))
+                                    entryChip(
+                                        label: "Base",
+                                        value: entry.base.formatted(.number.precision(.fractionLength(2)))
+                                    )
+                                }
+                                Text(entry.date, style: .time)
+                                    .font(.caption2)
+                                    .foregroundStyle(Color.primary.opacity(0.35))
+                            }
+                            Spacer()
+                            Image(systemName: "arrow.uturn.left")
+                                .font(.caption2)
+                                .foregroundStyle(Color.primary.opacity(0.25))
+                        }
+                        .padding(.vertical, 8)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+
+                    if entry.id != historyEntries.last?.id {
+                        Divider().overlay(Color.primary.opacity(0.08))
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+    }
+
+    @ViewBuilder
+    private func entryChip(label: LocalizedStringKey, value: String) -> some View {
+        VStack(spacing: 1) {
+            Text(label)
+                .font(.system(size: 8, weight: .semibold))
+                .foregroundStyle(tealAccent.opacity(0.70))
+            Text(value)
+                .font(.caption.weight(.semibold).monospacedDigit())
+                .foregroundStyle(Color.primary)
+        }
     }
 }
 

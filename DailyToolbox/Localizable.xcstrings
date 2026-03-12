@@ -10567,6 +10567,7 @@
         }
       }
     },
+    "of": {},
     "Ohm's Law": {
       "localizations": {
         "da": {
@@ -12090,6 +12091,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tasso in %"
+          }
+        }
+      }
+    },
+    "Recent Conversions": {
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seneste omregninger"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Umrechnungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversiones recientes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversions récentes"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversioni recenti"
           }
         }
       }
@@ -16047,36 +16082,70 @@
         }
       }
     },
-    "Recent Conversions": {
+    "Recent Calculations": {
       "localizations": {
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seneste omregninger"
+            "value": "Seneste beregninger"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Letzte Umrechnungen"
+            "value": "Letzte Berechnungen"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conversiones recientes"
+            "value": "Cálculos recientes"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conversions récentes"
+            "value": "Calculs récents"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conversioni recenti"
+            "value": "Calcoli recenti"
+          }
+        }
+      }
+    },
+    "Base": {
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grundværdi"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grundwert"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base"
           }
         }
       }
