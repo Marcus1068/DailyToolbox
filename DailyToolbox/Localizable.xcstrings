@@ -2851,7 +2851,6 @@
       }
     },
     "Clear": {
-      "comment": "Button: clear all input fields",
       "localizations": {
         "da": {
           "stringUnit": {
@@ -16044,6 +16043,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "I tuoi occhi sopra terra"
+          }
+        }
+      }
+    },
+    "Recent Conversions": {
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seneste omregninger"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Umrechnungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversiones recientes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversions récentes"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversioni recenti"
           }
         }
       }

@@ -26,6 +26,17 @@ limitations under the License.
 
 import SwiftUI
 
+// MARK: - History Entry
+
+private struct ConversionEntry: Codable, Identifiable, Equatable {
+    let id: UUID
+    let date: Date
+    let fromCode: String
+    let toCode: String
+    let amount: Double
+    let result: Double
+}
+
 // MARK: - Currency Picker Sheet
 
 private struct CurrencyPickerSheet: View {
@@ -82,9 +93,10 @@ struct CurrencyConverterView: View {
 
     @State private var cvt: CurrencyConverter?
     @State private var isLoading = true
-    @AppStorage("currency.from")   private var fromCurrency = "EUR"
-    @AppStorage("currency.to")     private var toCurrency   = "USD"
-    @AppStorage("currency.amount") private var amountText   = "1.00"
+    @AppStorage("currency.from")    private var fromCurrency = "EUR"
+    @AppStorage("currency.to")      private var toCurrency   = "USD"
+    @AppStorage("currency.amount")  private var amountText   = "1.00"
+    @AppStorage("currency.history") private var historyJSON  = "[]"
     @State private var showFromPicker = false
     @State private var showToPicker   = false
     @State private var swapRotation: Double = 0
@@ -134,6 +146,37 @@ struct CurrencyConverterView: View {
         result.map { $0.formatted(.number.precision(.fractionLength(2))) } ?? "—"
     }
 
+    // MARK: History helpers
+
+    private var historyEntries: [ConversionEntry] {
+        guard let data = historyJSON.data(using: .utf8),
+              let entries = try? JSONDecoder().decode([ConversionEntry].self, from: data)
+        else { return [] }
+        return entries
+    }
+
+    private func recordHistory() {
+        guard let res = result,
+              let amount = Double(sanitized), amount > 0 else { return }
+        let entry = ConversionEntry(
+            id: UUID(), date: Date(),
+            fromCode: fromCurrency, toCode: toCurrency,
+            amount: amount, result: res
+        )
+        // Skip if identical to the most recent entry
+        if let last = historyEntries.first,
+           last.fromCode == entry.fromCode,
+           last.toCode   == entry.toCode,
+           abs(last.amount - entry.amount) < 0.001 { return }
+        var entries = historyEntries
+        entries.insert(entry, at: 0)
+        if entries.count > 10 { entries = Array(entries.prefix(10)) }
+        if let data = try? JSONEncoder().encode(entries),
+           let json = String(data: data, encoding: .utf8) { historyJSON = json }
+    }
+
+    private func clearHistory() { historyJSON = "[]" }
+
     // MARK: Body
 
     var body: some View {
@@ -150,6 +193,9 @@ struct CurrencyConverterView: View {
                             conversionCard
                             resultCard
                             rateInfoCard
+                            if !historyEntries.isEmpty {
+                                historyCard
+                            }
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 28)
@@ -162,6 +208,11 @@ struct CurrencyConverterView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .task { await loadConverter() }
+        // Auto-record after 1 s of no changes
+        .task(id: "\(amountText)|\(fromCurrency)|\(toCurrency)") {
+            try? await Task.sleep(for: .seconds(1))
+            recordHistory()
+        }
         .sheet(isPresented: $showFromPicker) {
             CurrencyPickerSheet(currencies: currencies, selected: $fromCurrency)
         }
@@ -193,6 +244,79 @@ struct CurrencyConverterView: View {
             ]
         )
         .ignoresSafeArea()
+    }
+
+    // MARK: - History Card
+
+    private var historyCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Label("Recent Conversions", systemImage: "clock.arrow.circlepath")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(purpleAccent)
+                Spacer()
+                Button(action: clearHistory) {
+                    Text("Clear")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.primary.opacity(0.50))
+                }
+                .buttonStyle(.plain)
+            }
+
+            Divider().overlay(purpleAccent.opacity(0.20))
+
+            VStack(spacing: 0) {
+                ForEach(historyEntries) { entry in
+                    Button {
+                        withAnimation(.spring(response: 0.3)) {
+                            amountText   = String(format: "%g", entry.amount)
+                            fromCurrency = entry.fromCode
+                            toCurrency   = entry.toCode
+                        }
+                    } label: {
+                        HStack(spacing: 10) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                HStack(spacing: 5) {
+                                    Text(entry.amount.formatted(.number.precision(.fractionLength(2))))
+                                        .font(.subheadline.weight(.semibold).monospacedDigit())
+                                        .foregroundStyle(Color.primary)
+                                    Text(entry.fromCode)
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(Color.primary.opacity(0.55))
+                                    Image(systemName: "arrow.right")
+                                        .font(.caption2.weight(.bold))
+                                        .foregroundStyle(Color.primary.opacity(0.35))
+                                    Text(entry.result.formatted(.number.precision(.fractionLength(2))))
+                                        .font(.subheadline.weight(.semibold).monospacedDigit())
+                                        .foregroundStyle(purpleAccent2)
+                                    Text(entry.toCode)
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(purpleAccent.opacity(0.70))
+                                }
+                                Text(entry.date, style: .time)
+                                    .font(.caption2)
+                                    .foregroundStyle(Color.primary.opacity(0.35))
+                            }
+                            Spacer()
+                            Image(systemName: "arrow.uturn.left")
+                                .font(.caption2)
+                                .foregroundStyle(Color.primary.opacity(0.25))
+                        }
+                        .padding(.vertical, 8)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+
+                    if entry.id != historyEntries.last?.id {
+                        Divider().overlay(Color.primary.opacity(0.08))
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 16)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     // MARK: - Loading
