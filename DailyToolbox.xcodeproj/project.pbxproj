@@ -11,6 +11,8 @@
 		2C034905244B13F700AEE556 /* PowerConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034904244B13F700AEE556 /* PowerConsumption.swift */; };
 		2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A8372247A960A0076EEDE /* MenuController.swift */; };
 		2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA8692F6202A700F1BDCC /* WindChillView.swift */; };
+		2C4AA86C2F637DDE00F1BDCC /* MoonPhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */; };
+		2C4AA86E2F637E3100F1BDCC /* ResistorColorCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */; };
 		2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836D2F5D8C02009898E9 /* AboutView.swift */; };
 		2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */; };
 		2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */; };
@@ -73,6 +75,8 @@
 		2C2A8372247A960A0076EEDE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2C4AA8672F61D5E000F1BDCC /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		2C4AA8692F6202A700F1BDCC /* WindChillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindChillView.swift; sourceTree = "<group>"; };
+		2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseView.swift; sourceTree = "<group>"; };
+		2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorColorCodeView.swift; sourceTree = "<group>"; };
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageView.swift; sourceTree = "<group>"; };
 		2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				2CBF5EE42F5E15A8009575C2 /* BMIView.swift */,
 				1889001BC656E4FB1229CE5D /* SunriseView.swift */,
 				2C4AA8692F6202A700F1BDCC /* WindChillView.swift */,
+				2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */,
+				2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -352,9 +358,11 @@
 			files = (
 				73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */,
 				DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */,
+				2C4AA86E2F637E3100F1BDCC /* ResistorColorCodeView.swift in Sources */,
 				0F19E79A9D08EC74E7EB66F7 /* GermanHolidaysView.swift in Sources */,
 				2CBF5EE32F5E1562009575C2 /* LoanCalculatorView.swift in Sources */,
 				2C5F83962F5DA6D6009898E9 /* ContentView.swift in Sources */,
+				2C4AA86C2F637DDE00F1BDCC /* MoonPhaseView.swift in Sources */,
 				2CBD866A23F6AA480011D886 /* AppDelegate.swift in Sources */,
 				2C5F837A2F5D98C3009898E9 /* HorizonView.swift in Sources */,
 				2C5F837E2F5D9A44009898E9 /* CalendarCalculationView.swift in Sources */,
