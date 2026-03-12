@@ -237,7 +237,7 @@ struct PercentageView: View {
         .onTapGesture { focusedField = nil }
         // Record history 2 s after the last change — avoids logging every keystroke
         .task(id: "\(rateText)|\(valueText)|\(baseText)") {
-            try? await Task.sleep(for: .seconds(2))
+            do { try await Task.sleep(for: .seconds(2)) } catch { return }
             if solvedField != nil { recordHistory() }
         }
     }

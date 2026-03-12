@@ -210,7 +210,7 @@ struct CurrencyConverterView: View {
         .task { await loadConverter() }
         // Auto-record after 1 s of no changes
         .task(id: "\(amountText)|\(fromCurrency)|\(toCurrency)") {
-            try? await Task.sleep(for: .seconds(1))
+            do { try await Task.sleep(for: .seconds(1)) } catch { return }
             recordHistory()
         }
         .sheet(isPresented: $showFromPicker) {
