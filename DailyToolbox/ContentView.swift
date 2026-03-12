@@ -8,8 +8,8 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
 
-    // iPad: direct selection drives the detail column
-    @State private var selectedItem: ToolItem?
+    // iPad/Mac: pre-select first tool so detail column is never empty
+    @State private var selectedItem: ToolItem? = ToolSection.catalogue.first?.items.first
     // iPhone: explicit path so Button taps push onto the stack
     @State private var navPath = NavigationPath()
 
