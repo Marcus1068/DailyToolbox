@@ -235,8 +235,10 @@ struct PercentageView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onTapGesture { focusedField = nil }
-        .onChange(of: solvedField) { _, newVal in
-            if newVal != nil { recordHistory() }
+        // Record history 2 s after the last change — avoids logging every keystroke
+        .task(id: "\(rateText)|\(valueText)|\(baseText)") {
+            try? await Task.sleep(for: .seconds(2))
+            if solvedField != nil { recordHistory() }
         }
     }
 
