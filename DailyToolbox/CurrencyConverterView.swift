@@ -145,6 +145,7 @@ struct CurrencyConverterView: View {
                 GlassEffectContainer {
                     ScrollView {
                         VStack(spacing: 20) {
+                            headerCard
                             amountCard
                             conversionCard
                             resultCard
@@ -206,6 +207,40 @@ struct CurrencyConverterView: View {
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(Color.primary.opacity(0.75))
         }
+    }
+
+    // MARK: - Header Card
+
+    private var headerCard: some View {
+        HStack(spacing: 16) {
+            ZStack {
+                Circle()
+                    .fill(purpleAccent.opacity(0.18))
+                    .frame(width: 54, height: 54)
+                Image(systemName: "dollarsign.circle.fill")
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [purpleAccent2, purpleAccent],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            }
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Currency Converter")
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(Color.primary)
+                Text("Live exchange rates · 160+ currencies")
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.65))
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 18)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     // MARK: - Amount Card

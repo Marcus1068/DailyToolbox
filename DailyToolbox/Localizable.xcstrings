@@ -8834,6 +8834,40 @@
         }
       }
     },
+    "Live exchange rates · 160+ currencies": {
+      "localizations": {
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live valutakurser · 160+ valutaer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live-Wechselkurse · 160+ Währungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipos de cambio en tiempo real · 160+ divisas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taux de change en direct · 160+ devises"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tassi di cambio in tempo reale · 160+ valute"
+          }
+        }
+      }
+    },
     "Loading holidays…": {
       "localizations": {
         "da": {
