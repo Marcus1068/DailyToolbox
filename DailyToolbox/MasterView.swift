@@ -194,6 +194,9 @@ struct MasterView: View {
                         }
                     }
             }
+            .presentationDetents([.large, .fraction(0.6)])
+            .presentationDragIndicator(.visible)
+            .presentationSizing(.page)
         }
     }
 
