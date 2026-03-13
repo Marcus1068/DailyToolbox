@@ -127,7 +127,8 @@ struct ColorPickerView: View {
     private func copyToClipboard(_ text: String, feedback: @escaping (Bool) -> Void) {
         UIPasteboard.general.string = text
         withAnimation { feedback(true) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(2))
             withAnimation { feedback(false) }
         }
     }
@@ -242,6 +243,10 @@ struct ColorPickerView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focusedId = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Color Converter")
         .navigationBarTitleDisplayMode(.inline)
@@ -314,7 +319,7 @@ struct ColorPickerView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - HEX Card
@@ -360,7 +365,7 @@ struct ColorPickerView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - RGB Card
@@ -395,7 +400,7 @@ struct ColorPickerView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - HSB Card
@@ -430,7 +435,7 @@ struct ColorPickerView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - CMYK Card
@@ -467,7 +472,7 @@ struct ColorPickerView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Shared Field Builder

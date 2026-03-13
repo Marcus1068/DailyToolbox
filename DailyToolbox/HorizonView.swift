@@ -207,7 +207,7 @@ private struct HorizonSceneView: View {
             }
         }
         .frame(height: 135)
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }
 
@@ -295,7 +295,6 @@ struct HorizonView: View {
                     .padding(.vertical, 28)
                 }
             }
-            .onTapGesture { }
         }
         .navigationTitle("Horizon")
         .navigationBarTitleDisplayMode(.inline)
@@ -360,7 +359,7 @@ struct HorizonView: View {
             Spacer()
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: GPS Altitude Card
@@ -426,7 +425,7 @@ struct HorizonView: View {
         .padding(.vertical, 14)
         .glassEffect(
             .regular.tint(glassTintBlue),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
     }
 
@@ -486,7 +485,7 @@ struct HorizonView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: Result Card
@@ -530,7 +529,7 @@ struct HorizonView: View {
         .padding(.vertical, 16)
         .glassEffect(
             .regular.tint(glassTintGold),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
     }
 
@@ -564,14 +563,14 @@ struct HorizonView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         HorizonView()
     }
 }

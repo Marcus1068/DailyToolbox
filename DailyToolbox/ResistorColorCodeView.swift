@@ -169,7 +169,6 @@ private struct ResistorBodyView: View {
             let bodyWidth  = w * 0.68
             let bodyHeight = h * 0.44
             let bodyX = (w - bodyWidth) / 2
-            let bodyY = (h - bodyHeight) / 2
             let leadLength = (w - bodyWidth) / 2
 
             // Left lead
@@ -187,7 +186,7 @@ private struct ResistorBodyView: View {
             .stroke(Color.primary.opacity(0.55), lineWidth: 2)
 
             // Body (beige ceramic)
-            RoundedRectangle(cornerRadius: bodyHeight * 0.38, style: .continuous)
+            RoundedRectangle(cornerRadius: bodyHeight * 0.38)
                 .fill(Color(red: 0.85, green: 0.76, blue: 0.58))
                 .frame(width: bodyWidth, height: bodyHeight)
                 .position(x: w / 2, y: h / 2)
@@ -210,7 +209,7 @@ private struct ResistorBodyView: View {
             }
 
             // Body outline
-            RoundedRectangle(cornerRadius: bodyHeight * 0.38, style: .continuous)
+            RoundedRectangle(cornerRadius: bodyHeight * 0.38)
                 .strokeBorder(Color.black.opacity(0.18), lineWidth: 1)
                 .frame(width: bodyWidth, height: bodyHeight)
                 .position(x: w / 2, y: h / 2)
@@ -257,9 +256,9 @@ private struct BandPickerRow: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
-                .background(accent.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .background(accent.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    RoundedRectangle(cornerRadius: 12)
                         .strokeBorder(accent.opacity(0.20), lineWidth: 1)
                 )
             }
@@ -460,7 +459,7 @@ struct ResistorColorCodeView: View {
             .frame(width: 130)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: Resistor Preview
@@ -491,7 +490,7 @@ struct ResistorColorCodeView: View {
             .padding(.horizontal, 8)
         }
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private func bandLabel(index: Int) -> LocalizedStringKey {
@@ -533,7 +532,7 @@ struct ResistorColorCodeView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: Band Selectors
@@ -565,7 +564,7 @@ struct ResistorColorCodeView: View {
                           selection: $bandTol, accent: accentColor)
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: Reference Card
@@ -647,7 +646,7 @@ struct ResistorColorCodeView: View {
             }
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 }
 

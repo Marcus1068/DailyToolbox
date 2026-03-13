@@ -212,6 +212,10 @@ struct UnitConverterView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focusedId = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Unit Converter")
         .navigationBarTitleDisplayMode(.inline)
@@ -279,7 +283,7 @@ struct UnitConverterView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Category Picker
@@ -304,7 +308,7 @@ struct UnitConverterView: View {
                         .padding(.vertical, 12)
                         .background(
                             category == cat
-                                ? RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                ? RoundedRectangle(cornerRadius: 14)
                                     .fill(Color.primary.opacity(0.14))
                                     .transition(.opacity)
                                 : nil
@@ -315,7 +319,7 @@ struct UnitConverterView: View {
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 6)
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         }
     }
 
@@ -333,7 +337,7 @@ struct UnitConverterView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 14))
     }
 
     // MARK: - Input Section
@@ -387,7 +391,7 @@ struct UnitConverterView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 13)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 }
 

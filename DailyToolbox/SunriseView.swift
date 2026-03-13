@@ -335,7 +335,7 @@ private struct SunArcSceneView: View {
             }
         }
         .frame(height: 155)
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 
     private var sunBodyColor: Color {
@@ -593,7 +593,7 @@ struct SunriseView: View {
             }
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Sky Scene
@@ -604,7 +604,7 @@ struct SunriseView: View {
             skyPhase:  skyPhase,
             elevation: sunElevation
         )
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: Times Grid
@@ -650,7 +650,7 @@ struct SunriseView: View {
             Spacer()
         }
         .padding(12)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 14))
     }
 
     // MARK: Golden Hour Card
@@ -706,7 +706,7 @@ struct SunriseView: View {
             .regular.tint(colorScheme == .dark
                 ? Color(red: 0.10, green: 0.08, blue: 0.01)
                 : Color(red: 1.00, green: 0.92, blue: 0.65)),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
     }
 
@@ -756,14 +756,14 @@ struct SunriseView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         SunriseView()
     }
 }

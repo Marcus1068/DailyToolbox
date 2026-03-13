@@ -174,6 +174,10 @@ struct QRCodeView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focusedField = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("QR Code")
         .navigationBarTitleDisplayMode(.inline)
@@ -247,7 +251,7 @@ struct QRCodeView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Type Picker
@@ -272,7 +276,7 @@ struct QRCodeView: View {
                         .padding(.vertical, 10)
                         .background(
                             qrType == type
-                                ? RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                ? RoundedRectangle(cornerRadius: 12)
                                     .fill(Color.primary.opacity(0.14))
                                 : nil
                         )
@@ -282,7 +286,7 @@ struct QRCodeView: View {
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 6)
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         }
     }
 
@@ -301,7 +305,7 @@ struct QRCodeView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // URL
@@ -422,7 +426,7 @@ struct QRCodeView: View {
                 .frame(maxWidth: 260, maxHeight: 260)
                 .padding(18)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    RoundedRectangle(cornerRadius: 16)
                         .fill(.white)
                         .shadow(color: .black.opacity(0.25), radius: 12, x: 0, y: 4)
                 )
@@ -443,7 +447,7 @@ struct QRCodeView: View {
         .padding(.vertical, 20)
         .glassEffect(
             .regular.tint(qrType.accentColor.opacity(0.12)),
-            in: RoundedRectangle(cornerRadius: 22, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 22)
         )
     }
 
@@ -467,7 +471,8 @@ struct QRCodeView: View {
             Button {
                 UIPasteboard.general.image = image
                 withAnimation(.spring(response: 0.25)) { copied = true }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(2))
                     withAnimation { copied = false }
                 }
             } label: {
@@ -496,7 +501,7 @@ struct QRCodeView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 22)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Helpers
@@ -538,7 +543,7 @@ struct QRCodeView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(Color.primary.opacity(0.08))
             )
         }

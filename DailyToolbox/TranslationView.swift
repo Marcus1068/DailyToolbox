@@ -209,7 +209,7 @@ struct TranslationView: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 9)
-                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
 
                 Button(action: performSearch) {
                     Image(systemName: "arrow.right.circle.fill")
@@ -227,7 +227,7 @@ struct TranslationView: View {
             }
 
             // Language selector
-            ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(LeoLanguage.allCases) { lang in
                         Button {
@@ -260,13 +260,14 @@ struct TranslationView: View {
                 }
                 .padding(.horizontal, 2)
             }
+            .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 12)
         .padding(.top, 10)
         .padding(.bottom, 12)
         .glassEffect(
             .regular.tint(Color(red: 0.02, green: 0.14, blue: 0.18)),
-            in: RoundedRectangle(cornerRadius: 0, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 0)
         )
     }
 
@@ -338,7 +339,7 @@ struct TranslationView: View {
         }
         .glassEffect(
             .regular.tint(Color(red: 0.02, green: 0.10, blue: 0.16)),
-            in: RoundedRectangle(cornerRadius: 0, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 0)
         )
         .overlay(alignment: .top) {
             // Loading progress bar
@@ -372,7 +373,7 @@ struct TranslationView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         TranslationView()
     }
 }

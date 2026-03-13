@@ -66,7 +66,7 @@ private struct CostResultRow: View {
                 Text(period)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(accent.opacity(0.85))
-                Text(String(format: "%.3f kWh", kwh))
+                Text("\(kwh, format: .number.precision(.fractionLength(3))) kWh")
                     .font(.caption2)
                     .foregroundStyle(Color.primary.opacity(0.32))
             }
@@ -148,6 +148,10 @@ struct PowerConsumptionView: View {
                 }
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Power Consumption")
         .navigationBarTitleDisplayMode(.inline)
@@ -218,7 +222,7 @@ struct PowerConsumptionView: View {
             Spacer()
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Input Section
@@ -355,7 +359,7 @@ struct PowerConsumptionView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16))
     }
 
     // MARK: Device Presets
@@ -371,7 +375,7 @@ struct PowerConsumptionView: View {
             .foregroundStyle(Color.primary.opacity(0.48))
             .padding(.leading, 2)
 
-            ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(DevicePreset.all) { preset in
                         Button {
@@ -400,10 +404,9 @@ struct PowerConsumptionView: View {
                 .padding(.horizontal, 2)
                 .padding(.vertical, 2)
             }
+            .scrollIndicators(.hidden)
         }
     }
-
-    // MARK: Results
 
     @ViewBuilder
     private func resultsCard(
@@ -462,7 +465,7 @@ struct PowerConsumptionView: View {
         .padding(18)
         .glassEffect(
             .regular.tint(Color(red: 0.14, green: 0.09, blue: 0.01)),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .animation(.spring(response: 0.4), value: r.yearly)
@@ -523,14 +526,14 @@ struct PowerConsumptionView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         PowerConsumptionView()
     }
 }

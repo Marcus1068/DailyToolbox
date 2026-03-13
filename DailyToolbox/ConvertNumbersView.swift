@@ -155,12 +155,12 @@ private struct BitGridView: View {
 
     private func bitCell(isOn: Bool) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 5, style: .continuous)
+            RoundedRectangle(cornerRadius: 5)
                 .fill(isOn
                     ? binaryGreen.opacity(0.22)
                     : Color.primary.opacity(0.05))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 5, style: .continuous)
+                    RoundedRectangle(cornerRadius: 5)
                         .strokeBorder(
                             isOn
                                 ? binaryGreen.opacity(0.55)
@@ -278,6 +278,10 @@ struct ConvertNumbersView: View {
                 }
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Convert Numbers")
         .navigationBarTitleDisplayMode(.inline)
@@ -345,7 +349,7 @@ struct ConvertNumbersView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Input Card
@@ -355,7 +359,7 @@ struct ConvertNumbersView: View {
         HStack(spacing: 14) {
             // Icon
             ZStack {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                RoundedRectangle(cornerRadius: 12)
                     .fill(adaptedAccent(for: base).opacity(0.15))
                     .frame(width: 44, height: 44)
                 Image(systemName: base.icon)
@@ -404,7 +408,7 @@ struct ConvertNumbersView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: - Bit Pattern Card
@@ -418,7 +422,7 @@ struct ConvertNumbersView: View {
         .padding(.vertical, 16)
         .glassEffect(
             .regular.tint(colorScheme == .dark ? Color(red: 0.05, green: 0.25, blue: 0.20) : Color(red: 0.02, green: 0.35, blue: 0.25)),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .animation(.spring(response: 0.35, dampingFraction: 0.75), value: d)
@@ -444,7 +448,7 @@ struct ConvertNumbersView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         ConvertNumbersView()
     }
 }

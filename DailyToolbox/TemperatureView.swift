@@ -89,7 +89,7 @@ private struct TemperatureGaugeView: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     // Gradient track
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(
                             LinearGradient(
                                 colors: [
@@ -297,6 +297,10 @@ struct TemperatureView: View {
                 .padding(.vertical, 28)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Temperature")
         .navigationBarTitleDisplayMode(.inline)
@@ -363,7 +367,7 @@ struct TemperatureView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Gauge
@@ -388,7 +392,7 @@ struct TemperatureView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Input Section
@@ -479,7 +483,7 @@ struct TemperatureView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: - Classification Badge
@@ -508,7 +512,7 @@ struct TemperatureView: View {
         .padding(.vertical, 14)
         .glassEffect(
             .regular.tint(cls.color.opacity(0.4)),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .animation(.spring(response: 0.35, dampingFraction: 0.75), value: cls.label)

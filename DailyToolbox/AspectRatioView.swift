@@ -222,6 +222,10 @@ struct AspectRatioView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Aspect Ratio")
         .navigationBarTitleDisplayMode(.inline)
@@ -274,7 +278,7 @@ struct AspectRatioView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Presets
@@ -294,7 +298,7 @@ struct AspectRatioView: View {
                             let maxW: CGFloat = 36
                             let bw = ratio >= 1 ? maxW : maxW * CGFloat(ratio)
                             let bh = ratio >= 1 ? maxW / CGFloat(ratio) : maxW
-                            RoundedRectangle(cornerRadius: 3, style: .continuous)
+                            RoundedRectangle(cornerRadius: 3)
                                 .strokeBorder(accent.opacity(0.70), lineWidth: 1.5)
                                 .frame(width: bw, height: min(bh, maxW))
                             Text(p.label)
@@ -304,8 +308,8 @@ struct AspectRatioView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .background(Color.primary.opacity(0.06),
-                                    in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    in: RoundedRectangle(cornerRadius: 12))
+                        .overlay(RoundedRectangle(cornerRadius: 12)
                             .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1))
                     }
                     .buttonStyle(.plain)
@@ -314,7 +318,7 @@ struct AspectRatioView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Dimensions
@@ -338,14 +342,14 @@ struct AspectRatioView: View {
                                 .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                 .padding(.horizontal, 12).padding(.vertical, 7)
                                 .background(sel ? accent : Color.clear,
-                                            in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                            in: RoundedRectangle(cornerRadius: 10))
                         }
                         .buttonStyle(.plain)
                     }
                 }
                 .padding(3)
                 .background(Color.primary.opacity(0.08),
-                            in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                            in: RoundedRectangle(cornerRadius: 13))
             }
 
             HStack(spacing: 14) {
@@ -374,14 +378,14 @@ struct AspectRatioView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 13)
-                    .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 14).fill(accent))
             }
             .buttonStyle(.plain)
             .padding(.top, 2)
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -404,9 +408,9 @@ struct AspectRatioView: View {
                 .foregroundStyle(Color.primary)
                 .tint(accent)
                 .padding(12)
-                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .background(RoundedRectangle(cornerRadius: 12)
                     .fill(locked ? accent.opacity(0.10) : Color.primary.opacity(0.07)))
-                .overlay(locked ? RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .overlay(locked ? RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(accent.opacity(0.30), lineWidth: 1) : nil)
                 .onChange(of: text.wrappedValue) { _, _ in onChange() }
         }
@@ -452,7 +456,7 @@ struct AspectRatioView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 }
 

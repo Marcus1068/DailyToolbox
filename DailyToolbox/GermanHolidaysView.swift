@@ -147,11 +147,11 @@ private enum LoadState {
 
 // MARK: - View Model
 
-@MainActor
-private class HolidaysViewModel: ObservableObject {
-    @Published var publicHolidays: [PublicHoliday] = []
-    @Published var schoolHolidays: [SchoolHoliday] = []
-    @Published var loadState: LoadState = .idle
+@Observable @MainActor
+private class HolidaysViewModel {
+    var publicHolidays: [PublicHoliday] = []
+    var schoolHolidays: [SchoolHoliday] = []
+    var loadState: LoadState = .idle
 
     private let isoFormatter: DateFormatter = {
         let f = DateFormatter()
@@ -214,7 +214,7 @@ private class HolidaysViewModel: ObservableObject {
 
 struct GermanHolidaysView: View {
 
-    @StateObject private var vm = HolidaysViewModel()
+    @State private var vm = HolidaysViewModel()
 
     @AppStorage("germanHolidays.stateCode")    private var savedStateCode:     String = "BY"
     @AppStorage("germanHolidays.year")         private var savedYear:           Int    = Calendar.current.component(.year, from: Date())
@@ -390,7 +390,7 @@ struct GermanHolidaysView: View {
             Spacer()
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Controls Card
@@ -418,7 +418,7 @@ struct GermanHolidaysView: View {
                 }
                 .padding(14)
                 .background(Color.primary.opacity(0.07),
-                            in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            in: RoundedRectangle(cornerRadius: 14))
             }
             .buttonStyle(.plain)
 
@@ -436,7 +436,7 @@ struct GermanHolidaysView: View {
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
                             .background(sel ? accent : Color.primary.opacity(0.08),
-                                        in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                        in: RoundedRectangle(cornerRadius: 12))
                     }
                     .buttonStyle(.plain)
                 }
@@ -505,15 +505,15 @@ struct GermanHolidaysView: View {
                     .buttonStyle(.plain)
                 }
                 .background(Color.primary.opacity(0.09),
-                            in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            in: RoundedRectangle(cornerRadius: 10))
             }
             .padding(14)
             .background(Color.primary.opacity(0.07),
-                        in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        in: RoundedRectangle(cornerRadius: 14))
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Tab Bar
@@ -535,13 +535,13 @@ struct GermanHolidaysView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 11)
                     .background(sel ? accent : Color.primary.opacity(0.08),
-                                in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                in: RoundedRectangle(cornerRadius: 12))
                 }
                 .buttonStyle(.plain)
             }
         }
         .padding(14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Public Holidays List
@@ -553,7 +553,7 @@ struct GermanHolidaysView: View {
                     publicHolidayRow(h, isLast: idx == vm.publicHolidays.count - 1)
                 }
             }
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
         }
     }
 
@@ -563,7 +563,7 @@ struct GermanHolidaysView: View {
 
         HStack(spacing: 14) {
             ZStack {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(h.isToday ? accent.opacity(0.25)
                           : h.isPast ? Color.primary.opacity(0.05)
                           : accent.opacity(0.12))
@@ -622,7 +622,7 @@ struct GermanHolidaysView: View {
                     schoolHolidayRow(h, isLast: idx == vm.schoolHolidays.count - 1)
                 }
             }
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
         }
     }
 
@@ -632,7 +632,7 @@ struct GermanHolidaysView: View {
         let endStr   = h.end.formatted(.dateTime.day().month(.abbreviated).year().locale(Locale(identifier: "de_DE")))
 
         HStack(spacing: 14) {
-            RoundedRectangle(cornerRadius: 3, style: .continuous)
+            RoundedRectangle(cornerRadius: 3)
                 .fill(h.isActive ? accent
                       : h.isPast ? Color.primary.opacity(0.15)
                       : accentRed.opacity(0.80))
@@ -698,7 +698,7 @@ struct GermanHolidaysView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(32)
-                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
                 }
             } else {
                 GlassEffectContainer {
@@ -707,7 +707,7 @@ struct GermanHolidaysView: View {
                             bridgeDayRow(s, isLast: idx == bridgeSuggestions.count - 1)
                         }
                     }
-                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
                 }
             }
         }
@@ -727,7 +727,7 @@ struct GermanHolidaysView: View {
         .padding(.vertical, 14)
         .padding(.horizontal, 8)
         .glassEffect(.regular.tint(bridgeGreen.opacity(0.08)),
-                     in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                     in: RoundedRectangle(cornerRadius: 20))
     }
 
     @ViewBuilder
@@ -761,7 +761,7 @@ struct GermanHolidaysView: View {
             HStack(spacing: 14) {
                 // Date badge
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(booked ? bridgeGreen.opacity(0.20) : Color.primary.opacity(0.06))
                     VStack(spacing: 0) {
                         Text(s.holidayDate.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "de_DE"))))
@@ -843,7 +843,7 @@ struct GermanHolidaysView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(40)
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
         }
     }
 
@@ -859,7 +859,7 @@ struct GermanHolidaysView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(30)
-            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
         }
     }
 
@@ -890,7 +890,7 @@ struct GermanHolidaysView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(30)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - State Picker Sheet

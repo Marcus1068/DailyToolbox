@@ -144,7 +144,8 @@ struct PercentageView: View {
             solvedField = solved
             resultScale = 1.08
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(350))
             withAnimation(.spring(response: 0.25)) { resultScale = 1.0 }
         }
     }
@@ -235,6 +236,10 @@ struct PercentageView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onTapGesture { focusedField = nil }
+
+        .accessibilityAddTraits(.isButton)
+
+        .accessibilityLabel("Dismiss keyboard")
         // Record history 2 s after the last change — avoids logging every keystroke
         .task(id: "\(rateText)|\(valueText)|\(baseText)") {
             do { try await Task.sleep(for: .seconds(2)) } catch { return }
@@ -305,7 +310,7 @@ struct PercentageView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private func formulaRow(icon: String, label: LocalizedStringKey,
@@ -354,7 +359,7 @@ struct PercentageView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Input Section
@@ -449,7 +454,7 @@ struct PercentageView: View {
         .padding(.vertical, 14)
         .glassEffect(
             isSolved ? .regular.tint(tealGlass) : .regular,
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
     }
@@ -481,7 +486,7 @@ struct PercentageView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .glassEffect(.regular.tint(tealGlass), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular.tint(tealGlass), in: RoundedRectangle(cornerRadius: 16))
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 

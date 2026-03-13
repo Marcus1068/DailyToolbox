@@ -157,6 +157,10 @@ struct AreaVolumeView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Area & Volume")
         .navigationBarTitleDisplayMode(.inline)
@@ -206,13 +210,13 @@ struct AreaVolumeView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .background(
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            RoundedRectangle(cornerRadius: 14)
                                 .fill(selected
                                     ? Color(red:0.55,green:1.00,blue:0.65).opacity(0.18)
                                     : Color.primary.opacity(0.06))
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            RoundedRectangle(cornerRadius: 14)
                                 .strokeBorder(selected
                                     ? Color(red:0.55,green:1.00,blue:0.65).opacity(0.55)
                                     : Color.primary.opacity(0.08), lineWidth: 1)
@@ -230,7 +234,7 @@ struct AreaVolumeView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private var inputCard: some View {
@@ -261,7 +265,7 @@ struct AreaVolumeView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
                     .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        RoundedRectangle(cornerRadius: 16)
                             .fill(Color(red:0.55,green:1.00,blue:0.65))
                     )
             }
@@ -270,7 +274,7 @@ struct AreaVolumeView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -287,7 +291,7 @@ struct AreaVolumeView: View {
                 .tint(Color(red:0.55,green:1.00,blue:0.65))
                 .padding(12)
                 .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    RoundedRectangle(cornerRadius: 12)
                         .fill(Color.primary.opacity(0.07))
                 )
                 .onChange(of: text.wrappedValue) { _, _ in
@@ -313,7 +317,7 @@ struct AreaVolumeView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder

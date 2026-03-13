@@ -141,9 +141,9 @@ struct AboutView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 116, height: 116)
-                .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 26))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 26, style: .continuous)
+                    RoundedRectangle(cornerRadius: 26)
                         .strokeBorder(
                             LinearGradient(
                                 colors: [Color.primary.opacity(0.65), Color.primary.opacity(0.10)],
@@ -199,7 +199,7 @@ struct AboutView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -249,10 +249,10 @@ struct AboutView: View {
                             selected
                                 ? Color.primary.opacity(0.18)
                                 : Color.primary.opacity(0.07),
-                            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            in: RoundedRectangle(cornerRadius: 14)
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            RoundedRectangle(cornerRadius: 14)
                                 .strokeBorder(selected ? Color.primary.opacity(0.40) : Color.clear, lineWidth: 1)
                         )
                     }
@@ -262,7 +262,7 @@ struct AboutView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Info Card
@@ -291,7 +291,7 @@ struct AboutView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Action Buttons

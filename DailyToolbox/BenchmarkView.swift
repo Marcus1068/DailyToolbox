@@ -305,7 +305,7 @@ struct BenchmarkView: View {
         }
         .padding()
         .glassEffect(.regular.tint(Color.cyan.opacity(0.07)),
-                     in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                     in: RoundedRectangle(cornerRadius: 20))
         .animation(.spring(duration: 0.4), value: runner.score)
     }
 
@@ -356,7 +356,7 @@ struct BenchmarkView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16))
     }
 
     // MARK: - Run All Button
@@ -414,7 +414,7 @@ struct BenchmarkView: View {
                         }
                         .frame(height: 10)
 
-                        Text(String(format: "%.3fs", t))
+                        Text(t, format: .number.precision(.fractionLength(3)))
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(Color.primary.opacity(0.65))
                             .frame(width: 50, alignment: .trailing)
@@ -423,7 +423,7 @@ struct BenchmarkView: View {
             }
         }
         .padding()
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .animation(.spring(duration: 0.5), value: runner.results.count)
     }
@@ -484,7 +484,7 @@ private struct BenchCard: View {
             // Result
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 if let t = result {
-                    Text(String(format: "%.4f", t))
+                    Text(t, format: .number.precision(.fractionLength(4)))
                         .font(.system(size: 17, weight: .bold, design: .monospaced))
                         .foregroundStyle(type.accentColor)
                         .contentTransition(.numericText())
@@ -513,7 +513,7 @@ private struct BenchCard: View {
         .padding(12)
         .glassEffect(
             .regular.tint(type.accentColor.opacity(0.05)),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
     }
 }

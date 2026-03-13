@@ -180,6 +180,10 @@ struct OhmsLawView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Ohm's Law")
         .navigationBarTitleDisplayMode(.inline)
@@ -238,7 +242,7 @@ struct OhmsLawView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Field Grid
@@ -250,7 +254,7 @@ struct OhmsLawView: View {
             }
         }
         .padding(14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -294,11 +298,11 @@ struct OhmsLawView: View {
         }
         .padding(14)
         .background(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: 16)
                 .fill(isComputed ? accent.opacity(0.08) : Color.primary.opacity(0.05))
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: 16)
                 .strokeBorder(isComputed ? accent.opacity(0.35) : Color.primary.opacity(0.08), lineWidth: 1)
         )
     }
@@ -322,7 +326,7 @@ struct OhmsLawView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     private func formulaRow(_ text: String) -> some View {

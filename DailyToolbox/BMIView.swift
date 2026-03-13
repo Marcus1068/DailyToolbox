@@ -123,6 +123,10 @@ struct BMIView: View {
                 .padding(.horizontal, 20).padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("BMI Calculator")
         .navigationBarTitleDisplayMode(.inline)
@@ -161,7 +165,7 @@ struct BMIView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private var inputCard: some View {
@@ -178,12 +182,12 @@ struct BMIView: View {
             bodyField(label: "Age (optional, for BMR)", placeholder: "30", text: $ageText, focusTag: 3)
             Button(action: calculate) {
                 Text("Calculate").font(.headline.weight(.bold)).foregroundStyle(.black).frame(maxWidth: .infinity).padding(.vertical, 14)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(coralAccent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(coralAccent))
             }
             .buttonStyle(.plain)
         }
         .padding(.horizontal, 18).padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -199,13 +203,13 @@ struct BMIView: View {
                         .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                         .padding(.horizontal, 12).padding(.vertical, 8)
                         .background(sel ? coralAccent : Color.clear,
-                                    in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                    in: RoundedRectangle(cornerRadius: 10))
                 }
                 .buttonStyle(.plain)
             }
         }
         .padding(3)
-        .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13))
         .frame(maxWidth: .infinity)
     }
 
@@ -215,7 +219,7 @@ struct BMIView: View {
             Text(label).font(.caption.weight(.semibold)).foregroundStyle(coralAccent.opacity(0.80))
             TextField(placeholder, text: text).keyboardType(.decimalPad).focused($focused, equals: focusTag)
                 .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(coralAccent)
-                .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
+                .padding(12).background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
                 .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
         }
         .frame(maxWidth: .infinity)
@@ -239,7 +243,7 @@ struct BMIView: View {
             bmiScaleBar(bmi: res.bmi)
         }
         .padding(.horizontal, 18).padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -283,7 +287,7 @@ struct BMIView: View {
             Text("Calories your body burns at rest (Mifflin-St Jeor)").font(.caption).foregroundStyle(Color.primary.opacity(0.45))
         }
         .padding(.horizontal, 18).padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 }
 

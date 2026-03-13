@@ -184,7 +184,8 @@ struct InterestRateView: View {
         if solved != nil {
             solvedField = solved
             withAnimation(.spring(response: 0.25, dampingFraction: 0.6)) { resultPulse = 1.08 }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(250))
                 withAnimation(.spring(response: 0.2)) { resultPulse = 1.0 }
             }
         }
@@ -221,6 +222,10 @@ struct InterestRateView: View {
                 }
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Interest Rate")
         .navigationBarTitleDisplayMode(.inline)
@@ -282,7 +287,7 @@ struct InterestRateView: View {
             Spacer()
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Gauge Row
@@ -319,7 +324,7 @@ struct InterestRateView: View {
         .padding(.vertical, 16)
         .glassEffect(
             .regular.tint(glassTint),
-            in: RoundedRectangle(cornerRadius: 22, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 22)
         )
         .transition(.move(edge: .top).combined(with: .opacity))
         .animation(.spring(response: 0.4, dampingFraction: 0.75), value: rate)
@@ -409,7 +414,7 @@ struct InterestRateView: View {
             isSolved
                 ? .regular.tint(glassTint)
                 : .regular,
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSolved)
     }
@@ -465,7 +470,7 @@ struct InterestRateView: View {
         .padding(16)
         .glassEffect(
             .regular.tint(glassTint),
-            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 16)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
@@ -484,7 +489,7 @@ struct InterestRateView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         InterestRateView()
     }
 }

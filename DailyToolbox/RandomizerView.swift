@@ -106,6 +106,10 @@ struct RandomizerView: View {
                     .padding(.vertical, 16)
                 }
                 .onTapGesture { numFocused = nil; listFocused = false }
+
+                .accessibilityAddTraits(.isButton)
+
+                .accessibilityLabel("Dismiss keyboard")
             }
         }
         .navigationTitle("Randomizer")
@@ -149,7 +153,7 @@ struct RandomizerView: View {
                     .padding(.horizontal, 14).padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
                     .background(sel ? accent : Color.primary.opacity(0.08),
-                                in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                in: RoundedRectangle(cornerRadius: 12))
                 }
                 .buttonStyle(.plain)
             }
@@ -198,13 +202,13 @@ struct RandomizerView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
             .disabled(coinSpinning)
         }
         .padding(24)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     private func flipCoin() {
@@ -212,12 +216,12 @@ struct RandomizerView: View {
         coinSpinning = true
         let result = Bool.random()
         withAnimation(.easeIn(duration: 0.15)) { coinRotation = 90 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(150))
             coinResult = result
             withAnimation(.easeOut(duration: 0.15)) { coinRotation = 0 }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                coinSpinning = false
-            }
+            try? await Task.sleep(for: .milliseconds(150))
+            coinSpinning = false
         }
     }
 
@@ -226,7 +230,7 @@ struct RandomizerView: View {
     private var diceCard: some View {
         VStack(spacing: 20) {
             // Die type selector
-            ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(DieType.allCases, id: \.self) { d in
                         let sel = dieType == d
@@ -238,15 +242,14 @@ struct RandomizerView: View {
                                 .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                 .padding(.horizontal, 18).padding(.vertical, 10)
                                 .background(sel ? accent : Color.primary.opacity(0.10),
-                                            in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                            in: RoundedRectangle(cornerRadius: 12))
                         }
                         .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal, 2)
             }
-
-            // Count stepper
+            .scrollIndicators(.hidden)
             HStack {
                 Text("Number of dice")
                     .font(.caption.weight(.semibold))
@@ -274,12 +277,12 @@ struct RandomizerView: View {
                     }
                     .buttonStyle(.plain)
                 }
-                .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
             }
 
             // Result
             ZStack {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(Color.primary.opacity(0.05))
                     .frame(height: 110)
 
@@ -308,12 +311,12 @@ struct RandomizerView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
         }
         .padding(20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     private func rollDice() {
@@ -331,7 +334,7 @@ struct RandomizerView: View {
         VStack(spacing: 20) {
             // Result hero
             ZStack {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(Color.primary.opacity(0.05))
                     .frame(height: 100)
                 if let n = numberResult {
@@ -358,12 +361,12 @@ struct RandomizerView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
         }
         .padding(20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     @ViewBuilder
@@ -376,7 +379,7 @@ struct RandomizerView: View {
                 .font(.title3.weight(.semibold).monospacedDigit())
                 .foregroundStyle(Color.primary).tint(accent)
                 .padding(12)
-                .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
         }
         .frame(maxWidth: .infinity)
     }
@@ -405,12 +408,12 @@ struct RandomizerView: View {
                     .tint(accent)
                     .frame(minHeight: 100)
                     .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
+                    .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
             }
 
             if let pick = listResult {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent.opacity(0.15))
+                    RoundedRectangle(cornerRadius: 16).fill(accent.opacity(0.15))
                     VStack(spacing: 4) {
                         Text("Selected")
                             .font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.55))
@@ -430,13 +433,13 @@ struct RandomizerView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
             .disabled(listText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
         .padding(20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     private func pickFromList() {

@@ -107,6 +107,10 @@ struct LoanCalculatorView: View {
                 .padding(.horizontal, 20).padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Loan Calculator")
         .navigationBarTitleDisplayMode(.inline)
@@ -143,7 +147,7 @@ struct LoanCalculatorView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private var inputCard: some View {
@@ -157,7 +161,7 @@ struct LoanCalculatorView: View {
                     TextField("30", text: $termText)
                         .keyboardType(.decimalPad).focused($focused, equals: 3)
                         .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(accent)
-                        .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
+                        .padding(12).background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
                         .onChange(of: termText) { _, _ in guard focused == 3 else { return }; calculate() }
                     HStack(spacing: 0) {
                         ForEach(TermUnit.allCases, id: \.self) { unit in
@@ -169,23 +173,23 @@ struct LoanCalculatorView: View {
                                     .font(.caption.weight(.semibold))
                                     .foregroundStyle(sel ? .black : Color.primary.opacity(0.65))
                                     .padding(.horizontal, 14).padding(.vertical, 10)
-                                    .background(sel ? accent : Color.clear, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                    .background(sel ? accent : Color.clear, in: RoundedRectangle(cornerRadius: 10))
                             }
                             .buttonStyle(.plain)
                         }
                     }
                     .padding(3)
-                    .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                    .background(Color.primary.opacity(0.08), in: RoundedRectangle(cornerRadius: 13))
                 }
             }
             Button(action: calculate) {
                 Text("Calculate").font(.headline.weight(.bold)).foregroundStyle(.black).frame(maxWidth: .infinity).padding(.vertical, 14)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
         }
         .padding(.horizontal, 18).padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -198,7 +202,7 @@ struct LoanCalculatorView: View {
                     .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(accent)
                     .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
             }
-            .padding(12).background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.primary.opacity(0.07)))
+            .padding(12).background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
         }
     }
 
@@ -230,9 +234,9 @@ struct LoanCalculatorView: View {
                 GeometryReader { geo in
                     HStack(spacing: 2) {
                         let ratio = CGFloat(res.totalPaid > 0 ? (res.totalPaid - res.totalInterest) / res.totalPaid : 1.0)
-                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(principalBarColor)
+                        RoundedRectangle(cornerRadius: 6).fill(principalBarColor)
                             .frame(width: max(4, geo.size.width * ratio - 2))
-                        RoundedRectangle(cornerRadius: 6, style: .continuous).fill(interestBarColor)
+                        RoundedRectangle(cornerRadius: 6).fill(interestBarColor)
                     }
                     .frame(height: 12)
                 }
@@ -240,7 +244,7 @@ struct LoanCalculatorView: View {
             }
             .padding(.horizontal, 18).padding(.vertical, 14)
         }
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder

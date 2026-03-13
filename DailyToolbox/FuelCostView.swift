@@ -155,6 +155,10 @@ struct FuelCostView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Fuel Cost")
         .navigationBarTitleDisplayMode(.inline)
@@ -209,7 +213,7 @@ struct FuelCostView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Input Card
@@ -234,14 +238,14 @@ struct FuelCostView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 8)
                                 .background(sel ? accent : Color.clear,
-                                            in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                            in: RoundedRectangle(cornerRadius: 10))
                         }
                         .buttonStyle(.plain)
                     }
                 }
                 .padding(3)
                 .background(Color.primary.opacity(0.08),
-                            in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                            in: RoundedRectangle(cornerRadius: 13))
             }
 
             fuelField(label: distanceLabel, placeholder: distancePlaceholder,
@@ -257,13 +261,13 @@ struct FuelCostView: View {
                     .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(accent))
+                    .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder
@@ -290,7 +294,7 @@ struct FuelCostView: View {
                     }
             }
             .padding(12)
-            .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+            .background(RoundedRectangle(cornerRadius: 12)
                 .fill(Color.primary.opacity(0.07)))
         }
     }
@@ -325,7 +329,7 @@ struct FuelCostView: View {
             }
             .padding(.vertical, 14)
         }
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder

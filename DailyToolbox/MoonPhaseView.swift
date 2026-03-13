@@ -358,7 +358,7 @@ struct MoonPhaseView: View {
             .background(moonAccent.opacity(0.15), in: Capsule())
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Moon Visual
@@ -380,7 +380,7 @@ struct MoonPhaseView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 24)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     // MARK: Phase Info Card
@@ -409,7 +409,7 @@ struct MoonPhaseView: View {
             )
         }
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     private func phaseStatCell(value: String, label: LocalizedStringKey, icon: String, color: Color) -> some View {
@@ -448,7 +448,7 @@ struct MoonPhaseView: View {
             }
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     private func phaseCell(_ phase: MoonPhase) -> some View {
@@ -467,11 +467,11 @@ struct MoonPhaseView: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 10)
         .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(isCurrent ? moonAccent.opacity(0.15) : Color.primary.opacity(0.04))
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
+            RoundedRectangle(cornerRadius: 12)
                 .strokeBorder(isCurrent ? moonAccent.opacity(0.50) : Color.clear, lineWidth: 1)
         )
     }
@@ -500,7 +500,7 @@ struct MoonPhaseView: View {
             )
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Date Picker
@@ -517,7 +517,7 @@ struct MoonPhaseView: View {
                 .tint(moonAccent)
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 }
 

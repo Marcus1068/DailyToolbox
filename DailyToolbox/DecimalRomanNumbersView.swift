@@ -63,7 +63,7 @@ private struct SymbolChipView: View {
         .frame(minWidth: 44)
         .padding(.horizontal, 10)
         .padding(.vertical, 8)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -103,6 +103,10 @@ struct DecimalRomanNumbersView: View {
                 }
             }
             .onTapGesture { focused = nil }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Roman Numbers")
         .navigationBarTitleDisplayMode(.inline)
@@ -164,7 +168,7 @@ struct DecimalRomanNumbersView: View {
             Spacer()
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Conversion Section
@@ -202,7 +206,7 @@ struct DecimalRomanNumbersView: View {
                 focused == .decimal
                     ? .regular.tint(Color(red: 0.22, green: 0.14, blue: 0.02))
                     : .regular,
-                in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+                in: RoundedRectangle(cornerRadius: 16)
             )
             .animation(.spring(response: 0.25), value: focused == .decimal)
 
@@ -246,7 +250,7 @@ struct DecimalRomanNumbersView: View {
                 focused == .roman
                     ? .regular.tint(Color(red: 0.22, green: 0.05, blue: 0.03))
                     : .regular,
-                in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+                in: RoundedRectangle(cornerRadius: 16)
             )
             .animation(.spring(response: 0.25), value: focused == .roman)
         }
@@ -269,7 +273,7 @@ struct DecimalRomanNumbersView: View {
         .padding(14)
         .glassEffect(
             .regular.tint(Color(red: 0.22, green: 0.10, blue: 0.02)),
-            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 14)
         )
         .transition(.move(edge: .top).combined(with: .opacity))
         .animation(.spring(response: 0.3), value: msg)
@@ -332,12 +336,12 @@ struct DecimalRomanNumbersView: View {
                     .padding(.horizontal, 8)
                     .padding(.vertical, 5)
                     .frame(maxWidth: .infinity)
-                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 8))
                 }
             }
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Rules Card
@@ -377,7 +381,7 @@ struct DecimalRomanNumbersView: View {
             }
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Conversion Logic
@@ -447,7 +451,7 @@ struct DecimalRomanNumbersView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         DecimalRomanNumbersView()
     }
 }

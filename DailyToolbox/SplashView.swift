@@ -242,7 +242,8 @@ struct SplashView: View {
         }
 
         // Dismiss after full sequence
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(2200))
             withAnimation(.easeInOut(duration: 0.5)) {
                 onFinished()
             }

@@ -52,7 +52,7 @@ private struct CurrencyPickerSheet: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(filtered, id: \.self) { code in
                 Button {
                     selected = code
@@ -202,6 +202,10 @@ struct CurrencyConverterView: View {
                     }
                 }
                 .onTapGesture { amountFocused = false }
+
+                .accessibilityAddTraits(.isButton)
+
+                .accessibilityLabel("Dismiss keyboard")
             }
         }
         .navigationTitle("Currency Converter")
@@ -316,7 +320,7 @@ struct CurrencyConverterView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     // MARK: - Loading
@@ -364,7 +368,7 @@ struct CurrencyConverterView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     // MARK: - Amount Card
@@ -400,7 +404,7 @@ struct CurrencyConverterView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
     }
 
     // MARK: - Conversion Card (from / swap / to)
@@ -497,7 +501,7 @@ struct CurrencyConverterView: View {
         .padding(.vertical, 18)
         .glassEffect(
             .regular.tint(glassTint),
-            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 24)
         )
     }
 
@@ -542,7 +546,7 @@ struct CurrencyConverterView: View {
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: - Load
@@ -563,7 +567,7 @@ struct CurrencyConverterView: View {
 
 #if DEBUG
 #Preview {
-    NavigationView {
+    NavigationStack {
         CurrencyConverterView(preview: .preview)
     }
 }

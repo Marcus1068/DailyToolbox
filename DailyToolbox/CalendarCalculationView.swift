@@ -259,7 +259,7 @@ struct CalendarCalculationView: View {
             Spacer()
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Days Countdown
@@ -292,7 +292,7 @@ struct CalendarCalculationView: View {
         .padding(.vertical, 16)
         .glassEffect(
             .regular.tint(glassTintPurple),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
         .animation(.spring(response: 0.3), value: daysUntil)
     }
@@ -356,7 +356,7 @@ struct CalendarCalculationView: View {
             .padding(14)
         }
         .buttonStyle(.plain)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: Date Picker
@@ -377,7 +377,7 @@ struct CalendarCalculationView: View {
                 .labelsHidden()
         }
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Add to Calendar
@@ -428,7 +428,7 @@ struct CalendarCalculationView: View {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         CalendarCalculationView()
     }
 }

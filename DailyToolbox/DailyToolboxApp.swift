@@ -6,6 +6,7 @@
 import SwiftUI
 
 // MARK: - Appearance Mode
+// TODO: Move to AppearanceMode.swift (add file via Xcode File > New > File)
 
 enum AppearanceMode: String, CaseIterable {
     case system = "system"
@@ -14,25 +15,25 @@ enum AppearanceMode: String, CaseIterable {
 
     var colorScheme: ColorScheme? {
         switch self {
-        case .system: return nil
-        case .light:  return .light
-        case .dark:   return .dark
+        case .system: nil
+        case .light:  .light
+        case .dark:   .dark
         }
     }
 
     var label: LocalizedStringKey {
         switch self {
-        case .system: return "System"
-        case .light:  return "Light"
-        case .dark:   return "Dark"
+        case .system: "System"
+        case .light:  "Light"
+        case .dark:   "Dark"
         }
     }
 
     var icon: String {
         switch self {
-        case .system: return "circle.lefthalf.filled"
-        case .light:  return "sun.max.fill"
-        case .dark:   return "moon.fill"
+        case .system: "circle.lefthalf.filled"
+        case .light:  "sun.max.fill"
+        case .dark:   "moon.fill"
         }
     }
 }

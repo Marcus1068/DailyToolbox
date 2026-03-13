@@ -93,6 +93,10 @@ struct TipSplitterView: View {
                 .padding(.vertical, 24)
             }
             .onTapGesture { billFocused = false }
+
+            .accessibilityAddTraits(.isButton)
+
+            .accessibilityLabel("Dismiss keyboard")
         }
         .navigationTitle("Tip Splitter")
         .navigationBarTitleDisplayMode(.inline)
@@ -167,7 +171,7 @@ struct TipSplitterView: View {
             .buttonStyle(.glass)
         }
         .padding(18)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: - Bill Input
@@ -197,7 +201,7 @@ struct TipSplitterView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Tip Picker
@@ -230,7 +234,7 @@ struct TipSplitterView: View {
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 9)
                             .background(
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                RoundedRectangle(cornerRadius: 10)
                                     .fill(tipPercent == preset
                                           ? Color(red: 1.00, green: 0.85, blue: 0.30)
                                           : Color.primary.opacity(0.12))
@@ -260,14 +264,14 @@ struct TipSplitterView: View {
                     }
                 }
                 .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    RoundedRectangle(cornerRadius: 12)
                         .fill(Color.primary.opacity(0.10))
                 )
             }
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - People Picker
@@ -312,13 +316,13 @@ struct TipSplitterView: View {
                 }
             }
             .background(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                RoundedRectangle(cornerRadius: 12)
                     .fill(Color.primary.opacity(0.10))
             )
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 14)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Results
@@ -367,7 +371,7 @@ struct TipSplitterView: View {
         .padding(.vertical, 16)
         .glassEffect(
             .regular.tint(Color(red: 1.00, green: 0.70, blue: 0.10).opacity(0.18)),
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20)
         )
     }
 
@@ -383,7 +387,7 @@ struct TipSplitterView: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 20)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: - Sub-Views

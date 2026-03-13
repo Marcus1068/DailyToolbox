@@ -9,7 +9,6 @@
 */
 
 import SwiftUI
-import UIKit
 
 // MARK: - Color helpers
 
@@ -387,7 +386,7 @@ private struct ToolCard: View {
         }
         .glassEffect(
             .regular.tint(displayColor.opacity(0.14)),
-            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 24)
         )
     }
 }

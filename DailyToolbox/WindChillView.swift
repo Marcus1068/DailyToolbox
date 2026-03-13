@@ -247,7 +247,7 @@ struct WindChillView: View {
             .pickerStyle(.segmented)
         }
         .padding(12)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16))
     }
 
     // MARK: Feels-Like Card
@@ -261,7 +261,7 @@ struct WindChillView: View {
                 .kerning(0.8)
 
             HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text(String(format: "%.1f", feelsLikeDisplay))
+                Text(feelsLikeDisplay, format: .number.precision(.fractionLength(1)))
                     .font(.system(size: 80, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(Color.white)
                     .contentTransition(.numericText())
@@ -275,14 +275,14 @@ struct WindChillView: View {
                 Text("Air temp:")
                     .font(.caption)
                     .foregroundStyle(Color.white.opacity(0.55))
-                Text(String(format: "%.1f%@", tempDisplay, tempUnit))
+                Text("\(tempDisplay, format: .number.precision(.fractionLength(1)))\(tempUnit)")
                     .font(.caption.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.white.opacity(0.80))
             }
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 22)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     // MARK: Comfort Card
@@ -305,7 +305,7 @@ struct WindChillView: View {
         .padding(16)
         .glassEffect(
             .regular.tint(comfort.color.opacity(colorScheme == .dark ? 0.18 : 0.10)),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 18)
         )
     }
 
@@ -337,7 +337,6 @@ struct WindChillView: View {
                 step:   useFahrenheit ? 1.0 : 1.0,
                 minVal: useFahrenheit ? -58 : -50,
                 maxVal: useFahrenheit ?  122 :  50,
-                format: "%.0f"
             ) { delta in
                 let stepC = useFahrenheit ? delta * 5/9 : delta
                 storedTempC = (storedTempC + stepC).clamped(to: -50...50)
@@ -354,7 +353,6 @@ struct WindChillView: View {
                 step:   useMph ? 1.0 : 1.0,
                 minVal: 0,
                 maxVal: useMph ? 125 : 200,
-                format: "%.0f"
             ) { delta in
                 let stepKmh = useMph ? delta * 1.60934 : delta
                 storedWindKmh = max(0, storedWindKmh + stepKmh)
@@ -371,17 +369,16 @@ struct WindChillView: View {
                 step:   5.0,
                 minVal: 0,
                 maxVal: 100,
-                format: "%.0f"
             ) { delta in
                 humidity = (humidity + delta).clamped(to: 0...100)
             }
         }
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     private func inputRow(icon: String, label: LocalizedStringKey, value: Double,
                           unit: String, step: Double, minVal: Double, maxVal: Double,
-                          format: String, onChange: @escaping (Double) -> Void) -> some View {
+                          precision: Int = 0, onChange: @escaping (Double) -> Void) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -393,7 +390,7 @@ struct WindChillView: View {
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Color.primary.opacity(0.50))
                 HStack(alignment: .firstTextBaseline, spacing: 3) {
-                    Text(String(format: format, value))
+                    Text(value, format: .number.precision(.fractionLength(precision)))
                         .font(.system(.title3, design: .rounded).weight(.bold).monospacedDigit())
                         .foregroundStyle(Color.primary)
                         .contentTransition(.numericText())
@@ -468,7 +465,7 @@ struct WindChillView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 16))
     }
 }
 
@@ -483,7 +480,7 @@ private extension Comparable {
 // MARK: - Preview
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         WindChillView()
     }
 }
