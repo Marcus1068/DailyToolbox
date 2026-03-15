@@ -153,59 +153,73 @@ private class HolidaysViewModel {
     var schoolHolidays: [SchoolHoliday] = []
     var loadState: LoadState = .idle
 
-    private let isoFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        f.locale = Locale(identifier: "de_DE")
-        return f
-    }()
-
     func load(stateCode: String, year: Int) async {
         loadState = .loading
         publicHolidays = []
         schoolHolidays = []
 
+        async let pub = fetchPublicHolidays(stateCode: stateCode, year: year)
+        async let sch = fetchSchoolHolidays(stateCode: stateCode, year: year)
+
         do {
-            async let pub  = fetchPublicHolidays(stateCode: stateCode, year: year)
-            async let sch  = fetchSchoolHolidays(stateCode: stateCode, year: year)
-            let (p, s) = try await (pub, sch)
-            publicHolidays = p.sorted { $0.date < $1.date }
-            schoolHolidays = s.sorted { $0.start < $1.start }
-            loadState = .loaded
+            publicHolidays = (try await pub).sorted { $0.date < $1.date }
         } catch {
             loadState = .error(error.localizedDescription)
+            return
         }
+
+        do {
+            schoolHolidays = (try await sch).sorted { $0.start < $1.start }
+        } catch {
+            // School holidays are best-effort; public holidays are still shown
+        }
+
+        loadState = .loaded
     }
 
     private func fetchPublicHolidays(stateCode: String, year: Int) async throws -> [PublicHoliday] {
-        let url = URL(string: "https://feiertage-api.de/api/?jahr=\(year)&nur_land=\(stateCode)")!
+        let url = URL(string: "https://openholidaysapi.org/PublicHolidays?countryIsoCode=DE&languageIsoCode=DE&validFrom=\(year)-01-01&validTo=\(year)-12-31")!
         let (data, _) = try await URLSession.shared.data(from: url)
-        guard let dict = try JSONSerialization.jsonObject(with: data) as? [String: [String: String]] else {
-            return []
+
+        struct RawHoliday: Decodable {
+            let startDate: String
+            let name: [LocalizedName]
+            struct LocalizedName: Decodable {
+                let language: String
+                let text: String
+            }
         }
-        return dict.compactMap { name, info in
-            guard let dateStr = info["datum"],
-                  let date = isoFormatter.date(from: dateStr) else { return nil }
-            let note = info["hinweis"] ?? ""
-            return PublicHoliday(name: name, date: date, note: note)
+
+        let dateStrategy = Date.ISO8601FormatStyle().year().month().day()
+        let raw = try JSONDecoder().decode([RawHoliday].self, from: data)
+        return raw.compactMap { h in
+            guard let date = try? Date(h.startDate, strategy: dateStrategy),
+                  let name = h.name.first?.text else { return nil }
+            return PublicHoliday(name: name, date: date, note: "")
         }
     }
 
     private func fetchSchoolHolidays(stateCode: String, year: Int) async throws -> [SchoolHoliday] {
-        let url = URL(string: "https://ferien-api.de/api/v1/holidays/\(stateCode)/\(year)")!
+        let url = URL(string: "https://openholidaysapi.org/SchoolHolidays?countryIsoCode=DE&subdivisionCode=DE-\(stateCode)&languageIsoCode=DE&validFrom=\(year)-01-01&validTo=\(year)-12-31")!
         let (data, _) = try await URLSession.shared.data(from: url)
 
         struct RawHoliday: Decodable {
-            let start: String
-            let end: String
-            let name: String
+            let startDate: String
+            let endDate: String
+            let name: [LocalizedName]
+            struct LocalizedName: Decodable {
+                let language: String
+                let text: String
+            }
         }
 
+        let dateStrategy = Date.ISO8601FormatStyle().year().month().day()
         let raw = try JSONDecoder().decode([RawHoliday].self, from: data)
         return raw.compactMap { h in
-            guard let s = isoFormatter.date(from: String(h.start.prefix(10))),
-                  let e = isoFormatter.date(from: String(h.end.prefix(10))) else { return nil }
-            return SchoolHoliday(name: h.name, start: s, end: e)
+            guard let start = try? Date(h.startDate, strategy: dateStrategy),
+                  let end = try? Date(h.endDate, strategy: dateStrategy),
+                  let name = h.name.first?.text else { return nil }
+            return SchoolHoliday(name: name, start: start, end: end)
         }
     }
 }
@@ -343,8 +357,10 @@ struct GermanHolidaysView: View {
             }
         }
         .navigationTitle("German Holidays")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        #endif
         .sheet(isPresented: $showStatePicker) { statePickerSheet }
         .task { await vm.load(stateCode: selectedState.code, year: savedYear) }
         .onAppear { leaveDaysText = String(leaveDaysTotal) }
@@ -478,7 +494,9 @@ struct GermanHolidaysView: View {
                     .buttonStyle(.plain)
 
                     TextField("30", text: $leaveDaysText)
+                        #if os(iOS)
                         .keyboardType(.numberPad)
+                        #endif
                         .focused($leaveFieldFocused)
                         .multilineTextAlignment(.center)
                         .font(.system(size: 15, weight: .bold, design: .rounded).monospacedDigit())
@@ -926,8 +944,10 @@ struct GermanHolidaysView: View {
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Select State")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { showStatePicker = false }
