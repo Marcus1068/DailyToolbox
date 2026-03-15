@@ -178,7 +178,7 @@ private class HolidaysViewModel {
     }
 
     private func fetchPublicHolidays(stateCode: String, year: Int) async throws -> [PublicHoliday] {
-        let url = URL(string: "https://openholidaysapi.org/PublicHolidays?countryIsoCode=DE&languageIsoCode=DE&validFrom=\(year)-01-01&validTo=\(year)-12-31")!
+        let url = URL(string: "https://openholidaysapi.org/PublicHolidays?countryIsoCode=DE&subdivisionCode=DE-\(stateCode)&languageIsoCode=DE&validFrom=\(year)-01-01&validTo=\(year)-12-31")!
         let (data, _) = try await URLSession.shared.data(from: url)
 
         struct RawHoliday: Decodable {
