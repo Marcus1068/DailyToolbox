@@ -235,9 +235,6 @@ struct GermanHolidaysView: View {
     @AppStorage("germanHolidays.leaveDays")    private var leaveDaysTotal:      Int    = 30
     @AppStorage("germanHolidays.bookedBridges")private var bookedBridgesStr:    String = ""
 
-    @State private var leaveDaysText: String = ""
-    @FocusState private var leaveFieldFocused: Bool
-
     private var selectedState: GermanState {
         germanStates.first { $0.code == savedStateCode } ?? germanStates[1]
     }
@@ -363,7 +360,6 @@ struct GermanHolidaysView: View {
         #endif
         .sheet(isPresented: $showStatePicker) { statePickerSheet }
         .task { await vm.load(stateCode: selectedState.code, year: savedYear) }
-        .onAppear { leaveDaysText = String(leaveDaysTotal) }
     }
 
     // MARK: - Background
@@ -483,7 +479,6 @@ struct GermanHolidaysView: View {
                     Button {
                         if leaveDaysTotal > 1 {
                             leaveDaysTotal -= 1
-                            leaveDaysText = String(leaveDaysTotal)
                         }
                     } label: {
                         Image(systemName: "minus")
@@ -493,26 +488,15 @@ struct GermanHolidaysView: View {
                     }
                     .buttonStyle(.plain)
 
-                    TextField("30", text: $leaveDaysText)
-                        #if os(iOS)
-                        .keyboardType(.numberPad)
-                        #endif
-                        .focused($leaveFieldFocused)
+                    Text(leaveDaysTotal, format: .number)
                         .multilineTextAlignment(.center)
                         .font(.system(size: 15, weight: .bold, design: .rounded).monospacedDigit())
                         .foregroundStyle(Color.primary)
-                        .tint(bridgeGreen)
                         .frame(width: 44, height: 34)
-                        .onChange(of: leaveDaysText) { _, val in
-                            let digits = val.filter { $0.isNumber }
-                            if digits != val { leaveDaysText = digits }
-                            if let n = Int(digits), n > 0, n <= 365 { leaveDaysTotal = n }
-                        }
 
                     Button {
                         if leaveDaysTotal < 365 {
                             leaveDaysTotal += 1
-                            leaveDaysText = String(leaveDaysTotal)
                         }
                     } label: {
                         Image(systemName: "plus")
