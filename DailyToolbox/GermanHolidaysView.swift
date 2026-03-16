@@ -681,6 +681,26 @@ struct GermanHolidaysView: View {
 
     private var bridgeDaysContent: some View {
         VStack(spacing: 12) {
+            // Explanation header
+            HStack(spacing: 12) {
+                Image(systemName: "airplane.departure")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(bridgeGreen)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Bridge Day Calculator")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(Color.primary)
+                    Text("Take 1 leave day next to a Tuesday or Thursday holiday to get 4 days off in a row.")
+                        .font(.caption)
+                        .foregroundStyle(Color.primary.opacity(0.55))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+            }
+            .padding(14)
+            .glassEffect(.regular.tint(bridgeGreen.opacity(0.06)),
+                         in: RoundedRectangle(cornerRadius: 18))
+
             // Summary card
             bridgeSummaryCard
 
