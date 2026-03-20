@@ -1352,37 +1352,37 @@
         }
       }
     },
-    "Add %lld holidays for %@ %lld to your Calendar?" : {
+    "Add %lld holidays for %@ %@ to your Calendar?" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld Feiertage für %@ %lld zum Kalender hinzufügen?"
+            "value" : "%lld Feiertage für %@ %@ zum Kalender hinzufügen?"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tilføj %lld helligdage for %@ %lld til din kalender?"
+            "value" : "Tilføj %lld helligdage for %@ %@ til din kalender?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Añadir %lld festivos de %@ %lld a tu calendario?"
+            "value" : "¿Añadir %lld festivos de %@ %@ a tu calendario?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter %lld jours fériés pour %@ %lld à votre calendrier ?"
+            "value" : "Ajouter %lld jours fériés pour %@ %@ à votre calendrier ?"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aggiungere %lld festività per %@ %lld al tuo calendario?"
+            "value" : "Aggiungere %lld festività per %@ %@ al tuo calendario?"
           }
         }
       }

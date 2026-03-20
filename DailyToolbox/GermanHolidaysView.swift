@@ -410,7 +410,7 @@ struct GermanHolidaysView: View {
             }
         }
         .confirmationDialog(
-            "Add \(vm.publicHolidays.count) holidays for \(selectedState.name) \(savedYear) to your Calendar?",
+            "Add \(vm.publicHolidays.count) holidays for \(selectedState.name) \(String(savedYear)) to your Calendar?",
             isPresented: $showExportConfirm,
             titleVisibility: .visible
         ) {
