@@ -21,6 +21,7 @@ limitations under the License.
 //  DailyToolbox
 //
 
+import EventKit
 import SwiftUI
 
 // MARK: - German States
@@ -240,7 +241,10 @@ struct GermanHolidaysView: View {
     }
 
     @State private var tab: HolidayTab = .publicHolidays
-    @State private var showStatePicker = false
+    @State private var showStatePicker  = false
+    @State private var showExportResult = false
+    @State private var exportCount      = 0
+    @State private var exportError: String? = nil
 
     private let accent    = Color(red: 0.95, green: 0.78, blue: 0.22)
     private let accentRed = Color(red: 0.85, green: 0.15, blue: 0.18)
@@ -319,6 +323,41 @@ struct GermanHolidaysView: View {
         bookedBridgesStr = set.joined(separator: ",")
     }
 
+    private func exportToCalendar() async {
+        let store = EKEventStore()
+        do {
+            guard try await store.requestFullAccessToEvents() else {
+                exportError = NSLocalizedString(
+                    "Calendar access denied. Please allow access in Settings.",
+                    comment: "")
+                showExportResult = true
+                return
+            }
+        } catch {
+            exportError = error.localizedDescription
+            showExportResult = true
+            return
+        }
+        let cal = Calendar.current
+        var added = 0
+        for h in vm.publicHolidays {
+            let event       = EKEvent(eventStore: store)
+            event.title     = h.name
+            event.notes     = "\(selectedState.name) · \(savedYear) · DailyToolbox"
+            event.isAllDay  = true
+            let comps       = cal.dateComponents([.year, .month, .day], from: h.date)
+            guard let day   = cal.date(from: comps) else { continue }
+            event.startDate = day
+            event.endDate   = day
+            event.calendar  = store.defaultCalendarForNewEvents
+            try? store.save(event, span: .thisEvent)
+            added += 1
+        }
+        exportCount = added
+        exportError = nil
+        showExportResult = true
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -359,6 +398,28 @@ struct GermanHolidaysView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         #endif
         .sheet(isPresented: $showStatePicker) { statePickerSheet }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if case .loaded = vm.loadState, !vm.publicHolidays.isEmpty {
+                    Button { Task { await exportToCalendar() } } label: {
+                        Image(systemName: "calendar.badge.plus")
+                    }
+                    .accessibilityLabel("Export to Calendar")
+                }
+            }
+        }
+        .alert(
+            exportError == nil ? "Export Complete" : "Export Failed",
+            isPresented: $showExportResult
+        ) {
+            Button("OK", role: .cancel) { exportError = nil }
+        } message: {
+            if let err = exportError {
+                Text(err)
+            } else {
+                Text("\(exportCount) holidays added to your Calendar.")
+            }
+        }
         .task { await vm.load(stateCode: selectedState.code, year: savedYear) }
     }
 

@@ -37,6 +37,37 @@ private struct ConversionEntry: Codable, Identifiable, Equatable {
     let result: Double
 }
 
+// MARK: - Rate Snapshot
+
+private struct RateSnapshot: Codable {
+    let dateStr:  String  // "yyyy-MM-dd"
+    let fromCode: String
+    let toCode:   String
+    let rate:     Double
+}
+
+// MARK: - Sparkline Shape
+
+private struct SparklineShape: Shape {
+    let values: [Double]
+    func path(in rect: CGRect) -> Path {
+        guard values.count >= 2 else { return Path() }
+        let lo = values.min()!
+        let hi = values.max()!
+        let range = hi - lo
+        func pt(_ i: Int) -> CGPoint {
+            let x = rect.minX + CGFloat(i) / CGFloat(values.count - 1) * rect.width
+            let y = range == 0 ? rect.midY
+                               : rect.maxY - CGFloat((values[i] - lo) / range) * rect.height
+            return CGPoint(x: x, y: y)
+        }
+        var path = Path()
+        path.move(to: pt(0))
+        for i in 1..<values.count { path.addLine(to: pt(i)) }
+        return path
+    }
+}
+
 // MARK: - Currency Picker Sheet
 
 private struct CurrencyPickerSheet: View {
@@ -93,10 +124,11 @@ struct CurrencyConverterView: View {
 
     @State private var cvt: CurrencyConverter?
     @State private var isLoading = true
-    @AppStorage("currency.from")    private var fromCurrency = "EUR"
-    @AppStorage("currency.to")      private var toCurrency   = "USD"
-    @AppStorage("currency.amount")  private var amountText   = "1.00"
-    @AppStorage("currency.history") private var historyJSON  = "[]"
+    @AppStorage("currency.from")          private var fromCurrency    = "EUR"
+    @AppStorage("currency.to")            private var toCurrency      = "USD"
+    @AppStorage("currency.amount")        private var amountText      = "1.00"
+    @AppStorage("currency.history")       private var historyJSON     = "[]"
+    @AppStorage("currency.rateSnapshots") private var rateSnapshotsJSON = "[]"
     @State private var showFromPicker = false
     @State private var showToPicker   = false
     @State private var swapRotation: Double = 0
@@ -177,6 +209,39 @@ struct CurrencyConverterView: View {
 
     private func clearHistory() { historyJSON = "[]" }
 
+    // MARK: Rate Snapshot
+
+    private var rateSnapshots: [RateSnapshot] {
+        (try? JSONDecoder().decode(
+            [RateSnapshot].self,
+            from: rateSnapshotsJSON.data(using: .utf8) ?? Data()
+        )) ?? []
+    }
+
+    private var sparklineData: [RateSnapshot] {
+        rateSnapshots
+            .filter { $0.fromCode == fromCurrency && $0.toCode == toCurrency }
+            .sorted { $0.dateStr < $1.dateStr }
+            .suffix(7)
+            .map { $0 }
+    }
+
+    private func recordRateSnapshot() {
+        guard let rate = unitRate else { return }
+        let dateStr = Date().formatted(.iso8601.year().month().day())
+        var snaps = rateSnapshots
+        snaps.removeAll { $0.dateStr == dateStr
+                       && $0.fromCode == fromCurrency
+                       && $0.toCode   == toCurrency }
+        snaps.append(RateSnapshot(dateStr: dateStr,
+                                  fromCode: fromCurrency,
+                                  toCode: toCurrency,
+                                  rate: rate))
+        if snaps.count > 90 { snaps = Array(snaps.suffix(90)) }
+        if let data = try? JSONEncoder().encode(snaps),
+           let json = String(data: data, encoding: .utf8) { rateSnapshotsJSON = json }
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -193,6 +258,9 @@ struct CurrencyConverterView: View {
                             conversionCard
                             resultCard
                             rateInfoCard
+                            if sparklineData.count >= 2 {
+                                sparklineCard
+                            }
                             if !historyEntries.isEmpty {
                                 historyCard
                             }
@@ -216,6 +284,7 @@ struct CurrencyConverterView: View {
         .task(id: "\(amountText)|\(fromCurrency)|\(toCurrency)") {
             do { try await Task.sleep(for: .seconds(1)) } catch { return }
             recordHistory()
+            recordRateSnapshot()
         }
         .sheet(isPresented: $showFromPicker) {
             CurrencyPickerSheet(currencies: currencies, selected: $fromCurrency)
@@ -505,6 +574,70 @@ struct CurrencyConverterView: View {
         )
     }
 
+    // MARK: - Sparkline Card
+
+    private var sparklineCard: some View {
+        let snaps  = sparklineData
+        let values = snaps.map(\.rate)
+        let lo     = values.min() ?? 0
+        let hi     = values.max() ?? 0
+        let first  = values.first ?? 0
+        let last   = values.last  ?? 0
+        let up     = last >= first
+        return GlassEffectContainer(spacing: 0) {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    HStack(spacing: 6) {
+                        Image(systemName: "chart.xyaxis.line")
+                            .font(.caption.weight(.semibold))
+                        Text("7-Day Trend")
+                            .font(.caption.weight(.semibold))
+                    }
+                    .foregroundStyle(Color.primary.opacity(0.55))
+                    Spacer()
+                    HStack(spacing: 3) {
+                        Image(systemName: up ? "arrow.up.right" : "arrow.down.right")
+                            .font(.caption2.weight(.bold))
+                        let delta = last - first
+                        Text(delta >= 0 ? "+\(String(format: "%.4f", delta))"
+                                        : String(format: "%.4f", delta))
+                            .font(.caption2.weight(.semibold).monospacedDigit())
+                    }
+                    .foregroundStyle(up ? Color.green : Color.red)
+                }
+
+                SparklineShape(values: values)
+                    .stroke(
+                        LinearGradient(
+                            colors: [glassTint, glassTint.opacity(0.5)],
+                            startPoint: .leading, endPoint: .trailing
+                        ),
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
+                    )
+                    .frame(height: 52)
+                    .overlay(alignment: .bottomLeading) {
+                        Text(String(format: "%.4f", lo))
+                            .font(.system(size: 8, weight: .medium).monospacedDigit())
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    }
+                    .overlay(alignment: .topLeading) {
+                        Text(String(format: "%.4f", hi))
+                            .font(.system(size: 8, weight: .medium).monospacedDigit())
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    }
+
+                HStack {
+                    Text(snaps.first?.dateStr ?? "")
+                    Spacer()
+                    Text(snaps.last?.dateStr ?? "")
+                }
+                .font(.system(size: 9, weight: .medium))
+                .foregroundStyle(Color.primary.opacity(0.35))
+            }
+            .padding(16)
+        }
+    }
+
     // MARK: - Rate Info Card
 
     private var rateInfoCard: some View {
@@ -560,6 +693,7 @@ struct CurrencyConverterView: View {
         if !list.contains(fromCurrency), let first = list.first { fromCurrency = first }
         if !list.contains(toCurrency),  list.count > 1            { toCurrency  = list[1] }
         isLoading = false
+        recordRateSnapshot()
     }
 }
 

@@ -1,18 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "–" : {
-      "shouldTranslate" : false
-    },
-    "—" : {
-      "shouldTranslate" : false
-    },
-    "—  m" : {
-      "shouldTranslate" : false
-    },
-    "?" : {
-      "shouldTranslate" : false
-    },
     "#RRGGBB" : {
       "shouldTranslate" : false
     },
@@ -22,33 +10,12 @@
     "%@" : {
       "shouldTranslate" : false
     },
-    "%@ – %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ – %2$@"
-          }
-        }
-      }
-    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ %2$@"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "%@ °C · %@ °F · %@ K" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ °C · %2$@ °F · %3$@ K"
           }
         }
       },
@@ -89,9 +56,8 @@
         }
       }
     },
-    "%@ built-in tools" : {
-
-    },
+    "%@ Tage" : {},
+    "%@ built-in tools" : {},
     "%@ characters" : {
       "localizations" : {
         "da" : {
@@ -126,6 +92,7 @@
         }
       }
     },
+    "%@ holidays added to your Calendar." : {},
     "%@ is not allowed" : {
       "comment" : "Roman numeral validation error: invalid pair",
       "localizations" : {
@@ -161,12 +128,7 @@
         }
       }
     },
-    "%@ kWh" : {
-
-    },
-    "%@ Tage" : {
-
-    },
+    "%@ kWh" : {},
     "%@ used · %@ remaining" : {
       "localizations" : {
         "en" : {
@@ -177,7 +139,28 @@
         }
       }
     },
-    "%@-bit" : {
+    "%@ °C · %@ °F · %@ K" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ °C · %2$@ °F · %3$@ K"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%@ – %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ – %2$@"
+          }
+        }
+      }
+    },
+    "%@%%" : {
       "shouldTranslate" : false
     },
     "%@%@" : {
@@ -200,7 +183,7 @@
         }
       }
     },
-    "%@%%" : {
+    "%@-bit" : {
       "shouldTranslate" : false
     },
     "%@W" : {
@@ -282,6 +265,41 @@
         }
       }
     },
+    "%lld Tage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dage"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Tage"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld giorni"
+          }
+        }
+      }
+    },
     "%lld built-in tools" : {
       "comment" : "Tool count label in main grid header (e.g. '27 built-in tools')",
       "localizations" : {
@@ -352,6 +370,41 @@
         }
       }
     },
+    "%lld holidays added to your Calendar." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Feiertage zu Ihrem Kalender hinzugefügt."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld helligdage tilføjet til din kalender."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld festivos añadidos a tu calendario."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld jours fériés ajoutés à votre calendrier."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld festività aggiunte al tuo calendario."
+          }
+        }
+      }
+    },
     "%lld mo, %lld d remaining" : {
       "comment" : "Age pill: months and days remaining in current year of life",
       "localizations" : {
@@ -383,41 +436,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld mesi, %lld gg. rimanenti"
-          }
-        }
-      }
-    },
-    "%lld Tage" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld dage"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Tage"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld días"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld jours"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld giorni"
           }
         }
       }
@@ -491,243 +509,6 @@
           }
         }
       }
-    },
-    "•" : {
-      "shouldTranslate" : false
-    },
-    "°C" : {
-      "comment" : "Celsius unit symbol",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "°C · °F · K" : {
-      "comment" : "Temperature converter subtitle — unit symbols unchanged",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C · °F · K"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C · °F · K"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C · °F · K"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C · °F · K"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°C · °F · K"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "°F" : {
-      "comment" : "Fahrenheit unit symbol",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°F"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°F"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°F"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°F"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "°F"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "→" : {
-
-    },
-    "±" : {
-      "shouldTranslate" : false
-    },
-    "±20%" : {
-
-    },
-    "×" : {
-      "shouldTranslate" : false
-    },
-    "× %@ payments" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "× %@ betalinger"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "× %@ Zahlungen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "× %@ pagos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "× %@ versements"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "× %@ rate"
-          }
-        }
-      }
-    },
-    "=" : {
-      "shouldTranslate" : false
-    },
-    "🇩🇪" : {
-
-    },
-    "🎂 in %lld days" : {
-      "comment" : "Age pill: days until next birthday (cake emoji)",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🎂 om %lld dage"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🎂 in %lld Tagen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🎂 en %lld días"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🎂 dans %lld jours"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🎂 tra %lld giorni"
-          }
-        }
-      }
-    },
-    "€/kWh" : {
-      "shouldTranslate" : false
-    },
-    "1 – 3999" : {
-      "comment" : "Valid range hint for Roman numeral input",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 – 3999"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 – 3999"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 – 3999"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 – 3999"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 – 3999"
-          }
-        }
-      },
-      "shouldTranslate" : false
     },
     "1 %@ = %@ %@" : {
       "localizations" : {
@@ -810,6 +591,155 @@
         }
       }
     },
+    "1 – 3999" : {
+      "comment" : "Valid range hint for Roman numeral input",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 – 3999"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 – 3999"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 – 3999"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 – 3999"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 – 3999"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "10" : {
+      "shouldTranslate" : false
+    },
+    "14 built-in tools" : {
+      "comment" : "About view / splash: total number of tools in the app",
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 integrierte Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 strumenti integrati"
+          }
+        }
+      }
+    },
+    "15 built-in tools" : {
+      "comment" : "About view / splash: total number of tools",
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 integrierte Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 strumenti integrati"
+          }
+        }
+      }
+    },
+    "18 built-in tools" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 eingebaute Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 strumenti integrati"
+          }
+        }
+      }
+    },
+    "18.5" : {
+      "shouldTranslate" : false
+    },
     "1st" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -880,6 +810,114 @@
         }
       }
     },
+    "21 built-in tools" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "21 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "21 eingebaute Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "21 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "21 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "21 strumenti integrati"
+          }
+        }
+      }
+    },
+    "23 built-in tools" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "23 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "23 eingebaute Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "23 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "23 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "23 strumenti integrati"
+          }
+        }
+      }
+    },
+    "24 built-in tools" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 indbyggede værktøjer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 eingebaute Werkzeuge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 herramientas integradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 outils intégrés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 strumenti integrati"
+          }
+        }
+      }
+    },
+    "25" : {
+      "shouldTranslate" : false
+    },
     "2nd" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -949,6 +987,9 @@
           }
         }
       }
+    },
+    "30" : {
+      "shouldTranslate" : false
     },
     "3rd" : {
       "extractionState" : "manual",
@@ -1125,6 +1166,9 @@
         }
       }
     },
+    "40" : {
+      "shouldTranslate" : false
+    },
     "5-Band" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1160,235 +1204,83 @@
         }
       }
     },
-    "10" : {
+    "7-Day Trend" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-Tage-Trend"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-dages tendens"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendencia de 7 días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendance sur 7 jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendenza a 7 giorni"
+          }
+        }
+      }
+    },
+    "=" : {
       "shouldTranslate" : false
     },
-    "14 built-in tools" : {
-      "comment" : "About view / splash: total number of tools in the app",
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14 integrierte Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14 strumenti integrati"
-          }
-        }
-      }
-    },
-    "15 built-in tools" : {
-      "comment" : "About view / splash: total number of tools",
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "15 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "15 integrierte Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "15 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "15 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "15 strumenti integrati"
-          }
-        }
-      }
-    },
-    "18 built-in tools" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "18 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "18 eingebaute Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "18 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "18 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "18 strumenti integrati"
-          }
-        }
-      }
-    },
-    "18.5" : {
-      "shouldTranslate" : false
-    },
-    "21 built-in tools" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "21 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "21 eingebaute Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "21 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "21 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "21 strumenti integrati"
-          }
-        }
-      }
-    },
-    "23 built-in tools" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "23 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "23 eingebaute Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "23 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "23 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "23 strumenti integrati"
-          }
-        }
-      }
-    },
-    "24 built-in tools" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "24 indbyggede værktøjer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "24 eingebaute Werkzeuge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "24 herramientas integradas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "24 outils intégrés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "24 strumenti integrati"
-          }
-        }
-      }
-    },
-    "25" : {
-      "shouldTranslate" : false
-    },
-    "30" : {
-      "shouldTranslate" : false
-    },
-    "40" : {
+    "?" : {
       "shouldTranslate" : false
     },
     "A/C" : {
       "shouldTranslate" : false
+    },
+    "ASL" : {
+      "comment" : "Above sea level label in horizon view",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "m.o.h."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ü. NN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "snm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alt."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s.l.m."
+          }
+        }
+      }
     },
     "About" : {
       "comment" : "Navigation title and tool name",
@@ -1443,7 +1335,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar"
+            "value" : "Añadir"
           }
         },
         "fr" : {
@@ -1456,6 +1348,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiungi"
+          }
+        }
+      }
+    },
+    "Add Device" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät hinzufügen"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tilføj enhed"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi dispositivo"
           }
         }
       }
@@ -1632,41 +1559,6 @@
         }
       }
     },
-    "Air temp:" : {
-      "comment" : "Short label for current air temperature",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lufttemp.:"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lufttemp.:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temp. aire:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temp. air :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temp. aria:"
-          }
-        }
-      }
-    },
     "Air Temperature" : {
       "comment" : "Input field label",
       "localizations" : {
@@ -1698,6 +1590,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Temperatura dell'aria"
+          }
+        }
+      }
+    },
+    "Air temp:" : {
+      "comment" : "Short label for current air temperature",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lufttemp.:"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lufttemp.:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temp. aire:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temp. air :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temp. aria:"
           }
         }
       }
@@ -2015,41 +1942,6 @@
         }
       }
     },
-    "ASL" : {
-      "comment" : "Above sea level label in horizon view",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "m.o.h."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ü. NN"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "snm"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "alt."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s.l.m."
-          }
-        }
-      }
-    },
     "Aspect Ratio" : {
       "localizations" : {
         "da" : {
@@ -2080,6 +1972,146 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proporzioni"
+          }
+        }
+      }
+    },
+    "BMI" : {
+      "shouldTranslate" : false
+    },
+    "BMI & Body Metrics" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI og kropsdata"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI & Körpermaße"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC y métricas corporales"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC et métriques corporelles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI e metriche corporee"
+          }
+        }
+      }
+    },
+    "BMI Calculator" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI-beregner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI-Rechner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculadora de IMC"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculateur IMC"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatore BMI"
+          }
+        }
+      }
+    },
+    "BMI · BMR · Ideal weight" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI · BMR · Idealvægt"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI · BMR · Idealgewicht"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC · TMB · Peso ideal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC · MB · Poids idéal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI · BMR · Peso ideale"
+          }
+        }
+      }
+    },
+    "BROWSE DATE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VÆLG DATO"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DATUM WÄHLEN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SELECCIONAR FECHA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHOISIR UNE DATE"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SCEGLI DATA"
           }
         }
       }
@@ -2152,40 +2184,6 @@
         }
       }
     },
-    "Base (b)" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Grundlinje (b)"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Basis (b)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base (b)"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base (b)"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base (b)"
-          }
-        }
-      }
-    },
     "Base & rate" : {
       "comment" : "Percentage tool subtitle",
       "localizations" : {
@@ -2221,70 +2219,36 @@
         }
       }
     },
-    "Base = Value ÷ Rate × 100" : {
+    "Base (b)" : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grundværdi = Værdi ÷ Sats × 100"
+            "value" : "Grundlinje (b)"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grundwert = Wert ÷ Prozentsatz × 100"
+            "value" : "Basis (b)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Base = Valor ÷ Tasa × 100"
+            "value" : "Base (b)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Base = Valeur ÷ Taux × 100"
+            "value" : "Base (b)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Base = Valore ÷ Tasso × 100"
-          }
-        }
-      }
-    },
-    "Base 2" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base 2"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Basis 2"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base 2"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base 2"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base 2"
+            "value" : "Base (b)"
           }
         }
       }
@@ -2357,37 +2321,70 @@
         }
       }
     },
-    "base value" : {
-      "comment" : "Percentage calculation: base value text field placeholder",
+    "Base 2" : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "grundværdi"
+            "value" : "Base 2"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grundwert"
+            "value" : "Basis 2"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "valor base"
+            "value" : "Base 2"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "valeur de base"
+            "value" : "Base 2"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "valore base"
+            "value" : "Base 2"
+          }
+        }
+      }
+    },
+    "Base = Value ÷ Rate × 100" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundværdi = Værdi ÷ Sats × 100"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert = Wert ÷ Prozentsatz × 100"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valor ÷ Tasa × 100"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valeur ÷ Taux × 100"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base = Valore ÷ Tasso × 100"
           }
         }
       }
@@ -2774,111 +2771,6 @@
         }
       }
     },
-    "BMI" : {
-      "shouldTranslate" : false
-    },
-    "BMI · BMR · Ideal weight" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI · BMR · Idealvægt"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI · BMR · Idealgewicht"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IMC · TMB · Peso ideal"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IMC · MB · Poids idéal"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI · BMR · Peso ideale"
-          }
-        }
-      }
-    },
-    "BMI & Body Metrics" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI og kropsdata"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI & Körpermaße"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IMC y métricas corporales"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IMC et métriques corporelles"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI e metriche corporee"
-          }
-        }
-      }
-    },
-    "BMI Calculator" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI-beregner"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BMI-Rechner"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calculadora de IMC"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calculateur IMC"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calcolatore BMI"
-          }
-        }
-      }
-    },
     "Booked" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3018,41 +2910,6 @@
         }
       }
     },
-    "BROWSE DATE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "VÆLG DATO"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "DATUM WÄHLEN"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SELECCIONAR FECHA"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CHOISIR UNE DATE"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SCEGLI DATA"
-          }
-        }
-      }
-    },
     "Bulb" : {
       "comment" : "Power consumption device preset name",
       "localizations" : {
@@ -3122,6 +2979,44 @@
         }
       }
     },
+    "CMYK (%)" : {
+      "shouldTranslate" : false
+    },
+    "COLOR BANDS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FARVERINGE"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FARBRINGE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BANDAS DE COLOR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BANDES DE COULEUR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BANDE DI COLORE"
+          }
+        }
+      }
+    },
     "Calculate" : {
       "localizations" : {
         "da" : {
@@ -3186,41 +3081,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calcola e scala le dimensioni"
-          }
-        }
-      }
-    },
-    "calculated" : {
-      "comment" : "Interest rate: badge shown on the solved field",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "beregnet"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "berechnet"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "calculado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "calculé"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "calcolato"
           }
         }
       }
@@ -3325,6 +3185,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Errore Calendario"
+          }
+        }
+      }
+    },
+    "Calendar access denied. Please allow access in Settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalenderzugriff verweigert. Bitte Zugriff in den Einstellungen erlauben."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalenderadgang nægtet. Tillad adgang i indstillinger."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acceso al calendario denegado. Por favor, permita el acceso en Configuración."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès au calendrier refusé. Veuillez autoriser l'accès dans les réglages."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso al calendario negato. Consenti l'accesso nelle impostazioni."
           }
         }
       }
@@ -3498,42 +3392,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Centimetri"
-          }
-        }
-      }
-    },
-    "characters" : {
-      "comment" : "QR code: character count label below payload preview",
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tegn"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeichen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "caracteres"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "caractères"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "caratteri"
           }
         }
       }
@@ -3779,9 +3637,6 @@
         }
       }
     },
-    "CMYK (%)" : {
-      "shouldTranslate" : false
-    },
     "Coin" : {
       "localizations" : {
         "da" : {
@@ -3916,41 +3771,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Colore"
-          }
-        }
-      }
-    },
-    "COLOR BANDS" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FARVERINGE"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FARBRINGE"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BANDAS DE COLOR"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BANDES DE COULEUR"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BANDE DI COLORE"
           }
         }
       }
@@ -4475,40 +4295,6 @@
         }
       }
     },
-    "Cost per kWh" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pris pr. kWh"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kosten pro kWh"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Costo por kWh"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coût par kWh"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Costo per kWh"
-          }
-        }
-      }
-    },
     "Cost per Unit" : {
       "localizations" : {
         "da" : {
@@ -4539,6 +4325,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Costo per unità"
+          }
+        }
+      }
+    },
+    "Cost per kWh" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pris pr. kWh"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosten pro kWh"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Costo por kWh"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coût par kWh"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Costo per kWh"
           }
         }
       }
@@ -4925,128 +4745,6 @@
         }
       }
     },
-    "d = %@ × √( %@ + %@ ) = %@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "d = %1$@ × √( %2$@ + %3$@ ) = %4$@ %5$@"
-          }
-        }
-      }
-    },
-    "d = 1.22 × √( altitude + eye level )" : {
-      "comment" : "Horizon formula in miles",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 1,22 × √( højde + øjenhøjde )"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 1,22 × √( Höhe + Augenhöhe )"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 1,22 × √( altitud + nivel ojos )"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 1,22 × √( altitude + hauteur yeux )"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 1,22 × √( altitudine + livello occhi )"
-          }
-        }
-      }
-    },
-    "d = 3.57 × √( %@ + %@ ) = %@ km" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "d = 3.57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "d = 3.57 × √( altitude + eye level )" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( højde + øjenhøjde )"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( Höhe + Augenhöhe )"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( altitud + nivel ojos )"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( altitude + hauteur yeux )"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d = 3,57 × √( altitudine + livello occhi )"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "D, L, V never repeat — only one per numeral" : {
       "localizations" : {
         "da" : {
@@ -5257,41 +4955,6 @@
         }
       }
     },
-    "day" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dag"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tag"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "día"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "jour"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "giorno"
-          }
-        }
-      }
-    },
     "Day" : {
       "comment" : "Power consumption bar chart label",
       "localizations" : {
@@ -5362,111 +5025,6 @@
         }
       }
     },
-    "days" : {
-      "comment" : "Calendar: days label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dage"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tage"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "días"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "jours"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "giorni"
-          }
-        }
-      }
-    },
-    "days ago" : {
-      "comment" : "Calendar countdown label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dage siden"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tage vergangen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "días atrás"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "jours passés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "giorni fa"
-          }
-        }
-      }
-    },
-    "days until event" : {
-      "comment" : "Calendar countdown label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dage til begivenheden"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tage bis zum Ereignis"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "días hasta el evento"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "jours avant l'événement"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "giorni all'evento"
-          }
-        }
-      }
-    },
     "Decimal" : {
       "comment" : "Number base label",
       "localizations" : {
@@ -5533,6 +5091,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Statistica descrittiva"
+          }
+        }
+      }
+    },
+    "Device Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerätename"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enhedsnavn"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom de l'appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome del dispositivo"
           }
         }
       }
@@ -5640,9 +5233,6 @@
         }
       }
     },
-    "dict.leo.org" : {
-      "shouldTranslate" : false
-    },
     "Digit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5747,40 +5337,6 @@
         }
       }
     },
-    "Distance · Consumption · Price" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afstand · Forbrug · Pris"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distanz · Verbrauch · Preis"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distancia · Consumo · Precio"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distance · Consommation · Prix"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distanza · Consumo · Prezzo"
-          }
-        }
-      }
-    },
     "Distance (km)" : {
       "localizations" : {
         "da" : {
@@ -5845,6 +5401,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Distanza (miglia)"
+          }
+        }
+      }
+    },
+    "Distance · Consumption · Price" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afstand · Forbrug · Pris"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distanz · Verbrauch · Preis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distancia · Consumo · Precio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance · Consommation · Prix"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distanza · Consumo · Prezzo"
           }
         }
       }
@@ -5954,141 +5544,11 @@
         }
       }
     },
-    "e.g. 0.30 for 30 ct/kWh" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "f.eks. 0,30 for 30 øre/kWh"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "z.B. 0,30 für 30 Ct/kWh"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "p.ej. 0,30 para 30 ct/kWh"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. 0,30 pour 30 ct/kWh"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "es. 0,30 per 30 ct/kWh"
-          }
-        }
-      }
+    "EN↔DE" : {
+      "shouldTranslate" : false
     },
-    "e.g. 15% of 200 = 30" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "f.eks. 15% af 200 = 30"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "z. B. 15% von 200 = 30"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. 15% de 200 = 30"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. 15% de 200 = 30"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "es. 15% di 200 = 30"
-          }
-        }
-      }
-    },
-    "e.g. 30 ÷ 15 × 100 = 200" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "f.eks. 30 ÷ 15 × 100 = 200"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "z. B. 30 ÷ 15 × 100 = 200"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. 30 ÷ 15 × 100 = 200"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. 30 ÷ 15 × 100 = 200"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "es. 30 ÷ 15 × 100 = 200"
-          }
-        }
-      }
-    },
-    "e.g. 30 ÷ 200 × 100 = 15 %" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "f.eks. 30 ÷ 200 × 100 = 15 %"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "z. B. 30 ÷ 200 × 100 = 15 %"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. 30 ÷ 200 × 100 = 15 %"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. 30 ÷ 200 × 100 = 15 %"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "es. 30 ÷ 200 × 100 = 15 %"
-          }
-        }
-      }
+    "ES↔DE" : {
+      "shouldTranslate" : false
     },
     "Easter" : {
       "localizations" : {
@@ -6194,8 +5654,45 @@
         }
       }
     },
-    "EN↔DE" : {
+    "Emoji" : {
+      "extractionState" : "manual",
+      "localizations" : {},
       "shouldTranslate" : false
+    },
+    "Enter Text" : {
+      "comment" : "QR code text form: field label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skriv tekst"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text eingeben"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa texto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrer du texte"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci testo"
+          }
+        }
+      }
     },
     "Enter a bill amount to see results" : {
       "comment" : "Tip splitter: placeholder shown when no bill entered",
@@ -6368,41 +5865,6 @@
         }
       }
     },
-    "Enter Text" : {
-      "comment" : "QR code text form: field label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skriv tekst"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Text eingeben"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresa texto"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrer du texte"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inserisci testo"
-          }
-        }
-      }
-    },
     "Enter wattage, hours/day and price per kWh" : {
       "localizations" : {
         "da" : {
@@ -6436,9 +5898,6 @@
           }
         }
       }
-    },
-    "ES↔DE" : {
-      "shouldTranslate" : false
     },
     "Evening" : {
       "comment" : "Time of day label",
@@ -6541,6 +6000,111 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tassi di cambio"
+          }
+        }
+      }
+    },
+    "Export Complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export abgeschlossen"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksport fuldført"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportación completada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export terminé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esportazione completata"
+          }
+        }
+      }
+    },
+    "Export Failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export fehlgeschlagen"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksport mislykkedes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error en la exportación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de l'export"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esportazione non riuscita"
+          }
+        }
+      }
+    },
+    "Export to Calendar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Kalender exportieren"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksportér til kalender"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar al calendario"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter vers le calendrier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta nel calendario"
           }
         }
       }
@@ -6685,6 +6249,9 @@
         }
       }
     },
+    "FR↔DE" : {
+      "shouldTranslate" : false
+    },
     "Fahrenheit" : {
       "comment" : "Temperature scale label",
       "localizations" : {
@@ -6750,74 +6317,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preferiti"
-          }
-        }
-      }
-    },
-    "favorites.tip.ios" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tryk og hold på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen for hurtig adgang."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halte eine Karte gedrückt, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste für schnellen Zugriff."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mantén pulsada una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista para acceso rápido."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appuyez longuement sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste pour un accès rapide."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tieni premuta una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista per un accesso rapido."
-          }
-        }
-      }
-    },
-    "favorites.tip.mac" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Højreklik på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klicke mit der rechten Maustaste auf eine Karte, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haz clic derecho en una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faites un clic droit sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fai clic destro su una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista."
           }
         }
       }
@@ -7441,9 +6940,6 @@
         }
       }
     },
-    "FR↔DE" : {
-      "shouldTranslate" : false
-    },
     "Freezing" : {
       "comment" : "Temperature classification",
       "localizations" : {
@@ -7580,41 +7076,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pericolo di congelamento"
-          }
-        }
-      }
-    },
-    "ft" : {
-      "comment" : "Feet unit abbreviation",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ft"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ft"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ft"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ft"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ft"
           }
         }
       }
@@ -7962,6 +7423,74 @@
         }
       }
     },
+    "GPS Altitude" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-højde"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-Höhe"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitud GPS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitude GPS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitudine GPS"
+          }
+        }
+      }
+    },
+    "GPS altitude + eye level → distance to horizon" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-højde + øjenhøjde → afstand til horisonten"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS-Höhe + Augenhöhe → Entfernung zum Horizont"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitud GPS + nivel de los ojos → distancia al horizonte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitude GPS + hauteur des yeux → distance à l'horizon"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altitudine GPS + livello degli occhi → distanza dall'orizzonte"
+          }
+        }
+      }
+    },
     "Gallons (US)" : {
       "comment" : "Unit converter: US gallon unit label",
       "localizations" : {
@@ -8204,74 +7733,6 @@
         }
       }
     },
-    "GPS Altitude" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GPS-højde"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GPS-Höhe"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitud GPS"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitude GPS"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitudine GPS"
-          }
-        }
-      }
-    },
-    "GPS altitude + eye level → distance to horizon" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GPS-højde + øjenhøjde → afstand til horisonten"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GPS-Höhe + Augenhöhe → Entfernung zum Horizont"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitud GPS + nivel de los ojos → distancia al horizonte"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitude GPS + hauteur des yeux → distance à l'horizon"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altitudine GPS + livello degli occhi → distanza dall'orizzonte"
-          }
-        }
-      }
-    },
     "Grams" : {
       "comment" : "Unit converter: gram unit label",
       "localizations" : {
@@ -8447,40 +7908,82 @@
         }
       }
     },
-    "h/day" : {
-      "comment" : "Power consumption unit: hours per day",
+    "HEX" : {
+      "shouldTranslate" : false
+    },
+    "HEX · RGB · HSB · CMYK" : {
+      "comment" : "Color picker subtitle — abbreviations unchanged",
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "h/dag"
+            "value" : "HEX · RGB · HSB · CMYK"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "h/Tag"
+            "value" : "HEX · RGB · HSB · CMYK"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "h/día"
+            "value" : "HEX · RGB · HSB · CMYK"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "h/jour"
+            "value" : "HEX · RGB · HSB · CMYK"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "h/giorno"
+            "value" : "HEX · RGB · HSB · CMYK"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "HI = −8.78 + 1.61·T + 2.34·RH − 0.15·T·RH − …" : {
+      "comment" : "Heat index formula expression",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
           }
         }
       }
+    },
+    "HSB" : {
+      "shouldTranslate" : false
     },
     "Heads!" : {
       "localizations" : {
@@ -8793,9 +8296,6 @@
       },
       "shouldTranslate" : false
     },
-    "HEX" : {
-      "shouldTranslate" : false
-    },
     "Hex · Dec · Bin" : {
       "comment" : "Number bases tool subtitle",
       "localizations" : {
@@ -8831,42 +8331,6 @@
         }
       }
     },
-    "HEX · RGB · HSB · CMYK" : {
-      "comment" : "Color picker subtitle — abbreviations unchanged",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HEX · RGB · HSB · CMYK"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HEX · RGB · HSB · CMYK"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HEX · RGB · HSB · CMYK"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HEX · RGB · HSB · CMYK"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HEX · RGB · HSB · CMYK"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "Hexadecimal" : {
       "localizations" : {
         "da" : {
@@ -8897,41 +8361,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esadecimale"
-          }
-        }
-      }
-    },
-    "HI = −8.78 + 1.61·T + 2.34·RH − 0.15·T·RH − …" : {
-      "comment" : "Heat index formula expression",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HI = −8,78 + 1,61·T + 2,34·RH − 0,15·T·RH − …"
           }
         }
       }
@@ -9177,9 +8606,6 @@
         }
       }
     },
-    "HSB" : {
-      "shouldTranslate" : false
-    },
     "Humidity" : {
       "comment" : "Input field label",
       "localizations" : {
@@ -9211,40 +8637,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Umidità"
-          }
-        }
-      }
-    },
-    "I before V or X subtracts (IV=4, IX=9)" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I før V eller X trækker fra (IV=4, IX=9)"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I vor V oder X subtrahiert (IV=4, IX=9)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I antes de V o X resta (IV=4, IX=9)"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I avant V ou X soustrait (IV=4, IX=9)"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I prima di V o X sottrae (IV=4, IX=9)"
           }
         }
       }
@@ -9283,6 +8675,43 @@
           }
         }
       },
+      "shouldTranslate" : false
+    },
+    "I before V or X subtracts (IV=4, IX=9)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I før V eller X trækker fra (IV=4, IX=9)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I vor V oder X subtrahiert (IV=4, IX=9)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I antes de V o X resta (IV=4, IX=9)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I avant V ou X soustrait (IV=4, IX=9)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I prima di V o X sottrae (IV=4, IX=9)"
+          }
+        }
+      }
+    },
+    "IT↔DE" : {
       "shouldTranslate" : false
     },
     "Ideal weight: %@ – %@" : {
@@ -9390,76 +8819,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Imperiale"
-          }
-        }
-      }
-    },
-    "in" : {
-      "comment" : "Preposition: event happens in X minutes",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "om"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "en"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dans"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tra"
-          }
-        }
-      }
-    },
-    "in %lld Tagen" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "om %lld dage"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in %lld Tagen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "en %lld días"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dans %lld jours"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tra %lld giorni"
           }
         }
       }
@@ -9708,12 +9067,6 @@
         }
       }
     },
-    "iOS %@" : {
-      "shouldTranslate" : false
-    },
-    "IT↔DE" : {
-      "shouldTranslate" : false
-    },
     "Items (one per line or comma-separated)" : {
       "localizations" : {
         "da" : {
@@ -9752,9 +9105,6 @@
       "shouldTranslate" : false
     },
     "K" : {
-      "shouldTranslate" : false
-    },
-    "kcal/day" : {
       "shouldTranslate" : false
     },
     "Kelvin" : {
@@ -9862,45 +9212,6 @@
         }
       }
     },
-    "km" : {
-      "shouldTranslate" : false
-    },
-    "km/h" : {
-      "comment" : "Speed unit",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "km/h"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "km/h"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "km/h"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "km/h"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "km/h"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "Knots" : {
       "comment" : "Unit converter: knot speed unit label",
       "localizations" : {
@@ -9932,6 +9243,44 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nodi"
+          }
+        }
+      }
+    },
+    "LED" : {
+      "shouldTranslate" : false
+    },
+    "LUNAR CYCLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MÅNECYKLUS"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MONDZYKLUS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CICLO LUNAR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CYCLE LUNAIRE"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CICLO LUNARE"
           }
         }
       }
@@ -10039,45 +9388,6 @@
           }
         }
       }
-    },
-    "Läuft" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Løber"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Läuft"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En curso"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En cours"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In corso"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "LED" : {
-      "shouldTranslate" : false
     },
     "Left half illuminated" : {
       "extractionState" : "manual",
@@ -10734,41 +10044,6 @@
         }
       }
     },
-    "LUNAR CYCLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MÅNECYKLUS"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MONDZYKLUS"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CICLO LUNAR"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CYCLE LUNAIRE"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CICLO LUNARE"
-          }
-        }
-      }
-    },
     "Lunar cycle · Illumination" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -10804,11 +10079,40 @@
         }
       }
     },
-    "m" : {
-      "shouldTranslate" : false
-    },
-    "m/s" : {
-      "comment" : "Unit converter: meters per second — universal abbreviation",
+    "Läuft" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Løber"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En curso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In corso"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "Mail Not Available" : {
@@ -10983,41 +10287,6 @@
         }
       }
     },
-    "mean" : {
-      "comment" : "Statistical mean label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "gennemsnit"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mittelwert"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "media"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "moyenne"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "media"
-          }
-        }
-      }
-    },
     "Mean · Median · Std Dev · More" : {
       "comment" : "Statistics tool subtitle",
       "localizations" : {
@@ -11049,41 +10318,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Media · Mediana · Dev. std · Altro"
-          }
-        }
-      }
-    },
-    "median %@" : {
-      "comment" : "Median value display in featured card: 'median 3.5'",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "median %@"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Median %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mediana %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "médiane %@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mediana %@"
           }
         }
       }
@@ -11223,41 +10457,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metrico"
-          }
-        }
-      }
-    },
-    "mi" : {
-      "comment" : "Miles unit abbreviation",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mi"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mi"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mi"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mi"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mi"
           }
         }
       }
@@ -11747,41 +10946,6 @@
         }
       }
     },
-    "Moon not visible" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Måne ikke synlig"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mond nicht sichtbar"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Luna no visible"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lune non visible"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Luna non visibile"
-          }
-        }
-      }
-    },
     "Moon Phase" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11813,6 +10977,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fase lunare"
+          }
+        }
+      }
+    },
+    "Moon not visible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Måne ikke synlig"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mond nicht sichtbar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luna no visible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lune non visible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luna non visibile"
           }
         }
       }
@@ -11922,41 +11121,6 @@
         }
       }
     },
-    "morgen" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "i morgen"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "morgen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mañana"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "demain"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "domani"
-          }
-        }
-      }
-    },
     "Morning" : {
       "comment" : "Time of day label",
       "localizations" : {
@@ -11992,42 +11156,6 @@
         }
       }
     },
-    "mph" : {
-      "comment" : "Speed unit (miles per hour)",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mph"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mph"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mph"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mph"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mph"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "Multiplier" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12059,6 +11187,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moltiplicatore"
+          }
+        }
+      }
+    },
+    "My Device" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mein Gerät"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min enhed"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il mio dispositivo"
+          }
+        }
+      }
+    },
+    "NOAA Wind Chill (T ≤ 10°C, wind ≥ 4.8 km/h)" : {
+      "comment" : "Formula source label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOAA vindafkøling (T ≤ 10 °C, vind ≥ 4,8 km/h)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOAA Windkälte (T ≤ 10 °C, Wind ≥ 4,8 km/h)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensación térmica NOAA (T ≤ 10 °C, viento ≥ 4,8 km/h)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refroidissement éolien NOAA (T ≤ 10 °C, vent ≥ 4,8 km/h)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raffreddamento eolico NOAA (T ≤ 10 °C, vento ≥ 4,8 km/h)"
           }
         }
       }
@@ -12238,6 +11436,41 @@
         }
       }
     },
+    "No Permission" : {
+      "comment" : "Horizon view: location permission denied",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen Tilladelse"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Berechtigung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Permiso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas d'Autorisation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun Permesso"
+          }
+        }
+      }
+    },
     "No bridge day opportunities found" : {
       "localizations" : {
         "da" : {
@@ -12307,41 +11540,6 @@
         }
       }
     },
-    "No Permission" : {
-      "comment" : "Horizon view: location permission denied",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingen Tilladelse"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Berechtigung"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin Permiso"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pas d'Autorisation"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nessun Permesso"
-          }
-        }
-      }
-    },
     "No public holidays fall on Tuesday or Thursday outside school holiday periods." : {
       "localizations" : {
         "da" : {
@@ -12407,41 +11605,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun effetto significativo di raffreddamento eolico o indice di calore. La temperatura percepita equivale a quella dell'aria."
-          }
-        }
-      }
-    },
-    "NOAA Wind Chill (T ≤ 10°C, wind ≥ 4.8 km/h)" : {
-      "comment" : "Formula source label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NOAA vindafkøling (T ≤ 10 °C, vind ≥ 4,8 km/h)"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NOAA Windkälte (T ≤ 10 °C, Wind ≥ 4,8 km/h)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sensación térmica NOAA (T ≤ 10 °C, viento ≥ 4,8 km/h)"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Refroidissement éolien NOAA (T ≤ 10 °C, vent ≥ 4,8 km/h)"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Raffreddamento eolico NOAA (T ≤ 10 °C, vento ≥ 4,8 km/h)"
           }
         }
       }
@@ -12618,40 +11781,6 @@
         }
       }
     },
-    "Number of dice" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Antal terninger"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anzahl Würfel"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número de dados"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de dés"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Numero di dadi"
-          }
-        }
-      }
-    },
     "Number of People" : {
       "comment" : "Tip splitter: label for the people counter",
       "localizations" : {
@@ -12683,6 +11812,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Numero di Persone"
+          }
+        }
+      }
+    },
+    "Number of dice" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antal terninger"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzahl Würfel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de dados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de dés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numero di dadi"
           }
         }
       }
@@ -12722,6 +11885,40 @@
         }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "Obese" : {
       "localizations" : {
         "da" : {
@@ -12755,9 +11952,6 @@
           }
         }
       }
-    },
-    "of" : {
-
     },
     "Ohm's Law" : {
       "localizations" : {
@@ -12823,40 +12017,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calcolatore legge di Ohm"
-          }
-        }
-      }
-    },
-    "OK" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
           }
         }
       }
@@ -13138,6 +12298,9 @@
         }
       }
     },
+    "PC" : {
+      "shouldTranslate" : false
+    },
     "Password" : {
       "comment" : "QR code WiFi form: password field label",
       "localizations" : {
@@ -13169,44 +12332,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Password"
-          }
-        }
-      }
-    },
-    "PC" : {
-      "shouldTranslate" : false
-    },
-    "people" : {
-      "comment" : "Tip splitter: plural people count label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "personer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "personas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "personnes"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "persone"
           }
         }
       }
@@ -13456,41 +12581,6 @@
         }
       }
     },
-    "person" : {
-      "comment" : "Tip splitter: singular person count label",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "person"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "persona"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "personne"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "persona"
-          }
-        }
-      }
-    },
     "Phone Number" : {
       "comment" : "QR code contact form: phone field label",
       "localizations" : {
@@ -13526,6 +12616,40 @@
         }
       }
     },
+    "Pick Random" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vælg tilfældigt"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufällig auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir al azar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir au hasard"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli a caso"
+          }
+        }
+      }
+    },
     "Pick a date" : {
       "comment" : "Calendar: date picker label",
       "localizations" : {
@@ -13557,40 +12681,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scegli una data"
-          }
-        }
-      }
-    },
-    "Pick Random" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vælg tilfældigt"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zufällig auswählen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elegir al azar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisir au hasard"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scegli a caso"
           }
         }
       }
@@ -13730,6 +12820,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Potenza"
+          }
+        }
+      }
+    },
+    "Power (Watts)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung (Watt)"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekt (watt)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potencia (vatios)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puissance (watts)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potenza (watt)"
           }
         }
       }
@@ -14079,6 +13204,41 @@
         }
       }
     },
+    "QUICK REFERENCE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HURTIG REFERENCE"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SCHNELLREFERENZ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REFERENCIA RÁPIDA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RÉFÉRENCE RAPIDE"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RIFERIMENTO RAPIDO"
+          }
+        }
+      }
+    },
     "Questions, ideas or bug reports" : {
       "comment" : "About view: send feedback subtitle",
       "localizations" : {
@@ -14149,40 +13309,11 @@
         }
       }
     },
-    "QUICK REFERENCE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HURTIG REFERENCE"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SCHNELLREFERENZ"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "REFERENCIA RÁPIDA"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "RÉFÉRENCE RAPIDE"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "RIFERIMENTO RAPIDO"
-          }
-        }
-      }
+    "RGB (0–255)" : {
+      "shouldTranslate" : false
+    },
+    "RU↔DE" : {
+      "shouldTranslate" : false
     },
     "Radius (r)" : {
       "localizations" : {
@@ -14850,9 +13981,6 @@
         }
       }
     },
-    "RGB (0–255)" : {
-      "shouldTranslate" : false
-    },
     "Right half illuminated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15131,9 +14259,6 @@
         }
       }
     },
-    "RU↔DE" : {
-      "shouldTranslate" : false
-    },
     "Rules" : {
       "comment" : "Roman numerals: rules section header",
       "localizations" : {
@@ -15272,7 +14397,7 @@
         }
       }
     },
-    "s" : {
+    "SHA-256" : {
       "shouldTranslate" : false
     },
     "Scale & ratio calculator" : {
@@ -15374,41 +14499,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scienza"
-          }
-        }
-      }
-    },
-    "score" : {
-      "comment" : "Benchmark score label (lowercase)",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "score"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Punkte"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "puntuación"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "score"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "punteggio"
           }
         }
       }
@@ -15589,6 +14679,75 @@
         }
       }
     },
+    "Select Currency" : {
+      "comment" : "Navigation title for currency picker sheet",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vælg Valuta"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar Moneda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner une Devise"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona Valuta"
+          }
+        }
+      }
+    },
+    "Select State" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vælg forbundsland"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bundesland wählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar estado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir un Land"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona stato"
+          }
+        }
+      }
+    },
     "Select a state and year" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15655,75 +14814,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleziona uno strumento"
-          }
-        }
-      }
-    },
-    "Select Currency" : {
-      "comment" : "Navigation title for currency picker sheet",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vælg Valuta"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Währung auswählen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar Moneda"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionner une Devise"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleziona Valuta"
-          }
-        }
-      }
-    },
-    "Select State" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vælg forbundsland"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bundesland wählen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar estado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisir un Land"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleziona stato"
           }
         }
       }
@@ -15831,9 +14921,6 @@
           }
         }
       }
-    },
-    "SHA-256" : {
-      "shouldTranslate" : false
     },
     "Shape" : {
       "localizations" : {
@@ -16667,6 +15754,9 @@
         }
       }
     },
+    "TV" : {
+      "shouldTranslate" : false
+    },
     "Tails!" : {
       "localizations" : {
         "da" : {
@@ -17326,46 +16416,6 @@
         }
       }
     },
-    "total of %@ × %@" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total af %@ × %@"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gesamt aus %@ × %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "total of %1$@ × %2$@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total de %@ × %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total de %@ × %@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Totale di %@ × %@"
-          }
-        }
-      }
-    },
     "Total Paid" : {
       "localizations" : {
         "da" : {
@@ -17503,40 +16553,6 @@
         }
       }
     },
-    "Trip · Consumption · Price" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tur · Forbrug · Pris"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fahrt · Verbrauch · Preis"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Viaje · Consumo · Precio"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trajet · Consommation · Prix"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Viaggio · Consumo · Prezzo"
-          }
-        }
-      }
-    },
     "Trip Details" : {
       "localizations" : {
         "da" : {
@@ -17571,8 +16587,39 @@
         }
       }
     },
-    "TV" : {
-      "shouldTranslate" : false
+    "Trip · Consumption · Price" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tur · Forbrug · Pris"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fahrt · Verbrauch · Preis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viaje · Consumo · Precio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajet · Consommation · Prix"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viaggio · Consumo · Prezzo"
+          }
+        }
+      }
     },
     "Type in any field — all others update instantly." : {
       "comment" : "Unit converter: hint text below category picker",
@@ -17608,6 +16655,80 @@
           }
         }
       }
+    },
+    "UPCOMING" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KOMMENDE"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BEVORSTEHEND"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRÓXIMO"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À VENIR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IN ARRIVO"
+          }
+        }
+      }
+    },
+    "URL · Text · WiFi · Contact" : {
+      "comment" : "QR code tool: tool list subtitle",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL · Tekst · WiFi · Kontakt"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL · Text · WiFi · Kontakt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL · Texto · WiFi · Contacto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL · Texte · WiFi · Contact"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL · Testo · WiFi · Contatto"
+          }
+        }
+      }
+    },
+    "URL · Text · WiFi · Contact · Email" : {
+      "comment" : "QR code tool: subtitle listing supported types — technical terms, not translated",
+      "shouldTranslate" : false
     },
     "Unavailable" : {
       "comment" : "Horizon view: GPS unavailable state",
@@ -17713,80 +16834,6 @@
         }
       }
     },
-    "UPCOMING" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "KOMMENDE"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BEVORSTEHEND"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PRÓXIMO"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À VENIR"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IN ARRIVO"
-          }
-        }
-      }
-    },
-    "URL · Text · WiFi · Contact" : {
-      "comment" : "QR code tool: tool list subtitle",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL · Tekst · WiFi · Kontakt"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL · Text · WiFi · Kontakt"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL · Texto · WiFi · Contacto"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL · Texte · WiFi · Contact"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL · Testo · WiFi · Contatto"
-          }
-        }
-      }
-    },
-    "URL · Text · WiFi · Contact · Email" : {
-      "comment" : "QR code tool: subtitle listing supported types — technical terms, not translated",
-      "shouldTranslate" : false
-    },
     "V · I · R · P calculator" : {
       "localizations" : {
         "da" : {
@@ -17821,9 +16868,6 @@
         }
       }
     },
-    "v%@" : {
-
-    },
     "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
       "localizations" : {
         "da" : {
@@ -17854,41 +16898,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Intervallo valido: da 1 (I) a 3999 (MMMCMXCIX)"
-          }
-        }
-      }
-    },
-    "value" : {
-      "comment" : "Percentage calculation: value text field placeholder",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "værdi"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wert"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "valor"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "valeur"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "valore"
           }
         }
       }
@@ -18241,42 +17250,50 @@
         }
       }
     },
-    "vor %lld Tagen" : {
-      "extractionState" : "manual",
+    "W" : {
+      "shouldTranslate" : false
+    },
+    "WC = 13.12 + 0.6215·T − 11.37·V⁰·¹⁶ + 0.3965·T·V⁰·¹⁶" : {
+      "comment" : "Wind chill formula expression",
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "for %lld dage siden"
+            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "vor %lld Tagen"
+            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "hace %lld días"
+            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "il y a %lld jours"
+            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld giorni fa"
+            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
           }
         }
       }
     },
-    "W" : {
+    "WEP" : {
+      "comment" : "QR code WiFi security type — technical standard name, not translated",
+      "shouldTranslate" : false
+    },
+    "WPA/WPA2" : {
+      "comment" : "QR code WiFi security type — technical standard name, not translated",
       "shouldTranslate" : false
     },
     "Waning Crescent" : {
@@ -18593,41 +17610,6 @@
         }
       }
     },
-    "WC = 13.12 + 0.6215·T − 11.37·V⁰·¹⁶ + 0.3965·T·V⁰·¹⁶" : {
-      "comment" : "Wind chill formula expression",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WC = 13,12 + 0,6215·T − 11,37·V⁰˒¹⁶ + 0,3965·T·V⁰˒¹⁶"
-          }
-        }
-      }
-    },
     "Website or Link" : {
       "comment" : "QR code URL form: field label",
       "localizations" : {
@@ -18765,10 +17747,6 @@
           }
         }
       }
-    },
-    "WEP" : {
-      "comment" : "QR code WiFi security type — technical standard name, not translated",
-      "shouldTranslate" : false
     },
     "White" : {
       "extractionState" : "manual",
@@ -18943,10 +17921,6 @@
         }
       }
     },
-    "WPA/WPA2" : {
-      "comment" : "QR code WiFi security type — technical standard name, not translated",
-      "shouldTranslate" : false
-    },
     "X before L or C subtracts (XL=40, XC=90)" : {
       "localizations" : {
         "da" : {
@@ -18981,9 +17955,6 @@
         }
       }
     },
-    "Ⅻ" : {
-      "shouldTranslate" : false
-    },
     "Yards" : {
       "comment" : "Unit converter: yard unit label",
       "localizations" : {
@@ -19015,41 +17986,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Iarde"
-          }
-        }
-      }
-    },
-    "yd" : {
-      "comment" : "Yards unit abbreviation",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yd"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yd"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yd"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yd"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yd"
           }
         }
       }
@@ -19123,41 +18059,6 @@
         }
       }
     },
-    "years old" : {
-      "comment" : "Label shown below the age number",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "år gammel"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jahre alt"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "años de edad"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ans"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "anni"
-          }
-        }
-      }
-    },
     "Yellow" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -19189,6 +18090,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giallo"
+          }
+        }
+      }
+    },
+    "Your Details" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dine data"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Daten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos données"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi dati"
           }
         }
       }
@@ -19228,40 +18163,6 @@
         }
       }
     },
-    "Your Details" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dine data"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ihre Daten"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tus datos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vos données"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I tuoi dati"
-          }
-        }
-      }
-    },
     "Your eyes above ground" : {
       "comment" : "Horizon view: eye level field description",
       "localizations" : {
@@ -19293,6 +18194,1443 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "I tuoi occhi sopra terra"
+          }
+        }
+      }
+    },
+    "base value" : {
+      "comment" : "Percentage calculation: base value text field placeholder",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "grundværdi"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundwert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valor base"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valeur de base"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valore base"
+          }
+        }
+      }
+    },
+    "calculated" : {
+      "comment" : "Interest rate: badge shown on the solved field",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "beregnet"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "berechnet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "calculado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "calculé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "calcolato"
+          }
+        }
+      }
+    },
+    "characters" : {
+      "comment" : "QR code: character count label below payload preview",
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tegn"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeichen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caracteres"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caractères"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caratteri"
+          }
+        }
+      }
+    },
+    "d = %@ × √( %@ + %@ ) = %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "d = %1$@ × √( %2$@ + %3$@ ) = %4$@ %5$@"
+          }
+        }
+      }
+    },
+    "d = 1.22 × √( altitude + eye level )" : {
+      "comment" : "Horizon formula in miles",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 1,22 × √( højde + øjenhøjde )"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 1,22 × √( Höhe + Augenhöhe )"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 1,22 × √( altitud + nivel ojos )"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 1,22 × √( altitude + hauteur yeux )"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 1,22 × √( altitudine + livello occhi )"
+          }
+        }
+      }
+    },
+    "d = 3.57 × √( %@ + %@ ) = %@ km" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "d = 3.57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( %1$@ + %2$@ ) = %3$@ km"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "d = 3.57 × √( altitude + eye level )" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( højde + øjenhøjde )"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( Höhe + Augenhöhe )"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( altitud + nivel ojos )"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( altitude + hauteur yeux )"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d = 3,57 × √( altitudine + livello occhi )"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "day" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dag"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "día"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "giorno"
+          }
+        }
+      }
+    },
+    "days" : {
+      "comment" : "Calendar: days label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dage"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "giorni"
+          }
+        }
+      }
+    },
+    "days ago" : {
+      "comment" : "Calendar countdown label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dage siden"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage vergangen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "días atrás"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jours passés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "giorni fa"
+          }
+        }
+      }
+    },
+    "days until event" : {
+      "comment" : "Calendar countdown label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dage til begivenheden"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage bis zum Ereignis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "días hasta el evento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jours avant l'événement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "giorni all'evento"
+          }
+        }
+      }
+    },
+    "dict.leo.org" : {
+      "shouldTranslate" : false
+    },
+    "e.g. 0.30 for 30 ct/kWh" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 0,30 for 30 øre/kWh"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z.B. 0,30 für 30 Ct/kWh"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p.ej. 0,30 para 30 ct/kWh"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 0,30 pour 30 ct/kWh"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 0,30 per 30 ct/kWh"
+          }
+        }
+      }
+    },
+    "e.g. 15% of 200 = 30" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 15% af 200 = 30"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 15% von 200 = 30"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 15% de 200 = 30"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 15% de 200 = 30"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 15% di 200 = 30"
+          }
+        }
+      }
+    },
+    "e.g. 30 ÷ 15 × 100 = 200" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 30 ÷ 15 × 100 = 200"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 30 ÷ 15 × 100 = 200"
+          }
+        }
+      }
+    },
+    "e.g. 30 ÷ 200 × 100 = 15 %" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "f.eks. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z. B. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. 30 ÷ 200 × 100 = 15 %"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es. 30 ÷ 200 × 100 = 15 %"
+          }
+        }
+      }
+    },
+    "favorites.tip.ios" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryk og hold på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen for hurtig adgang."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halte eine Karte gedrückt, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste für schnellen Zugriff."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén pulsada una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista para acceso rápido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez longuement sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste pour un accès rapide."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni premuta una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista per un accesso rapido."
+          }
+        }
+      }
+    },
+    "favorites.tip.mac" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Højreklik på et værktøjskort for at føje det til favoritter. Favoritter vises øverst på listen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klicke mit der rechten Maustaste auf eine Karte, um sie zu den Favoriten hinzuzufügen. Favoriten erscheinen oben in der Liste."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic derecho en una tarjeta para añadirla a favoritos. Los favoritos aparecen en la parte superior de la lista."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites un clic droit sur une carte pour l'ajouter aux favoris. Les favoris apparaissent en haut de la liste."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai clic destro su una scheda strumento per aggiungerla ai preferiti. I preferiti appaiono in cima alla lista."
+          }
+        }
+      }
+    },
+    "ft" : {
+      "comment" : "Feet unit abbreviation",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ft"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ft"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ft"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ft"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ft"
+          }
+        }
+      }
+    },
+    "h/day" : {
+      "comment" : "Power consumption unit: hours per day",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/dag"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/Tag"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/día"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/jour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h/giorno"
+          }
+        }
+      }
+    },
+    "iOS %@" : {
+      "shouldTranslate" : false
+    },
+    "in" : {
+      "comment" : "Preposition: event happens in X minutes",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "om"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dans"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tra"
+          }
+        }
+      }
+    },
+    "in %lld Tagen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "om %lld dage"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in %lld Tagen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en %lld días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dans %lld jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tra %lld giorni"
+          }
+        }
+      }
+    },
+    "kcal/day" : {
+      "shouldTranslate" : false
+    },
+    "km" : {
+      "shouldTranslate" : false
+    },
+    "km/h" : {
+      "comment" : "Speed unit",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "km/h"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "km/h"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "km/h"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "km/h"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "km/h"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "m" : {
+      "shouldTranslate" : false
+    },
+    "m/s" : {
+      "comment" : "Unit converter: meters per second — universal abbreviation",
+      "shouldTranslate" : false
+    },
+    "mean" : {
+      "comment" : "Statistical mean label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gennemsnit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittelwert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "media"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moyenne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "media"
+          }
+        }
+      }
+    },
+    "median %@" : {
+      "comment" : "Median value display in featured card: 'median 3.5'",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "median %@"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Median %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mediana %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "médiane %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mediana %@"
+          }
+        }
+      }
+    },
+    "mi" : {
+      "comment" : "Miles unit abbreviation",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mi"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mi"
+          }
+        }
+      }
+    },
+    "morgen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "i morgen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "morgen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mañana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demain"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "domani"
+          }
+        }
+      }
+    },
+    "mph" : {
+      "comment" : "Speed unit (miles per hour)",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mph"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mph"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mph"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mph"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mph"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "of" : {},
+    "people" : {
+      "comment" : "Tip splitter: plural people count label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "personer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "personas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "personnes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "persone"
+          }
+        }
+      }
+    },
+    "person" : {
+      "comment" : "Tip splitter: singular person count label",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "person"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "persona"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "personne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "persona"
+          }
+        }
+      }
+    },
+    "s" : {
+      "shouldTranslate" : false
+    },
+    "score" : {
+      "comment" : "Benchmark score label (lowercase)",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "score"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "puntuación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "score"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "punteggio"
+          }
+        }
+      }
+    },
+    "total of %@ × %@" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total af %@ × %@"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamt aus %@ × %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "total of %1$@ × %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de %@ × %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de %@ × %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totale di %@ × %@"
+          }
+        }
+      }
+    },
+    "v%@" : {},
+    "value" : {
+      "comment" : "Percentage calculation: value text field placeholder",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "værdi"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valeur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valore"
+          }
+        }
+      }
+    },
+    "vor %lld Tagen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "for %lld dage siden"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vor %lld Tagen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hace %lld días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "il y a %lld jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld giorni fa"
+          }
+        }
+      }
+    },
+    "yd" : {
+      "comment" : "Yards unit abbreviation",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yd"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yd"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yd"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yd"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yd"
+          }
+        }
+      }
+    },
+    "years old" : {
+      "comment" : "Label shown below the age number",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "år gammel"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahre alt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "años de edad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ans"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "anni"
+          }
+        }
+      }
+    },
+    "°C" : {
+      "comment" : "Celsius unit symbol",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "°C · °F · K" : {
+      "comment" : "Temperature converter subtitle — unit symbols unchanged",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C · °F · K"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C · °F · K"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C · °F · K"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C · °F · K"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C · °F · K"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "°F" : {
+      "comment" : "Fahrenheit unit symbol",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°F"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°F"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°F"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°F"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°F"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "±" : {
+      "shouldTranslate" : false
+    },
+    "±20%" : {},
+    "×" : {
+      "shouldTranslate" : false
+    },
+    "× %@ payments" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "× %@ betalinger"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "× %@ Zahlungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "× %@ pagos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "× %@ versements"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "× %@ rate"
+          }
+        }
+      }
+    },
+    "–" : {
+      "shouldTranslate" : false
+    },
+    "—" : {
+      "shouldTranslate" : false
+    },
+    "—  m" : {
+      "shouldTranslate" : false
+    },
+    "•" : {
+      "shouldTranslate" : false
+    },
+    "€/kWh" : {
+      "shouldTranslate" : false
+    },
+    "Ⅻ" : {
+      "shouldTranslate" : false
+    },
+    "→" : {},
+    "🇩🇪" : {},
+    "🎂 in %lld days" : {
+      "comment" : "Age pill: days until next birthday (cake emoji)",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎂 om %lld dage"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎂 in %lld Tagen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎂 en %lld días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎂 dans %lld jours"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎂 tra %lld giorni"
           }
         }
       }

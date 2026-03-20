@@ -45,6 +45,19 @@ private struct DevicePreset: Identifiable {
     ]
 }
 
+// MARK: - User Preset
+
+private struct UserPreset: Codable, Identifiable {
+    let id:    UUID
+    var emoji: String
+    var name:  String
+    var watts: Double
+
+    init(emoji: String, name: String, watts: Double) {
+        self.id = UUID(); self.emoji = emoji; self.name = name; self.watts = watts
+    }
+}
+
 // MARK: - Result Row
 
 private struct CostResultRow: View {
@@ -99,6 +112,11 @@ struct PowerConsumptionView: View {
     @State private var hoursText: String = ""
     @State private var wattText:  String = ""
     @FocusState private var focused: Field?
+    @AppStorage("power.customPresets") private var customPresetsJSON: String = "[]"
+    @State private var showAddPreset = false
+    @State private var newEmoji      = "⚡"
+    @State private var newName       = ""
+    @State private var newWattsText  = ""
 
     private enum Field: Hashable { case cost, hours, watt }
 
@@ -124,6 +142,37 @@ struct PowerConsumptionView: View {
                 dKwh,
                 dKwh * 30,
                 dKwh * 365)
+    }
+
+    // MARK: Custom Preset Helpers
+
+    private var userPresets: [UserPreset] {
+        (try? JSONDecoder().decode(
+            [UserPreset].self,
+            from: customPresetsJSON.data(using: .utf8) ?? Data()
+        )) ?? []
+    }
+
+    private func saveUserPresets(_ presets: [UserPreset]) {
+        if let data = try? JSONEncoder().encode(presets),
+           let json = String(data: data, encoding: .utf8) { customPresetsJSON = json }
+    }
+
+    private func addUserPreset() {
+        guard !newName.isEmpty,
+              let w = Double(newWattsText.replacingOccurrences(of: ",", with: "."))
+        else { return }
+        var p = userPresets
+        p.append(UserPreset(
+            emoji: newEmoji.isEmpty ? "⚡" : String(newEmoji.prefix(2)),
+            name: newName, watts: w
+        ))
+        saveUserPresets(p)
+        newEmoji = "⚡"; newName = ""; newWattsText = ""
+    }
+
+    private func deleteUserPreset(_ preset: UserPreset) {
+        var p = userPresets; p.removeAll { $0.id == preset.id }; saveUserPresets(p)
     }
 
     // MARK: Body
@@ -156,6 +205,7 @@ struct PowerConsumptionView: View {
         .navigationTitle("Power Consumption")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .sheet(isPresented: $showAddPreset) { addPresetSheet }
         .onAppear {
             if let saved = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyCostWatt),
                !saved.isEmpty {
@@ -377,6 +427,7 @@ struct PowerConsumptionView: View {
 
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
+                    // ── Built-in presets ──────────────────────────────────
                     ForEach(DevicePreset.all) { preset in
                         Button {
                             withAnimation(.spring(response: 0.25)) {
@@ -384,27 +435,120 @@ struct PowerConsumptionView: View {
                                     .formatted(.number.precision(.fractionLength(0)))
                             }
                         } label: {
-                            HStack(spacing: 5) {
-                                Text(preset.emoji).font(.caption)
-                                VStack(alignment: .leading, spacing: 1) {
-                                    Text(LocalizedStringKey(preset.name))
-                                        .font(.caption2.weight(.semibold))
-                                        .foregroundStyle(Color.primary)
-                                    Text("\(Int(preset.watts))W")
-                                        .font(.system(size: 9, weight: .medium).monospacedDigit())
-                                        .foregroundStyle(Color.primary.opacity(0.45))
-                                }
-                            }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 7)
+                            presetLabel(emoji: preset.emoji,
+                                        name: LocalizedStringKey(preset.name),
+                                        watts: preset.watts)
                         }
                         .buttonStyle(.glass)
                     }
+
+                    // ── User presets ──────────────────────────────────────
+                    ForEach(userPresets) { preset in
+                        ZStack(alignment: .topTrailing) {
+                            Button {
+                                withAnimation(.spring(response: 0.25)) {
+                                    wattText = preset.watts
+                                        .formatted(.number.precision(.fractionLength(0)))
+                                }
+                            } label: {
+                                presetLabel(emoji: preset.emoji,
+                                            name: LocalizedStringKey(preset.name),
+                                            watts: preset.watts,
+                                            topPad: 10)
+                            }
+                            .buttonStyle(.glass)
+
+                            Button { deleteUserPreset(preset) } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundStyle(Color.primary.opacity(0.55))
+                                    .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .offset(x: 4, y: -4)
+                        }
+                    }
+
+                    // ── Add button ────────────────────────────────────────
+                    Button { showAddPreset = true } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "plus.circle")
+                                .font(.caption.weight(.semibold))
+                            Text("Add")
+                                .font(.caption2.weight(.semibold))
+                        }
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 7)
+                    }
+                    .buttonStyle(.glass)
                 }
                 .padding(.horizontal, 2)
                 .padding(.vertical, 2)
             }
             .scrollIndicators(.hidden)
+        }
+    }
+
+    @ViewBuilder
+    private func presetLabel(
+        emoji: String,
+        name: LocalizedStringKey,
+        watts: Double,
+        topPad: CGFloat = 7
+    ) -> some View {
+        HStack(spacing: 5) {
+            Text(emoji).font(.caption)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(name)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Color.primary)
+                Text("\(Int(watts))W")
+                    .font(.system(size: 9, weight: .medium).monospacedDigit())
+                    .foregroundStyle(Color.primary.opacity(0.45))
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.top, topPad)
+        .padding(.bottom, 7)
+    }
+
+    // MARK: Add Preset Sheet
+
+    private var addPresetSheet: some View {
+        NavigationStack {
+            Form {
+                Section("Emoji") {
+                    TextField("⚡", text: $newEmoji)
+                        .onChange(of: newEmoji) { _, v in
+                            if v.count > 2 { newEmoji = String(v.prefix(2)) }
+                        }
+                }
+                Section("Device Name") {
+                    TextField("My Device", text: $newName)
+                }
+                Section("Power (Watts)") {
+                    TextField("0", text: $newWattsText)
+                        .keyboardType(.decimalPad)
+                }
+            }
+            .navigationTitle("Add Device")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Add") {
+                        addUserPreset()
+                        showAddPreset = false
+                    }
+                    .disabled(
+                        newName.isEmpty ||
+                        Double(newWattsText.replacingOccurrences(of: ",", with: ".")) == nil
+                    )
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { showAddPreset = false }
+                }
+            }
         }
     }
 
