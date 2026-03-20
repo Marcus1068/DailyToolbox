@@ -35,6 +35,15 @@ private struct BenchJSONItem: Codable, Sendable {
     let value: Double
 }
 
+// MARK: - Persisted Run Result
+
+private struct BenchmarkResult: Codable {
+    let date:       Date
+    let score:      Int
+    let timings:    [String: Double]   // BenchType.rawValue → seconds
+    let deviceName: String
+}
+
 // MARK: - Benchmark Runner
 
 @Observable @MainActor
@@ -116,6 +125,28 @@ final class BenchmarkRunner {
 
     let deviceName = DeviceInfo.getDeviceName()
     let osVersion  = DeviceInfo.getOSVersion()
+
+    private let resultKey = "benchmark.lastResult"
+
+    fileprivate var previousResult: BenchmarkResult? {
+        guard let data = UserDefaults.standard.data(forKey: resultKey) else { return nil }
+        return try? JSONDecoder().decode(BenchmarkResult.self, from: data)
+    }
+
+    private func saveResult() {
+        guard let score else { return }
+        let timings = Dictionary(
+            uniqueKeysWithValues: BenchType.allCases.compactMap { t in
+                results[t].map { (t.rawValue, $0) }
+            }
+        )
+        let result = BenchmarkResult(
+            date: Date(), score: score, timings: timings, deviceName: deviceName
+        )
+        if let data = try? JSONEncoder().encode(result) {
+            UserDefaults.standard.set(data, forKey: resultKey)
+        }
+    }
 
     init() {
         selectedRange = Dictionary(
@@ -214,6 +245,7 @@ final class BenchmarkRunner {
     func runAll() async {
         isRunningAll = true
         for type in BenchType.allCases { await run(type) }
+        saveResult()
         isRunningAll = false
     }
 
@@ -299,6 +331,17 @@ struct BenchmarkView: View {
                     Text("score")
                         .font(.caption2)
                         .foregroundStyle(Color.primary.opacity(0.55))
+                    if let prev = runner.previousResult {
+                        let delta = score - prev.score
+                        HStack(spacing: 2) {
+                            Image(systemName: delta >= 0 ? "arrow.up" : "arrow.down")
+                                .font(.system(size: 8, weight: .bold))
+                            Text("\(abs(delta))")
+                                .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                        }
+                        .foregroundStyle(delta >= 0 ? Color.green : Color.red)
+                        .transition(.scale.combined(with: .opacity))
+                    }
                 }
                 .transition(.scale.combined(with: .opacity))
             }
@@ -388,12 +431,26 @@ struct BenchmarkView: View {
             .compactMap { runner.results[$0] }.max() ?? 1.0
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Timing Comparison")
-                .font(.headline)
-                .foregroundStyle(Color.primary.opacity(0.85))
+            HStack {
+                Text("Timing Comparison")
+                    .font(.headline)
+                    .foregroundStyle(Color.primary.opacity(0.85))
+                Spacer()
+                if let prev = runner.previousResult {
+                    HStack(spacing: 4) {
+                        Capsule()
+                            .fill(Color.primary.opacity(0.30))
+                            .frame(width: 14, height: 5)
+                        Text(prev.date, style: .date)
+                            .font(.caption2)
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    }
+                }
+            }
 
             ForEach(BenchmarkRunner.BenchType.allCases) { type in
                 if let t = runner.results[type] {
+                    let prevTime = runner.previousResult?.timings[type.rawValue]
                     HStack(spacing: 10) {
                         Image(systemName: type.icon)
                             .font(.caption)
@@ -402,7 +459,18 @@ struct BenchmarkView: View {
 
                         GeometryReader { geo in
                             ZStack(alignment: .leading) {
-                                Capsule().fill(Color.primary.opacity(0.08)).frame(height: 10)
+                                Capsule()
+                                    .fill(Color.primary.opacity(0.08))
+                                    .frame(height: 10)
+                                if let prevTime {
+                                    Capsule()
+                                        .fill(Color.primary.opacity(0.28))
+                                        .frame(
+                                            width: geo.size.width * CGFloat(prevTime / maxTime),
+                                            height: 6
+                                        )
+                                        .animation(.spring(duration: 0.7), value: prevTime)
+                                }
                                 Capsule()
                                     .fill(type.accentColor.opacity(0.85))
                                     .frame(
@@ -481,7 +549,7 @@ private struct BenchCard: View {
                 .glassEffect(.regular, in: Capsule())
             }
 
-            // Result
+            // Result + delta
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 if let t = result {
                     Text(t, format: .number.precision(.fractionLength(4)))
@@ -497,6 +565,23 @@ private struct BenchCard: View {
                         .font(.system(size: 17, weight: .bold))
                         .foregroundStyle(Color.primary.opacity(0.25))
                 }
+            }
+
+            if let t = result,
+               let prevTime = runner.previousResult?.timings[type.rawValue] {
+                let delta   = t - prevTime
+                let faster  = delta < 0
+                HStack(spacing: 2) {
+                    Image(systemName: faster ? "arrow.down" : "arrow.up")
+                        .font(.system(size: 8, weight: .bold))
+                    Text(abs(delta), format: .number.precision(.fractionLength(4)))
+                        .font(.system(size: 9, weight: .semibold, design: .monospaced))
+                    Text("s")
+                        .font(.system(size: 8))
+                }
+                .foregroundStyle(faster ? Color.green : Color.red)
+                .transition(.opacity)
+                .animation(.spring(duration: 0.4), value: delta)
             }
 
             // Run button

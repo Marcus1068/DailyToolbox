@@ -16050,19 +16050,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comparación de Tiempos"
+            "value" : "Comparación de tiempos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comparaison des Temps"
+            "value" : "Comparaison des durées"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confronto Tempi"
+            "value" : "Confronto tempi"
           }
         }
       }
