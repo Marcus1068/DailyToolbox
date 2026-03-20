@@ -147,6 +147,16 @@ enum ResistorBandColor: String, CaseIterable, Identifiable {
     ]
 }
 
+// MARK: - Reverse Lookup Unit
+
+private enum ReverseOmUnit: String, CaseIterable, Identifiable {
+    case ohms = "Ω", kilo = "kΩ", mega = "MΩ"
+    var id: String { rawValue }
+    var factor: Double {
+        switch self { case .ohms: return 1; case .kilo: return 1_000; case .mega: return 1_000_000 }
+    }
+}
+
 // MARK: - Resistor Value Formatter
 
 private func formatResistance(_ ohms: Double) -> String {
@@ -346,6 +356,11 @@ private struct ColorPickerSheet: View {
 struct ResistorColorCodeView: View {
 
     @State private var isFiveBand = false
+    @State private var reverseMode  = false
+    @State private var reverseText  = ""
+    @State private var reverseUnit  = ReverseOmUnit.ohms
+    @State private var reverseValid: Bool? = nil
+    @FocusState private var reverseFocused: Bool
 
     // 4-band: d1 d2 mult tol
     // 5-band: d1 d2 d3 mult tol
@@ -402,6 +417,52 @@ struct ResistorColorCodeView: View {
         return r * (1 + num / 100)
     }
 
+    // MARK: Reverse Lookup
+
+    private func reverseLookup() {
+        guard !reverseText.isEmpty,
+              let textVal = Double(reverseText.replacingOccurrences(of: ",", with: "."))
+        else { reverseValid = nil; return }
+        let ohms = textVal * reverseUnit.factor
+        guard ohms > 0 else { reverseValid = false; return }
+
+        let mults: [(ResistorBandColor, Double)] = [
+            (.silver, 0.01), (.gold, 0.1),
+            (.black, 1), (.brown, 10), (.red, 100), (.orange, 1_000),
+            (.yellow, 10_000), (.green, 100_000), (.blue, 1_000_000),
+            (.violet, 10_000_000), (.grey, 100_000_000), (.white, 1_000_000_000)
+        ]
+
+        func colorForDigit(_ d: Int) -> ResistorBandColor? {
+            ResistorBandColor.allCases.first { $0.digit == d }
+        }
+
+        for (multColor, multVal) in mults {
+            let rounded = Int((ohms / multVal).rounded())
+            if isFiveBand {
+                guard rounded >= 100, rounded <= 999 else { continue }
+                let d1 = rounded / 100
+                guard d1 >= 1, let c1 = colorForDigit(d1) else { continue }
+                band1    = c1
+                band2    = colorForDigit((rounded / 10) % 10) ?? .black
+                band3    = colorForDigit(rounded % 10)        ?? .black
+                bandMult = multColor
+                reverseValid = true
+                return
+            } else {
+                guard rounded >= 10, rounded <= 99 else { continue }
+                let d1 = rounded / 10
+                guard d1 >= 1, let c1 = colorForDigit(d1) else { continue }
+                band1    = c1
+                band2    = colorForDigit(rounded % 10) ?? .black
+                bandMult = multColor
+                reverseValid = true
+                return
+            }
+        }
+        reverseValid = false
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -412,7 +473,11 @@ struct ResistorColorCodeView: View {
                     GlassEffectContainer { headerCard }
                     GlassEffectContainer { resistorPreview }
                     GlassEffectContainer { resultCard }
-                    GlassEffectContainer { bandSelectors }
+                    if reverseMode {
+                        GlassEffectContainer { reverseInputCard }
+                    } else {
+                        GlassEffectContainer { bandSelectors }
+                    }
                     GlassEffectContainer { referenceCard }
                 }
                 .padding(.horizontal, 20)
@@ -446,35 +511,47 @@ struct ResistorColorCodeView: View {
     // MARK: Header
 
     private var headerCard: some View {
-        HStack(spacing: 16) {
-            ZStack {
-                Circle()
-                    .fill(LinearGradient(
-                        colors: [accentColor, accentColor.opacity(0.60)],
-                        startPoint: .topLeading, endPoint: .bottomTrailing
-                    ))
-                Image(systemName: "waveform.path.ecg")
-                    .font(.title2.weight(.bold))
-                    .foregroundStyle(.white)
-            }
-            .frame(width: 52, height: 52)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 16) {
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(
+                            colors: [accentColor, accentColor.opacity(0.60)],
+                            startPoint: .topLeading, endPoint: .bottomTrailing
+                        ))
+                    Image(systemName: "waveform.path.ecg")
+                        .font(.title2.weight(.bold))
+                        .foregroundStyle(.white)
+                }
+                .frame(width: 52, height: 52)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Resistor Color Code")
-                    .font(.headline.weight(.bold))
-                    .foregroundStyle(Color.primary)
-                Text("Read color bands to find resistance")
-                    .font(.caption)
-                    .foregroundStyle(Color.primary.opacity(0.60))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Resistor Color Code")
+                        .font(.headline.weight(.bold))
+                        .foregroundStyle(Color.primary)
+                    Text(reverseMode
+                         ? "Enter Ω value → get band colors"
+                         : "Read color bands to find resistance")
+                        .font(.caption)
+                        .foregroundStyle(Color.primary.opacity(0.60))
+                        .animation(.easeInOut(duration: 0.2), value: reverseMode)
+                }
+                Spacer()
+                Picker("Bands", selection: $isFiveBand) {
+                    Text("4-Band").tag(false)
+                    Text("5-Band").tag(true)
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 130)
+                .onChange(of: isFiveBand) { _, _ in if reverseMode { reverseLookup() } }
             }
-            Spacer()
-            // Band count toggle
-            Picker("Bands", selection: $isFiveBand) {
-                Text("4-Band").tag(false)
-                Text("5-Band").tag(true)
+
+            Picker("Mode", selection: $reverseMode.animation(.spring(response: 0.3))) {
+                Text("Colors → Ω").tag(false)
+                Text("Ω → Colors").tag(true)
             }
             .pickerStyle(.segmented)
-            .frame(width: 130)
+            .onChange(of: reverseMode) { _, _ in reverseValid = nil }
         }
         .padding(18)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
@@ -550,6 +627,49 @@ struct ResistorColorCodeView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
+    }
+
+    // MARK: Reverse Input Card
+
+    private var reverseInputCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("VALUE → COLORS")
+                .font(.system(size: 11, weight: .bold))
+                .tracking(1.4)
+                .foregroundStyle(Color.primary.opacity(0.50))
+
+            HStack(spacing: 10) {
+                TextField("e.g. 4700", text: $reverseText)
+                    .keyboardType(.decimalPad)
+                    .focused($reverseFocused)
+                    .font(.title3.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(Color.primary)
+                    .tint(accentColor)
+                    .padding(12)
+                    .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
+                    .onChange(of: reverseText) { _, _ in reverseLookup() }
+                    .onChange(of: reverseUnit) { _, _ in reverseLookup() }
+
+                Picker("Unit", selection: $reverseUnit) {
+                    ForEach(ReverseOmUnit.allCases) { u in Text(u.rawValue).tag(u) }
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 140)
+            }
+
+            if let valid = reverseValid {
+                HStack(spacing: 6) {
+                    Image(systemName: valid ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    Text(valid ? "Best match shown above" : "No standard match found")
+                        .font(.caption)
+                }
+                .foregroundStyle(valid ? Color.green : Color.orange)
+                .transition(.opacity.combined(with: .scale(scale: 0.95)))
+                .animation(.spring(duration: 0.3), value: valid)
+            }
+        }
+        .padding(16)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 

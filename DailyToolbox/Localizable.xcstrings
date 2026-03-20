@@ -373,16 +373,16 @@
     "%lld holidays added to your Calendar." : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Feiertage zu Ihrem Kalender hinzugefügt."
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld helligdage tilføjet til din kalender."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Feiertage zu Ihrem Kalender hinzugefügt."
           }
         },
         "es" : {
@@ -1206,16 +1206,16 @@
     },
     "7-Day Trend" : {
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "7-Tage-Trend"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "7-dages tendens"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-Tage-Trend"
           }
         },
         "es" : {
@@ -1355,16 +1355,16 @@
     "Add %lld holidays for %@ %@ to your Calendar?" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Feiertage für %@ %@ zum Kalender hinzufügen?"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tilføj %lld helligdage for %@ %@ til din kalender?"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Feiertage für %@ %@ zum Kalender hinzufügen?"
           }
         },
         "es" : {
@@ -1390,16 +1390,16 @@
     "Add Device" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerät hinzufügen"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tilføj enhed"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät hinzufügen"
           }
         },
         "es" : {
@@ -2494,6 +2494,41 @@
         }
       }
     },
+    "Best match shown above" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beste Übereinstimmung oben angezeigt"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bedste match vist ovenfor"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejor coincidencia mostrada arriba"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleure correspondance affichée ci-dessus"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corrispondenza migliore mostrata sopra"
+          }
+        }
+      }
+    },
     "Bi-directional" : {
       "comment" : "Roman numerals tool subtitle",
       "localizations" : {
@@ -3226,16 +3261,16 @@
     },
     "Calendar access denied. Please allow access in Settings." : {
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalenderzugriff verweigert. Bitte Zugriff in den Einstellungen erlauben."
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kalenderadgang nægtet. Tillad adgang i indstillinger."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalenderzugriff verweigert. Bitte Zugriff in den Einstellungen erlauben."
           }
         },
         "es" : {
@@ -3877,6 +3912,9 @@
           }
         }
       }
+    },
+    "Colors → Ω" : {
+      "shouldTranslate" : false
     },
     "Comfortable" : {
       "comment" : "Temperature classification",
@@ -5133,16 +5171,16 @@
     "Device Name" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerätename"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enhedsnavn"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerätename"
           }
         },
         "es" : {
@@ -5691,7 +5729,6 @@
     },
     "Emoji" : {
       "extractionState" : "manual",
-      "localizations" : {},
       "shouldTranslate" : false
     },
     "Enter Text" : {
@@ -5934,6 +5971,41 @@
         }
       }
     },
+    "Enter Ω value → get band colors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ω-Wert eingeben → Bandfarben erhalten"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indtast Ω-værdi → få båndfarver"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce el valor en Ω → obtén los colores"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez une valeur en Ω → obtenez les couleurs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci valore Ω → ottieni i colori delle bande"
+          }
+        }
+      }
+    },
     "Evening" : {
       "comment" : "Time of day label",
       "localizations" : {
@@ -6042,16 +6114,16 @@
     "Export Complete" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export abgeschlossen"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksport fuldført"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export abgeschlossen"
           }
         },
         "es" : {
@@ -6077,16 +6149,16 @@
     "Export Failed" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export fehlgeschlagen"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksport mislykkedes"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export fehlgeschlagen"
           }
         },
         "es" : {
@@ -6112,16 +6184,16 @@
     "Export to Calendar" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zum Kalender exportieren"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksportér til kalender"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Kalender exportieren"
           }
         },
         "es" : {
@@ -11229,16 +11301,16 @@
     "My Device" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mein Gerät"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Min enhed"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mein Gerät"
           }
         },
         "es" : {
@@ -11640,6 +11712,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun effetto significativo di raffreddamento eolico o indice di calore. La temperatura percepita equivale a quella dell'aria."
+          }
+        }
+      }
+    },
+    "No standard match found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Standardwert gefunden"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen standard-match fundet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna coincidencia estándar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune valeur standard trouvée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna corrispondenza standard trovata"
           }
         }
       }
@@ -12616,6 +12723,76 @@
         }
       }
     },
+    "Perimeter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umfang"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omkreds"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perímetro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Périmètre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perimetro"
+          }
+        }
+      }
+    },
+    "Perimeter (est.)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umfang (ca.)"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omkreds (ca.)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perímetro (aprox.)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Périmètre (est.)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perimetro (stim.)"
+          }
+        }
+      }
+    },
     "Phone Number" : {
       "comment" : "QR code contact form: phone field label",
       "localizations" : {
@@ -12862,16 +13039,16 @@
     "Power (Watts)" : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leistung (Watt)"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Effekt (watt)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung (Watt)"
           }
         },
         "es" : {
@@ -16903,6 +17080,40 @@
         }
       }
     },
+    "VALUE → COLORS" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WERT → FARBEN"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VÆRDI → FARVER"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALOR → COLORES"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALEUR → COULEURS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALORE → COLORI"
+          }
+        }
+      }
+    },
     "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
       "localizations" : {
         "da" : {
@@ -19614,6 +19825,9 @@
           }
         }
       }
+    },
+    "Ω → Colors" : {
+      "shouldTranslate" : false
     },
     "–" : {
       "shouldTranslate" : false

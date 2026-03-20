@@ -69,9 +69,11 @@ private enum Geometry: String, CaseIterable {
 private struct CalcResult {
     var area: Double
     var volume: Double?
+    var perimeter: Double?
 
-    var areaString: String { formatted(area) }
-    var volumeString: String? { volume.map { formatted($0) } }
+    var areaString:      String  { formatted(area) }
+    var volumeString:    String? { volume.map    { formatted($0) } }
+    var perimeterString: String? { perimeter.map { formatted($0) } }
 
     private func formatted(_ v: Double) -> String {
         if abs(v) == 0 { return "0" }
@@ -80,6 +82,15 @@ private struct CalcResult {
         }
         return String(format: "%.6g", v)
     }
+}
+
+// MARK: - Length Unit
+
+private enum LengthUnit: String, CaseIterable, Identifiable {
+    case m = "m", cm = "cm", mm = "mm", inch = "in", ft = "ft"
+    var id: String { rawValue }
+    var areaSymbol:   String { self == .inch ? "in²" : "\(rawValue)²" }
+    var volumeSymbol: String { self == .inch ? "in³" : "\(rawValue)³" }
 }
 
 // MARK: - View
@@ -93,6 +104,7 @@ struct AreaVolumeView: View {
     @FocusState private var focused: Int?
 
     @State private var result: CalcResult? = nil
+    @State private var unit:   LengthUnit   = .m
 
     private var field1LabelActual: LocalizedStringKey {
         switch shape {
@@ -117,12 +129,13 @@ struct AreaVolumeView: View {
         switch shape {
         case .rectangle:
             guard v2 > 0 else { result = nil; return }
-            result = CalcResult(area: v1 * v2)
+            result = CalcResult(area: v1 * v2, perimeter: 2 * (v1 + v2))
         case .circle:
-            result = CalcResult(area: .pi * v1 * v1)
+            result = CalcResult(area: .pi * v1 * v1, perimeter: 2 * .pi * v1)
         case .triangle:
             guard v2 > 0 else { result = nil; return }
-            result = CalcResult(area: 0.5 * v1 * v2)
+            let slant = sqrt((v1 / 2) * (v1 / 2) + v2 * v2)
+            result = CalcResult(area: 0.5 * v1 * v2, perimeter: v1 + 2 * slant)
         case .cylinder:
             guard v2 > 0 else { result = nil; return }
             let r = v1, h = v2
@@ -244,6 +257,11 @@ struct AreaVolumeView: View {
                     .font(.subheadline.weight(.bold))
                     .foregroundStyle(Color(red:0.55,green:1.00,blue:0.65))
                 Spacer()
+                Picker("Unit", selection: $unit) {
+                    ForEach(LengthUnit.allCases) { u in Text(u.rawValue).tag(u) }
+                }
+                .pickerStyle(.menu)
+                .tint(Color(red:0.55,green:1.00,blue:0.65))
                 Button(action: clearAll) {
                     Image(systemName: "arrow.counterclockwise")
                         .font(.system(size: 13, weight: .semibold))
@@ -283,21 +301,26 @@ struct AreaVolumeView: View {
             Text(label)
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(Color(red:0.55,green:1.00,blue:0.65).opacity(0.70))
-            TextField("0", text: text)
-                .keyboardType(.decimalPad)
-                .focused($focused, equals: focusTag)
-                .font(.title3.weight(.semibold).monospacedDigit())
-                .foregroundStyle(Color.primary)
-                .tint(Color(red:0.55,green:1.00,blue:0.65))
-                .padding(12)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.primary.opacity(0.07))
-                )
-                .onChange(of: text.wrappedValue) { _, _ in
-                    guard self.focused == focusTag else { return }
-                    calculate()
-                }
+            HStack(spacing: 8) {
+                TextField("0", text: text)
+                    .keyboardType(.decimalPad)
+                    .focused($focused, equals: focusTag)
+                    .font(.title3.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(Color.primary)
+                    .tint(Color(red:0.55,green:1.00,blue:0.65))
+                    .onChange(of: text.wrappedValue) { _, _ in
+                        guard self.focused == focusTag else { return }
+                        calculate()
+                    }
+                Text(unit.rawValue)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color(red:0.55,green:1.00,blue:0.65).opacity(0.65))
+            }
+            .padding(12)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.primary.opacity(0.07))
+            )
         }
     }
 
@@ -308,11 +331,19 @@ struct AreaVolumeView: View {
                 .font(.subheadline.weight(.bold))
                 .foregroundStyle(Color(red:0.55,green:1.00,blue:0.65))
 
-            resultRow(label: shape.info.areaLabel ?? "Area", value: res.areaString, unit: "m²")
+            if let p = res.perimeterString {
+                let perimLabel: LocalizedStringKey = shape == .triangle ? "Perimeter (est.)" : "Perimeter"
+                resultRow(label: perimLabel, value: p, unit: unit.rawValue)
+                Divider().overlay(Color.primary.opacity(0.12))
+            }
+
+            resultRow(label: shape.info.areaLabel ?? "Area",
+                      value: res.areaString,
+                      unit: unit.areaSymbol)
 
             if let vol = res.volumeString, let lbl = shape.info.volumeLabel {
                 Divider().overlay(Color.primary.opacity(0.12))
-                resultRow(label: lbl, value: vol, unit: "m³")
+                resultRow(label: lbl, value: vol, unit: unit.volumeSymbol)
             }
         }
         .padding(.horizontal, 18)
