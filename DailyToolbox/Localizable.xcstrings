@@ -1352,6 +1352,41 @@
         }
       }
     },
+    "Add %lld holidays for %@ %lld to your Calendar?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Feiertage für %@ %lld zum Kalender hinzufügen?"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tilføj %lld helligdage for %@ %lld til din kalender?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Añadir %lld festivos de %@ %lld a tu calendario?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter %lld jours fériés pour %@ %lld à votre calendrier ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungere %lld festività per %@ %lld al tuo calendario?"
+          }
+        }
+      }
+    },
     "Add Device" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1427,7 +1462,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tilføj til Kalender"
+            "value" : "Tilføj til kalender"
           }
         },
         "de" : {
@@ -1439,19 +1474,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar al Calendario"
+            "value" : "Añadir al calendario"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter au Calendrier"
+            "value" : "Ajouter au calendrier"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aggiungi al Calendario"
+            "value" : "Aggiungi al calendario"
           }
         }
       }

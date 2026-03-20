@@ -242,8 +242,9 @@ struct GermanHolidaysView: View {
 
     @State private var tab: HolidayTab = .publicHolidays
     @State private var showStatePicker  = false
-    @State private var showExportResult = false
-    @State private var exportCount      = 0
+    @State private var showExportConfirm = false
+    @State private var showExportResult  = false
+    @State private var exportCount       = 0
     @State private var exportError: String? = nil
 
     private let accent    = Color(red: 0.95, green: 0.78, blue: 0.22)
@@ -401,12 +402,20 @@ struct GermanHolidaysView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if case .loaded = vm.loadState, !vm.publicHolidays.isEmpty {
-                    Button { Task { await exportToCalendar() } } label: {
+                    Button { showExportConfirm = true } label: {
                         Image(systemName: "calendar.badge.plus")
                     }
                     .accessibilityLabel("Export to Calendar")
                 }
             }
+        }
+        .confirmationDialog(
+            "Add \(vm.publicHolidays.count) holidays for \(selectedState.name) \(savedYear) to your Calendar?",
+            isPresented: $showExportConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Add to Calendar") { Task { await exportToCalendar() } }
+            Button("Cancel", role: .cancel) { }
         }
         .alert(
             exportError == nil ? "Export Complete" : "Export Failed",
