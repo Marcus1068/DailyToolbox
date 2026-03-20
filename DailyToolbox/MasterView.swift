@@ -74,6 +74,7 @@ extension ToolSection {
             ToolItem(id: "showRoman",        name: "Roman Numerals", subtitle: "Bi-directional",                 icon: "character.book.closed.fill",     color: Color(red: 0.78, green: 0.10, blue: 0.18), segueId: "showRoman"),
             ToolItem(id: "showLoan",         name: "Loan Calculator",subtitle: "Monthly payment & interest",     icon: "house.fill",                     color: Color(red: 0.35, green: 0.55, blue: 0.95), segueId: "showLoan"),
             ToolItem(id: "showBMI",          name: "BMI Calculator", subtitle: "BMI · BMR · Ideal weight",       icon: "figure.stand",                   color: Color(red: 0.90, green: 0.35, blue: 0.30), segueId: "showBMI"),
+            ToolItem(id: "showStatistics",   name: "Statistics",     subtitle: "Mean · Median · Std Dev",        icon: "chart.bar.fill",                 color: Color(red: 0.00, green: 0.72, blue: 0.60), segueId: "showStatistics"),
         ]),
         ToolSection(title: "Conversions", items: [
             ToolItem(id: "showTemp",         name: "Temperature",    subtitle: "\u{00B0}C \u{00B7} \u{00B0}F \u{00B7} K", icon: "thermometer.medium",  color: Color(red: 0.95, green: 0.42, blue: 0.08), segueId: "showTemp"),

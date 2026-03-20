@@ -109,7 +109,19 @@ struct CalendarCalculationView: View {
     @State private var eventTitle:          String = ""
     @State private var showCalendarError:   Bool   = false
     @State private var calendarErrorMsg:    String = ""
+    // Birthday persisted as a Unix timestamp (Double) so @AppStorage can store it.
+    // 820454400 ≈ 1996-01-01, a reasonable 30-year-ago default.
+    @AppStorage("calendar.birthDateInterval") private var birthDateInterval: Double = 820454400
     @Environment(\.colorScheme) private var colorScheme
+
+    private var birthDate: Date { Date(timeIntervalSince1970: birthDateInterval) }
+
+    private var birthDateBinding: Binding<Date> {
+        Binding(
+            get: { Date(timeIntervalSince1970: birthDateInterval) },
+            set: { birthDateInterval = $0.timeIntervalSince1970 }
+        )
+    }
 
     // MARK: Adaptive accent colors
 
@@ -167,6 +179,38 @@ struct CalendarCalculationView: View {
         return "days ago"
     }
 
+    // MARK: Age Computed
+
+    private var ageComponents: DateComponents {
+        Calendar.current.dateComponents([.year, .month, .day], from: birthDate, to: Date())
+    }
+    private var ageYears:  Int { ageComponents.year  ?? 0 }
+    private var ageMonths: Int { ageComponents.month ?? 0 }
+    private var ageDays:   Int { ageComponents.day   ?? 0 }
+
+    private var daysLived: Int {
+        Calendar.current.dateComponents([.day], from: birthDate, to: Date()).day ?? 0
+    }
+
+    private var nextBirthdayDate: Date {
+        let cal   = Calendar.current
+        let today = Date()
+        var comps = cal.dateComponents([.month, .day], from: birthDate)
+        comps.year = cal.component(.year, from: today)
+        let thisYear = cal.date(from: comps)!
+        if thisYear > today { return thisYear }
+        comps.year = comps.year! + 1
+        return cal.date(from: comps)!
+    }
+
+    private var daysUntilBirthday: Int {
+        max(0, Calendar.current.dateComponents(
+            [.day],
+            from: Calendar.current.startOfDay(for: Date()),
+            to: nextBirthdayDate
+        ).day ?? 0)
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -178,6 +222,7 @@ struct CalendarCalculationView: View {
                         headerCard
                         daysCountdownCard
                         quickActionsRow
+                        ageCalculatorCard
                         datePickerCard
                         addToCalendarButton
                     }
@@ -251,7 +296,7 @@ struct CalendarCalculationView: View {
                 Text("Calendar Calculator")
                     .font(.headline.weight(.bold))
                     .foregroundStyle(Color.primary)
-                Text("Count days to any date, Christmas or Easter")
+                Text("Count days to any date · Age calculator")
                     .font(.caption)
                     .foregroundStyle(Color.primary.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)
@@ -357,6 +402,68 @@ struct CalendarCalculationView: View {
         }
         .buttonStyle(.plain)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
+    }
+
+    // MARK: Age Calculator
+
+    private var ageCalculatorCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+
+            HStack(spacing: 6) {
+                Image(systemName: "person.crop.circle")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(purpleAccent)
+                Text("Age Calculator")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.50))
+                Spacer()
+            }
+
+            HStack {
+                Text("Birthday")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(Color.primary.opacity(0.70))
+                Spacer()
+                DatePicker("", selection: birthDateBinding, in: ...Date(), displayedComponents: .date)
+                    .labelsHidden()
+                    .tint(purpleAccent)
+            }
+
+            Divider().opacity(0.3)
+
+            HStack(alignment: .top, spacing: 14) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(ageYears.formatted())
+                        .font(.system(size: 52, weight: .black, design: .rounded).monospacedDigit())
+                        .foregroundStyle(purpleAccent)
+                        .contentTransition(.numericText())
+                        .animation(.spring(response: 0.35), value: ageYears)
+                    Text("years old")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(Color.primary.opacity(0.55))
+                }
+
+                Spacer()
+
+                VStack(alignment: .trailing, spacing: 6) {
+                    agePill("\(ageMonths) mo, \(ageDays) d remaining")
+                    agePill("\(daysLived) days lived")
+                    agePill("🎂 in \(daysUntilBirthday) days")
+                }
+                .padding(.top, 6)
+            }
+        }
+        .padding(16)
+        .glassEffect(.regular.tint(glassTintPurple), in: RoundedRectangle(cornerRadius: 20))
+    }
+
+    private func agePill(_ text: LocalizedStringKey) -> some View {
+        Text(text)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(Color.primary.opacity(0.70))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 4)
+            .background(Color.primary.opacity(0.08), in: Capsule())
     }
 
     // MARK: Date Picker

@@ -53,6 +53,8 @@
 		2CD4C2E3240435C8008825E6 /* ComputeHorizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */; };
 		2CD4C2E724082F31008825E6 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E624082F31008825E6 /* Benchmark.swift */; };
 		2CD4C2E924084A5A008825E6 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */; };
+		2CF446072F6DEF3B009DE620 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF446062F6DEF3B009DE620 /* Statistics.swift */; };
+		2CF446092F6DEF66009DE620 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF446082F6DEF66009DE620 /* StatisticsView.swift */; };
 		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
 		DA89F60DBDBB571877892DDA /* FuelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */; };
 		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
@@ -123,6 +125,8 @@
 		2CD4C2E2240435C8008825E6 /* ComputeHorizon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeHorizon.swift; sourceTree = "<group>"; };
 		2CD4C2E624082F31008825E6 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		2CD4C2E824084A5A008825E6 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		2CF446062F6DEF3B009DE620 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		2CF446082F6DEF66009DE620 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		44B923CFE82DBFA41976C241 /* RandomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizerView.swift; sourceTree = "<group>"; };
 		698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		82B60AC8709404457D01D424 /* AspectRatioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioView.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				2C4AA8692F6202A700F1BDCC /* WindChillView.swift */,
 				2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */,
 				2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */,
+				2CF446082F6DEF66009DE620 /* StatisticsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				2C034904244B13F700AEE556 /* PowerConsumption.swift */,
 				2CA494A824522AB300E61CC5 /* Global.swift */,
 				2C2A8372247A960A0076EEDE /* MenuController.swift */,
+				2CF446062F6DEF3B009DE620 /* Statistics.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				2CBF5ED62F5E0755009575C2 /* UnitConverterView.swift in Sources */,
 				2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */,
 				2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */,
+				2CF446072F6DEF3B009DE620 /* Statistics.swift in Sources */,
 				2CBD869723F6BE990011D886 /* ConvertNumbers.swift in Sources */,
 				2C2A8373247A960A0076EEDE /* MenuController.swift in Sources */,
 				2CBF5ED82F5E0785009575C2 /* TipSplitterView.swift in Sources */,
@@ -390,6 +397,7 @@
 				2CBD869523F6BE7E0011D886 /* Temperature.swift in Sources */,
 				2C87D20C241A96C300BA4363 /* CalendarCalculation.swift in Sources */,
 				2C5F83762F5D9586009898E9 /* ConvertNumbersView.swift in Sources */,
+				2CF446092F6DEF66009DE620 /* StatisticsView.swift in Sources */,
 				2C87D20A241A920900BA4363 /* InterestRate.swift in Sources */,
 				2C8B2344242663D6007A20DF /* MyExtensions.swift in Sources */,
 				2C5F838A2F5DA0B5009898E9 /* TranslationView.swift in Sources */,
@@ -553,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 75;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -572,7 +580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.33;
+				MARKETING_VERSION = 2.35;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -588,7 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 75;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -607,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.33;
+				MARKETING_VERSION = 2.35;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

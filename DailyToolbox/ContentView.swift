@@ -77,6 +77,7 @@ struct ContentView: View {
         case "showOhmsLaw":      OhmsLawView()
         case "showLoan":         LoanCalculatorView()
         case "showBMI":          BMIView()
+        case "showStatistics":   StatisticsView()
         case "showFuelCost":     FuelCostView()
         case "showAspectRatio":  AspectRatioView()
         case "showRandomizer":   RandomizerView()

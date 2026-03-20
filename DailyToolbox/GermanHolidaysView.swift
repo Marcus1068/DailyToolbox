@@ -485,8 +485,10 @@ struct GermanHolidaysView: View {
                             .font(.system(size: 12, weight: .bold))
                             .foregroundStyle(Color.primary.opacity(0.65))
                             .frame(width: 32, height: 34)
+                            .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel("Decrease leave days")
 
                     Text(leaveDaysTotal, format: .number)
                         .multilineTextAlignment(.center)
@@ -503,8 +505,10 @@ struct GermanHolidaysView: View {
                             .font(.system(size: 12, weight: .bold))
                             .foregroundStyle(Color.primary.opacity(0.65))
                             .frame(width: 32, height: 34)
+                            .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel("Increase leave days")
                 }
                 .background(Color.primary.opacity(0.09),
                             in: RoundedRectangle(cornerRadius: 10))
