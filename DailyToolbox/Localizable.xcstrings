@@ -98,9 +98,7 @@
         }
       }
     },
-    "%@ built-in tools" : {
-
-    },
+    "%@ built-in tools" : {},
     "%@ characters" : {
       "localizations" : {
         "da" : {
@@ -135,9 +133,7 @@
         }
       }
     },
-    "%@ holidays added to your Calendar." : {
-
-    },
+    "%@ holidays added to your Calendar." : {},
     "%@ is not allowed" : {
       "comment" : "Roman numeral validation error: invalid pair",
       "localizations" : {
@@ -173,15 +169,9 @@
         }
       }
     },
-    "%@ kWh" : {
-
-    },
-    "%@ pts" : {
-
-    },
-    "%@ Tage" : {
-
-    },
+    "%@ kWh" : {},
+    "%@ pts" : {},
+    "%@ Tage" : {},
     "%@ used · %@ remaining" : {
       "localizations" : {
         "en" : {
@@ -653,15 +643,11 @@
       },
       "shouldTranslate" : false
     },
-    "→" : {
-
-    },
+    "→" : {},
     "±" : {
       "shouldTranslate" : false
     },
-    "±20%" : {
-
-    },
+    "±20%" : {},
     "×" : {
       "shouldTranslate" : false
     },
@@ -702,15 +688,9 @@
     "=" : {
       "shouldTranslate" : false
     },
-    "≥ 0 K" : {
-
-    },
-    "⚠️ Values are too close to zero — cannot divide." : {
-
-    },
-    "🇩🇪" : {
-
-    },
+    "≥ 0 K" : {},
+    "⚠️ Values are too close to zero — cannot divide." : {},
+    "🇩🇪" : {},
     "🎂 in %lld days" : {
       "comment" : "Age pill: days until next birthday (cake emoji)",
       "localizations" : {
@@ -6704,9 +6684,7 @@
         }
       }
     },
-    "Enter any 2 values to calculate the remaining" : {
-
-    },
+    "Enter any 2 values to calculate the remaining" : {},
     "Enter any 2 values to solve" : {
       "localizations" : {
         "da" : {
@@ -10391,9 +10369,7 @@
         }
       }
     },
-    "Invalid hex (#RRGGBB)" : {
-
-    },
+    "Invalid hex (#RRGGBB)" : {},
     "Invalid number" : {
       "comment" : "Roman numerals validation error",
       "localizations" : {
@@ -12157,9 +12133,7 @@
         }
       }
     },
-    "Min must be less than or equal to Max" : {
-
-    },
+    "Min must be less than or equal to Max" : {},
     "Minimum" : {
       "comment" : "Statistical minimum label",
       "localizations" : {
@@ -13550,9 +13524,7 @@
         }
       }
     },
-    "of" : {
-
-    },
+    "of" : {},
     "Ohm's Law" : {
       "localizations" : {
         "da" : {
@@ -15782,9 +15754,7 @@
         }
       }
     },
-    "Result ready" : {
-
-    },
+    "Result ready" : {},
     "Results" : {
       "comment" : "Tip splitter: results section header",
       "localizations" : {
@@ -16523,7 +16493,38 @@
       }
     },
     "Search tools…" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werkzeuge suchen…"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Søg efter værktøjer…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar herramientas…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher des outils…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca strumenti…"
+          }
+        }
+      }
     },
     "Search word…" : {
       "comment" : "Translation view search field placeholder",
@@ -16979,9 +16980,7 @@
         }
       }
     },
-    "Share Summary" : {
-
-    },
+    "Share Summary" : {},
     "Shrinking, left-lit sliver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18899,9 +18898,7 @@
         }
       }
     },
-    "v%@" : {
-
-    },
+    "v%@" : {},
     "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
       "localizations" : {
         "da" : {
@@ -20123,9 +20120,7 @@
         }
       }
     },
-    "WPA password must be at least 8 characters" : {
-
-    },
+    "WPA password must be at least 8 characters" : {},
     "WPA/WPA2" : {
       "comment" : "QR code WiFi security type — technical standard name, not translated",
       "shouldTranslate" : false
