@@ -134,6 +134,7 @@ struct MasterView: View {
 
     private let columns = [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 14)]
     @State private var showAbout = false
+    @State private var searchText = ""
     @Environment(\.colorScheme) private var colorScheme
 
     // Persisted favorites — stored as comma-separated IDs
@@ -152,6 +153,14 @@ struct MasterView: View {
         var ids = favoriteIDs
         if ids.contains(item.id) { ids.remove(item.id) } else { ids.insert(item.id) }
         favoritesData = ids.joined(separator: ",")
+    }
+
+    private var searchResults: [ToolItem] {
+        let q = searchText.trimmingCharacters(in: .whitespaces).lowercased()
+        guard !q.isEmpty else { return [] }
+        return ToolSection.catalogue.flatMap(\.items).filter {
+            $0.name.lowercased().contains(q) || $0.subtitle.lowercased().contains(q)
+        }
     }
 
     // MARK: Adaptive mesh gradient colors
@@ -202,13 +211,32 @@ struct MasterView: View {
                         // Custom app header
                         appHeader
 
-                        // Favorites section — only shown when at least one item is starred
-                        if !favoriteItems.isEmpty {
-                            favoritesSection
-                        }
+                        if !searchText.isEmpty {
+                            // Search results
+                            if searchResults.isEmpty {
+                                ContentUnavailableView.search(text: searchText)
+                                    .padding(.top, 40)
+                            } else {
+                                LazyVGrid(columns: columns, spacing: 14) {
+                                    ForEach(searchResults) { item in
+                                        ToolCard(
+                                            item: item,
+                                            isFavorite: favoriteIDs.contains(item.id),
+                                            onSelect: onSelect,
+                                            toggleFavorite: { toggleFavorite(item) }
+                                        )
+                                    }
+                                }
+                            }
+                        } else {
+                            // Normal catalog view
+                            if !favoriteItems.isEmpty {
+                                favoritesSection
+                            }
 
-                        ForEach(ToolSection.catalogue) { section in
-                            sectionBlock(section)
+                            ForEach(ToolSection.catalogue) { section in
+                                sectionBlock(section)
+                            }
                         }
                     }
                     .padding(.horizontal, 16)
@@ -230,6 +258,7 @@ struct MasterView: View {
             }
         }
         .toolbarBackground(.hidden, for: .navigationBar)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Search tools…"))
         .sheet(isPresented: $showAbout) {
             NavigationStack {
                 AboutView()
