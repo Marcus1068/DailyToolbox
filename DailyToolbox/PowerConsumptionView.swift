@@ -86,20 +86,33 @@ private struct CostResultRow: View {
 
             Spacer()
 
-            Text(cost.formatted(.number.precision(.fractionLength(large ? 2 : 3))) + " €")
-                .font(.system(size: large ? 28 : 18,
-                              weight: .black,
-                              design: .rounded).monospacedDigit())
-                .foregroundStyle(
-                    large
-                        ? AnyShapeStyle(LinearGradient(
-                            colors: [Color(red: 1.0, green: 0.88, blue: 0.20),
-                                     Color(red: 1.0, green: 0.60, blue: 0.12)],
-                            startPoint: .topLeading, endPoint: .bottomTrailing))
-                        : AnyShapeStyle(Color.primary.opacity(0.80))
-                )
-                .contentTransition(.numericText())
-                .animation(.spring(response: 0.35), value: cost)
+            let costStr = cost.formatted(.number.precision(.fractionLength(large ? 2 : 3))) + " €"
+            HStack(spacing: 6) {
+                Text(costStr)
+                    .font(.system(size: large ? 28 : 18,
+                                  weight: .black,
+                                  design: .rounded).monospacedDigit())
+                    .foregroundStyle(
+                        large
+                            ? AnyShapeStyle(LinearGradient(
+                                colors: [Color(red: 1.0, green: 0.88, blue: 0.20),
+                                         Color(red: 1.0, green: 0.60, blue: 0.12)],
+                                startPoint: .topLeading, endPoint: .bottomTrailing))
+                            : AnyShapeStyle(Color.primary.opacity(0.80))
+                    )
+                    .contentTransition(.numericText())
+                    .animation(.spring(response: 0.35), value: cost)
+
+                Button {
+                    UIPasteboard.general.string = costStr
+                } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.45))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+            }
         }
     }
 }
@@ -173,6 +186,7 @@ struct PowerConsumptionView: View {
 
     private func deleteUserPreset(_ preset: UserPreset) {
         var p = userPresets; p.removeAll { $0.id == preset.id }; saveUserPresets(p)
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
     }
 
     // MARK: Body
@@ -605,6 +619,22 @@ struct PowerConsumptionView: View {
             Divider().overlay(Color.primary.opacity(0.08)).padding(.top, 12)
             energyBar(r)
                 .padding(.top, 10)
+
+            // Share summary
+            let summary = "Power costs:\nPer Day: \(r.daily.formatted(.number.precision(.fractionLength(2)))) €\nPer Month: \(r.monthly.formatted(.number.precision(.fractionLength(2)))) €\nPer Year: \(r.yearly.formatted(.number.precision(.fractionLength(2)))) €"
+            ShareLink(item: summary) {
+                HStack(spacing: 6) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                    Text("Share Summary")
+                        .font(.caption.weight(.semibold))
+                }
+                .foregroundStyle(Color.primary.opacity(0.65))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 6)
+            }
+            .buttonStyle(.glass)
+            .padding(.top, 8)
         }
         .padding(18)
         .glassEffect(

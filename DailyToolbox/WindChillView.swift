@@ -22,6 +22,7 @@ limitations under the License.
 //
 
 import SwiftUI
+import UIKit
 
 // MARK: - Comfort Level
 
@@ -194,6 +195,12 @@ struct WindChillView: View {
     private var tempUnit:  String { useFahrenheit ? "°F" : "°C" }
     private var speedUnit: String { useMph ? "mph" : "km/h" }
 
+    private var windChillCopyText: String {
+        let feelsStr = feelsLikeDisplay.formatted(.number.precision(.fractionLength(1)))
+        let airStr = tempDisplay.formatted(.number.precision(.fractionLength(1)))
+        return "Feels like: \(feelsStr)\(tempUnit) · Air temp: \(airStr)\(tempUnit)"
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -279,6 +286,22 @@ struct WindChillView: View {
                     .font(.caption.weight(.semibold).monospacedDigit())
                     .foregroundStyle(Color.white.opacity(0.80))
             }
+            HStack(spacing: 8) {
+                Button { UIPasteboard.general.string = windChillCopyText } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: windChillCopyText) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+            }
+            .padding(.top, 4)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 22)
@@ -356,6 +379,17 @@ struct WindChillView: View {
             ) { delta in
                 let stepKmh = useMph ? delta * 1.60934 : delta
                 storedWindKmh = max(0, storedWindKmh + stepKmh)
+            }
+
+            if storedWindKmh > 0 && storedWindKmh < 4.8 {
+                Text(useMph
+                     ? "Wind too low for wind chill calculation (min 3 mph)"
+                     : "Wind too low for wind chill calculation (min 4.8 km/h)")
+                    .font(.caption2)
+                    .foregroundStyle(Color.orange.opacity(0.90))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 8)
             }
 
             Divider().padding(.horizontal, 16)

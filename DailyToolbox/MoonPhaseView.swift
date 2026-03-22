@@ -280,8 +280,14 @@ private struct MoonStatRow: View {
 
 struct MoonPhaseView: View {
 
-    @State private var selectedDate: Date = .now
+    @AppStorage("moon.selectedDateInterval") private var selectedDateInterval: Double = Date().timeIntervalSince1970
     @Environment(\.colorScheme) private var colorScheme
+
+    private var selectedDate: Date { Date(timeIntervalSince1970: selectedDateInterval) }
+
+    private var selectedDateBinding: Binding<Date> {
+        Binding(get: { selectedDate }, set: { selectedDateInterval = $0.timeIntervalSince1970 })
+    }
 
     private var info: MoonInfo {
         MoonCalculator.calculate(for: selectedDate)
@@ -367,7 +373,7 @@ struct MoonPhaseView: View {
             }
             Spacer()
             Button("Today") {
-                withAnimation(.spring(response: 0.4)) { selectedDate = .now }
+                withAnimation(.spring(response: 0.4)) { selectedDateInterval = Date().timeIntervalSince1970 }
             }
             .font(.caption.weight(.semibold))
             .foregroundStyle(moonAccent)
@@ -404,29 +410,51 @@ struct MoonPhaseView: View {
     // MARK: Phase Info Card
 
     private var phaseInfoCard: some View {
-        HStack(spacing: 0) {
-            phaseStatCell(
-                value: info.illumination.formatted(.percent.precision(.fractionLength(0))),
-                label: "Illuminated",
-                icon: "circle.lefthalf.filled",
-                color: moonAccent
-            )
-            Divider().frame(height: 44)
-            phaseStatCell(
-                value: String(format: "%.1f days", info.age),
-                label: "Moon Age",
-                icon: "clock.fill",
-                color: blueAccent
-            )
-            Divider().frame(height: 44)
-            phaseStatCell(
-                value: info.distanceKm.formatted(.number.precision(.fractionLength(0))) + " km",
-                label: "Distance",
-                icon: "arrow.up.right",
-                color: purpleAccent
-            )
+        let moonCopyText = "\(info.phase.rawValue) · \(Int(info.illumination * 100))% illumination · Age: \(String(format: "%.1f", info.age)) days"
+        return VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                phaseStatCell(
+                    value: info.illumination.formatted(.percent.precision(.fractionLength(0))),
+                    label: "Illuminated",
+                    icon: "circle.lefthalf.filled",
+                    color: moonAccent
+                )
+                Divider().frame(height: 44)
+                phaseStatCell(
+                    value: String(format: "%.1f days", info.age),
+                    label: "Moon Age",
+                    icon: "clock.fill",
+                    color: blueAccent
+                )
+                Divider().frame(height: 44)
+                phaseStatCell(
+                    value: info.distanceKm.formatted(.number.precision(.fractionLength(0))) + " km",
+                    label: "Distance",
+                    icon: "arrow.up.right",
+                    color: purpleAccent
+                )
+            }
+            .padding(.vertical, 16)
+            Divider().opacity(0.3)
+            HStack(spacing: 8) {
+                Spacer()
+                Button { UIPasteboard.general.string = moonCopyText } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: moonCopyText) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
         }
-        .padding(.vertical, 16)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
@@ -530,7 +558,7 @@ struct MoonPhaseView: View {
                 .tracking(1.4)
                 .foregroundStyle(Color.primary.opacity(0.50))
 
-            DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+            DatePicker("Date", selection: selectedDateBinding, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .tint(moonAccent)
         }

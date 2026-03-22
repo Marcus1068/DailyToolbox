@@ -22,6 +22,7 @@ limitations under the License.
 //
 
 import SwiftUI
+import UIKit
 
 struct TipSplitterView: View {
 
@@ -47,6 +48,17 @@ struct TipSplitterView: View {
         return roundUp ? ceil(raw) : raw
     }
     private var perPersonTip: Double { tipAmount / Double(max(1, people)) }
+
+    private var resultCopyText: String {
+        var parts = [
+            "Total: \(formatCurrency(grandTotal))",
+            "Tip: \(formatCurrency(tipAmount))"
+        ]
+        if people > 1 {
+            parts.append("Per person: \(formatCurrency(perPersonTotal))")
+        }
+        return parts.joined(separator: " · ")
+    }
 
     private let currencyFormatter: NumberFormatter = {
         let f = NumberFormatter()
@@ -335,6 +347,21 @@ struct TipSplitterView: View {
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color(red: 1.00, green: 0.82, blue: 0.35).opacity(0.85))
                 Spacer()
+                HStack(spacing: 8) {
+                    Button { UIPasteboard.general.string = resultCopyText } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: resultCopyText) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
                 Toggle("Round Up", isOn: $roundUp)
                     .toggleStyle(SwitchToggleStyle(tint: Color(red: 1.00, green: 0.75, blue: 0.25)))
                     .font(.caption.weight(.semibold))
@@ -426,6 +453,7 @@ struct TipSplitterView: View {
                 .frame(width: 38, height: 38)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(systemImage == "plus" ? "Increase" : "Decrease")
     }
 }
 

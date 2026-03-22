@@ -25,6 +25,7 @@ limitations under the License.
 //
 
 import SwiftUI
+import UIKit
 
 // MARK: - Field identity
 
@@ -170,6 +171,8 @@ struct TemperatureView: View {
     @State private var fahrenheitText: String = ""
     @State private var kelvinText:     String = ""
     @FocusState private var focused: TempField?
+    @AppStorage("temp.lastValue") private var lastValue: String = ""
+    @AppStorage("temp.lastField") private var lastField: String = ""
     @Environment(\.colorScheme) private var colorScheme
 
     // MARK: Adaptive accent colors for unit fields
@@ -191,6 +194,14 @@ struct TemperatureView: View {
     private var orangeAccent: Color {
         colorScheme == .dark ? Color(red: 1.0, green: 0.82, blue: 0.4)
                              : Color(red: 0.72, green: 0.40, blue: 0.00)
+    }
+
+    private var temperatureCopyText: String {
+        guard let c = celsiusValue else { return "" }
+        let cStr = c.formatted(.number.precision(.fractionLength(1)))
+        let fStr = (Double(fahrenheitText) ?? 0).formatted(.number.precision(.fractionLength(1)))
+        let kStr = (Double(kelvinText) ?? 0).formatted(.number.precision(.fractionLength(1)))
+        return "\(cStr) °C · \(fStr) °F · \(kStr) K"
     }
 
     // MARK: Helpers
@@ -305,6 +316,15 @@ struct TemperatureView: View {
         .navigationTitle("Temperature")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .onAppear {
+            guard !lastValue.isEmpty else { return }
+            switch lastField {
+            case "celsius":    celsiusText    = lastValue; calculate(changed: .celsius)
+            case "fahrenheit": fahrenheitText = lastValue; calculate(changed: .fahrenheit)
+            case "kelvin":     kelvinText     = lastValue; calculate(changed: .kelvin)
+            default: break
+            }
+        }
     }
 
     // MARK: - Background
@@ -461,6 +481,11 @@ struct TemperatureView: View {
                 Text(field.label)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(fieldAccent(field).opacity(0.85))
+                if field == .kelvin {
+                    Text("≥ 0 K")
+                        .font(.caption2)
+                        .foregroundStyle(Color.primary.opacity(0.45))
+                }
 
                 TextField("0", text: text)
                     .keyboardType(.decimalPad)
@@ -474,6 +499,14 @@ struct TemperatureView: View {
                         guard focused == field else { return }
                         let filtered = numericOnly(newVal, allowNegative: field.allowsNegative)
                         if filtered != newVal { text.wrappedValue = filtered; return }
+                        if !filtered.isEmpty {
+                            lastValue = filtered
+                            switch field {
+                            case .celsius:    lastField = "celsius"
+                            case .fahrenheit: lastField = "fahrenheit"
+                            case .kelvin:     lastField = "kelvin"
+                            }
+                        }
                         calculate(changed: field)
                     }
             }
@@ -507,6 +540,23 @@ struct TemperatureView: View {
                 }
             }
             Spacer()
+            if celsiusValue != nil {
+                HStack(spacing: 8) {
+                    Button { UIPasteboard.general.string = temperatureCopyText } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: temperatureCopyText) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 14)

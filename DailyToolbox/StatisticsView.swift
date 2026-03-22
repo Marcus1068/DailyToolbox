@@ -86,6 +86,18 @@ struct StatisticsView: View {
         stats.modes.count > 1 ? "Modes" : "Mode"
     }
 
+    private var allStatsSummary: String {
+        guard stats.count >= 1 else { return "" }
+        var parts: [String] = ["Count: \(stats.count)"]
+        parts.append("Sum: \(fmt(stats.sum))")
+        if let m  = stats.mean              { parts.append("Mean: \(fmt(m))") }
+        if let med = stats.median           { parts.append("Median: \(fmt(med))") }
+        if let mn = stats.minimum           { parts.append("Min: \(fmt(mn))") }
+        if let mx = stats.maximum           { parts.append("Max: \(fmt(mx))") }
+        if let sd = stats.standardDeviation { parts.append("Std Dev: \(fmt(sd))") }
+        return parts.joined(separator: "\n")
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -297,9 +309,22 @@ struct StatisticsView: View {
                     .font(.caption.weight(.semibold))
                 Text("Descriptive Statistics")
                     .font(.caption.weight(.semibold))
+                Spacer()
+                Button { UIPasteboard.general.string = allStatsSummary } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy All")
+                ShareLink(item: allStatsSummary) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
             }
             .foregroundStyle(Color.primary.opacity(0.50))
-            .frame(maxWidth: .infinity, alignment: .leading)
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 statTile(label: "Sum",         icon: "sum",                    value: stats.sum)
@@ -324,6 +349,16 @@ struct StatisticsView: View {
                 Text(label)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(Color.primary.opacity(0.50))
+                Spacer()
+                if let v = value {
+                    Button { UIPasteboard.general.string = fmt(v) } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                }
             }
             if let v = value {
                 Text(fmt(v))

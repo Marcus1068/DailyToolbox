@@ -103,6 +103,7 @@ struct OhmsLawView: View {
     @State private var texts: [OhmsField: String] = [:]
     @State private var computed: Set<OhmsField> = []
     @State private var inputQueue: [OhmsField] = []   // last 2 user-typed fields, newest first
+    @State private var showDivisionError = false
 
     @FocusState private var focused: OhmsField?
 
@@ -139,6 +140,14 @@ struct OhmsLawView: View {
             return
         }
 
+        if abs(v1) < 1e-12 || abs(v2) < 1e-12 {
+            showDivisionError = true
+            for f in OhmsField.allCases where !inputQueue.contains(f) {
+                if computed.contains(f) { texts[f] = ""; computed.remove(f) }
+            }
+            return
+        }
+        showDivisionError = false
         let result = solve(f1: inputQueue[0], v1: v1, f2: inputQueue[1], v2: v2)
         withAnimation(.spring(response: 0.3)) {
             for (k, v) in result where !inputQueue.contains(k) {
@@ -161,8 +170,24 @@ struct OhmsLawView: View {
             texts = [:]
             computed = []
             inputQueue = []
+            showDivisionError = false
         }
         focused = nil
+    }
+
+    private var hasNoInput: Bool {
+        OhmsField.allCases.allSatisfy { (texts[$0] ?? "").isEmpty }
+    }
+
+    private var ohmsResultCopyText: String? {
+        guard !computed.isEmpty else { return nil }
+        var parts: [String] = []
+        if let v = texts[.voltage].flatMap({ Double($0) })    { parts.append("V=\(format(v))V") }
+        if let i = texts[.current].flatMap({ Double($0) })    { parts.append("I=\(format(i))A") }
+        if let r = texts[.resistance].flatMap({ Double($0) }) { parts.append("R=\(format(r))Ω") }
+        if let p = texts[.power].flatMap({ Double($0) })      { parts.append("P=\(format(p))W") }
+        guard !parts.isEmpty else { return nil }
+        return parts.joined(separator: " · ")
     }
 
     // MARK: Body
@@ -174,6 +199,23 @@ struct OhmsLawView: View {
                 VStack(spacing: 14) {
                     GlassEffectContainer { headerCard }
                     GlassEffectContainer { fieldGrid }
+                    if hasNoInput {
+                        Text("Enter any 2 values to calculate the remaining")
+                            .font(.caption)
+                            .foregroundStyle(Color.primary.opacity(0.50))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 20)
+                    }
+                    if showDivisionError {
+                        Text("⚠️ Values are too close to zero — cannot divide.")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.orange)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 20)
+                    }
+                    if let copyStr = ohmsResultCopyText {
+                        GlassEffectContainer { resultActionRow(copyStr) }
+                    }
                     GlassEffectContainer { formulaCard }
                 }
                 .padding(.horizontal, 20)
@@ -305,6 +347,39 @@ struct OhmsLawView: View {
             RoundedRectangle(cornerRadius: 16)
                 .strokeBorder(isComputed ? accent.opacity(0.35) : Color.primary.opacity(0.08), lineWidth: 1)
         )
+    }
+
+    // MARK: - Result Action Row
+
+    @ViewBuilder
+    private func resultActionRow(_ copyText: String) -> some View {
+        HStack {
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundStyle(Color(red: 0.30, green: 0.90, blue: 0.50).opacity(0.85))
+                .font(.system(size: 16))
+            Text("Result ready")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.65))
+            Spacer()
+            HStack(spacing: 8) {
+                Button { UIPasteboard.general.string = copyText } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: copyText) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     // MARK: - Formula Card

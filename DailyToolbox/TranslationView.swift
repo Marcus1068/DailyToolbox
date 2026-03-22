@@ -146,9 +146,18 @@ struct TranslationView: View {
     @State private var searchText:     String        = ""
     @State private var selectedLang:   LeoLanguage   = .english
     @FocusState private var searchFocused: Bool
+    @AppStorage("translation.history") private var historyJSON: String = "[]"
+    @State private var showHistory = false
 
     private let accentTeal  = Color(red: 0.20, green: 0.82, blue: 0.75)
     private let accentBlue  = Color(red: 0.28, green: 0.60, blue: 1.00)
+
+    private var searchHistory: [String] {
+        guard let data = historyJSON.data(using: .utf8),
+              let history = try? JSONDecoder().decode([String].self, from: data)
+        else { return [] }
+        return history
+    }
 
     // MARK: Body
 
@@ -173,6 +182,27 @@ struct TranslationView: View {
         .navigationTitle("Translation")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .sheet(isPresented: $showHistory) {
+            NavigationStack {
+                List(searchHistory, id: \.self) { word in
+                    Button {
+                        searchText = word
+                        showHistory = false
+                        performSearch()
+                    } label: {
+                        Text(word)
+                            .foregroundStyle(Color.primary)
+                    }
+                }
+                .navigationTitle("Recent Searches")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") { showHistory = false }
+                    }
+                }
+            }
+        }
     }
 
     // MARK: Top Overlay
@@ -210,6 +240,18 @@ struct TranslationView: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 9)
                 .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
+
+                Button { showHistory = true } label: {
+                    Image(systemName: "clock")
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundStyle(
+                            searchHistory.isEmpty
+                                ? Color.primary.opacity(0.25)
+                                : Color.primary.opacity(0.70)
+                        )
+                }
+                .buttonStyle(.plain)
+                .disabled(searchHistory.isEmpty)
 
                 Button(action: performSearch) {
                     Image(systemName: "arrow.right.circle.fill")
@@ -367,6 +409,13 @@ struct TranslationView: View {
         guard !word.isEmpty else { return }
         searchFocused = false
         viewModel.load(selectedLang.searchURL(for: word))
+        // Append to history (keep last 10, deduplicate)
+        var history = searchHistory
+        history.removeAll { $0 == word }
+        history.insert(word, at: 0)
+        if history.count > 10 { history = Array(history.prefix(10)) }
+        if let data = try? JSONEncoder().encode(history),
+           let json = String(data: data, encoding: .utf8) { historyJSON = json }
     }
 }
 

@@ -73,6 +73,10 @@ struct BMIView: View {
     @State private var result: BodyResult? = nil
     @FocusState private var focused: Int?
 
+    @AppStorage("bmi.lastAge")    private var lastAge:    String = ""
+    @AppStorage("bmi.lastHeight") private var lastHeight: String = ""
+    @AppStorage("bmi.lastWeight") private var lastWeight: String = ""
+
     private var heightLabel: LocalizedStringKey { units == .metric ? "Height (cm)" : "Height (ft)" }
     private var weightLabel: LocalizedStringKey { units == .metric ? "Weight (kg)" : "Weight (lbs)" }
     private var heightPlaceholder: LocalizedStringKey { units == .metric ? "175" : "5.9" }
@@ -94,6 +98,7 @@ struct BMIView: View {
             let hCm = heightM * 100
             bmr = sex == .male ? 10*weightKg + 6.25*hCm - 5*age + 5 : 10*weightKg + 6.25*hCm - 5*age - 161
         } else { bmr = 0 }
+        lastAge = ageText; lastHeight = heightText; lastWeight = weightText
         withAnimation(.spring(response: 0.4)) {
             result = BodyResult(bmi: bmi, bmr: max(0, bmr), category: category, idealMin: idealMin, idealMax: idealMax)
         }
@@ -133,6 +138,7 @@ struct BMIView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onChange(of: units) { _, _ in calculate() }
         .onChange(of: sex)   { _, _ in calculate() }
+        .onAppear { ageText = lastAge; heightText = lastHeight; weightText = lastWeight }
     }
 
     private var background: some View {
@@ -227,6 +233,7 @@ struct BMIView: View {
 
     @ViewBuilder
     private func bmiCard(_ res: BodyResult) -> some View {
+        let shareString = "BMI \(res.bmiString) · Ideal weight: \(kgLbs(res.idealMin)) – \(kgLbs(res.idealMax))"
         VStack(spacing: 16) {
             HStack(alignment: .center, spacing: 20) {
                 VStack(spacing: 4) {
@@ -239,6 +246,23 @@ struct BMIView: View {
                         .font(.caption).foregroundStyle(Color.primary.opacity(0.60))
                 }
                 Spacer()
+                HStack(spacing: 8) {
+                    Button {
+                        UIPasteboard.general.string = shareString
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: shareString) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
             }
             bmiScaleBar(bmi: res.bmi)
         }

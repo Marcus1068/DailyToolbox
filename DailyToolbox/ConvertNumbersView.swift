@@ -397,6 +397,7 @@ struct ConvertNumbersView: View {
             if !text.wrappedValue.isEmpty {
                 Button {
                     UIPasteboard.general.string = text.wrappedValue
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 } label: {
                     Image(systemName: "doc.on.doc")
                         .font(.system(size: 13, weight: .semibold))

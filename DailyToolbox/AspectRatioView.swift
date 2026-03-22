@@ -423,13 +423,28 @@ struct AspectRatioView: View {
         let w = Double(widthText.replacingOccurrences(of: ",", with: ".")) ?? 0
         let h = Double(heightText.replacingOccurrences(of: ",", with: ".")) ?? 0
         let decimal = h > 0 ? String(format: "%.4g", w / h) : "–"
+        let copyText = decimal != "–" ? "\(ratioLabel) · \(decimal)" : ratioLabel
 
         return VStack(spacing: 16) {
             // Big ratio display
-            HStack(alignment: .firstTextBaseline, spacing: 0) {
+            HStack(alignment: .center, spacing: 8) {
                 Text(ratioLabel)
                     .font(.system(size: 42, weight: .bold, design: .rounded))
                     .foregroundStyle(accent)
+                Spacer()
+                Button { UIPasteboard.general.string = copyText } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: copyText) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
             }
             .frame(maxWidth: .infinity)
 

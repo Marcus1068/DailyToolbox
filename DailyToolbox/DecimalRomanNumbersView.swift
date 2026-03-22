@@ -92,6 +92,18 @@ struct DecimalRomanNumbersView: View {
                     VStack(spacing: 18) {
                         headerCard
                         conversionSection
+                        if !decimalText.isEmpty && !romanText.isEmpty && decimalError.isEmpty && errorMsg.isEmpty {
+                            HStack {
+                                Spacer()
+                                ShareLink(item: "Decimal: \(decimalText) = Roman: \(romanText)") {
+                                    Image(systemName: "square.and.arrow.up")
+                                        .font(.system(size: 13, weight: .semibold))
+                                        .foregroundStyle(Color.primary.opacity(0.65))
+                                }
+                                .buttonStyle(.glass)
+                                .accessibilityLabel("Share conversion")
+                            }
+                        }
                         if !errorMsg.isEmpty || !decimalError.isEmpty {
                             errorCard
                         }
@@ -199,6 +211,13 @@ struct DecimalRomanNumbersView: View {
                 Text("1 – 3999")
                     .font(.caption2)
                     .foregroundStyle(Color.primary.opacity(0.30))
+                if !decimalText.isEmpty {
+                    HStack(spacing: 6) {
+                        Button { UIPasteboard.general.string = decimalText } label: {
+                            Image(systemName: "doc.on.doc").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                        }.buttonStyle(.glass).accessibilityLabel("Copy decimal")
+                    }
+                }
             }
             .padding(14)
             .frame(maxWidth: .infinity)
@@ -243,6 +262,13 @@ struct DecimalRomanNumbersView: View {
                 Text("I V X L C D M")
                     .font(.caption2)
                     .foregroundStyle(Color.primary.opacity(0.30))
+                if !romanText.isEmpty {
+                    HStack(spacing: 6) {
+                        Button { UIPasteboard.general.string = romanText } label: {
+                            Image(systemName: "doc.on.doc").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                        }.buttonStyle(.glass).accessibilityLabel("Copy roman")
+                    }
+                }
             }
             .padding(14)
             .frame(maxWidth: .infinity)
@@ -421,7 +447,7 @@ struct DecimalRomanNumbersView: View {
                chars[count-3] == chars[count-2] &&
                chars[count-2] == chars[count-1] {
                 let ch = String(chars[count-4])
-                errorMsg = String(format: "More than three %@ not allowed", ch)
+                errorMsg = String(format: NSLocalizedString("More than three %@ not allowed", comment: ""), ch)
                 chars.removeLast()
                 romanText = String(chars); return
             }
@@ -431,7 +457,7 @@ struct DecimalRomanNumbersView: View {
         if count >= 2 {
             let pair = String([chars[count-2], chars[count-1]])
             if invalidPairs.contains(pair) {
-                errorMsg = String(format: "%@ is not allowed", pair)
+                errorMsg = String(format: NSLocalizedString("%@ is not allowed", comment: ""), pair)
                 chars.removeLast()
                 romanText = String(chars); return
             }

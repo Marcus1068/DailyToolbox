@@ -82,6 +82,11 @@ struct RandomizerView: View {
 
     private let accent = Color(red: 1.00, green: 0.65, blue: 0.20)
 
+    private var rangeIsValid: Bool {
+        guard let lo = Int(minText), let hi = Int(maxText) else { return true }
+        return lo <= hi
+    }
+
     // MARK: Body
 
     var body: some View {
@@ -296,6 +301,14 @@ struct RandomizerView: View {
                             Text("total of \(diceCount) × \(dieType.label)")
                                 .font(.caption).foregroundStyle(Color.primary.opacity(0.45))
                         }
+                        HStack(spacing: 8) {
+                            Button { UIPasteboard.general.string = "\(result)" } label: {
+                                Image(systemName: "doc.on.doc").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass).accessibilityLabel("Copy")
+                            ShareLink(item: "\(result)") {
+                                Image(systemName: "square.and.arrow.up").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass)
+                        }
                     }
                 } else {
                     VStack(spacing: 6) {
@@ -314,6 +327,7 @@ struct RandomizerView: View {
                     .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Roll dice")
         }
         .padding(20)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
@@ -336,12 +350,22 @@ struct RandomizerView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 18)
                     .fill(Color.primary.opacity(0.05))
-                    .frame(height: 100)
+                    .frame(minHeight: 100)
                 if let n = numberResult {
-                    Text("\(n)")
-                        .font(.system(size: 54, weight: .black, design: .rounded))
-                        .foregroundStyle(accent)
-                        .transition(.scale.combined(with: .opacity))
+                    VStack(spacing: 6) {
+                        Text("\(n)")
+                            .font(.system(size: 54, weight: .black, design: .rounded))
+                            .foregroundStyle(accent)
+                            .transition(.scale.combined(with: .opacity))
+                        HStack(spacing: 8) {
+                            Button { UIPasteboard.general.string = "\(n)" } label: {
+                                Image(systemName: "doc.on.doc").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass).accessibilityLabel("Copy")
+                            ShareLink(item: "\(n)") {
+                                Image(systemName: "square.and.arrow.up").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass)
+                        }
+                    }
                 } else {
                     Text("?")
                         .font(.system(size: 54, weight: .black, design: .rounded))
@@ -354,6 +378,11 @@ struct RandomizerView: View {
                 Text("–").font(.title2.weight(.light)).foregroundStyle(Color.primary.opacity(0.40))
                 rangeField(label: "Max", text: $maxText, tag: 2)
             }
+            if !rangeIsValid {
+                Text("Min must be less than or equal to Max")
+                    .font(.caption)
+                    .foregroundStyle(Color.orange)
+            }
 
             Button { generateNumber() } label: {
                 Label("Generate", systemImage: "sparkles")
@@ -364,6 +393,8 @@ struct RandomizerView: View {
                     .background(RoundedRectangle(cornerRadius: 16).fill(accent))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Generate random number")
+            .disabled(!rangeIsValid)
         }
         .padding(20)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
@@ -422,6 +453,14 @@ struct RandomizerView: View {
                             .foregroundStyle(accent)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 12)
+                        HStack(spacing: 8) {
+                            Button { UIPasteboard.general.string = pick } label: {
+                                Image(systemName: "doc.on.doc").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass).accessibilityLabel("Copy")
+                            ShareLink(item: pick) {
+                                Image(systemName: "square.and.arrow.up").font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.65))
+                            }.buttonStyle(.glass)
+                        }
                     }
                     .padding(.vertical, 16)
                 }

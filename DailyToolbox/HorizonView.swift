@@ -396,6 +396,16 @@ struct HorizonView: View {
                 Text(LocalizedStringKey(locationManager.accuracyLabel))
                     .font(.caption2)
                     .foregroundStyle(locationManager.accuracyColor.opacity(0.78))
+                if locationManager.authorizationStatus == .denied ||
+                    locationManager.authorizationStatus == .restricted {
+                    Button("Open Settings") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(blueAccent)
+                }
             }
 
             Spacer()
@@ -491,7 +501,8 @@ struct HorizonView: View {
     // MARK: Result Card
 
     private var resultCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        let shareString = "Horizon: \(String(format: "%.2f", distanceDisplay)) \(unitLabel) · Eye level: \(eyeLevelDisplay) \(eyeLevelUnitLabel)"
+        return VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Horizon Distance")
                     .font(.caption.weight(.semibold))
@@ -523,6 +534,23 @@ struct HorizonView: View {
                     .contentTransition(.identity)
                     .animation(.spring(response: 0.3), value: showMiles)
                 Spacer()
+                HStack(spacing: 8) {
+                    Button {
+                        UIPasteboard.general.string = shareString
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: shareString) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
             }
         }
         .padding(.horizontal, 18)

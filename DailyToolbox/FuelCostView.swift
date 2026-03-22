@@ -67,6 +67,10 @@ struct FuelCostView: View {
     @FocusState private var focused: Int?
     @Environment(\.colorScheme) private var colorScheme
 
+    @AppStorage("fuel.lastDistance")    private var lastDistance:    String = ""
+    @AppStorage("fuel.lastConsumption") private var lastConsumption: String = ""
+    @AppStorage("fuel.lastPrice")       private var lastPrice:       String = ""
+
     private var accent: Color {
         colorScheme == .dark ? Color(red: 0.35, green: 0.90, blue: 0.70)
                              : Color(red: 0.05, green: 0.58, blue: 0.38)
@@ -118,6 +122,7 @@ struct FuelCostView: View {
         }
 
         let totalCost = fuelNeeded * price
+        lastDistance = distanceText; lastConsumption = consumptionText; lastPrice = priceText
         withAnimation(.spring(response: 0.3)) {
             result = FuelResult(fuelNeeded: fuelNeeded, totalCost: totalCost,
                                 costPerUnit: costPerUnit, unit: fuelUnit)
@@ -164,6 +169,7 @@ struct FuelCostView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .onChange(of: fuelUnit) { _, _ in calculate() }
+        .onAppear { distanceText = lastDistance; consumptionText = lastConsumption; priceText = lastPrice }
     }
 
     // MARK: - Background
@@ -303,12 +309,33 @@ struct FuelCostView: View {
 
     @ViewBuilder
     private func resultCard(_ res: FuelResult) -> some View {
+        let shareString = "\(currency(res.totalCost)) total · \(res.fuelString) · \(res.costPerUnitString)"
         VStack(spacing: 0) {
             // Hero: total cost
             VStack(spacing: 6) {
-                Text("Total Trip Cost")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.primary.opacity(0.60))
+                HStack {
+                    Text("Total Trip Cost")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.primary.opacity(0.60))
+                    Spacer()
+                    HStack(spacing: 8) {
+                        Button {
+                            UIPasteboard.general.string = shareString
+                        } label: {
+                            Image(systemName: "doc.on.doc")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(Color.primary.opacity(0.65))
+                        }
+                        .buttonStyle(.glass)
+                        .accessibilityLabel("Copy")
+                        ShareLink(item: shareString) {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(Color.primary.opacity(0.65))
+                        }
+                        .buttonStyle(.glass)
+                    }
+                }
                 Text(currency(res.totalCost))
                     .font(.system(size: 42, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(accent)

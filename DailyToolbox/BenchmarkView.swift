@@ -126,11 +126,15 @@ final class BenchmarkRunner {
     let deviceName = DeviceInfo.getDeviceName()
     let osVersion  = DeviceInfo.getOSVersion()
 
-    private let resultKey = "benchmark.lastResult"
+    private let resultKey = "benchmark.resultHistory"
+
+    fileprivate var resultHistory: [BenchmarkResult] {
+        guard let data = UserDefaults.standard.data(forKey: resultKey) else { return [] }
+        return (try? JSONDecoder().decode([BenchmarkResult].self, from: data)) ?? []
+    }
 
     fileprivate var previousResult: BenchmarkResult? {
-        guard let data = UserDefaults.standard.data(forKey: resultKey) else { return nil }
-        return try? JSONDecoder().decode(BenchmarkResult.self, from: data)
+        resultHistory.dropFirst().first
     }
 
     private func saveResult() {
@@ -143,7 +147,10 @@ final class BenchmarkRunner {
         let result = BenchmarkResult(
             date: Date(), score: score, timings: timings, deviceName: deviceName
         )
-        if let data = try? JSONEncoder().encode(result) {
+        var history = resultHistory
+        history.insert(result, at: 0)
+        if history.count > 10 { history = Array(history.prefix(10)) }
+        if let data = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(data, forKey: resultKey)
         }
     }
@@ -295,6 +302,7 @@ struct BenchmarkView: View {
                         repeatRow
                         runAllButton
                         if !runner.results.isEmpty { timingChart }
+                        if !runner.resultHistory.isEmpty { historySection }
                     }
                     .padding()
                 }
@@ -324,24 +332,32 @@ struct BenchmarkView: View {
             Spacer()
 
             if let score = runner.score {
-                VStack(spacing: 0) {
-                    Text("\(score)")
-                        .font(.system(size: 26, weight: .bold, design: .rounded))
-                        .foregroundStyle(.cyan)
-                    Text("score")
-                        .font(.caption2)
-                        .foregroundStyle(Color.primary.opacity(0.55))
-                    if let prev = runner.previousResult {
-                        let delta = score - prev.score
-                        HStack(spacing: 2) {
-                            Image(systemName: delta >= 0 ? "arrow.up" : "arrow.down")
-                                .font(.system(size: 8, weight: .bold))
-                            Text("\(abs(delta))")
-                                .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                VStack(spacing: 4) {
+                    VStack(spacing: 0) {
+                        Text("\(score)")
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .foregroundStyle(.cyan)
+                        Text("score")
+                            .font(.caption2)
+                            .foregroundStyle(Color.primary.opacity(0.55))
+                        if let prev = runner.previousResult {
+                            let delta = score - prev.score
+                            HStack(spacing: 2) {
+                                Image(systemName: delta >= 0 ? "arrow.up" : "arrow.down")
+                                    .font(.system(size: 8, weight: .bold))
+                                Text("\(abs(delta))")
+                                    .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                            }
+                            .foregroundStyle(delta >= 0 ? Color.green : Color.red)
+                            .transition(.scale.combined(with: .opacity))
                         }
-                        .foregroundStyle(delta >= 0 ? Color.green : Color.red)
-                        .transition(.scale.combined(with: .opacity))
                     }
+                    ShareLink(item: "DailyToolbox Benchmark: \(score) pts on \(runner.deviceName) (iOS \(runner.osVersion))") {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.55))
+                    }
+                    .buttonStyle(.glass)
                 }
                 .transition(.scale.combined(with: .opacity))
             }
@@ -494,6 +510,32 @@ struct BenchmarkView: View {
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .animation(.spring(duration: 0.5), value: runner.results.count)
+    }
+
+    // MARK: - History Section
+
+    private var historySection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Past Runs", systemImage: "clock.arrow.circlepath")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.75))
+                .padding(.bottom, 2)
+            Divider().overlay(Color.primary.opacity(0.15))
+            ForEach(Array(runner.resultHistory.prefix(5).enumerated()), id: \.offset) { _, run in
+                HStack {
+                    Text(run.date, style: .date)
+                        .font(.caption)
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                    Spacer()
+                    Text("\(run.score) pts")
+                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .foregroundStyle(.cyan)
+                }
+            }
+        }
+        .padding()
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
+        .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 }
 

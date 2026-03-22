@@ -83,6 +83,21 @@ struct ColorPickerView: View {
     private var hsbCopyString:  String { "H:\(hueText)°, S:\(satText)%, B:\(briText)%" }
     private var cmykCopyString: String { "C:\(cyanText)%, M:\(magText)%, Y:\(yellowText)%, K:\(blackText)%" }
 
+    private var allFormatsShareString: String {
+        guard rgb != nil else { return "" }
+        return "HEX: \(hexText) · RGB: \(redText), \(greenText), \(blueText) · HSB: \(hueText)°, \(satText)%, \(briText)%"
+    }
+
+    private var hexIsValid: Bool {
+        if hexText.isEmpty { return true }
+        let stripped = hexText.hasPrefix("#") ? String(hexText.dropFirst()) : hexText
+        let hex = String(stripped.prefix(6))
+        return hex.count == 6 &&
+            UInt8(hex.prefix(2), radix: 16) != nil &&
+            UInt8(hex.dropFirst(2).prefix(2), radix: 16) != nil &&
+            UInt8(hex.dropFirst(4).prefix(2), radix: 16) != nil
+    }
+
     // MARK: - Input Filters
 
     private func hexOnly(_ s: String) -> String {
@@ -310,13 +325,24 @@ struct ColorPickerView: View {
                     .foregroundStyle(Color.primary.opacity(0.65))
             }
             Spacer()
-            Button(action: clearAll) {
-                Image(systemName: "arrow.counterclockwise")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Color.primary.opacity(0.75))
-                    .frame(width: 34, height: 34)
+            HStack(spacing: 8) {
+                if rgb != nil {
+                    ShareLink(item: allFormatsShareString) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.75))
+                            .frame(width: 34, height: 34)
+                    }
+                    .buttonStyle(.glass)
+                }
+                Button(action: clearAll) {
+                    Image(systemName: "arrow.counterclockwise")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.75))
+                        .frame(width: 34, height: 34)
+                }
+                .buttonStyle(.glass)
             }
-            .buttonStyle(.glass)
         }
         .padding(18)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
@@ -361,6 +387,11 @@ struct ColorPickerView: View {
                         if filtered != newVal { hexText = filtered; return }
                         parseHex()
                     }
+                if !hexIsValid {
+                    Text("Invalid hex (#RRGGBB)")
+                        .font(.caption2)
+                        .foregroundStyle(Color.orange)
+                }
             }
         }
         .padding(.horizontal, 18)
@@ -391,11 +422,14 @@ struct ColorPickerView: View {
 
             HStack(spacing: 12) {
                 colorField(label: "R", placeholder: "0", text: $redText,
-                           fieldId: "rgb-r", accent: rgbAccent, guardPrefix: "rgb-") { parseRGB() }
+                           fieldId: "rgb-r", accent: rgbAccent, guardPrefix: "rgb-",
+                           hint: "(0–255)") { parseRGB() }
                 colorField(label: "G", placeholder: "0", text: $greenText,
-                           fieldId: "rgb-g", accent: rgbAccent, guardPrefix: "rgb-") { parseRGB() }
+                           fieldId: "rgb-g", accent: rgbAccent, guardPrefix: "rgb-",
+                           hint: "(0–255)") { parseRGB() }
                 colorField(label: "B", placeholder: "0", text: $blueText,
-                           fieldId: "rgb-b", accent: rgbAccent, guardPrefix: "rgb-") { parseRGB() }
+                           fieldId: "rgb-b", accent: rgbAccent, guardPrefix: "rgb-",
+                           hint: "(0–255)") { parseRGB() }
             }
         }
         .padding(.horizontal, 18)
@@ -426,11 +460,14 @@ struct ColorPickerView: View {
 
             HStack(spacing: 12) {
                 colorField(label: "H°", placeholder: "0.0", text: $hueText,
-                           fieldId: "hsb-h", accent: hsbAccent, guardPrefix: "hsb-") { parseHSB() }
+                           fieldId: "hsb-h", accent: hsbAccent, guardPrefix: "hsb-",
+                           hint: "(0–360)") { parseHSB() }
                 colorField(label: "S%", placeholder: "0.0", text: $satText,
-                           fieldId: "hsb-s", accent: hsbAccent, guardPrefix: "hsb-") { parseHSB() }
+                           fieldId: "hsb-s", accent: hsbAccent, guardPrefix: "hsb-",
+                           hint: "(0–100)") { parseHSB() }
                 colorField(label: "B%", placeholder: "0.0", text: $briText,
-                           fieldId: "hsb-b", accent: hsbAccent, guardPrefix: "hsb-") { parseHSB() }
+                           fieldId: "hsb-b", accent: hsbAccent, guardPrefix: "hsb-",
+                           hint: "(0–100)") { parseHSB() }
             }
         }
         .padding(.horizontal, 18)
@@ -461,13 +498,17 @@ struct ColorPickerView: View {
 
             HStack(spacing: 8) {
                 colorField(label: "C", placeholder: "0.0", text: $cyanText,
-                           fieldId: "cmyk-c", accent: cmykAccent, guardPrefix: "cmyk-") { parseCMYK() }
+                           fieldId: "cmyk-c", accent: cmykAccent, guardPrefix: "cmyk-",
+                           hint: "(0–100)") { parseCMYK() }
                 colorField(label: "M", placeholder: "0.0", text: $magText,
-                           fieldId: "cmyk-m", accent: cmykAccent, guardPrefix: "cmyk-") { parseCMYK() }
+                           fieldId: "cmyk-m", accent: cmykAccent, guardPrefix: "cmyk-",
+                           hint: "(0–100)") { parseCMYK() }
                 colorField(label: "Y", placeholder: "0.0", text: $yellowText,
-                           fieldId: "cmyk-y", accent: cmykAccent, guardPrefix: "cmyk-") { parseCMYK() }
+                           fieldId: "cmyk-y", accent: cmykAccent, guardPrefix: "cmyk-",
+                           hint: "(0–100)") { parseCMYK() }
                 colorField(label: "K", placeholder: "0.0", text: $blackText,
-                           fieldId: "cmyk-k", accent: cmykAccent, guardPrefix: "cmyk-") { parseCMYK() }
+                           fieldId: "cmyk-k", accent: cmykAccent, guardPrefix: "cmyk-",
+                           hint: "(0–100)") { parseCMYK() }
             }
         }
         .padding(.horizontal, 18)
@@ -485,12 +526,20 @@ struct ColorPickerView: View {
         fieldId: String,
         accent: Color,
         guardPrefix: String,
+        hint: String? = nil,
         onChange parseGroup: @escaping () -> Void
     ) -> some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(accent.opacity(0.7))
+            HStack(spacing: 3) {
+                Text(label)
+                    .font(.caption2)
+                    .foregroundStyle(accent.opacity(0.7))
+                if let hint {
+                    Text(hint)
+                        .font(.caption2)
+                        .foregroundStyle(Color.primary.opacity(0.35))
+                }
+            }
             TextField(placeholder, text: text)
                 .keyboardType(.decimalPad)
                 .focused($focusedId, equals: fieldId)

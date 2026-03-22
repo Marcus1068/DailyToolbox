@@ -46,6 +46,21 @@ private struct RateSnapshot: Codable {
     let rate:     Double
 }
 
+// MARK: - Load State
+
+private enum ConverterLoadState {
+    case loading
+    case loaded
+    case failed(String)
+}
+
+private enum CurrencyLoadError: LocalizedError {
+    case noRates
+    var errorDescription: String? {
+        "Could not load exchange rates. Please check your internet connection."
+    }
+}
+
 // MARK: - Sparkline Shape
 
 private struct SparklineShape: Shape {
@@ -123,7 +138,8 @@ private struct CurrencyPickerSheet: View {
 struct CurrencyConverterView: View {
 
     @State private var cvt: CurrencyConverter?
-    @State private var isLoading = true
+    @State private var loadState: ConverterLoadState = .loading
+    @State private var showClearHistoryConfirm = false
     @AppStorage("currency.from")          private var fromCurrency    = "EUR"
     @AppStorage("currency.to")            private var toCurrency      = "USD"
     @AppStorage("currency.amount")        private var amountText      = "1.00"
@@ -152,7 +168,7 @@ struct CurrencyConverterView: View {
     /// Preview-only init: skips the network load and pre-populates with mock data.
     fileprivate init(preview cvt: CurrencyConverter) {
         _cvt = State(initialValue: cvt)
-        _isLoading = State(initialValue: false)
+        _loadState = State(initialValue: .loaded)
         _toCurrency = AppStorage(wrappedValue: "USD", "currency.to")
     }
 #endif
@@ -176,6 +192,10 @@ struct CurrencyConverterView: View {
 
     private var resultFormatted: String {
         result.map { $0.formatted(.number.precision(.fractionLength(2))) } ?? "—"
+    }
+
+    private var resultShareText: String {
+        "\(amountText) \(fromCurrency) = \(resultFormatted) \(toCurrency)"
     }
 
     // MARK: History helpers
@@ -247,9 +267,12 @@ struct CurrencyConverterView: View {
     var body: some View {
         ZStack {
             background
-            if isLoading {
+            switch loadState {
+            case .loading:
                 loadingView
-            } else {
+            case .failed(let message):
+                errorView(message)
+            case .loaded:
                 GlassEffectContainer {
                     ScrollView {
                         VStack(spacing: 20) {
@@ -292,6 +315,10 @@ struct CurrencyConverterView: View {
         .sheet(isPresented: $showToPicker) {
             CurrencyPickerSheet(currencies: currencies, selected: $toCurrency)
         }
+        .confirmationDialog("Clear conversion history?", isPresented: $showClearHistoryConfirm) {
+            Button("Clear All", role: .destructive) { clearHistory() }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 
     // MARK: - Background
@@ -328,7 +355,7 @@ struct CurrencyConverterView: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(purpleAccent)
                 Spacer()
-                Button(action: clearHistory) {
+                Button { showClearHistoryConfirm = true } label: {
                     Text("Clear")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color.primary.opacity(0.50))
@@ -403,6 +430,23 @@ struct CurrencyConverterView: View {
             Text("Fetching rates…")
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(Color.primary.opacity(0.75))
+        }
+    }
+
+    private func errorView(_ message: String) -> some View {
+        VStack(spacing: 20) {
+            Image(systemName: "wifi.exclamationmark")
+                .font(.system(size: 44, weight: .medium))
+                .foregroundStyle(Color.primary.opacity(0.45))
+            Text(message)
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Color.primary.opacity(0.65))
+                .padding(.horizontal, 32)
+            Button("Retry") {
+                Task { await loadConverter() }
+            }
+            .buttonStyle(.glass)
         }
     }
 
@@ -541,12 +585,35 @@ struct CurrencyConverterView: View {
 
     private var resultCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label(
-                "Result",
-                systemImage: "equal.circle"
-            )
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(Color.primary.opacity(0.70))
+            HStack {
+                Label(
+                    "Result",
+                    systemImage: "equal.circle"
+                )
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.70))
+
+                Spacer()
+
+                if result != nil {
+                    Button {
+                        UIPasteboard.general.string = resultShareText
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+
+                    ShareLink(item: resultShareText) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(resultFormatted)
@@ -686,14 +753,22 @@ struct CurrencyConverterView: View {
 
     @MainActor
     private func loadConverter() async {
-        let converter = await CurrencyConverter.load()
-        cvt = converter
-        let list = converter.getCurrencyStrings()
-        // Only fall back to defaults if the saved codes are not in the loaded list
-        if !list.contains(fromCurrency), let first = list.first { fromCurrency = first }
-        if !list.contains(toCurrency),  list.count > 1            { toCurrency  = list[1] }
-        isLoading = false
-        recordRateSnapshot()
+        loadState = .loading
+        do {
+            let converter = await CurrencyConverter.load()
+            let list = converter.getCurrencyStrings()
+            guard !list.isEmpty else {
+                throw CurrencyLoadError.noRates
+            }
+            cvt = converter
+            // Only fall back to defaults if the saved codes are not in the loaded list
+            if !list.contains(fromCurrency), let first = list.first { fromCurrency = first }
+            if !list.contains(toCurrency),  list.count > 1            { toCurrency  = list[1] }
+            loadState = .loaded
+            recordRateSnapshot()
+        } catch {
+            loadState = .failed(error.localizedDescription)
+        }
     }
 }
 

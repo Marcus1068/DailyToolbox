@@ -132,6 +132,9 @@ struct InterestRateView: View {
         case .rate:     return orangeAccent
         }
     }
+    @AppStorage("ir_interest") private var storedInterest: String = ""
+    @AppStorage("ir_capital")  private var storedCapital:  String = ""
+    @AppStorage("ir_rate")     private var storedRate:     String = ""
     @State private var interestText: String = ""
     @State private var capitalText:  String = ""
     @State private var rateText:     String = ""
@@ -153,6 +156,10 @@ struct InterestRateView: View {
         let z = Double(sanitize(interestText))
         let k = Double(sanitize(capitalText))
         let r = Double(sanitize(rateText))
+
+        if let zi = z, zi < 0 { solvedField = nil; return }
+        if let ka = k, ka < 0 { solvedField = nil; return }
+        if let ra = r, ra < 0 { solvedField = nil; return }
 
         var solved: InterestField? = nil
 
@@ -183,6 +190,9 @@ struct InterestRateView: View {
 
         if solved != nil {
             solvedField = solved
+            storedInterest = interestText
+            storedCapital  = capitalText
+            storedRate     = rateText
             withAnimation(.spring(response: 0.25, dampingFraction: 0.6)) { resultPulse = 1.08 }
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(250))
@@ -196,6 +206,7 @@ struct InterestRateView: View {
             interestText = ""; capitalText = ""; rateText = ""
             solvedField  = nil
         }
+        storedInterest = ""; storedCapital = ""; storedRate = ""
     }
 
     // MARK: Body
@@ -226,6 +237,11 @@ struct InterestRateView: View {
             .accessibilityAddTraits(.isButton)
 
             .accessibilityLabel("Dismiss keyboard")
+        }
+        .onAppear {
+            if interestText.isEmpty { interestText = storedInterest }
+            if capitalText.isEmpty  { capitalText  = storedCapital  }
+            if rateText.isEmpty     { rateText     = storedRate     }
         }
         .navigationTitle("Interest Rate")
         .navigationBarTitleDisplayMode(.inline)
@@ -466,6 +482,21 @@ struct InterestRateView: View {
                     .foregroundStyle(Color.primary.opacity(0.45))
             }
             Spacer()
+            HStack(spacing: 8) {
+                Button { UIPasteboard.general.string = resultCopyText } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: resultCopyText) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+            }
         }
         .padding(16)
         .glassEffect(
@@ -473,6 +504,16 @@ struct InterestRateView: View {
             in: RoundedRectangle(cornerRadius: 16)
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
+    }
+
+    private var resultCopyText: String {
+        let z = Double(sanitize(interestText)) ?? 0
+        let k = Double(sanitize(capitalText))  ?? 0
+        let r = Double(sanitize(rateText))     ?? 0
+        let zFmt = z.formatted(.number.precision(.fractionLength(2)))
+        let kFmt = k.formatted(.number.precision(.fractionLength(2)))
+        let rFmt = r.formatted(.number.precision(.fractionLength(2)))
+        return "Interest: \(zFmt) · Rate: \(rFmt)% · Capital: \(kFmt)"
     }
 
     private var resultSummary: String {

@@ -459,6 +459,13 @@ struct SunriseView: View {
         return String(format: "%dh %02dm", h, m)
     }
 
+    private var solarCopyText: String? {
+        guard let t = solarTimes,
+              let rise = t.sunrise,
+              let set  = t.sunset else { return nil }
+        return "Sunrise: \(timeFormatter.string(from: rise)) · Sunset: \(timeFormatter.string(from: set)) · Day length: \(dayLengthText)"
+    }
+
     private var nextEventText: String? {
         guard let t = solarTimes else { return nil }
         let events: [(Date?, String)] = [
@@ -572,6 +579,13 @@ struct SunriseView: View {
                     Text("Location permission needed")
                         .font(.caption)
                         .foregroundStyle(Color.primary.opacity(0.50))
+                    if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
+                        Button("Open Settings") {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(goldAccent)
+                    }
                 } else {
                     Text(now, style: .date)
                         .font(.caption)
@@ -610,13 +624,33 @@ struct SunriseView: View {
     // MARK: Times Grid
 
     private var timesGrid: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
-            sunEventCell(icon: "moon.stars.fill",   label: "Civil Dawn",  time: solarTimes?.civilDawn,   accent: purpleAccent)
-            sunEventCell(icon: "sunrise.fill",       label: "Sunrise",     time: solarTimes?.sunrise,     accent: roseAccent)
-            sunEventCell(icon: "sun.max.fill",       label: "Solar Noon",  time: solarTimes?.solarNoon,   accent: goldAccent)
-            sunEventCell(icon: "sunset.fill",        label: "Sunset",      time: solarTimes?.sunset,      accent: roseAccent)
-            sunEventCell(icon: "moon.fill",          label: "Civil Dusk",  time: solarTimes?.civilDusk,   accent: purpleAccent)
-            sunEventCell(icon: "clock.fill",         label: "Day Length",  displayText: dayLengthText,    accent: blueAccent)
+        VStack(spacing: 14) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
+                sunEventCell(icon: "moon.stars.fill",   label: "Civil Dawn",  time: solarTimes?.civilDawn,   accent: purpleAccent)
+                sunEventCell(icon: "sunrise.fill",       label: "Sunrise",     time: solarTimes?.sunrise,     accent: roseAccent)
+                sunEventCell(icon: "sun.max.fill",       label: "Solar Noon",  time: solarTimes?.solarNoon,   accent: goldAccent)
+                sunEventCell(icon: "sunset.fill",        label: "Sunset",      time: solarTimes?.sunset,      accent: roseAccent)
+                sunEventCell(icon: "moon.fill",          label: "Civil Dusk",  time: solarTimes?.civilDusk,   accent: purpleAccent)
+                sunEventCell(icon: "clock.fill",         label: "Day Length",  displayText: dayLengthText,    accent: blueAccent)
+            }
+            if let copyText = solarCopyText {
+                HStack(spacing: 8) {
+                    Spacer()
+                    Button { UIPasteboard.general.string = copyText } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: copyText) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
         }
     }
 

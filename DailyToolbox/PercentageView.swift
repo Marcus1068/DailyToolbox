@@ -25,6 +25,7 @@ limitations under the License.
 //
 
 import SwiftUI
+import UIKit
 
 // MARK: - Field identity
 
@@ -78,6 +79,7 @@ struct PercentageView: View {
     @State private var resultScale: CGFloat = 1.0
     @FocusState private var focusedField: PercentField?
     @AppStorage("percent.history") private var historyJSON = "[]"
+    @State private var showClearHistoryConfirm = false
 
     init(previewRate: String = "", previewValue: String = "", previewBase: String = "") {
         _rateText  = State(initialValue: previewRate)
@@ -244,6 +246,10 @@ struct PercentageView: View {
         .task(id: "\(rateText)|\(valueText)|\(baseText)") {
             do { try await Task.sleep(for: .seconds(2)) } catch { return }
             if solvedField != nil { recordHistory() }
+        }
+        .confirmationDialog("Clear all history?", isPresented: $showClearHistoryConfirm) {
+            Button("Clear All", role: .destructive) { clearHistory() }
+            Button("Cancel", role: .cancel) {}
         }
     }
 
@@ -483,8 +489,24 @@ struct PercentageView: View {
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(Color.primary)
                 .fixedSize(horizontal: false, vertical: true)
+            Spacer()
+            HStack(spacing: 8) {
+                Button { UIPasteboard.general.string = resultSummary } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+                .accessibilityLabel("Copy")
+                ShareLink(item: resultSummary) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color.primary.opacity(0.65))
+                }
+                .buttonStyle(.glass)
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity)
         .padding(16)
         .glassEffect(.regular.tint(tealGlass), in: RoundedRectangle(cornerRadius: 16))
         .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -509,7 +531,7 @@ struct PercentageView: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(tealAccent)
                 Spacer()
-                Button(action: clearHistory) {
+                Button { showClearHistoryConfirm = true } label: {
                     Text("Clear")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color.primary.opacity(0.50))

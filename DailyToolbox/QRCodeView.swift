@@ -98,6 +98,7 @@ struct QRCodeView: View {
     @AppStorage("qr.emailBody")     private var emailBody = ""
 
     @State private var copied = false
+    @State private var payloadCopied = false
     @FocusState private var focusedField: String?
 
     // MARK: Payload
@@ -185,6 +186,7 @@ struct QRCodeView: View {
         .onChange(of: qrType) { _, _ in
             focusedField = nil
             copied = false
+            payloadCopied = false
         }
     }
 
@@ -282,6 +284,7 @@ struct QRCodeView: View {
                         )
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(type.label)
                 }
             }
             .padding(.horizontal, 8)
@@ -336,10 +339,17 @@ struct QRCodeView: View {
                       keyboard: .default, accent: QRType.wifi.accentColor)
 
             if wifiSecurity != .none {
-                formField(id: "wifipass", label: "Password", icon: "lock.fill",
-                          placeholder: "••••••••", text: $wifiPassword,
-                          keyboard: .default, accent: QRType.wifi.accentColor,
-                          secure: true)
+                VStack(alignment: .leading, spacing: 4) {
+                    formField(id: "wifipass", label: "Password", icon: "lock.fill",
+                              placeholder: "••••••••", text: $wifiPassword,
+                              keyboard: .default, accent: QRType.wifi.accentColor,
+                              secure: true)
+                    if wifiPassword.count < 8 {
+                        Text("WPA password must be at least 8 characters")
+                            .font(.caption2)
+                            .foregroundStyle(Color.orange)
+                    }
+                }
             }
 
             VStack(alignment: .leading, spacing: 8) {
@@ -441,6 +451,22 @@ struct QRCodeView: View {
             Text("\(payload.count) characters")
                 .font(.caption2.monospacedDigit())
                 .foregroundStyle(Color.primary.opacity(0.35))
+
+            Button {
+                UIPasteboard.general.string = payload
+                withAnimation(.spring(response: 0.25)) { payloadCopied = true }
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(2))
+                    withAnimation { payloadCopied = false }
+                }
+            } label: {
+                Label(payloadCopied ? "Text Copied!" : "Copy Text",
+                      systemImage: payloadCopied ? "checkmark.circle.fill" : "doc.on.doc")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(payloadCopied ? Color(red: 0.40, green: 1.00, blue: 0.60) : Color.primary.opacity(0.65))
+            }
+            .buttonStyle(.glass)
+            .accessibilityLabel("Copy")
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 18)

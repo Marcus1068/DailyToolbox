@@ -95,6 +95,10 @@ struct LoanCalculatorView: View {
         return f.string(from: NSNumber(value: v)) ?? String(format: "%.2f", v)
     }
 
+    private func loanResultCopyText(_ res: LoanResult) -> String {
+        "Monthly: \(currency(res.monthlyPayment)) · Total: \(currency(res.totalPaid)) · Interest: \(currency(res.totalInterest))"
+    }
+
     var body: some View {
         ZStack {
             background
@@ -154,7 +158,7 @@ struct LoanCalculatorView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Loan Details").font(.subheadline.weight(.bold)).foregroundStyle(accent)
             loanField(label: "Loan Amount", placeholder: "100000", text: $principalText, focusTag: 1, prefix: "💰")
-            loanField(label: "Annual Interest Rate (%)", placeholder: "3.5", text: $rateText, focusTag: 2, prefix: "📈")
+            loanField(label: "Annual Interest Rate (%)", placeholder: "3.5", text: $rateText, focusTag: 2, prefix: "📈", suffix: "%")
             VStack(alignment: .leading, spacing: 6) {
                 Text("Loan Term").font(.caption.weight(.semibold)).foregroundStyle(accent.opacity(0.80))
                 HStack(spacing: 10) {
@@ -193,7 +197,7 @@ struct LoanCalculatorView: View {
     }
 
     @ViewBuilder
-    private func loanField(label: LocalizedStringKey, placeholder: LocalizedStringKey, text: Binding<String>, focusTag: Int, prefix: String) -> some View {
+    private func loanField(label: LocalizedStringKey, placeholder: LocalizedStringKey, text: Binding<String>, focusTag: Int, prefix: String, suffix: String? = nil) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(label).font(.caption.weight(.semibold)).foregroundStyle(accent.opacity(0.80))
             HStack(spacing: 10) {
@@ -201,6 +205,11 @@ struct LoanCalculatorView: View {
                 TextField(placeholder, text: text).keyboardType(.decimalPad).focused($focused, equals: focusTag)
                     .font(.title3.weight(.semibold).monospacedDigit()).foregroundStyle(Color.primary).tint(accent)
                     .onChange(of: text.wrappedValue) { _, _ in guard focused == focusTag else { return }; calculate() }
+                if let suffix {
+                    Text(suffix)
+                        .font(.title3.weight(.semibold))
+                        .foregroundStyle(Color.primary.opacity(0.45))
+                }
             }
             .padding(12).background(RoundedRectangle(cornerRadius: 12).fill(Color.primary.opacity(0.07)))
         }
@@ -209,6 +218,25 @@ struct LoanCalculatorView: View {
     @ViewBuilder
     private func resultCard(_ res: LoanResult) -> some View {
         VStack(spacing: 0) {
+            HStack {
+                Spacer()
+                HStack(spacing: 8) {
+                    Button { UIPasteboard.general.string = loanResultCopyText(res) } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                    .accessibilityLabel("Copy")
+                    ShareLink(item: loanResultCopyText(res)) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
+            .padding(.horizontal, 18).padding(.top, 12)
             VStack(spacing: 6) {
                 Text("Monthly Payment").font(.caption.weight(.semibold)).foregroundStyle(Color.primary.opacity(0.60))
                 Text(currency(res.monthlyPayment))
@@ -241,10 +269,27 @@ struct LoanCalculatorView: View {
                     .frame(height: 12)
                 }
                 .frame(height: 12)
+                HStack(spacing: 16) {
+                    legendChip(color: principalBarColor, label: "Principal")
+                    legendChip(color: interestBarColor, label: "Interest")
+                    Spacer()
+                }
             }
             .padding(.horizontal, 18).padding(.vertical, 14)
         }
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
+    }
+
+    @ViewBuilder
+    private func legendChip(color: Color, label: LocalizedStringKey) -> some View {
+        HStack(spacing: 4) {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(color)
+                .frame(width: 10, height: 10)
+            Text(label)
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.55))
+        }
     }
 
     @ViewBuilder
