@@ -159,7 +159,9 @@ struct MasterView: View {
         let q = searchText.trimmingCharacters(in: .whitespaces).lowercased()
         guard !q.isEmpty else { return [] }
         return ToolSection.catalogue.flatMap(\.items).filter {
-            $0.name.lowercased().contains(q) || $0.subtitle.lowercased().contains(q)
+            let name = NSLocalizedString($0.name, comment: "").lowercased()
+            let subtitle = NSLocalizedString($0.subtitle, comment: "").lowercased()
+            return name.contains(q) || subtitle.contains(q)
         }
     }
 
