@@ -509,7 +509,7 @@ struct GermanHolidaysView: View {
             .frame(width: 52, height: 52)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(currentCountry.name + " Holidays")
+                Text(LocalizedStringKey(currentCountry.name))
                     .font(.headline.weight(.bold)).foregroundStyle(Color.primary)
                 Text("Public holidays & regional celebrations")
                     .font(.caption).foregroundStyle(Color.primary.opacity(0.65))
@@ -536,7 +536,7 @@ struct GermanHolidaysView: View {
                     } label: {
                         HStack(spacing: 6) {
                             Text(country.flag).font(.title3)
-                            Text(country.name)
+                            Text(LocalizedStringKey(country.name))
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundStyle(savedCountry == country.code ? .black : Color.primary.opacity(0.75))
                         }
@@ -567,7 +567,7 @@ struct GermanHolidaysView: View {
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(accent)
                     VStack(alignment: .leading, spacing: 1) {
-                        Text(savedCountry == "DE" ? "Federal State" : "Region")
+                        Text(savedCountry == "DE" ? LocalizedStringKey("Federal State") : LocalizedStringKey("Region"))
                             .font(.system(size: 10, weight: .semibold))
                             .foregroundStyle(Color.primary.opacity(0.50))
                         Text(selectedRegion.name)

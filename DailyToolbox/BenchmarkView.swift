@@ -262,9 +262,10 @@ final class BenchmarkRunner {
                         device const float* a [[ buffer(0) ]],
                         device const float* b [[ buffer(1) ]],
                         device float* out     [[ buffer(2) ]],
+                        constant uint& count  [[ buffer(3) ]],
                         uint i                [[ thread_position_in_grid ]]
                     ) {
-                        out[i] = metal::sin(a[i]) + metal::cos(b[i]);
+                        if (i < count) { out[i] = metal::sin(a[i]) + metal::cos(b[i]); }
                     }
                     """
                     guard let lib    = try? await device.makeLibrary(source: shaderSrc, options: nil),
@@ -286,14 +287,15 @@ final class BenchmarkRunner {
                     enc.setBuffer(bufA,   offset: 0, index: 0)
                     enc.setBuffer(bufB,   offset: 0, index: 1)
                     enc.setBuffer(bufOut, offset: 0, index: 2)
-                    let tg   = MTLSize(width: pso.threadExecutionWidth, height: 1, depth: 1)
-                    let grid = MTLSize(width: count, height: 1, depth: 1)
-                    enc.dispatchThreads(grid, threadsPerThreadgroup: tg)
+                    var countU = UInt32(count)
+                    enc.setBytes(&countU, length: MemoryLayout<UInt32>.size, index: 3)
+                    let tg   = MTLSize(width: max(1, pso.threadExecutionWidth), height: 1, depth: 1)
+                    let tgCount = (count + tg.width - 1) / tg.width
+                    let grid = MTLSize(width: tgCount, height: 1, depth: 1)
+                    enc.dispatchThreadgroups(grid, threadsPerThreadgroup: tg)
                     enc.endEncoding()
-                    await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
-                        cmd.addCompletedHandler { _ in cont.resume() }
-                        cmd.commit()
-                    }
+                    cmd.commit()
+                    _ = await cmd.completed()
                     gpuElapsed = Date().timeIntervalSince(gpuStart)
                 }
                 last = gpuElapsed ?? Date().timeIntervalSince(start)

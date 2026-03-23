@@ -360,11 +360,11 @@ struct ElementDetailView: View {
             Divider().background(.white.opacity(0.15))
             detailRow(label: "Period",         value: "\(element.period)")
             Divider().background(.white.opacity(0.15))
-            detailRow(label: "Group",          value: element.group == 0 ? "f-block" : "\(element.group)")
+            detailRow(label: "Group",          value: element.group == 0 ? NSLocalizedString("f-block", comment: "") : "\(element.group)")
             Divider().background(.white.opacity(0.15))
-            detailRow(label: "Category",       value: element.category.rawValue, accent: element.category.color)
+            detailRow(label: "Category",       value: NSLocalizedString(element.category.rawValue, comment: ""), accent: element.category.color)
             Divider().background(.white.opacity(0.15))
-            detailRow(label: "State (25 °C)",  value: element.state.rawValue, icon: element.state.icon)
+            detailRow(label: "State (25 °C)",  value: NSLocalizedString(element.state.rawValue, comment: ""), icon: element.state.icon)
             if let en = element.electronegativity {
                 Divider().background(.white.opacity(0.15))
                 detailRow(label: "Electronegativity", value: String(format: "%.2f (Pauling)", en))
@@ -389,7 +389,7 @@ struct ElementDetailView: View {
     }
 
     @ViewBuilder
-    private func detailRow(label: String, value: String, accent: Color? = nil, icon: String? = nil) -> some View {
+    private func detailRow(label: LocalizedStringKey, value: String, accent: Color? = nil, icon: String? = nil) -> some View {
         HStack {
             Text(label)
                 .font(.subheadline)
@@ -429,7 +429,7 @@ struct CategoryLegendView: View {
                         RoundedRectangle(cornerRadius: 3)
                             .fill(cat.color)
                             .frame(width: 11, height: 11)
-                        Text(cat.rawValue)
+                        Text(LocalizedStringKey(cat.rawValue))
                             .font(.caption)
                             .foregroundStyle(.white.opacity(0.82))
                     }
