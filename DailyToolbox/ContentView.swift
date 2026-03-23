@@ -33,18 +33,17 @@ struct ContentView: View {
     // Mac/iPad: both columns visible by default
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
+    /// True on Mac Catalyst (regardless of reported size class) and on iPad.
+    private var useSplitView: Bool {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        return sizeClass != .compact
+        #endif
+    }
+
     var body: some View {
-        if sizeClass == .compact {
-            // ── iPhone ───────────────────────────────────────────────
-            // Button in ToolCard appends to navPath; NavigationStack
-            // resolves the destination in the same navigation context.
-            NavigationStack(path: $navPath) {
-                MasterView { item in navPath.append(item) }
-                    .navigationDestination(for: ToolItem.self) { item in
-                        toolDetailView(for: item)
-                    }
-            }
-        } else {
+        if useSplitView {
             // ── iPad / Mac Catalyst ──────────────────────────────────
             // Button in ToolCard sets selectedItem; detail column
             // re-renders immediately — no cross-column link magic needed.
@@ -58,6 +57,16 @@ struct ContentView: View {
                 }
             }
             .navigationSplitViewStyle(.balanced)
+        } else {
+            // ── iPhone ───────────────────────────────────────────────
+            // Button in ToolCard appends to navPath; NavigationStack
+            // resolves the destination in the same navigation context.
+            NavigationStack(path: $navPath) {
+                MasterView { item in navPath.append(item) }
+                    .navigationDestination(for: ToolItem.self) { item in
+                        toolDetailView(for: item)
+                    }
+            }
         }
     }
 
