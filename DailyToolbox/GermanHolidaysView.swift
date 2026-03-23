@@ -266,6 +266,12 @@ struct GermanHolidaysView: View {
     @AppStorage("germanHolidays.leaveDays")    private var leaveDaysTotal:      Int    = 30
     @AppStorage("germanHolidays.bookedBridges")private var bookedBridgesStr:    String = ""
     @AppStorage("holidays.selectedCountry")    private var savedCountry:        String = "DE"
+    @AppStorage("holidays.selectedTab")        private var savedTabRaw:         String = HolidayTab.publicHolidays.rawValue
+
+    private var tab: HolidayTab {
+        get { HolidayTab(rawValue: savedTabRaw) ?? .publicHolidays }
+        set { savedTabRaw = newValue.rawValue }
+    }
 
     private var currentRegions: [(code: String, name: String)] {
         countryRegions[savedCountry] ?? []
@@ -285,7 +291,6 @@ struct GermanHolidaysView: View {
         savedCountry == "DE" ? HolidayTab.allCases : [.publicHolidays]
     }
 
-    @State private var tab: HolidayTab = .publicHolidays
     @State private var showStatePicker  = false
     @State private var showExportConfirm = false
     @State private var showExportResult  = false
@@ -531,7 +536,7 @@ struct GermanHolidaysView: View {
                         let newState = countryRegions[country.code]?.first?.code ?? ""
                         savedCountry = country.code
                         savedStateCode = newState
-                        if country.code != "DE" { tab = .publicHolidays }
+                        if country.code != "DE" { savedTabRaw = HolidayTab.publicHolidays.rawValue }
                         Task { await vm.load(countryCode: country.code, stateCode: newState, year: savedYear) }
                     } label: {
                         HStack(spacing: 6) {
@@ -681,7 +686,7 @@ struct GermanHolidaysView: View {
         HStack(spacing: 8) {
             ForEach(availableTabs, id: \.self) { t in
                 let sel = tab == t
-                Button { withAnimation(.spring(response: 0.3)) { tab = t } } label: {
+                Button { withAnimation(.spring(response: 0.3)) { savedTabRaw = t.rawValue } } label: {
                     HStack(spacing: 6) {
                         Image(systemName: t.icon).font(.system(size: 11, weight: .semibold))
                         if t == .bridgeDays, case .loaded = vm.loadState, !bridgeSuggestions.isEmpty {
