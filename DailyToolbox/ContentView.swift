@@ -30,6 +30,8 @@ struct ContentView: View {
     @State private var selectedItem: ToolItem? = ToolSection.catalogue.first?.items.first
     // iPhone: explicit path so Button taps push onto the stack
     @State private var navPath = NavigationPath()
+    // Mac/iPad: both columns visible by default
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {
         if sizeClass == .compact {
@@ -46,7 +48,7 @@ struct ContentView: View {
             // ── iPad / Mac Catalyst ──────────────────────────────────
             // Button in ToolCard sets selectedItem; detail column
             // re-renders immediately — no cross-column link magic needed.
-            NavigationSplitView {
+            NavigationSplitView(columnVisibility: $columnVisibility) {
                 MasterView { item in selectedItem = item }
             } detail: {
                 if let item = selectedItem {
@@ -55,6 +57,7 @@ struct ContentView: View {
                     ToolPlaceholder()
                 }
             }
+            .navigationSplitViewStyle(.balanced)
         }
     }
 
