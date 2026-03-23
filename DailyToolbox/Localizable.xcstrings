@@ -9079,7 +9079,40 @@
         }
       }
     },
-    "Fuel Type" : {},
+    "Fuel Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kraftstofftyp"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brændstoftype"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de combustible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de carburant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di carburante"
+          }
+        }
+      }
+    },
     "Full Moon" : {
       "extractionState" : "manual",
       "localizations" : {
