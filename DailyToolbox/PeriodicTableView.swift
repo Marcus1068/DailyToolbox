@@ -600,12 +600,18 @@ struct PeriodicTableView: View {
                             onSelect: { selectedElement = $0 }
                         )
                     }
+                    .clipped()
                     Divider().background(.white.opacity(0.15))
-                    CategoryLegendView()
-                    Divider().background(.white.opacity(0.15))
-                    molarMassCard
-                        .padding(.horizontal, 14)
-                        .padding(.bottom, 8)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 0) {
+                            CategoryLegendView()
+                            Divider().background(.white.opacity(0.15))
+                            molarMassCard
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 8)
+                        }
+                    }
+                    .frame(maxHeight: 320)
                     Divider().background(.white.opacity(0.15))
                     zoomControl
                 } else {
