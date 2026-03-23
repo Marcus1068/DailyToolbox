@@ -184,11 +184,13 @@ final class BarcodeScannerModel: NSObject {
 
     nonisolated private func _configureAndRun() async {
         session.beginConfiguration()
-        defer { session.commitConfiguration() }
 
         guard let device = AVCaptureDevice.default(for: .video),
               let input  = try? AVCaptureDeviceInput(device: device),
-              session.canAddInput(input) else { return }
+              session.canAddInput(input) else {
+            session.commitConfiguration()   // must commit even on early exit
+            return
+        }
         session.addInput(input)
 
         if session.canAddOutput(metadataOutput) {
@@ -198,6 +200,9 @@ final class BarcodeScannerModel: NSObject {
                 .code39, .pdf417, .dataMatrix, .itf14
             ]
         }
+
+        // commitConfiguration() MUST be called before startRunning()
+        session.commitConfiguration()
         session.startRunning()
     }
 
