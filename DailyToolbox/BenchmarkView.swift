@@ -501,8 +501,11 @@ struct BenchmarkView: View {
     // MARK: - Timing Chart
 
     private var timingChart: some View {
-        let maxTime = BenchmarkRunner.BenchType.allCases
+        let currentMax = BenchmarkRunner.BenchType.allCases
             .compactMap { runner.results[$0] }.filter { $0 >= 0 }.max() ?? 1.0
+        let prevMax = BenchmarkRunner.BenchType.allCases
+            .compactMap { runner.previousResult?.timings[$0.rawValue] }.filter { $0 >= 0 }.max() ?? 0.0
+        let maxTime = max(currentMax, prevMax, 0.001)
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .top) {
@@ -569,6 +572,7 @@ struct BenchmarkView: View {
                             }
                         }
                         .frame(height: 10)
+                        .clipped()
 
                         Group {
                             if t < 0 {
