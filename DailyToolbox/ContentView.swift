@@ -49,6 +49,7 @@ struct ContentView: View {
             // re-renders immediately — no cross-column link magic needed.
             NavigationSplitView(columnVisibility: $columnVisibility) {
                 MasterView { item in selectedItem = item }
+                    .navigationSplitViewColumnWidth(min: 300, ideal: 340, max: 420)
             } detail: {
                 if let item = selectedItem {
                     toolDetailView(for: item)
@@ -56,7 +57,7 @@ struct ContentView: View {
                     ToolPlaceholder()
                 }
             }
-            .navigationSplitViewStyle(.balanced)
+            .navigationSplitViewStyle(.prominentDetail)
         } else {
             // ── iPhone ───────────────────────────────────────────────
             // Button in ToolCard appends to navPath; NavigationStack
