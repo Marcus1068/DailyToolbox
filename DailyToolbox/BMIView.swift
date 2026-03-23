@@ -53,6 +53,46 @@ private struct BMICategory {
     }
 }
 
+private enum ActivityLevel: String, CaseIterable {
+    case sedentary        = "Sedentary"
+    case lightlyActive    = "Lightly Active"
+    case moderatelyActive = "Moderately Active"
+    case active           = "Active"
+    case veryActive       = "Very Active"
+
+    var factor: Double {
+        switch self {
+        case .sedentary:        return 1.200
+        case .lightlyActive:    return 1.375
+        case .moderatelyActive: return 1.550
+        case .active:           return 1.725
+        case .veryActive:       return 1.900
+        }
+    }
+
+    var description: LocalizedStringKey {
+        switch self {
+        case .sedentary:        return "Little or no exercise"
+        case .lightlyActive:    return "Light exercise 1–3 days/week"
+        case .moderatelyActive: return "Moderate exercise 3–5 days/week"
+        case .active:           return "Hard exercise 6–7 days/week"
+        case .veryActive:       return "Very hard exercise, physical job"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .sedentary:        return "sofa.fill"
+        case .lightlyActive:    return "figure.walk"
+        case .moderatelyActive: return "figure.run"
+        case .active:           return "figure.highintensity.intervaltraining"
+        case .veryActive:       return "figure.strengthtraining.traditional"
+        }
+    }
+
+    var localizedKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+}
+
 private struct BodyResult {
     let bmi: Double; let bmr: Double; let category: BMICategory
     let idealMin: Double; let idealMax: Double
@@ -73,9 +113,14 @@ struct BMIView: View {
     @State private var result: BodyResult? = nil
     @FocusState private var focused: Int?
 
-    @AppStorage("bmi.lastAge")    private var lastAge:    String = ""
-    @AppStorage("bmi.lastHeight") private var lastHeight: String = ""
-    @AppStorage("bmi.lastWeight") private var lastWeight: String = ""
+    @AppStorage("bmi.lastAge")       private var lastAge:    String = ""
+    @AppStorage("bmi.lastHeight")    private var lastHeight: String = ""
+    @AppStorage("bmi.lastWeight")    private var lastWeight: String = ""
+    @AppStorage("bmi.activityLevel") private var savedActivityLevel: String = ActivityLevel.sedentary.rawValue
+
+    private var activityLevel: ActivityLevel {
+        ActivityLevel(rawValue: savedActivityLevel) ?? .sedentary
+    }
 
     private var heightLabel: LocalizedStringKey { units == .metric ? "Height (cm)" : "Height (ft)" }
     private var weightLabel: LocalizedStringKey { units == .metric ? "Weight (kg)" : "Weight (lbs)" }
@@ -123,6 +168,7 @@ struct BMIView: View {
                     if let result {
                         GlassEffectContainer { bmiCard(result) }
                         if result.bmr > 0 { GlassEffectContainer { bmrCard(result) } }
+                        if result.bmr > 0 { GlassEffectContainer { tdeeCard(result) } }
                     }
                 }
                 .padding(.horizontal, 20).padding(.vertical, 24)
@@ -296,6 +342,70 @@ struct BMIView: View {
                 Spacer(); Text("40").font(.system(size: 9)).foregroundStyle(Color.primary.opacity(0.40))
             }
         }
+    }
+
+    @ViewBuilder
+    private func tdeeCard(_ res: BodyResult) -> some View {
+        let tdee = res.bmr * activityLevel.factor
+
+        VStack(alignment: .leading, spacing: 14) {
+            Text("Daily Energy Expenditure")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(salmonAccent)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(ActivityLevel.allCases, id: \.self) { level in
+                        let selected = activityLevel == level
+                        Button {
+                            withAnimation(.spring(response: 0.25)) {
+                                savedActivityLevel = level.rawValue
+                            }
+                        } label: {
+                            VStack(spacing: 4) {
+                                Image(systemName: level.icon)
+                                    .font(.system(size: 16, weight: .semibold))
+                                Text(level.localizedKey)
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(2)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            .foregroundStyle(selected ? .black : Color.primary.opacity(0.70))
+                            .frame(width: 80)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 6)
+                            .background(selected ? salmonAccent : Color.primary.opacity(0.08),
+                                        in: RoundedRectangle(cornerRadius: 12))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 2)
+            }
+
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(String(format: "%.0f", tdee))
+                    .font(.system(size: 36, weight: .bold, design: .rounded).monospacedDigit())
+                    .foregroundStyle(salmonAccent)
+                Text("kcal/day")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.55))
+            }
+            .contentTransition(.numericText())
+            .animation(.spring(response: 0.3), value: tdee)
+
+            HStack(spacing: 6) {
+                Image(systemName: activityLevel.icon)
+                    .font(.caption)
+                    .foregroundStyle(salmonAccent.opacity(0.80))
+                Text(activityLevel.description)
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.55))
+            }
+        }
+        .padding(.horizontal, 18).padding(.vertical, 16)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
     }
 
     @ViewBuilder

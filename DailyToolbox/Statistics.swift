@@ -71,4 +71,34 @@ struct Statistics {
         guard let v = variance else { return nil }
         return sqrt(v)
     }
+
+    /// Lower quartile (Q1) — median of lower half
+    var q1: Double? {
+        guard count >= 4 else { return nil }
+        let sorted = values.sorted()
+        let half = sorted.count / 2
+        let lower = Array(sorted.prefix(half))
+        let mid = lower.count / 2
+        return lower.count.isMultiple(of: 2)
+            ? (lower[mid - 1] + lower[mid]) / 2.0
+            : lower[mid]
+    }
+
+    /// Upper quartile (Q3) — median of upper half
+    var q3: Double? {
+        guard count >= 4 else { return nil }
+        let sorted = values.sorted()
+        let half = sorted.count / 2
+        let upper = Array(sorted.suffix(from: sorted.count.isMultiple(of: 2) ? half : half + 1))
+        let mid = upper.count / 2
+        return upper.count.isMultiple(of: 2)
+            ? (upper[mid - 1] + upper[mid]) / 2.0
+            : upper[mid]
+    }
+
+    /// Interquartile range
+    var iqr: Double? {
+        guard let q1, let q3 else { return nil }
+        return q3 - q1
+    }
 }

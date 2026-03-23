@@ -34,12 +34,40 @@ private enum FuelUnit: String, CaseIterable {
     }
 }
 
+// MARK: - Fuel Type
+
+private enum FuelType: String, CaseIterable {
+    case petrol = "Petrol"
+    case diesel = "Diesel"
+    case lpg    = "LPG"
+
+    /// kg CO₂ emitted per litre burned (DEFRA values)
+    var co2PerLitre: Double {
+        switch self {
+        case .petrol: return 2.31
+        case .diesel: return 2.68
+        case .lpg:    return 1.51
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .petrol: return "drop.fill"
+        case .diesel: return "fuelpump.fill"
+        case .lpg:    return "flame.fill"
+        }
+    }
+
+    var localizedKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+}
+
 // MARK: - Result
 
 private struct FuelResult {
     let fuelNeeded:   Double   // litres or gallons
     let totalCost:    Double
     let costPerUnit:  Double   // cost per km or per mile
+    let co2Kg:        Double   // kg CO₂ for the trip
     let unit: FuelUnit
 
     var fuelString: String {
@@ -70,6 +98,11 @@ struct FuelCostView: View {
     @AppStorage("fuel.lastDistance")    private var lastDistance:    String = ""
     @AppStorage("fuel.lastConsumption") private var lastConsumption: String = ""
     @AppStorage("fuel.lastPrice")       private var lastPrice:       String = ""
+    @AppStorage("fuel.fuelType")        private var savedFuelType:   String = FuelType.petrol.rawValue
+
+    private var fuelType: FuelType {
+        FuelType(rawValue: savedFuelType) ?? .petrol
+    }
 
     private var accent: Color {
         colorScheme == .dark ? Color(red: 0.35, green: 0.90, blue: 0.70)
@@ -122,10 +155,12 @@ struct FuelCostView: View {
         }
 
         let totalCost = fuelNeeded * price
+        let litres = fuelUnit == .metric ? fuelNeeded : fuelNeeded * 3.78541
+        let co2Kg = litres * fuelType.co2PerLitre
         lastDistance = distanceText; lastConsumption = consumptionText; lastPrice = priceText
         withAnimation(.spring(response: 0.3)) {
             result = FuelResult(fuelNeeded: fuelNeeded, totalCost: totalCost,
-                                costPerUnit: costPerUnit, unit: fuelUnit)
+                                costPerUnit: costPerUnit, co2Kg: co2Kg, unit: fuelUnit)
         }
     }
 
@@ -261,6 +296,31 @@ struct FuelCostView: View {
             fuelField(label: priceLabel, placeholder: "1.80",
                       text: $priceText, focusTag: 3, icon: "tag.fill")
 
+            // Fuel Type picker
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Fuel Type")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(accent.opacity(0.80))
+                HStack(spacing: 8) {
+                    ForEach(FuelType.allCases, id: \.self) { type in
+                        let sel = fuelType == type
+                        Button {
+                            withAnimation(.spring(response: 0.25)) { savedFuelType = type.rawValue }
+                            calculate()
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(systemName: type.icon).font(.caption.weight(.semibold))
+                                Text(type.localizedKey).font(.caption.weight(.semibold))
+                            }
+                            .foregroundStyle(sel ? .black : Color.primary.opacity(0.70))
+                            .padding(.horizontal, 12).padding(.vertical, 8)
+                            .background(sel ? accent : Color.primary.opacity(0.08), in: Capsule())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+
             Button(action: calculate) {
                 Text("Calculate")
                     .font(.headline.weight(.bold))
@@ -355,8 +415,25 @@ struct FuelCostView: View {
                            color: costColor)
             }
             .padding(.vertical, 14)
+
+            Divider().background(Color.primary.opacity(0.10))
+            co2Row(res)
         }
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 22))
+    }
+
+    @ViewBuilder
+    private func co2Row(_ res: FuelResult) -> some View {
+        HStack {
+            Label("CO₂ Emissions", systemImage: "leaf.fill")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.green)
+            Spacer()
+            Text(String(format: "%.2f kg", res.co2Kg))
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundStyle(.green)
+        }
+        .padding(.horizontal, 18).padding(.vertical, 12)
     }
 
     @ViewBuilder

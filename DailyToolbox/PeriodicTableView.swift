@@ -577,6 +577,9 @@ struct PeriodicTableView: View {
     @State private var searchText = ""
     @State private var selectedElement: ChemElement?
     @State private var zoomScale: CGFloat = 1.0
+    @State private var molarFormula: String = ""
+    @State private var molarResult: MolarMassResult? = nil
+    @State private var molarError: String? = nil
 
     private let baseCellWidth:  CGFloat = 44
     private let baseCellHeight: CGFloat = 52
@@ -599,6 +602,10 @@ struct PeriodicTableView: View {
                     }
                     Divider().background(.white.opacity(0.15))
                     CategoryLegendView()
+                    Divider().background(.white.opacity(0.15))
+                    molarMassCard
+                        .padding(.horizontal, 14)
+                        .padding(.bottom, 8)
                     Divider().background(.white.opacity(0.15))
                     zoomControl
                 } else {
@@ -632,6 +639,173 @@ struct PeriodicTableView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
+    }
+
+    // MARK: - Molar Mass Calculator
+
+    private struct MolarMassResult {
+        struct Component {
+            let symbol: String
+            let name: String
+            let count: Int
+            let massContribution: Double
+        }
+        let formula: String
+        let totalMass: Double
+        let components: [Component]
+    }
+
+    /// Parses a chemical formula string and returns element symbol → count map.
+    /// Handles: H2O, NaCl, C6H12O6, Ca(OH)2, Fe2(SO4)3, Al2(SO4)3
+    private func parseFormula(_ formula: String) -> [String: Int]? {
+        var stack: [[String: Int]] = [[:]]
+        var i = formula.startIndex
+
+        while i < formula.endIndex {
+            let ch = formula[i]
+
+            if ch == "(" {
+                stack.append([:])
+                i = formula.index(after: i)
+            } else if ch == ")" {
+                guard stack.count > 1 else { return nil }
+                i = formula.index(after: i)
+                var numStr = ""
+                while i < formula.endIndex, formula[i].isNumber { numStr.append(formula[i]); i = formula.index(after: i) }
+                let mult = Int(numStr) ?? 1
+                let top = stack.removeLast()
+                for (sym, cnt) in top { stack[stack.count - 1][sym, default: 0] += cnt * mult }
+            } else if ch.isUppercase {
+                var sym = String(ch)
+                i = formula.index(after: i)
+                while i < formula.endIndex, formula[i].isLowercase { sym.append(formula[i]); i = formula.index(after: i) }
+                var numStr = ""
+                while i < formula.endIndex, formula[i].isNumber { numStr.append(formula[i]); i = formula.index(after: i) }
+                let count = Int(numStr) ?? 1
+                stack[stack.count - 1][sym, default: 0] += count
+            } else {
+                return nil
+            }
+        }
+        guard stack.count == 1 else { return nil }
+        return stack[0].isEmpty ? nil : stack[0]
+    }
+
+    private func computeMolarMass() {
+        let trimmed = molarFormula.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { molarResult = nil; molarError = nil; return }
+
+        guard let counts = parseFormula(trimmed) else {
+            molarResult = nil
+            molarError = NSLocalizedString("Invalid formula", comment: "")
+            return
+        }
+
+        let lookup = Dictionary(uniqueKeysWithValues: ChemElement.all.map { ($0.symbol, $0) })
+        var components: [MolarMassResult.Component] = []
+        var totalMass = 0.0
+
+        for (sym, count) in counts.sorted(by: { $0.key < $1.key }) {
+            guard let elem = lookup[sym] else {
+                molarError = String(format: NSLocalizedString("Unknown element: %@", comment: ""), sym)
+                molarResult = nil
+                return
+            }
+            let contribution = elem.atomicMass * Double(count)
+            totalMass += contribution
+            components.append(.init(symbol: sym, name: elem.name, count: count, massContribution: contribution))
+        }
+
+        molarResult = MolarMassResult(formula: trimmed, totalMass: totalMass, components: components)
+        molarError = nil
+    }
+
+    private var molarMassCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 8) {
+                Image(systemName: "scalemass.fill")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color(red: 0.20, green: 0.75, blue: 0.55))
+                Text("Molar Mass Calculator")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.65))
+                Spacer()
+                if molarResult != nil || molarError != nil {
+                    Button {
+                        molarFormula = ""
+                        molarResult = nil
+                        molarError = nil
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(Color.primary.opacity(0.35))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            HStack(spacing: 10) {
+                TextField("H₂O, NaCl, C₆H₁₂O₆…", text: $molarFormula)
+                    .font(.system(size: 16, weight: .semibold, design: .monospaced))
+                    .foregroundStyle(Color.primary)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .onChange(of: molarFormula) { _, _ in computeMolarMass() }
+                if !molarFormula.isEmpty {
+                    Button { UIPasteboard.general.string = String(format: "%.4f g/mol", molarResult?.totalMass ?? 0) } label: {
+                        Image(systemName: "doc.on.doc")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(0.55))
+                    }
+                    .buttonStyle(.glass)
+                }
+            }
+            .padding(10)
+            .background(Color.primary.opacity(0.07), in: RoundedRectangle(cornerRadius: 10))
+
+            if let err = molarError {
+                Text(err)
+                    .font(.caption)
+                    .foregroundStyle(Color.red.opacity(0.80))
+            } else if let res = molarResult {
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    Text(String(format: "%.4f", res.totalMass))
+                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .foregroundStyle(Color(red: 0.20, green: 0.75, blue: 0.55))
+                    Text("g/mol")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.primary.opacity(0.55))
+                }
+                .contentTransition(.numericText())
+
+                if res.components.count > 1 {
+                    VStack(spacing: 4) {
+                        ForEach(res.components, id: \.symbol) { comp in
+                            HStack {
+                                Text(comp.symbol)
+                                    .font(.caption.bold())
+                                    .foregroundStyle(Color(red: 0.20, green: 0.75, blue: 0.55))
+                                    .frame(width: 30, alignment: .leading)
+                                Text(comp.name)
+                                    .font(.caption)
+                                    .foregroundStyle(Color.primary.opacity(0.55))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                if comp.count > 1 {
+                                    Text("×\(comp.count)")
+                                        .font(.caption)
+                                        .foregroundStyle(Color.primary.opacity(0.45))
+                                }
+                                Text(String(format: "%.4f", comp.massContribution))
+                                    .font(.caption.monospacedDigit())
+                                    .foregroundStyle(Color.primary.opacity(0.65))
+                            }
+                        }
+                    }
+                    .padding(.top, 4)
+                }
+            }
+        }
+        .padding(14)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
     }
 
     private var tableBackground: some View {

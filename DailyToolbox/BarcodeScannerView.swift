@@ -33,6 +33,28 @@ struct BarcodeEntry: Codable, Identifiable, Sendable {
     let date:  Date
 }
 
+// MARK: - FoodProduct
+
+struct FoodProduct: Sendable {
+    let name:       String
+    let brand:      String
+    let quantity:   String
+    let nutriScore: String?
+
+    var nutriScoreGrade: String { (nutriScore ?? "").uppercased() }
+
+    var nutriScoreColor: Color {
+        switch nutriScore?.lowercased() {
+        case "a": return Color(red: 0.15, green: 0.65, blue: 0.25)
+        case "b": return Color(red: 0.55, green: 0.78, blue: 0.20)
+        case "c": return Color(red: 1.00, green: 0.80, blue: 0.10)
+        case "d": return Color(red: 1.00, green: 0.55, blue: 0.10)
+        case "e": return Color(red: 0.90, green: 0.20, blue: 0.15)
+        default:  return Color.secondary
+        }
+    }
+}
+
 // MARK: - CameraPreview (UIViewRepresentable)
 
 private final class PreviewView: UIView {
@@ -65,6 +87,12 @@ final class BarcodeScannerModel: NSObject {
     var scannedValue: String?               = nil
     var scannedType:  String?               = nil
     var authStatus:   AVAuthorizationStatus = .notDetermined
+    var product:      FoodProduct?          = nil
+    var productState: ProductLookupState    = .idle
+
+    enum ProductLookupState: Equatable {
+        case idle, loading, found, notFound, error(String)
+    }
 
     private var isConfigured = false
 
@@ -92,6 +120,41 @@ final class BarcodeScannerModel: NSObject {
 
     func stopSession() {
         Task { await _stopRunning() }
+    }
+
+    func lookupProduct(_ barcode: String) {
+        guard barcode.count == 13, barcode.allSatisfy(\.isNumber) else {
+            product = nil
+            productState = .idle
+            return
+        }
+        productState = .loading
+        product = nil
+        Task {
+            let urlStr = "https://world.openfoodfacts.org/api/v2/product/\(barcode).json?fields=product_name,brands,quantity,nutriscore_grade"
+            guard let url = URL(string: urlStr) else { productState = .error("Invalid URL"); return }
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let status = json["status"] as? Int, status == 1,
+                   let p = json["product"] as? [String: Any] {
+                    let name     = (p["product_name"] as? String ?? "").trimmingCharacters(in: .whitespaces)
+                    let brand    = (p["brands"]       as? String ?? "").trimmingCharacters(in: .whitespaces)
+                    let quantity = (p["quantity"]     as? String ?? "").trimmingCharacters(in: .whitespaces)
+                    let nutri    = p["nutriscore_grade"] as? String
+                    if !name.isEmpty {
+                        product = FoodProduct(name: name, brand: brand, quantity: quantity, nutriScore: nutri)
+                        productState = .found
+                    } else {
+                        productState = .notFound
+                    }
+                } else {
+                    productState = .notFound
+                }
+            } catch {
+                productState = .error(error.localizedDescription)
+            }
+        }
     }
 
     // MARK: - @MainActor setup (checks isConfigured, registers delegate)
@@ -171,6 +234,7 @@ extension BarcodeScannerModel: @preconcurrency AVCaptureMetadataOutputObjectsDel
             guard let self, scannedValue != value else { return }
             scannedValue = value
             scannedType  = typeName
+            lookupProduct(value)
             UINotificationFeedbackGenerator().notificationOccurred(.success)
         }
     }
@@ -221,6 +285,9 @@ struct BarcodeScannerView: View {
                             if let value = model.scannedValue {
                                 GlassEffectContainer {
                                     resultCard(value: value, type: model.scannedType ?? "Barcode")
+                                }
+                                if model.productState != .idle {
+                                    productCard
                                 }
                             }
                             if !history.isEmpty {
@@ -427,6 +494,8 @@ struct BarcodeScannerView: View {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         model.scannedValue = nil
                         model.scannedType  = nil
+                        model.product      = nil
+                        model.productState = .idle
                     }
                 } label: {
                     Image(systemName: "xmark.circle.fill")
@@ -536,6 +605,85 @@ struct BarcodeScannerView: View {
         .accessibilityLabel(
             "\(entry.value), \(entry.type), \(entry.date.formatted(date: .abbreviated, time: .shortened)). Tap to copy."
         )
+    }
+
+    // MARK: - Product card
+
+    @ViewBuilder
+    private var productCard: some View {
+        switch model.productState {
+        case .loading:
+            HStack(spacing: 12) {
+                ProgressView().tint(.teal)
+                Text("Looking up product…")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.primary.opacity(0.65))
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
+
+        case .found:
+            if let p = model.product {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "cart.fill")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.teal)
+                        Text("Product Info")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Color.primary.opacity(0.55))
+                        Spacer()
+                        if !p.nutriScoreGrade.isEmpty {
+                            Text("Nutri-Score \(p.nutriScoreGrade)")
+                                .font(.system(size: 11, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 8).padding(.vertical, 3)
+                                .background(p.nutriScoreColor, in: Capsule())
+                        }
+                    }
+                    Text(p.name)
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(Color.primary)
+                    if !p.brand.isEmpty {
+                        Text(p.brand)
+                            .font(.subheadline)
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                    }
+                    if !p.quantity.isEmpty {
+                        Text(p.quantity)
+                            .font(.caption)
+                            .foregroundStyle(Color.primary.opacity(0.50))
+                    }
+                }
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
+            }
+
+        case .notFound:
+            HStack(spacing: 10) {
+                Image(systemName: "questionmark.circle")
+                    .foregroundStyle(Color.primary.opacity(0.45))
+                Text("Product not found in Open Food Facts")
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.55))
+            }
+            .padding(16)
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
+
+        case .error(let msg):
+            HStack(spacing: 10) {
+                Image(systemName: "exclamationmark.triangle")
+                    .foregroundStyle(.orange)
+                Text(msg).font(.caption).foregroundStyle(Color.primary.opacity(0.55))
+            }
+            .padding(16)
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18))
+
+        case .idle:
+            EmptyView()
+        }
     }
 
     // MARK: - Accent colors

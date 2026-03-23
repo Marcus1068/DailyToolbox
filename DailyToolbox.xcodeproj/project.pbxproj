@@ -14,7 +14,6 @@
 		2C4AA86A2F6202A700F1BDCC /* WindChillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA8692F6202A700F1BDCC /* WindChillView.swift */; };
 		2C4AA86C2F637DDE00F1BDCC /* MoonPhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */; };
 		2C4AA86E2F637E3100F1BDCC /* ResistorColorCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */; };
-		9ADF20BD2ED864DF82D58C49 /* PeriodicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C90FB7FABCFD2CF9FCF0D2 /* PeriodicTableView.swift */; };
 		2C5F836E2F5D8C02009898E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836D2F5D8C02009898E9 /* AboutView.swift */; };
 		2C5F83702F5D8D9E009898E9 /* PercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */; };
 		2C5F83722F5D8F1B009898E9 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */; };
@@ -58,6 +57,7 @@
 		2CF446072F6DEF3B009DE620 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF446062F6DEF3B009DE620 /* Statistics.swift */; };
 		2CF446092F6DEF66009DE620 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF446082F6DEF66009DE620 /* StatisticsView.swift */; };
 		73F922F5B4079F8D326DBDA5 /* AspectRatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B60AC8709404457D01D424 /* AspectRatioView.swift */; };
+		9ADF20BD2ED864DF82D58C49 /* PeriodicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C90FB7FABCFD2CF9FCF0D2 /* PeriodicTableView.swift */; };
 		DA89F60DBDBB571877892DDA /* FuelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */; };
 		DBBBF7A9F21C16243C9ACC4A /* RandomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B923CFE82DBFA41976C241 /* RandomizerView.swift */; };
 		ED594AE3762CE492FA6BD580 /* SunriseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889001BC656E4FB1229CE5D /* SunriseView.swift */; };
@@ -82,7 +82,6 @@
 		2C4AA8692F6202A700F1BDCC /* WindChillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindChillView.swift; sourceTree = "<group>"; };
 		2C4AA86B2F637DDE00F1BDCC /* MoonPhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseView.swift; sourceTree = "<group>"; };
 		2C4AA86D2F637E3100F1BDCC /* ResistorColorCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorColorCodeView.swift; sourceTree = "<group>"; };
-		B5C90FB7FABCFD2CF9FCF0D2 /* PeriodicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicTableView.swift; sourceTree = "<group>"; };
 		2C5F836D2F5D8C02009898E9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2C5F836F2F5D8D9E009898E9 /* PercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageView.swift; sourceTree = "<group>"; };
 		2C5F83712F5D8F1B009898E9 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
@@ -135,6 +134,7 @@
 		698A2DABC26A715DFA216B7C /* GermanHolidaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanHolidaysView.swift; sourceTree = "<group>"; };
 		82B60AC8709404457D01D424 /* AspectRatioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioView.swift; sourceTree = "<group>"; };
 		98290F7E7C2705ED3679A6B5 /* FuelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCostView.swift; sourceTree = "<group>"; };
+		B5C90FB7FABCFD2CF9FCF0D2 /* PeriodicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -569,7 +569,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -590,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.55;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -606,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DailyToolbox/DailyToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -627,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.55;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.DailyToolbox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

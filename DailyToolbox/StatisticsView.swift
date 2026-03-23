@@ -95,6 +95,9 @@ struct StatisticsView: View {
         if let mn = stats.minimum           { parts.append("Min: \(fmt(mn))") }
         if let mx = stats.maximum           { parts.append("Max: \(fmt(mx))") }
         if let sd = stats.standardDeviation { parts.append("Std Dev: \(fmt(sd))") }
+        if let q1 = stats.q1               { parts.append("Q1: \(fmt(q1))") }
+        if let q3 = stats.q3               { parts.append("Q3: \(fmt(q3))") }
+        if let iqr = stats.iqr             { parts.append("IQR: \(fmt(iqr))") }
         return parts.joined(separator: "\n")
     }
 
@@ -111,6 +114,9 @@ struct StatisticsView: View {
                         if stats.count >= 1 {
                             featuredCard
                             statsGridCard
+                            if stats.count >= 4 {
+                                histogramCard
+                            }
                             if !stats.modes.isEmpty {
                                 modeCard
                             }
@@ -327,12 +333,15 @@ struct StatisticsView: View {
             .foregroundStyle(Color.primary.opacity(0.50))
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                statTile(label: "Sum",         icon: "sum",                    value: stats.sum)
-                statTile(label: "Range",       icon: "arrow.left.and.right",   value: stats.range)
-                statTile(label: "Minimum",     icon: "arrow.down.circle",      value: stats.minimum)
-                statTile(label: "Maximum",     icon: "arrow.up.circle",        value: stats.maximum)
-                statTile(label: "Std Dev σ",   icon: "waveform",               value: stats.standardDeviation)
-                statTile(label: "Variance σ²", icon: "chart.bar.xaxis",        value: stats.variance)
+                statTile(label: "Sum",         icon: "sum",                              value: stats.sum)
+                statTile(label: "Range",       icon: "arrow.left.and.right",             value: stats.range)
+                statTile(label: "Minimum",     icon: "arrow.down.circle",                value: stats.minimum)
+                statTile(label: "Maximum",     icon: "arrow.up.circle",                  value: stats.maximum)
+                statTile(label: "Std Dev σ",   icon: "waveform",                         value: stats.standardDeviation)
+                statTile(label: "Variance σ²", icon: "chart.bar.xaxis",                  value: stats.variance)
+                statTile(label: "Q1 (25%)",    icon: "chart.bar.fill",                   value: stats.q1)
+                statTile(label: "Q3 (75%)",    icon: "chart.bar.fill",                   value: stats.q3)
+                statTile(label: "IQR",         icon: "arrow.left.and.right.square",      value: stats.iqr)
             }
         }
         .padding(16)
@@ -377,6 +386,63 @@ struct StatisticsView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(12)
         .background(Color.primary.opacity(0.06), in: RoundedRectangle(cornerRadius: 12))
+    }
+
+    // MARK: Histogram
+
+    private func histogramBins() -> [(range: String, count: Int)] {
+        guard let lo = stats.minimum, let hi = stats.maximum, hi > lo else { return [] }
+        let binCount = min(8, max(2, stats.count / 2))
+        let width = (hi - lo) / Double(binCount)
+        var bins = Array(repeating: 0, count: binCount)
+        for v in numbers {
+            let idx = min(binCount - 1, Int((v - lo) / width))
+            bins[idx] += 1
+        }
+        let fmt = { (d: Double) in String(format: d.truncatingRemainder(dividingBy: 1) == 0 ? "%.0f" : "%.1f", d) }
+        return bins.enumerated().map { i, count in
+            let rangeStr = "\(fmt(lo + Double(i) * width))–\(fmt(lo + Double(i + 1) * width))"
+            return (range: rangeStr, count: count)
+        }
+    }
+
+    private var histogramCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "chart.bar.xaxis").font(.caption.weight(.semibold))
+                Text("Distribution").font(.caption.weight(.semibold))
+            }
+            .foregroundStyle(Color.primary.opacity(0.50))
+
+            let bins = histogramBins()
+            let maxCount = bins.map(\.count).max() ?? 1
+            HStack(alignment: .bottom, spacing: 4) {
+                ForEach(Array(bins.enumerated()), id: \.offset) { i, bin in
+                    VStack(spacing: 3) {
+                        if bin.count > 0 {
+                            Text("\(bin.count)")
+                                .font(.system(size: 9, weight: .bold))
+                                .foregroundStyle(tealAccent)
+                        }
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(LinearGradient(colors: [tealAccent, mintAccent], startPoint: .top, endPoint: .bottom))
+                            .frame(height: max(4, CGFloat(bin.count) / CGFloat(maxCount) * 80))
+                            .opacity(bin.count == 0 ? 0.2 : 1.0)
+                        Text(bin.range)
+                            .font(.system(size: 7, weight: .medium))
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(2)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            .frame(height: 110)
+            .animation(.spring(response: 0.4), value: stats.count)
+        }
+        .padding(16)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 
     // MARK: Mode card
