@@ -5874,7 +5874,40 @@
         }
       }
     },
-    "Daily Energy Expenditure" : {},
+    "Daily Energy Expenditure" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Täglicher Energiebedarf"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dagligt energiforbrug"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto energético diario"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dépense énergétique quotidienne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spesa energetica giornaliera"
+          }
+        }
+      }
+    },
     "Daily Usage" : {
       "localizations" : {
         "da" : {
