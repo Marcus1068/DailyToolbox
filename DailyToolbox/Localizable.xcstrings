@@ -98,7 +98,9 @@
         }
       }
     },
-    "%@ built-in tools" : {},
+    "%@ built-in tools" : {
+
+    },
     "%@ characters" : {
       "localizations" : {
         "da" : {
@@ -133,7 +135,9 @@
         }
       }
     },
-    "%@ holidays added to your Calendar." : {},
+    "%@ holidays added to your Calendar." : {
+
+    },
     "%@ is not allowed" : {
       "comment" : "Roman numeral validation error: invalid pair",
       "localizations" : {
@@ -169,9 +173,15 @@
         }
       }
     },
-    "%@ kWh" : {},
-    "%@ pts" : {},
-    "%@ Tage" : {},
+    "%@ kWh" : {
+
+    },
+    "%@ pts" : {
+
+    },
+    "%@ Tage" : {
+
+    },
     "%@ used · %@ remaining" : {
       "localizations" : {
         "en" : {
@@ -643,11 +653,15 @@
       },
       "shouldTranslate" : false
     },
-    "→" : {},
+    "→" : {
+
+    },
     "±" : {
       "shouldTranslate" : false
     },
-    "±20%" : {},
+    "±20%" : {
+
+    },
     "×" : {
       "shouldTranslate" : false
     },
@@ -688,9 +702,15 @@
     "=" : {
       "shouldTranslate" : false
     },
-    "≥ 0 K" : {},
-    "⚠️ Values are too close to zero — cannot divide." : {},
-    "🇩🇪" : {},
+    "≥ 0 K" : {
+
+    },
+    "⚠️ Values are too close to zero — cannot divide." : {
+
+    },
+    "🇩🇪" : {
+
+    },
     "🎂 in %lld days" : {
       "comment" : "Age pill: days until next birthday (cake emoji)",
       "localizations" : {
@@ -1457,6 +1477,40 @@
     "40" : {
       "shouldTranslate" : false
     },
+    "118 elements · Groups & periods" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "118 elementer · Grupper & perioder"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "118 Elemente · Gruppen & Perioden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "118 elementos · Grupos y períodos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "118 éléments · Groupes & périodes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "118 elementi · Gruppi e periodi"
+          }
+        }
+      }
+    },
     "A/C" : {
       "shouldTranslate" : false
     },
@@ -1494,6 +1548,43 @@
           }
         }
       }
+    },
+    "Actinide" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinid"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinoid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actínido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attinoide"
+          }
+        }
+      }
+    },
+    "Actinides (89–103)" : {
+
     },
     "Add" : {
       "comment" : "Button: add calendar event",
@@ -1841,6 +1932,77 @@
           }
         }
       }
+    },
+    "Alkali Metal" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alkalimetal"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alkalimetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metal alcalino"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métal alcalin"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metallo alcalino"
+          }
+        }
+      }
+    },
+    "Alkaline Earth" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jordalkalimetal"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erdalkalimetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metal alcalinotérreo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métal alcalino-terreux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metallo alcalino terroso"
+          }
+        }
+      }
+    },
+    "Allow camera access to scan barcodes and QR codes." : {
+
     },
     "Amount" : {
       "comment" : "Currency converter: input amount label",
@@ -2220,6 +2382,143 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proporzioni"
+          }
+        }
+      }
+    },
+    "Atomic Mass" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atommasse"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atommasse"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masa atómica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masse atomique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Massa atomica"
+          }
+        }
+      }
+    },
+    "Atomic Number" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atomnummer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordnungszahl"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número atómico"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numéro atomique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numero atomico"
+          }
+        }
+      }
+    },
+    "Austria" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Østrig"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Österreich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Austria"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autriche"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Austria"
+          }
+        }
+      }
+    },
+    "Barcode Scanner" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stregkodescanner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barcode-Scanner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escáner de código de barras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner de codes-barres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner codici a barre"
           }
         }
       }
@@ -3572,6 +3871,12 @@
         }
       }
     },
+    "Camera access required" : {
+
+    },
+    "Camera Access Required" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "da" : {
@@ -3637,6 +3942,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Capitale"
+          }
+        }
+      }
+    },
+    "Category" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategori"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategorie"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégorie"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
           }
         }
       }
@@ -4052,6 +4391,75 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancellare la cronologia delle conversioni?"
+          }
+        }
+      }
+    },
+    "Clear Scan History" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ryd scanningshistorik"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanverlauf löschen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar historial de escaneo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer l'historique des scans"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella cronologia scansioni"
+          }
+        }
+      }
+    },
+    "Clear scan history?" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ryd scanningshistorik?"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanverlauf löschen?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Borrar historial de escaneo?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer l'historique des scans ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellare la cronologia delle scansioni?"
           }
         }
       }
@@ -5846,6 +6254,9 @@
         }
       }
     },
+    "DE · AT · CH · FR · IT · DK" : {
+      "shouldTranslate" : false
+    },
     "Decimal" : {
       "comment" : "Number base label",
       "localizations" : {
@@ -5911,6 +6322,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Diminuisci"
+          }
+        }
+      }
+    },
+    "Denmark" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danmark"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dänemark"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinamarca"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danemark"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danimarca"
           }
         }
       }
@@ -6538,6 +6983,9 @@
         }
       }
     },
+    "EAN · QR · Code 128" : {
+      "shouldTranslate" : false
+    },
     "Easter" : {
       "localizations" : {
         "da" : {
@@ -6568,6 +7016,109 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pasqua"
+          }
+        }
+      }
+    },
+    "Electron Configuration" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektronkonfiguration"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektronenkonfiguration"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración electrónica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration électronique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurazione elettronica"
+          }
+        }
+      }
+    },
+    "Electronegativity" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektronegativitet"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektronegativität"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Electronegatividad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Électronégativité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elettronegatività"
+          }
+        }
+      }
+    },
+    "Element Detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elementdetaljer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Element-Details"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles del elemento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails de l'élément"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli elemento"
           }
         }
       }
@@ -6684,7 +7235,9 @@
         }
       }
     },
-    "Enter any 2 values to calculate the remaining" : {},
+    "Enter any 2 values to calculate the remaining" : {
+
+    },
     "Enter any 2 values to solve" : {
       "localizations" : {
         "da" : {
@@ -8037,6 +8590,40 @@
     "FR↔DE" : {
       "shouldTranslate" : false
     },
+    "France" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frankrig"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frankreich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Francia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "France"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Francia"
+          }
+        }
+      }
+    },
     "Freezing" : {
       "comment" : "Temperature classification",
       "localizations" : {
@@ -8590,6 +9177,40 @@
         }
       }
     },
+    "Gas" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaz"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas"
+          }
+        }
+      }
+    },
     "Generate" : {
       "localizations" : {
         "da" : {
@@ -8694,6 +9315,7 @@
       }
     },
     "German Holidays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -8723,6 +9345,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Festività tedesche"
+          }
+        }
+      }
+    },
+    "Germany" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tyskland"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutschland"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alemania"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allemagne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Germania"
           }
         }
       }
@@ -8899,6 +9555,40 @@
         }
       }
     },
+    "GPU Compute" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPU-beregning"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPU-Berechnung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómputo GPU"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcul GPU"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolo GPU"
+          }
+        }
+      }
+    },
     "Grams" : {
       "comment" : "Unit converter: gram unit label",
       "localizations" : {
@@ -9039,6 +9729,40 @@
         }
       }
     },
+    "Group" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppe"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppe"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grupo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Groupe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppo"
+          }
+        }
+      }
+    },
     "Growing, right-lit sliver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9105,6 +9829,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "h/giorno"
+          }
+        }
+      }
+    },
+    "Halogen" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halogen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halogen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halógeno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halogène"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alogeno"
           }
         }
       }
@@ -9629,6 +10387,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cronologia"
+          }
+        }
+      }
+    },
+    "Holidays" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helligdage"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feiertage"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festivos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jours fériés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festività"
           }
         }
       }
@@ -10369,7 +11161,9 @@
         }
       }
     },
-    "Invalid hex (#RRGGBB)" : {},
+    "Invalid hex (#RRGGBB)" : {
+
+    },
     "Invalid number" : {
       "comment" : "Roman numerals validation error",
       "localizations" : {
@@ -10410,6 +11204,40 @@
     },
     "IT↔DE" : {
       "shouldTranslate" : false
+    },
+    "Italy" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italien"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italien"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italie"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italia"
+          }
+        }
+      }
     },
     "Items (one per line or comma-separated)" : {
       "localizations" : {
@@ -10666,6 +11494,43 @@
           }
         }
       }
+    },
+    "Lanthanide" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanid"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanoid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantánido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantanide"
+          }
+        }
+      }
+    },
+    "Lanthanides (57–71)" : {
+
     },
     "Last Quarter" : {
       "extractionState" : "manual",
@@ -11016,6 +11881,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Limitare le attività faticose, rischio di esaurimento da calore"
+          }
+        }
+      }
+    },
+    "Liquid" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flydende"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flüssig"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líquido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquido"
           }
         }
       }
@@ -11855,6 +12754,40 @@
         }
       }
     },
+    "Metalloid" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metalloid"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbmetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metaloide"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métalloïde"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metalloide"
+          }
+        }
+      }
+    },
     "Meters" : {
       "comment" : "Unit converter: meter unit label",
       "localizations" : {
@@ -12133,7 +13066,9 @@
         }
       }
     },
-    "Min must be less than or equal to Max" : {},
+    "Min must be less than or equal to Max" : {
+
+    },
     "Minimum" : {
       "comment" : "Statistical minimum label",
       "localizations" : {
@@ -12796,6 +13731,9 @@
         }
       }
     },
+    "N/A" : {
+
+    },
     "Network Name (SSID)" : {
       "comment" : "QR code WiFi form: SSID field label",
       "localizations" : {
@@ -12967,6 +13905,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prossima luna nuova"
+          }
+        }
+      }
+    },
+    "No barcodes scanned yet" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen stregkoder scannet endnu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch keine Barcodes gescannt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no se han escaneado códigos de barras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun code-barres scanné pour l'instant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun codice a barre ancora scansionato"
           }
         }
       }
@@ -13214,6 +14187,40 @@
         }
       }
     },
+    "Noble Gas" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ædelgas"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edelgas"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas noble"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaz noble"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas nobile"
+          }
+        }
+      }
+    },
     "None" : {
       "comment" : "QR code WiFi security: no encryption",
       "localizations" : {
@@ -13245,6 +14252,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessuna"
+          }
+        }
+      }
+    },
+    "Nonmetal" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikke-metal"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichtmetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No metal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non-métal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non metallo"
           }
         }
       }
@@ -13524,7 +14565,9 @@
         }
       }
     },
-    "of" : {},
+    "of" : {
+
+    },
     "Ohm's Law" : {
       "localizations" : {
         "da" : {
@@ -14360,6 +15403,74 @@
         }
       }
     },
+    "Period" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periode"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periode"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Período"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Période"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periodo"
+          }
+        }
+      }
+    },
+    "Periodic Table" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periodesystem"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periodensystem"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabla periódica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tableau périodique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tavola periodica"
+          }
+        }
+      }
+    },
     "person" : {
       "comment" : "Tip splitter: singular person count label",
       "localizations" : {
@@ -14534,6 +15645,41 @@
         }
       }
     },
+    "Point your camera at a barcode" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ret kameraet mod en stregkode"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera auf Barcode richten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apunta la cámara a un código de barras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pointez l'appareil photo vers un code-barres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punta la fotocamera su un codice a barre"
+          }
+        }
+      }
+    },
     "Portrait" : {
       "localizations" : {
         "da" : {
@@ -14564,6 +15710,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verticale"
+          }
+        }
+      }
+    },
+    "Post-Transition Metal" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postovergangsmetall"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbmetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metal post-transición"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métal post-transition"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metallo post-transizione"
           }
         }
       }
@@ -14812,6 +15992,7 @@
       }
     },
     "Public & school holidays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -14879,7 +16060,11 @@
         }
       }
     },
+    "Public holidays & regional celebrations" : {
+
+    },
     "Public holidays & school breaks" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15546,6 +16731,40 @@
         }
       }
     },
+    "Region" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Región"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Région"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regione"
+          }
+        }
+      }
+    },
     "Remaining" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15754,7 +16973,9 @@
         }
       }
     },
-    "Result ready" : {},
+    "Result ready" : {
+
+    },
     "Results" : {
       "comment" : "Tip splitter: results section header",
       "localizations" : {
@@ -16317,6 +17538,12 @@
         }
       }
     },
+    "Scan History" : {
+
+    },
+    "Scanned Result" : {
+
+    },
     "School Holidays" : {
       "localizations" : {
         "da" : {
@@ -16494,16 +17721,16 @@
     },
     "Search tools…" : {
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Werkzeuge suchen…"
-          }
-        },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Søg efter værktøjer…"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werkzeuge suchen…"
           }
         },
         "es" : {
@@ -16701,6 +17928,41 @@
         }
       }
     },
+    "Select Country" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vælg land"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Land auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar país"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner un pays"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona paese"
+          }
+        }
+      }
+    },
     "Select Currency" : {
       "comment" : "Navigation title for currency picker sheet",
       "localizations" : {
@@ -16736,7 +17998,42 @@
         }
       }
     },
+    "Select Region" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vælg region"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar región"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner une région"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona regione"
+          }
+        }
+      }
+    },
     "Select State" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -16980,7 +18277,9 @@
         }
       }
     },
-    "Share Summary" : {},
+    "Share Summary" : {
+
+    },
     "Shrinking, left-lit sliver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17121,6 +18420,40 @@
         }
       }
     },
+    "Solid" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fast stof"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fest"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sólido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solido"
+          }
+        }
+      }
+    },
     "Source: European Central Bank" : {
       "localizations" : {
         "da" : {
@@ -17254,6 +18587,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quadrato"
+          }
+        }
+      }
+    },
+    "State at Room Temperature" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tilstand ved rumtemperatur"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zustand bei Raumtemperatur"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado a temperatura ambiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "État à température ambiante"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato a temperatura ambiente"
           }
         }
       }
@@ -17603,6 +18971,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Area superficiale"
+          }
+        }
+      }
+    },
+    "Switzerland" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schweiz"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schweiz"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suiza"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suisse"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svizzera"
           }
         }
       }
@@ -17980,6 +19382,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Testo copiato!"
+          }
+        }
+      }
+    },
+    "This will remove all %@ scan%@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This will remove all %1$@ scan%2$@."
           }
         }
       }
@@ -18511,6 +19923,40 @@
         }
       }
     },
+    "Transition Metal" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overgangsmetall"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergangsmetall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metal de transición"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métal de transition"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metallo di transizione"
+          }
+        }
+      }
+    },
     "Translation" : {
       "comment" : "Navigation title and tool name",
       "localizations" : {
@@ -18898,7 +20344,9 @@
         }
       }
     },
-    "v%@" : {},
+    "v%@" : {
+
+    },
     "Valid range: 1 (I) to 3999 (MMMCMXCIX)" : {
       "localizations" : {
         "da" : {
@@ -20120,7 +21568,9 @@
         }
       }
     },
-    "WPA password must be at least 8 characters" : {},
+    "WPA password must be at least 8 characters" : {
+
+    },
     "WPA/WPA2" : {
       "comment" : "QR code WiFi security type — technical standard name, not translated",
       "shouldTranslate" : false

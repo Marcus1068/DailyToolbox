@@ -26,6 +26,8 @@
 	<string>public.app-category.utilities</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Barcode Scanner needs camera access to scan barcodes and QR codes.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Please allow access to your Calendar for calendar module 'how many days until...'</string>
 	<key>NSLocationUsageDescription</key>

@@ -26,6 +26,7 @@ limitations under the License.
 
 import SwiftUI
 import CryptoKit
+import Metal
 
 // MARK: - JSON helper (file-scope: Codable types cannot be defined inside closures)
 
@@ -58,6 +59,7 @@ final class BenchmarkRunner {
         case stringProc = "Strings"
         case crypto     = "SHA-256"
         case compress   = "Compression"
+        case gpuCompute = "GPU Compute"
 
         var id: String { rawValue }
 
@@ -71,6 +73,7 @@ final class BenchmarkRunner {
             case .stringProc: return "textformat.characters"
             case .crypto:     return "lock.shield.fill"
             case .compress:   return "arrow.down.left.arrow.up.right"
+            case .gpuCompute: return "gpu"
             }
         }
 
@@ -84,6 +87,7 @@ final class BenchmarkRunner {
             case .stringProc: return Color(red: 1.00, green: 0.30, blue: 0.60)  // rose
             case .crypto:     return Color(red: 0.90, green: 0.80, blue: 0.20)  // gold
             case .compress:   return Color(red: 0.40, green: 1.00, blue: 0.60)  // mint
+            case .gpuCompute: return Color(red: 0.85, green: 0.25, blue: 0.90)  // purple-pink
             }
         }
 
@@ -98,6 +102,7 @@ final class BenchmarkRunner {
             case .stringProc: return [  1_000,    5_000,    20_000,    50_000]
             case .crypto:     return [ 10_240,  102_400,   524_288, 2_097_152]  // 10KB…2MB
             case .compress:   return [ 10_240,  102_400,   524_288, 2_097_152]  // 10KB…2MB
+            case .gpuCompute: return [100_000,  500_000, 1_000_000, 4_000_000]
             }
         }
 
@@ -173,6 +178,7 @@ final class BenchmarkRunner {
             var last = 0.0
             for _ in 0..<reps {
                 let start = Date()
+                var gpuElapsed: Double? = nil
                 switch type {
 
                 // 1. Integer Arithmetic — tight multiply / XOR / shift loop
@@ -239,8 +245,58 @@ final class BenchmarkRunner {
                     if let compressed = try? (source as NSData).compressed(using: .lzfse) as Data {
                         _ = try? (compressed as NSData).decompressed(using: .lzfse)
                     }
+
+                // 9. GPU Compute — Metal sin/cos kernel on large float arrays
+                case .gpuCompute:
+                    let count = range
+                    let floatSize = count * MemoryLayout<Float>.stride
+                    guard let device = MTLCreateSystemDefaultDevice(),
+                          let queue = device.makeCommandQueue() else {
+                        gpuElapsed = -1.0
+                        break
+                    }
+                    let shaderSrc = """
+                    #include <metal_stdlib>
+                    using namespace metal;
+                    kernel void sinCosAdd(
+                        device const float* a [[ buffer(0) ]],
+                        device const float* b [[ buffer(1) ]],
+                        device float* out     [[ buffer(2) ]],
+                        uint i                [[ thread_position_in_grid ]]
+                    ) {
+                        out[i] = metal::sin(a[i]) + metal::cos(b[i]);
+                    }
+                    """
+                    guard let lib    = try? await device.makeLibrary(source: shaderSrc, options: nil),
+                          let fn     = lib.makeFunction(name: "sinCosAdd"),
+                          let pso    = try? await device.makeComputePipelineState(function: fn),
+                          let bufA   = device.makeBuffer(length: floatSize, options: .storageModeShared),
+                          let bufB   = device.makeBuffer(length: floatSize, options: .storageModeShared),
+                          let bufOut = device.makeBuffer(length: floatSize, options: .storageModeShared)
+                    else { gpuElapsed = -1.0; break }
+
+                    let pA = bufA.contents().bindMemory(to: Float.self, capacity: count)
+                    let pB = bufB.contents().bindMemory(to: Float.self, capacity: count)
+                    for i in 0..<count { pA[i] = Float(i) * 0.001; pB[i] = Float(i) * 0.002 }
+
+                    let gpuStart = Date()
+                    guard let cmd = queue.makeCommandBuffer(),
+                          let enc = cmd.makeComputeCommandEncoder() else { gpuElapsed = -1.0; break }
+                    enc.setComputePipelineState(pso)
+                    enc.setBuffer(bufA,   offset: 0, index: 0)
+                    enc.setBuffer(bufB,   offset: 0, index: 1)
+                    enc.setBuffer(bufOut, offset: 0, index: 2)
+                    let tg   = MTLSize(width: pso.threadExecutionWidth, height: 1, depth: 1)
+                    let grid = MTLSize(width: count, height: 1, depth: 1)
+                    enc.dispatchThreads(grid, threadsPerThreadgroup: tg)
+                    enc.endEncoding()
+                    await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
+                        cmd.addCompletedHandler { _ in cont.resume() }
+                        cmd.commit()
+                    }
+                    gpuElapsed = Date().timeIntervalSince(gpuStart)
                 }
-                last = Date().timeIntervalSince(start)
+                last = gpuElapsed ?? Date().timeIntervalSince(start)
             }
             return last
         }.value
@@ -260,7 +316,7 @@ final class BenchmarkRunner {
     // 6.0 s ceiling — a modern iPhone should total well under 1 s.
     var score: Int? {
         guard results.count == BenchType.allCases.count else { return nil }
-        let total = BenchType.allCases.compactMap { results[$0] }.reduce(0, +)
+        let total = BenchType.allCases.compactMap { results[$0] }.filter { $0 >= 0 }.reduce(0, +)
         return max(0, Int((6.0 - min(total, 6.0)) / 6.0 * 1000))
     }
 }
@@ -444,7 +500,7 @@ struct BenchmarkView: View {
 
     private var timingChart: some View {
         let maxTime = BenchmarkRunner.BenchType.allCases
-            .compactMap { runner.results[$0] }.max() ?? 1.0
+            .compactMap { runner.results[$0] }.filter { $0 >= 0 }.max() ?? 1.0
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -478,30 +534,39 @@ struct BenchmarkView: View {
                                 Capsule()
                                     .fill(Color.primary.opacity(0.08))
                                     .frame(height: 10)
-                                if let prevTime {
+                                if t >= 0 {
+                                    if let prevTime, prevTime >= 0 {
+                                        Capsule()
+                                            .fill(Color.primary.opacity(0.28))
+                                            .frame(
+                                                width: geo.size.width * CGFloat(prevTime / maxTime),
+                                                height: 6
+                                            )
+                                            .animation(.spring(duration: 0.7), value: prevTime)
+                                    }
                                     Capsule()
-                                        .fill(Color.primary.opacity(0.28))
+                                        .fill(type.accentColor.opacity(0.85))
                                         .frame(
-                                            width: geo.size.width * CGFloat(prevTime / maxTime),
-                                            height: 6
+                                            width: geo.size.width * CGFloat(t / maxTime),
+                                            height: 10
                                         )
-                                        .animation(.spring(duration: 0.7), value: prevTime)
+                                        .animation(.spring(duration: 0.7), value: t)
                                 }
-                                Capsule()
-                                    .fill(type.accentColor.opacity(0.85))
-                                    .frame(
-                                        width: geo.size.width * CGFloat(t / maxTime),
-                                        height: 10
-                                    )
-                                    .animation(.spring(duration: 0.7), value: t)
                             }
                         }
                         .frame(height: 10)
 
-                        Text(t, format: .number.precision(.fractionLength(3)))
-                            .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                            .foregroundStyle(Color.primary.opacity(0.65))
-                            .frame(width: 50, alignment: .trailing)
+                        Group {
+                            if t < 0 {
+                                Text("N/A")
+                                    .foregroundStyle(Color.primary.opacity(0.45))
+                            } else {
+                                Text(t, format: .number.precision(.fractionLength(3)))
+                                    .foregroundStyle(Color.primary.opacity(0.65))
+                            }
+                        }
+                        .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                        .frame(width: 50, alignment: .trailing)
                     }
                 }
             }
@@ -594,14 +659,20 @@ private struct BenchCard: View {
             // Result + delta
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 if let t = result {
-                    Text(t, format: .number.precision(.fractionLength(4)))
-                        .font(.system(size: 17, weight: .bold, design: .monospaced))
-                        .foregroundStyle(type.accentColor)
-                        .contentTransition(.numericText())
-                        .animation(.spring(duration: 0.4), value: t)
-                    Text("s")
-                        .font(.caption2)
-                        .foregroundStyle(Color.primary.opacity(0.55))
+                    if t < 0 {
+                        Text("N/A")
+                            .font(.system(size: 17, weight: .bold, design: .monospaced))
+                            .foregroundStyle(Color.primary.opacity(0.45))
+                    } else {
+                        Text(t, format: .number.precision(.fractionLength(4)))
+                            .font(.system(size: 17, weight: .bold, design: .monospaced))
+                            .foregroundStyle(type.accentColor)
+                            .contentTransition(.numericText())
+                            .animation(.spring(duration: 0.4), value: t)
+                        Text("s")
+                            .font(.caption2)
+                            .foregroundStyle(Color.primary.opacity(0.55))
+                    }
                 } else {
                     Text("\u{2014}")
                         .font(.system(size: 17, weight: .bold))
@@ -609,8 +680,8 @@ private struct BenchCard: View {
                 }
             }
 
-            if let t = result,
-               let prevTime = runner.previousResult?.timings[type.rawValue] {
+            if let t = result, t >= 0,
+               let prevTime = runner.previousResult?.timings[type.rawValue], prevTime >= 0 {
                 let delta   = t - prevTime
                 let faster  = delta < 0
                 HStack(spacing: 2) {
