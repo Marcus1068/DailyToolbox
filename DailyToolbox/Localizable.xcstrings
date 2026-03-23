@@ -1563,7 +1563,40 @@
         }
       }
     },
-    "Actinides (89–103)" : {},
+    "Actinides (89–103)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinoide (89–103)"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinider (89–103)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actínidos (89–103)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actinides (89–103)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attinoidi (89–103)"
+          }
+        }
+      }
+    },
     "Add" : {
       "comment" : "Button: add calendar event",
       "localizations" : {
@@ -11534,7 +11567,40 @@
         }
       }
     },
-    "Lanthanides (57–71)" : {},
+    "Lanthanides (57–71)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanoide (57–71)"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanider (57–71)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantánidos (57–71)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanthanides (57–71)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantanidi (57–71)"
+          }
+        }
+      }
+    },
     "Last Quarter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -22075,6 +22141,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ω → Colori"
+          }
+        }
+      }
+    },
+    "Name, symbol, or atomic number" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name, Symbol oder Ordnungszahl"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navn, symbol eller atomnummer"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre, símbolo o número atómico"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom, symbole ou numéro atomique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome, simbolo o numero atomico"
           }
         }
       }

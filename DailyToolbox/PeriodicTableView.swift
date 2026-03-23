@@ -615,7 +615,7 @@ struct PeriodicTableView: View {
         .navigationTitle("Periodic Table")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .searchable(text: $searchText, prompt: "Name, symbol, or atomic number")
+        .searchable(text: $searchText, prompt: Text("Name, symbol, or atomic number"))
         .sheet(item: $selectedElement) { element in
             ElementDetailView(element: element)
         }
