@@ -81,8 +81,5 @@ struct DailyToolboxApp: App {
             .animation(.easeInOut(duration: 0.5), value: showSplash)
             .preferredColorScheme(appearanceMode.colorScheme)
         }
-        #if targetEnvironment(macCatalyst)
-        .defaultSize(width: 1100, height: 720)
-        #endif
     }
 }
