@@ -590,37 +590,34 @@ struct PeriodicTableView: View {
 
     var body: some View {
         GlassEffectContainer {
-            VStack(spacing: 0) {
-                if searchText.isEmpty {
-                    ScrollView([.horizontal, .vertical]) {
-                        PeriodicTableGridView(
-                            cellWidth: cellWidth,
-                            cellHeight: cellHeight,
-                            spacing: cellSpacing,
-                            onSelect: { selectedElement = $0 }
-                        )
-                    }
-                    .clipped()
-                    Divider().background(.white.opacity(0.15))
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 0) {
-                            CategoryLegendView()
-                            Divider().background(.white.opacity(0.15))
-                            molarMassCard
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
+            if searchText.isEmpty {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        // Grid scrolls only horizontally; height is natural (zoom-driven)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            PeriodicTableGridView(
+                                cellWidth: cellWidth,
+                                cellHeight: cellHeight,
+                                spacing: cellSpacing,
+                                onSelect: { selectedElement = $0 }
+                            )
                         }
+                        Divider().background(.white.opacity(0.15))
+                        zoomControl
+                        Divider().background(.white.opacity(0.15))
+                        CategoryLegendView()
+                        Divider().background(.white.opacity(0.15))
+                        molarMassCard
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
                     }
-                    .frame(maxHeight: 320)
-                    Divider().background(.white.opacity(0.15))
-                    zoomControl
-                } else {
-                    ScrollView {
-                        ElementSearchResultsView(
-                            query: searchText,
-                            onSelect: { selectedElement = $0 }
-                        )
-                    }
+                }
+            } else {
+                ScrollView(.vertical) {
+                    ElementSearchResultsView(
+                        query: searchText,
+                        onSelect: { selectedElement = $0 }
+                    )
                 }
             }
         }
