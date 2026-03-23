@@ -73,7 +73,7 @@ final class BenchmarkRunner {
             case .stringProc: return "textformat.characters"
             case .crypto:     return "lock.shield.fill"
             case .compress:   return "arrow.down.left.arrow.up.right"
-            case .gpuCompute: return "gpu"
+            case .gpuCompute: return "square.3.layers.3d.fill"
             }
         }
 
