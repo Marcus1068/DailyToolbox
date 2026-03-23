@@ -410,7 +410,7 @@ struct MoonPhaseView: View {
     // MARK: Phase Info Card
 
     private var phaseInfoCard: some View {
-        let moonCopyText = "\(info.phase.rawValue) · \(Int(info.illumination * 100))% illumination · Age: \(String(format: "%.1f", info.age)) days"
+        let moonCopyText = "\(info.phase.rawValue) · \(Int(info.illumination * 100))% \(NSLocalizedString("Illuminated", comment: "")) · \(NSLocalizedString("Moon Age", comment: "")): \(String(format: "%.1f", info.age)) \(NSLocalizedString("days", comment: "Calendar: days label"))"
         return VStack(spacing: 0) {
             HStack(spacing: 0) {
                 phaseStatCell(
@@ -421,7 +421,7 @@ struct MoonPhaseView: View {
                 )
                 Divider().frame(height: 44)
                 phaseStatCell(
-                    value: String(format: "%.1f days", info.age),
+                    value: String(format: "%.1f \(NSLocalizedString("days", comment: "Calendar: days label"))", info.age),
                     label: "Moon Age",
                     icon: "clock.fill",
                     color: blueAccent
