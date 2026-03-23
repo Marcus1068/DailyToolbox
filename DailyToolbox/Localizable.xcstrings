@@ -9218,7 +9218,9 @@
         }
       }
     },
-    "g/mol" : {},
+    "g/mol" : {
+      "shouldTranslate" : false
+    },
     "Gallons (US)" : {
       "comment" : "Unit converter: US gallon unit label",
       "localizations" : {
@@ -11272,7 +11274,40 @@
         }
       }
     },
-    "Invalid formula" : {},
+    "Invalid formula" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige Formel"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ugyldig formel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fórmula inválida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formule invalide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formula non valida"
+          }
+        }
+      }
+    },
     "Invalid hex (#RRGGBB)" : {},
     "Invalid number" : {
       "comment" : "Roman numerals validation error",
@@ -13314,7 +13349,40 @@
         }
       }
     },
-    "Molar Mass Calculator" : {},
+    "Molar Mass Calculator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molmassen-Rechner"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molmasse-beregner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculadora de masa molar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculateur de masse molaire"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatore di massa molare"
+          }
+        }
+      }
+    },
     "Month" : {
       "comment" : "Power consumption bar chart label",
       "localizations" : {
@@ -20502,7 +20570,40 @@
         }
       }
     },
-    "Unknown element: %@" : {},
+    "Unknown element: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekanntes Element: %@"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukendt element: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elemento desconocido: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Élément inconnu: %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elemento sconosciuto: %@"
+          }
+        }
+      }
+    },
     "UPCOMING" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -22831,6 +22932,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "IQR"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukendt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconocido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inconnu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sconosciuto"
+          }
+        }
+      }
+    },
+    "Molar mass is the mass of one mole (6.022 × 10²³ particles) of a substance. Enter a formula to calculate the total mass in g/mol from standard atomic weights." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Molmasse ist die Masse eines Mols (6,022 × 10²³ Teilchen) einer Substanz. Formel eingeben, um die Gesamtmasse in g/mol aus Atomgewichten zu berechnen."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molmassen er massen af én mol (6,022 × 10²³ partikler) af et stof. Indtast en formel for at beregne den samlede masse i g/mol fra atomvægte."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La masa molar es la masa de un mol (6,022 × 10²³ partículas) de una sustancia. Introduce una fórmula para calcular la masa total en g/mol a partir de pesos atómicos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La masse molaire est la masse d'une mole (6,022 × 10²³ particules) d'une substance. Entrez une formule pour calculer la masse totale en g/mol à partir des masses atomiques."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La massa molare è la massa di una mole (6,022 × 10²³ particelle) di una sostanza. Inserisci una formula per calcolare la massa totale in g/mol dai pesi atomici."
+          }
+        }
+      }
+    },
+    "Examples: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beispiele: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksempler: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejemplos: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exemples: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esempi: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂"
           }
         }
       }

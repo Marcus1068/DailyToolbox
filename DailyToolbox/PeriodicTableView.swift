@@ -743,6 +743,19 @@ struct PeriodicTableView: View {
                 }
             }
 
+            // Info card
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Molar mass is the mass of one mole (6.022 × 10²³ particles) of a substance. Enter a formula to calculate the total mass in g/mol from standard atomic weights.")
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.55))
+                Text("Examples: H₂O, NaCl, C₆H₁₂O₆, Ca(OH)₂")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Color(red: 0.20, green: 0.75, blue: 0.55).opacity(0.85))
+            }
+            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.primary.opacity(0.05), in: RoundedRectangle(cornerRadius: 10))
+
             HStack(spacing: 10) {
                 TextField("H₂O, NaCl, C₆H₁₂O₆…", text: $molarFormula)
                     .font(.system(size: 16, weight: .semibold, design: .monospaced))
