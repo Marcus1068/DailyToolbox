@@ -505,19 +505,31 @@ struct BenchmarkView: View {
             .compactMap { runner.results[$0] }.filter { $0 >= 0 }.max() ?? 1.0
 
         return VStack(alignment: .leading, spacing: 12) {
-            HStack {
+            HStack(alignment: .top) {
                 Text("Timing Comparison")
                     .font(.headline)
                     .foregroundStyle(Color.primary.opacity(0.85))
                 Spacer()
-                if let prev = runner.previousResult {
-                    HStack(spacing: 4) {
-                        Capsule()
-                            .fill(Color.primary.opacity(0.30))
-                            .frame(width: 14, height: 5)
-                        Text(prev.date, style: .date)
-                            .font(.caption2)
-                            .foregroundStyle(Color.primary.opacity(0.45))
+                VStack(alignment: .trailing, spacing: 3) {
+                    if let current = runner.resultHistory.first {
+                        HStack(spacing: 4) {
+                            Capsule()
+                                .fill(Color.primary.opacity(0.70))
+                                .frame(width: 14, height: 7)
+                            Text(current.date, format: .dateTime.month(.abbreviated).day().hour().minute())
+                                .font(.caption2)
+                                .foregroundStyle(Color.primary.opacity(0.65))
+                        }
+                    }
+                    if let prev = runner.previousResult {
+                        HStack(spacing: 4) {
+                            Capsule()
+                                .fill(Color.primary.opacity(0.30))
+                                .frame(width: 14, height: 5)
+                            Text(prev.date, format: .dateTime.month(.abbreviated).day().hour().minute())
+                                .font(.caption2)
+                                .foregroundStyle(Color.primary.opacity(0.45))
+                        }
                     }
                 }
             }
@@ -590,9 +602,14 @@ struct BenchmarkView: View {
             Divider().overlay(Color.primary.opacity(0.15))
             ForEach(Array(runner.resultHistory.prefix(5).enumerated()), id: \.offset) { _, run in
                 HStack {
-                    Text(run.date, style: .date)
-                        .font(.caption)
-                        .foregroundStyle(Color.primary.opacity(0.65))
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(run.date, format: .dateTime.month(.abbreviated).day().year())
+                            .font(.caption)
+                            .foregroundStyle(Color.primary.opacity(0.65))
+                        Text(run.date, format: .dateTime.hour().minute().second())
+                            .font(.caption2.monospacedDigit())
+                            .foregroundStyle(Color.primary.opacity(0.40))
+                    }
                     Spacer()
                     Text("\(run.score) pts")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
