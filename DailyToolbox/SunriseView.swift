@@ -403,6 +403,7 @@ struct SunriseView: View {
     @State private var now:   Date = Date()
     @State private var timer: Timer? = nil
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.openURL) private var openURL
 
     // MARK: Adaptive colors
 
@@ -581,7 +582,9 @@ struct SunriseView: View {
                         .foregroundStyle(Color.primary.opacity(0.50))
                     if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
                         Button("Open Settings") {
-                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                openURL(url)
+                            }
                         }
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(goldAccent)

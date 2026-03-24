@@ -217,6 +217,7 @@ struct HorizonView: View {
 
     @State  private var locationManager = HorizonLocationManager()
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.openURL) private var openURL
 
     // Two AppStorage vars — that's all we need.
     // eyeLevelMeters is ALWAYS in metres. Display converts on the fly.
@@ -400,7 +401,7 @@ struct HorizonView: View {
                     locationManager.authorizationStatus == .restricted {
                     Button("Open Settings") {
                         if let url = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(url)
+                            openURL(url)
                         }
                     }
                     .font(.caption.weight(.semibold))
