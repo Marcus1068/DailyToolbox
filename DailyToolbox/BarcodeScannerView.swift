@@ -458,9 +458,7 @@ struct BarcodeScannerView: View {
                     .multilineTextAlignment(.center)
             }
             Button("Open Settings") {
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    Task { @MainActor in await UIApplication.shared.open(url) }
-                }
+                openSystemSettings(privacy: "Privacy_Camera")
             }
             .buttonStyle(.glass)
         }

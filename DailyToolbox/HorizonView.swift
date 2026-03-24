@@ -400,9 +400,7 @@ struct HorizonView: View {
                 if locationManager.authorizationStatus == .denied ||
                     locationManager.authorizationStatus == .restricted {
                     Button("Open Settings") {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            Task { @MainActor in await UIApplication.shared.open(url) }
-                        }
+                        openSystemSettings(privacy: "Privacy_LocationServices")
                     }
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(blueAccent)

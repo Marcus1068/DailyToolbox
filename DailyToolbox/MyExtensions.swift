@@ -25,6 +25,7 @@ limitations under the License.
 //
 
 import Foundation
+import UIKit
 
 // MARK: - Bundle info helpers
 
@@ -70,4 +71,21 @@ public struct Local {
     static let languageCode   = locale.language.languageCode?.identifier
 
     static func currentLocaleForDate() -> String { languageCode ?? "en" }
+}
+
+// MARK: - System Settings URL
+
+/// Opens the correct system settings page on both iOS and Mac Catalyst.
+/// iOS: app-specific Settings page.
+/// Mac Catalyst: System Settings → Privacy & Security (camera or location).
+@MainActor
+func openSystemSettings(privacy: String? = nil) {
+    #if targetEnvironment(macCatalyst)
+    let base = "x-apple.systempreferences:com.apple.preference.security"
+    let urlStr = privacy.map { "\(base)?\($0)" } ?? base
+    #else
+    let urlStr = UIApplication.openSettingsURLString
+    #endif
+    guard let url = URL(string: urlStr) else { return }
+    Task { @MainActor in await UIApplication.shared.open(url) }
 }
