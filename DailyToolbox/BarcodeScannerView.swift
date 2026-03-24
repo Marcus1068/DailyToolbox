@@ -80,9 +80,11 @@ private struct CameraPreview: UIViewRepresentable {
 @Observable
 @MainActor
 final class BarcodeScannerModel: NSObject {
-    // nonisolated(unsafe): AVFoundation objects accessed on background threads via Task.detached
+    // nonisolated(unsafe): AVFoundation objects accessed on dedicated session queue
     nonisolated(unsafe) let session        = AVCaptureSession()
     nonisolated(unsafe) let metadataOutput = AVCaptureMetadataOutput()
+    /// Dedicated serial queue required by AVFoundation for all session operations.
+    nonisolated(unsafe) private let sessionQueue = DispatchQueue(label: "barcode.session", qos: .userInitiated)
 
     var scannedValue: String?               = nil
     var scannedType:  String?               = nil
@@ -119,7 +121,10 @@ final class BarcodeScannerModel: NSObject {
     }
 
     func stopSession() {
-        Task { await _stopRunning() }
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
+            if self.session.isRunning { self.session.stopRunning() }
+        }
     }
 
     func lookupProduct(_ barcode: String) {
@@ -157,38 +162,33 @@ final class BarcodeScannerModel: NSObject {
         }
     }
 
-    // MARK: - @MainActor setup (checks isConfigured, registers delegate)
+    // MARK: - Session setup — all AVFoundation work on sessionQueue
 
     private func prepareAndStart() {
         if isConfigured {
-            Task { await _startRunning() }
+            sessionQueue.async { [weak self] in
+                guard let self, !self.session.isRunning else { return }
+                self.session.startRunning()
+            }
             return
         }
         isConfigured = true
-        let q = DispatchQueue(label: "barcode.metadata", qos: .userInitiated)
-        metadataOutput.setMetadataObjectsDelegate(self, queue: q)
-        Task { await _configureAndRun() }
+        // Delegate callbacks delivered on sessionQueue (same queue as config)
+        metadataOutput.setMetadataObjectsDelegate(self, queue: sessionQueue)
+        sessionQueue.async { [weak self] in
+            self?._configureAndRun()
+        }
     }
 
-    // MARK: - nonisolated workers (cooperative pool, NOT main actor)
+    // MARK: - AVFoundation config (runs on sessionQueue)
 
-    nonisolated private func _startRunning() async {
-        guard !session.isRunning else { return }
-        session.startRunning()
-    }
-
-    nonisolated private func _stopRunning() async {
-        guard session.isRunning else { return }
-        session.stopRunning()
-    }
-
-    nonisolated private func _configureAndRun() async {
+    private func _configureAndRun() {
         session.beginConfiguration()
 
         guard let device = AVCaptureDevice.default(for: .video),
               let input  = try? AVCaptureDeviceInput(device: device),
               session.canAddInput(input) else {
-            session.commitConfiguration()   // must commit even on early exit
+            session.commitConfiguration()
             return
         }
         session.addInput(input)
@@ -201,7 +201,6 @@ final class BarcodeScannerModel: NSObject {
             ]
         }
 
-        // commitConfiguration() MUST be called before startRunning()
         session.commitConfiguration()
         session.startRunning()
     }
@@ -252,6 +251,7 @@ struct BarcodeScannerView: View {
     @AppStorage("barcode.history") private var historyData = ""
     @State private var showClearConfirmation = false
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.openURL) private var openURL
 
     // MARK: - History helpers
 
@@ -459,7 +459,7 @@ struct BarcodeScannerView: View {
             }
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url)
+                    openURL(url)
                 }
             }
             .buttonStyle(.glass)
