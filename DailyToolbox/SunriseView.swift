@@ -583,7 +583,7 @@ struct SunriseView: View {
                     if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
                         Button("Open Settings") {
                             if let url = URL(string: UIApplication.openSettingsURLString) {
-                                openURL(url)
+                                Task { @MainActor in await UIApplication.shared.open(url) }
                             }
                         }
                         .font(.caption.weight(.semibold))

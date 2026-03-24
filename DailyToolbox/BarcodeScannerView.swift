@@ -84,7 +84,7 @@ final class BarcodeScannerModel: NSObject {
     nonisolated(unsafe) let session        = AVCaptureSession()
     nonisolated(unsafe) let metadataOutput = AVCaptureMetadataOutput()
     /// Dedicated serial queue required by AVFoundation for all session operations.
-    nonisolated(unsafe) private let sessionQueue = DispatchQueue(label: "barcode.session", qos: .userInitiated)
+    private let sessionQueue = DispatchQueue(label: "barcode.session", qos: .userInitiated)
 
     var scannedValue: String?               = nil
     var scannedType:  String?               = nil
@@ -182,7 +182,7 @@ final class BarcodeScannerModel: NSObject {
 
     // MARK: - AVFoundation config (runs on sessionQueue)
 
-    private func _configureAndRun() {
+    nonisolated private func _configureAndRun() {
         session.beginConfiguration()
 
         guard let device = AVCaptureDevice.default(for: .video),
@@ -459,7 +459,7 @@ struct BarcodeScannerView: View {
             }
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
-                    openURL(url)
+                    Task { @MainActor in await UIApplication.shared.open(url) }
                 }
             }
             .buttonStyle(.glass)
